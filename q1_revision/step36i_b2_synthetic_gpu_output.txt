@@ -1,0 +1,25 @@
+==============================================================================================================
+STEP 36I-B2 — EIGHT-ARCHITECTURE SYNTHETIC GPU PREFLIGHT
+==============================================================================================================
+
+TEST DLINEAR        seed=42 batch=128 tail=52
+Traceback (most recent call last):
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36i_b2_synthetic_gpu_inference_draft.py", line 395, in <module>
+    main()
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36i_b2_synthetic_gpu_inference_draft.py", line 390, in main
+    worker(args.worker)
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36i_b2_synthetic_gpu_inference_draft.py", line 179, in worker
+    torch.cuda.reset_peak_memory_stats(device)
+  File "/home/harman/miniconda3/envs/Harman_GPU/lib/python3.12/site-packages/torch/cuda/memory.py", line 381, in reset_peak_memory_stats
+    return torch._C._cuda_resetPeakMemoryStats(device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Invalid device argument 
+
+Traceback (most recent call last):
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36i_b2_synthetic_gpu_inference_draft.py", line 395, in <module>
+    main()
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36i_b2_synthetic_gpu_inference_draft.py", line 392, in main
+    orchestrate()
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36i_b2_synthetic_gpu_inference_draft.py", line 321, in orchestrate
+    raise RuntimeError(
+RuntimeError: Synthetic GPU preflight failed for DLINEAR. Do not rerun without reviewing the error.

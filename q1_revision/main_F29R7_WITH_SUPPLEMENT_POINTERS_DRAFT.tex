@@ -1,0 +1,552 @@
+\documentclass[fleqn,10pt]{wlscirep}
+\usepackage[utf8]{inputenc}
+\usepackage{placeins}
+\usepackage[T1]{fontenc}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{graphicx}
+\graphicspath{{Revision_F29R7_Assets/}} % Folder containing the seven verified vector-PDF figures
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{rotating}
+\usepackage{threeparttable}
+
+\usepackage{placeins}
+\title{Artificial Intelligence-Based Multi-Horizon Directional Forecasting of Indian Equities: A Leakage-Controlled and Dependence-Aware Evaluatio}
+
+%\author[1]{Sanjay Madaan}
+\author[1]{Harmanjeet Singh}
+\author[2]{Supreet Singh}
+\author[3]{Rupali Dhir}
+\author[4]{Davinder Singh}
+\author[5]{Himanshi Puri}
+\author[6,*]{Yohanis Dabesa Jelila}
+
+
+%\affil[1]{Department of Computer Engineering and Applications, GLA University, Mathura, 281406, Uttar Pradesh, India (e-mail: sanjaymadaan87@gmail.com)}
+\affil[1]{School of Computer Science \& Engineering, Galgotias University, Greater Noida, Uttar Pradesh, India, 203201 (e-mail: harmangahir@outlook.com)}
+\affil[2]{School of Computer Science, UPES, Dehradun, 248007, Uttarakhand, India (e-mail: uic.supreet@gmail.com)}
+\affil[3]{Department of Computer Applications, CT University, Ferozpur Road, Sidwan Khurd, Ludhiana, 142023, Punjab, India (e-mail: rupali\_dhir@hotmail.com)}
+\affil[4]{Chandigarh Group of Colleges, CGC Landran, 140307, Punjab, India (e-mail: davinderddd@gmail.com)}
+\affil[5]{Sharda School of Business Studies, Sharda University, Knowledge Park III, Greater Noida, India (e-mail: himanshi.puri@sharda.ac.in)}
+\affil[5]{Faculty of Mechanical Engineering, Institute of Technology, Jimma University, Jimma, Ethiopia}
+
+\affil[*]{Corresponding author: yohanis.jelila@ju.edu.et}
+
+% \affil[+]{these authors contributed equally to this work}
+
+% \keywords{Stock price forecasting,
+% FinBERT,
+% iTransformer
+% Sentiment analysis,
+% Metaheuristic optimization,
+% Walk-forward validation}
+
+\begin{abstract}
+Equity-direction benchmarks can overstate predictive evidence when chronological leakage, overlapping targets, stochastic training variability, decision-threshold selection and cross-stock dependence are insufficiently controlled. We evaluate one-, three- and five-session return direction for 20 NSE-listed Indian equities from a 2016--2026 market-data study, using 47 stock-specific and 16 NIFTY~50 context features. Eight modern neural architectures were selected under five expanding development folds; five frozen seeds per architecture were refitted on development-only observations, with 24 development-calibrated thresholds. A documented post-freeze continuity amendment restricted the held-out evaluation to 5,300 common stock--session endpoints spanning 265 sessions in two disjoint intervals (1 January--7 March 2025 and 1 August 2025--22 June 2026). Under a segment-stratified, cross-section-preserving 20-session moving-block bootstrap (2,000 replicates), none of the 24 architecture--horizon tests showed above-chance balanced accuracy after Benjamini--Hochberg adjustment (all $q=1.000$). The best descriptive neural results were DLinear at one session (0.4995), PatchTST at three sessions (0.5012), and iTransformer at five sessions (0.5098). Exploratory development-trained random forests obtained 0.5109, 0.5126 and 0.5023, respectively, without statistically established superiority over causal lagged-return persistence. Regime, stock and quarterly analyses revealed directional prediction imbalance and marked conditional instability. The results support a transparent negative-evidence benchmark rather than claims of architectural dominance, market inefficiency or deployable trading profitability.
+\end{abstract}
+
+
+% \noindent\textbf{Keywords:}
+% directional forecasting; Indian equities; temporal leakage;
+% dependence-aware bootstrap; volatility regimes; iTransformer
+\begin{document}
+
+\flushbottom
+\maketitle
+
+
+\noindent\textbf{Keywords:}
+Indian equities, directional classification, DLinear, PatchTST, iTransformer, rolling-origin validation, temporal leakage, market regimes, moving-block bootstrap, negative evidence
+% * <john.hammersley@gmail.com> 2015-02-09T12:07:31.197Z:
+%
+%  Click the title above to edit the author information and abstract
+%
+\thispagestyle{empty}
+
+% \noindent Please note: Abbreviations should be introduced at the first mention in the main text – no abbreviations lists. Suggested structure of main text (not enforced) is provided below.
+
+\section{Introduction}\label{sec:introduction}
+Forecasting the sign of an equity return differs fundamentally from predicting its price level: a model may track a persistent price series while providing little information about whether the next return is positive. Equity returns have weak signals, time-varying distributions, volatility clustering and market-wide shocks. Cross-sectional panel evaluations create an additional problem: observations for 20 stocks on one session do not constitute 20 independent realizations of market conditions. Consequently, small differences in classification metrics must be interpreted against both temporal and cross-sectional dependence.
+
+Indian equity studies have explored technical-indicator models, recurrent neural networks, optimized hybrids and attention-based mechanisms \cite{Agrawal2021,Barua2024,Chauhan2023,Banik2022SwingTrading}. Beyond individual-stock histories, association mining, social signals, dynamic graph constructions and relational learning have been investigated \cite{Srivastava2024,Kumarappan2024,Yu2025FFIRNet,Patel2025MR2TNet,Yang2026ACHGL,Liu2026DCGNN}. Such sophistication does not establish that an architecture retains incremental directional signal on genuinely unseen dates. Strict chronology, appropriate target alignment and control of look-ahead contamination are central to interpretable comparisons \cite{Glasserman2024LookAheadBias,Bao2026StrictChronological,Rajkarnikar2026XAttnFusion}.
+
+The modern time-series literature offers informative contrasts between simple and high-capacity designs. DLinear and NLinear question whether Transformers necessarily dominate simple linear mappings \cite{Zeng2023LTSFLinear}. PatchTST employs patch-based processing \cite{Nie2023PatchTST}, TimesNet captures periodic structure \cite{Wu2023TimesNet}, and iTransformer inverts the conventional temporal-token representation \cite{Liu2024iTransformer}. Fredformer and FRNet address frequency-domain structure, while MLF studies multiple financial temporal scales \cite{Piao2024Fredformer,Zhang2024FRNet,Zhang2025MLF}. Their original regression results cannot automatically be transferred to directional classification; common targets, inputs, selection rules and evaluation dates are required.
+
+This study asks whether an auditable set of eight neural architecture families produces directional skill at 1, 3 or 5 sessions under a realistic development/evaluation separation. The objective is to estimate credible generalization rather than introduce a new architecture or maximize a post hoc test metric. The experimental study uses 20 equities, a 60-session history, 63 causal continuous predictors, fixed neural seeds and thresholds, a final test cohort corrected for complete-history eligibility, and market-session-based statistical inference. Conventional Logistic Regression, Random Forest and XGBoost comparators and simple directional rules provide complementary context, while remaining explicitly outside the 24 original primary tests.
+
+\paragraph{Contributions and research questions.} First, we reconstruct a 2016--2026 leakage-controlled panel and retain a verifiable architecture--horizon evaluation on exactly matched stock--session keys. Second, we report all eight frozen five-seed neural configurations rather than choosing a favorable seed or model after inspection. Third, we use a segment-stratified dependence-aware bootstrap and explicitly disclose the post-freeze eligibility amendment and the historical test-access record. Fourth, we compare neural results with development-only conventional machine learning and causal persistence, and explore regime, stock and quarterly instability without retrospectively changing the primary tests. Our research questions are whether any of the 24 neural tasks exceeds BA 0.5 after multiplicity correction; whether any observed neural--ML difference is robust; and whether prediction behavior remains stable across market conditions.
+
+\section{Related work and methodological positioning}\label{sec:related}
+\subsection{Directional forecasting in the Indian equity market}
+Prior work has evaluated NIFTY and NSE price or direction using technical indicators, machine learning and deep sequence methods \cite{Paul2023,Agrawal2021,Barua2024,Shastry2024Intraday,Kadu2025SearchRescue}. More elaborate financial forecasting models incorporate multiple input sources or stock relationships, including relational feature fusion, dynamic correlation graphs and portfolio-linked decisions \cite{Ravi2025,Khansama2025SGRNet,Yu2025FFIRNet,Yang2026AsymAlpha,Yang2026ACHGL,Patel2025MR2TNet}. These investigations cover different markets, horizons, target types and validation settings, complicating numerical cross-paper claims.
+
+\subsection{Contemporary sequence models and comparative baselines}
+Comparative model selection should include competitive simple mappings alongside learned attention and frequency-domain representations. DLinear and NLinear offer low-complexity time-series transformations; PatchTST, TimesNet and iTransformer provide alternative tokenization and periodicity designs; Fredformer and FRNet target spectral behavior; and MLF is finance-oriented \cite{Zeng2023LTSFLinear,Nie2023PatchTST,Wu2023TimesNet,Liu2024iTransformer,Piao2024Fredformer,Zhang2024FRNet,Zhang2025MLF}. The present analysis adapts the eight model families to three binary directional heads with a common 60-by-63 interface. Logistic Regression, Random Forest and XGBoost act as conventional tabular comparators on the same last-session predictor vector. These latter experiments were frozen on development data after the original neural registry; therefore, their contrasts are exploratory and not retroactively inserted into its primary hypothesis family.
+
+\subsection{Evaluation credibility and research gap}
+Temporal leakage can arise from target dates crossing training boundaries, full-sample preprocessing, publication-lag violations, decisions based on final-test scores, and implicit selection of the best random seed \cite{Glasserman2024LookAheadBias,Bao2026StrictChronological}. In a multi-equity panel, dependence among stocks at a shared date and overlap across multi-session returns additionally challenge row-independent significance calculations. The gap addressed here is a reproducible \emph{comparison and uncertainty analysis}, not a claim of uniquely solving these established problems. Unlike studies reporting only the best configuration, the analysis preserves development decisions and documents negative results, along with observational heterogeneity and a material final-test continuity exclusion. No cross-study superiority claim is made because publicly reported scores generally do not share this cohort or protocol.
+
+\section{Data and experimental design}\label{sec:data}
+\subsection{Equity universe, market calendar and source audit}
+The universe comprises ASIANPAINT.NS, AXISBANK.NS, BAJFINANCE.NS, BHARTIARTL.NS, HDFCBANK.NS, HINDUNILVR.NS, ICICIBANK.NS, INFY.NS, ITC.NS, KOTAKBANK.NS, LT.NS, MARUTI.NS, NTPC.NS, POWERGRID.NS, RELIANCE.NS, SBIN.NS, SUNPHARMA.NS, TCS.NS, TITAN.NS and ULTRACEMCO.NS; the NIFTY~50 index provides aligned market context. Daily observations were acquired and audited under the frozen 2016--2026 project pipeline. This fixed, retrospective set of liquid names is not presented as a historical investable index constituent list.
+
+The source audit recorded 2,593 raw rows per stock, 2,583 candidate NIFTY sessions, zero structurally invalid stock rows and 329 corporate-action records. The cleaned analysis calendar retained 2,582 sessions and 51,640 stock--session observations across 20 equities. Corporate-action and synchronized provider-anomaly decisions were frozen before feature processing. Market vendor adjustments and exact target-price conventions should be inspected directly against the corresponding archived source/feature manifests before external replication; earlier 2021--2026 raw-panel counts from the rejected study are not used for the present experiment.
+
+\begin{table}[htbp]\centering\small
+\caption{Data interface, development protocol and frozen held-out cohort. The earlier rejected study used a different 2021--2026 sample and is not included here.}\label{tab:design}
+\begin{tabularx}{\textwidth}{@{}p{0.39\textwidth}X@{}}\toprule
+Item & Verified design or count \\ \midrule
+Universe and market context & 20 NSE equities, NIFTY 50 price context \\
+Source calendar & 2,582 cleaned sessions, 51,640 balanced stock rows \\
+Inputs and lookback & 47 stock + 16 NIFTY features; $60\times63$ per neural endpoint \\
+Forecast horizons & 1, 3 and 5 observed market sessions \\
+Development & Five expanding chronological folds, through 31 December 2024 \\
+Final-development sequences & 42,360 endpoints \\
+Configuration screening & 8 families $\times$ 2 candidates $\times$ 5 folds = 80 fits \\
+Five-seed fold robustness & 8 selected families $\times$ 5 seeds $\times$ 5 folds = 200 logical fits \\
+Frozen final checkpoints & 40 (eight models $\times$ seeds 42--46) \\
+Neural probability rules & Five-seed mean probabilities and 24 frozen horizon-specific thresholds \\
+Originally registered target-eligible test & 6,480 endpoints, 324 sessions \\
+Amended sequence-eligible test & 5,300 endpoints, 265 sessions (20 stocks each) \\
+Inference & 2,000 bootstrap replicates, primary 20-session blocks; 10/40 sensitivity \\
+Multiplicity & 24 primary one-sided BA hypotheses, Benjamini--Hochberg FDR \\
+\bottomrule\end{tabularx}
+\end{table}
+
+\subsection{Causal predictors and return-direction targets}
+For equity $i$ and session $t$, the continuous predictor is $\mathbf{x}_{i,t}\in\mathbb{R}^{63}$, formed from 47 stock-specific price/volume, returns, rolling moments, oscillators and trend measures plus 16 price-only NIFTY context features. The 63-dimensional input intentionally excludes future returns, future target prices, news, textual sentiment and outcome labels. The index series is processed on its audited causal calendar before alignment. An end-of-session forecast formed after the observation for date $t$ is final can use date-$t$ inputs; this is not a claim of tradability before that close.
+
+With $P_{i,t}$ denoting the frozen model-panel price field and $\tau_h(t)$ the exact $h$th subsequent valid market session in the same continuity segment, binary future direction is
+\begin{equation}\label{eq:target}
+r_{i,t}^{(h)}=\frac{P_{i,\tau_h(t)}-P_{i,t}}{P_{i,t}},\qquad
+y_{i,t}^{(h)}=\mathbf 1\{r_{i,t}^{(h)}>0\},\quad h\in\{1,3,5\}.
+\end{equation}
+A zero return is non-upward. Each sequence contains the causal observations $\mathbf{X}_{i,t}=[\mathbf{x}_{i,t-59},\ldots,\mathbf{x}_{i,t}]\in\mathbb{R}^{60\times63}$. The 60 sessions must be valid and consecutive within the same ticker and continuity segment, and all three future targets must satisfy the frozen endpoint rules. Rows with valid targets but incomplete contiguous feature histories are \emph{not} inference eligible.
+
+\subsection{Rolling-origin development and train-only preprocessing}
+Five expanding chronological development folds cover the pre-2025 portion of the record. Each fold trains on earlier dates and assesses a later, purged validation interval. Continuous feature transformations are fitted on training observations only and applied without re-estimation to their corresponding validation dates. The final-development transformation is fitted solely on development observations. Regime thresholds are computed from causal rolling 20-session volatility and the stock-specific 33rd/67th training quantiles; the categorical values are \emph{Low, Normal and High} (IDs 0, 1 and 2). ``Medium'' is not a canonical regime name in this frozen evaluation.
+
+Two configurations per neural family were compared using seed 42 across five folds. The selected family configuration then entered five-seed robustness assessment using seeds $\mathcal S=\{42,43,44,45,46\}$. The pooled out-of-fold development register contained 24,240 aligned endpoints. Twenty-four architecture--horizon classification thresholds were optimized on development predictions and then frozen. Final-development training refitted all eight selected architectures for each of five seeds on the 42,360-sequence development array; the number of epochs was fixed as the median of fold-selected epochs rather than chosen on test data. The resulting 40 model states, source configurations and thresholds were cryptographically archived.
+
+\section{Neural and conventional baseline models}\label{sec:models}
+\subsection{Eight frozen neural families}
+Each architecture receives a $60\times63$ sequence and produces logits for the 1-, 3- and 5-session binary tasks. Some architectures originally target numerical sequence forecasts; their frozen adapters map backbone representations to directional classification, whereas TimesNet follows its audited classification path. The models share the same endpoints, features and directional evaluation, but are not asserted to have identical parameter counts or inductive biases.
+
+\begin{table}[htbp]\centering\small
+\caption{Architecture families, development-selected configurations and their principal modelling mechanisms.}\label{tab:architectures}
+\begin{tabular}{@{}lll@{}}\toprule
+Family & Frozen configuration & Representative mechanism \\ \midrule
+DLinear & \texttt{DLINEAR\_B} & Decomposition and linear temporal mapping \\
+NLinear & \texttt{NLINEAR\_B} & Last-value-normalized linear mapping \\
+PatchTST & \texttt{PATCHTST\_B} & Patch-based temporal tokens \\
+TimesNet & \texttt{TIMESNET\_B} & Period-aware two-dimensional temporal structure \\
+iTransformer & \texttt{ITRANSFORMER\_A} & Variate-as-token attention \\
+Fredformer & \texttt{FREDFORMER\_B} & Spectral/frequency debiasing \\
+FRNet & \texttt{FRNET\_A} & Frequency-based rotation \\
+MLF & \texttt{MLF\_A} & Multi-period financial representation \\
+\bottomrule\end{tabular}
+\end{table}
+
+Training used the frozen three-head binary cross-entropy objective
+\begin{equation}\label{eq:loss}
+\mathcal{L}_{\mathrm{BCE}}=-\frac{1}{3N}\sum_{n=1}^{N}\sum_{h\in\{1,3,5\}}\Big[y_{n}^{(h)}\log p_{n}^{(h)}+(1-y_{n}^{(h)})\log(1-p_{n}^{(h)})\Big].
+\end{equation}
+No post-test loss modification, seed selection or threshold recalibration was carried out. The five seed probabilities were combined at inference by
+\begin{equation}\label{eq:ensemble}
+\overline p^{(h)}_{i,t}=\frac15\sum_{s\in\mathcal S}\sigma(z^{(h)}_{i,t,s}),\quad
+\widehat y^{(h)}_{i,t}=\mathbf1\{\overline p^{(h)}_{i,t}\ge\tau_{m,h}\}.
+\end{equation}
+The threshold $\tau_{m,h}$ was set during development for model $m$ and horizon $h$. Therefore, the neural rows below evaluate a \emph{five-seed probability ensemble}, not the mean of five independently thresholded balanced-accuracy estimates. Development-optimized OOF scores are not presented as final generalization scores.
+
+\subsection{Frozen development-only conventional ML comparators}
+Three additional estimator families---Logistic Regression, Random Forest and XGBoost---were trained on the last timestep of the same 63-dimensional feature sequences. There are nine fitted horizon-specific comparators. Their development-only inputs contain 42,360 endpoint rows; final-test scoring uses the common 5,300 observations. They were added in a documented post-freeze supplementary baseline workflow with training and model definitions locked before accessing their held-out outcomes. Because the supplementary analyses were not part of the original primary neural testing family, ML scores and paired contrasts are exploratory; their apparently higher scores must not be used to revise the 24 confirmatory hypotheses.
+
+\subsection{Causal non-trained decision rules}
+Constant-up and constant-down rules have BA exactly 0.5 whenever both observed classes are present. The causal lagged-return-sign persistence comparator uses prior observed return direction available at the prediction time and is evaluated on the same reference dates and horizons. These are diagnostic baselines for interpreting whether apparent model discrimination adds meaningful information beyond a simple chronological rule. No trading strategy, transaction-cost backtest or signed-return utility is asserted for this revised experiment.
+
+\section{Amended held-out evaluation and statistical inference}\label{sec:protocol}
+\subsection{Post-freeze correction to sequence-eligible test membership}
+The original Step-35 target-eligible test register listed 6,480 endpoints on 324 sessions during the intended January 2025--June 2026 outer period. Technical recovery uncovered a mismatch: target-valid rows around an invalid market-history interruption did not necessarily possess a complete, same-segment 60-session sequence. The pre-existing source anomaly around 18 March 2025 and its subsequent warm-up continuity consequences necessitated a technical eligibility restriction. A structural amendment removed 1,180 target-eligible stock endpoints, leaving 5,300 (an 18.21\% reduction). The eligibility definition is based on dated input history and three target rules, not a model's observed accuracy. Nevertheless, it was approved \emph{after} the original protocol freeze and must not be labelled prospectively preregistered.
+
+\begin{table}[htbp]\centering\small
+\caption{Actual frozen amended final-test coverage. Segment 1 and segment 2 are non-adjacent; there is no sampled session in 2025 Q2 or July 2025.}\label{tab:coverage}
+\begin{tabular}{@{}lrrll@{}}\toprule
+Coverage & Sessions & Endpoints & First evaluated date & Last evaluated date \\ \midrule
+Segment 0 & 48 & 960 & 2025-01-01 & 2025-03-07 \\
+Segment 1 & 217 & 4,340 & 2025-08-01 & 2026-06-22 \\
+\midrule
+\textbf{Amended total} & \textbf{265} & \textbf{5,300} & 2025-01-01 & 2026-06-22 \\
+Original target-eligible plan & 324 & 6,480 & January 2025 & June 2026 \\
+Excluded by same-segment eligibility & 59 & 1,180 & \multicolumn{2}{l}{18.21\% of original endpoints} \\
+\bottomrule\end{tabular}
+\end{table}
+
+The boundary between the two materialized segments has a 147-calendar-day date separation (7 March to 1 August 2025). This is not a continuous eighteen-month backtest, and quarter-level results must include the missing 2025 Q2. The evaluation cannot be generalized to those unscored market sessions. The Phase A materialization contains 2,524 Low, 1,577 Normal and 1,199 High observations, all 20 stocks per each of 265 sessions. It ends on 22 June 2026, before the outer interval's nominal 30 June limit. Supplementary Figs.~S6 and S7 depict the observed class and regime composition of the \emph{held-out} sample only; they do not claim to describe training or validation distributions.
+
+\subsection{Controlled access, signed approval and completion provenance}
+The original sealed held-out file was physically accessed twice during failed technical attempts; the earlier attempts did not successfully produce model predictions or primary performance results. A separately signed, owner-approved third raw-test read was then consumed by a single committed Phase A materialization. Subsequently, 40 neural seed prediction packages were generated from the frozen checkpoints. Recovery of repository-specific Python import collisions required isolated processes for later seeds but did not retrain the checkpoint weights. Finalization initially failed on a supplementary regime-label inconsistency (\texttt{Normal} versus an incorrect expectation of \texttt{medium}); a versioned F29R6 correction committed the complete results, and F29R7 published an already committed evaluation after fixing a publication-stage manifest-key mismatch. No additional raw-test access, GPU inference or bootstrap rerun occurred in the receipt-only recovery.
+
+These events are documented rather than suppressed; the final evaluation manifest reports schema \texttt{STEP36I\_F29R6\_FINAL\_EVALUATION\_REGIME\_LABEL\_RECOVERY\_V1}. The signed owner retrospective methodological review is \emph{not} described as independent peer review or external preregistration. The 23 internal result artifacts passed SHA-256 comparison against the committed evaluation manifest; the external results receipt was published with an authenticated SHA-256 fingerprint (full digest in Appendix~\ref{app:features}). All post-test comparisons are interpreted in their frozen confirmatory or designated exploratory status.
+
+\subsection{Primary metrics and bootstrap protocol}
+For each binary horizon, balanced accuracy is
+\begin{equation}\label{eq:ba}
+\BA=\tfrac12\left(\frac{TP}{TP+FN}+\frac{TN}{TN+FP}\right).
+\end{equation}
+ROC-AUC, average precision, MCC, Brier score, predicted-positive rate and class-conditional recalls are also reported. The primary one-sided hypotheses are $H_{0,m,h}:\BA_{m,h}\le0.5$ versus $H_{1,m,h}:\BA_{m,h}>0.5$, over eight neural families and three horizons, for \emph{24 unique confirmatory tests}.
+
+Each bootstrap unit is a complete market session with all 20 stock rows retained together. Because the common cohort is split into two disjoint continuity intervals, the final amendment samples circular moving blocks \emph{within each interval}, preserving their sizes of 48 and 217 sessions. The principal block length is 20 sessions with $B=2,000$ replicates; lengths 10 and 40 constitute sensitivity analyses, not opportunities to select the most favourable interval. The centered one-sided bootstrap statistic is
+\begin{equation}\label{eq:boot}
+p_{m,h}=\frac{1+\sum_{b=1}^{B}\mathbf1\!\left\{\big(\BA_{m,h,b}^{*}-\widehat\BA_{m,h}\big)\ge \big(\widehat\BA_{m,h}-0.5\big)\right\}}{B+1},\quad B=2000.
+\end{equation}
+Primary 95\% percentile intervals use the $2.5$th and $97.5$th bootstrap quantiles. Benjamini--Hochberg adjustment is applied jointly to the 24 primary $L=20$ p-values, at FDR 0.05. Sensitivity intervals, 84 neural model-pair comparisons, 72 neural-versus-ML contrasts, persistence differences, calibration and subgroup breakdowns are \emph{exploratory}. These inference procedures account for clustered market-day observations but do not remove every possible source of distribution shift, survivorship bias or residual dependence.
+
+\section{Held-out results}\label{sec:results}
+\subsection{All eight neural architectures across three horizons}
+Table~\ref{tab:neural} and Fig.~\ref{fig:allneural} report every observed neural architecture--horizon result rather than only best-performing rows. All share the same 5,300 labeled endpoints. The highest observed neural BAs are DLinear at one session (0.49950), PatchTST at three sessions (0.50118), and iTransformer at five sessions (0.50975). None exhibits a materially convincing discrimination margin, and all one- and three-session neural ROC-AUC results are below 0.50. The 5-session iTransformer ROC-AUC is 0.50092, effectively at the no-discrimination reference. Supplementary Figs.~S1 and S2 report descriptive balanced-accuracy and ROC-AUC point estimates for the eight frozen neural families and three supplementary ML estimators; no uncomputed ROC-AUC confidence intervals are implied.
+
+\begin{table}[htbp]\centering\scriptsize
+\caption{Authenticated held-out five-seed-ensemble classification metrics. Every row contains $n=5,300$ predictions. BA and AUC are unit-scale. No best-seed selection was made.}\label{tab:neural}
+\begin{tabular}{@{}llrrrr@{}}\toprule
+Model & Horizon & BA & ROC-AUC & MCC & Brier \\ \midrule
+DLinear & 1d & 0.49950 & 0.48457 & -0.00152 & 0.25100 \\
+Fredformer & 1d & 0.49938 & 0.49610 & -0.01093 & 0.25119 \\
+NLinear & 1d & 0.49844 & 0.49767 & -0.00433 & 0.25114 \\
+PatchTST & 1d & 0.49403 & 0.48980 & -0.01256 & 0.25110 \\
+iTransformer & 1d & 0.49393 & 0.49170 & -0.01519 & 0.25155 \\
+TimesNet & 1d & 0.49004 & 0.48808 & -0.02188 & 0.25073 \\
+FRNet & 1d & 0.48582 & 0.47839 & -0.03574 & 0.25140 \\
+MLF & 1d & 0.48519 & 0.48746 & -0.03095 & 0.25053 \\
+\addlinespace[2pt]
+PatchTST & 3d & 0.50118 & 0.49251 & 0.00523 & 0.25154 \\
+Fredformer & 3d & 0.50042 & 0.48886 & 0.00663 & 0.25146 \\
+FRNet & 3d & 0.50000 & 0.48164 & 0.00000 & 0.25186 \\
+iTransformer & 3d & 0.49918 & 0.49215 & -0.01455 & 0.25190 \\
+TimesNet & 3d & 0.49769 & 0.48005 & -0.01237 & 0.25433 \\
+NLinear & 3d & 0.49719 & 0.47662 & -0.01664 & 0.25142 \\
+DLinear & 3d & 0.49210 & 0.48168 & -0.01988 & 0.25099 \\
+MLF & 3d & 0.49068 & 0.49231 & -0.02030 & 0.25220 \\
+\addlinespace[2pt]
+iTransformer & 5d & 0.50975 & 0.50092 & 0.02363 & 0.25398 \\
+Fredformer & 5d & 0.50000 & 0.49087 & 0.00000 & 0.25307 \\
+PatchTST & 5d & 0.49746 & 0.49261 & -0.00730 & 0.25287 \\
+NLinear & 5d & 0.49497 & 0.48397 & -0.01081 & 0.25336 \\
+DLinear & 5d & 0.49206 & 0.48619 & -0.01606 & 0.25244 \\
+FRNet & 5d & 0.48579 & 0.47467 & -0.04496 & 0.25439 \\
+MLF & 5d & 0.48536 & 0.48197 & -0.03788 & 0.25422 \\
+TimesNet & 5d & 0.48315 & 0.47532 & -0.03599 & 0.25626 \\
+\bottomrule\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=.92\textwidth]{fig01_neural_BA_heatmap.pdf}
+\caption{All 24 held-out neural balanced-accuracy scores on identical stock--session keys. Bold labels indicate descriptive horizon leaders, not statistically significant outcomes.}\label{fig:allneural}
+\end{figure}
+\begin{figure}[htbp]\centering
+\includegraphics[width=.88\textwidth]{fig02_best_neural_vs_rf.pdf}
+\caption{Descriptive best-neural scores compared with supplementary Random Forest baselines. Comparisons are exploratory, and selected paired confidence intervals contain zero.}\label{fig:leadercomparison}
+\end{figure}
+
+The best observed neural and Random Forest comparators are visualized in Fig.~\ref{fig:leadercomparison}. A near-0.50 balanced accuracy is not, by itself, evidence of useful discrimination. FRNet at three sessions assigns every endpoint to the downward class (sensitivity 0 and specificity 1), producing BA 0.50000 with an exactly degenerate bootstrap interval; Fredformer similarly predicts every 5-session outcome downward. Fredformer predicts upward on 99.62\% of one-session observations, while PatchTST predicts upward on 94.75\% at three sessions. Such near-constant classification substantially weakens any interpretation of apparently stable or near-chance BA scores as learned directional signal.
+
+\subsection{Primary one-sided significance tests and multiple testing}
+Table~\ref{tab:primary_tests} and Fig.~\ref{fig:primary_bootstrap_ci} report the complete 24-test primary family. All primary block-20 centered one-sided p-values exceed 0.27, all BH-adjusted q-values equal 1.000000, and no lower endpoint of the reported 95\% bootstrap percentile intervals exceeds BA 0.5. The smallest raw p-value (0.274363) arises for iTransformer at five sessions, whose BA confidence interval is wide (0.47799--0.54362); it does not justify claiming above-chance skill. These statements refer only to the amended 5,300-endpoint test sample.
+
+\begin{table}[htbp]\centering\scriptsize
+\caption{All 24 confirmatory balanced-accuracy tests, primary stratified block length $L=20$. All BH-adjusted $q$ values equal 1.000000. CI denotes percentile 95\% confidence interval.}\label{tab:primary_tests}
+\begin{tabular}{@{}llrrrr@{}}\toprule
+Model & Horizon & Observed BA & 95\% CI lower & 95\% CI upper & One-sided $p$ \\ \midrule
+DLinear & 1d & 0.499501 & 0.49186 & 0.50709 & 0.547226 \\
+NLinear & 1d & 0.498436 & 0.48714 & 0.50903 & 0.637181 \\
+PatchTST & 1d & 0.494031 & 0.48221 & 0.50689 & 0.846077 \\
+TimesNet & 1d & 0.490038 & 0.47879 & 0.50135 & 0.956522 \\
+iTransformer & 1d & 0.493926 & 0.48019 & 0.50727 & 0.816592 \\
+Fredformer & 1d & 0.499382 & 0.49811 & 0.50074 & 0.836082 \\
+FRNet & 1d & 0.485816 & 0.47475 & 0.49753 & 0.995002 \\
+MLF & 1d & 0.485189 & 0.46920 & 0.50053 & 0.964018 \\
+\addlinespace[2pt]
+DLinear & 3d & 0.492103 & 0.47255 & 0.51168 & 0.798601 \\
+NLinear & 3d & 0.497194 & 0.49032 & 0.50398 & 0.802099 \\
+PatchTST & 3d & 0.501180 & 0.49253 & 0.51029 & 0.418791 \\
+TimesNet & 3d & 0.497693 & 0.49275 & 0.50365 & 0.819590 \\
+iTransformer & 3d & 0.499176 & 0.49753 & 0.50063 & 0.840580 \\
+Fredformer & 3d & 0.500417 & 0.49870 & 0.50245 & 0.299350 \\
+FRNet & 3d & 0.500000 & 0.50000 & 0.50000 & 1.000000 \\
+MLF & 3d & 0.490677 & 0.46720 & 0.51249 & 0.803098 \\
+\addlinespace[2pt]
+DLinear & 5d & 0.492062 & 0.45983 & 0.52325 & 0.698151 \\
+NLinear & 5d & 0.494971 & 0.45968 & 0.53224 & 0.614693 \\
+PatchTST & 5d & 0.497464 & 0.47301 & 0.52141 & 0.575712 \\
+TimesNet & 5d & 0.483148 & 0.45648 & 0.51023 & 0.906047 \\
+iTransformer & 5d & 0.509750 & 0.47799 & 0.54362 & 0.274363 \\
+Fredformer & 5d & 0.500000 & 0.50000 & 0.50000 & 1.000000 \\
+FRNet & 5d & 0.485791 & 0.47254 & 0.49901 & 0.983008 \\
+MLF & 5d & 0.485360 & 0.46037 & 0.50819 & 0.896052 \\
+\bottomrule\end{tabular}
+\end{table}
+
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.98\linewidth]{fig05_primary_bootstrap_CI.pdf}
+  \caption{Dependence-aware 95\% percentile confidence intervals for all 24 frozen neural architecture--horizon hypotheses, based on the segment-stratified 20-session moving-block bootstrap with 2,000 replicates. The dashed line denotes BA=0.50. No hypothesis survived Benjamini--Hochberg correction (0/24 at FDR 0.05).}
+  \label{fig:primary_bootstrap_ci}
+\end{figure}
+
+
+\subsection{Conventional ML and causal persistence benchmarks}
+The supplementary development-trained conventional ML results are reported in Table~\ref{tab:ml}, explicitly outside the original 24-test BH family. Random Forest achieves the largest observed conventional BAs at one and three sessions (0.51087 and 0.51258), versus its 5-session value of 0.50233. One-session Random Forest and XGBoost both exceed the leading one-session neural BA descriptively, without evidence of a statistically reliable superiority from the available paired intervals. High Brier scores for some ML models also preclude presenting better observed BA as broadly superior probabilistic calibration. The full descriptive model-family comparison is illustrated in Supplementary Figs.~S1 and S2 without extending the 24 confirmatory hypothesis family.
+
+\begin{table}[htbp]\centering\small
+\caption{Development-only-trained conventional machine-learning baselines scored on the same 5,300 final-test endpoints per horizon. These models form exploratory supplementary comparisons.}\label{tab:ml}
+\begin{tabular}{@{}llrrrr@{}}\toprule
+Model & Horizon & BA & ROC-AUC & MCC & Brier \\ \midrule
+Random Forest & 1d & 0.51087 & 0.51142 & 0.02436 & 0.25500 \\
+XGBoost & 1d & 0.50983 & 0.50955 & 0.02046 & 0.25776 \\
+Logistic Regression & 1d & 0.49991 & 0.50215 & -0.00018 & 0.25069 \\
+Random Forest & 3d & 0.51258 & 0.51954 & 0.02792 & 0.25690 \\
+XGBoost & 3d & 0.50762 & 0.51780 & 0.01712 & 0.26254 \\
+Logistic Regression & 3d & 0.50726 & 0.50300 & 0.01824 & 0.25040 \\
+Random Forest & 5d & 0.50233 & 0.50451 & 0.00486 & 0.26648 \\
+Logistic Regression & 5d & 0.49495 & 0.48543 & -0.01087 & 0.25140 \\
+XGBoost & 5d & 0.49275 & 0.49409 & -0.01526 & 0.28415 \\
+\bottomrule\end{tabular}
+\end{table}
+
+Constant-up and constant-down predictions yield BA 0.50000 for all horizons. Lagged-sign persistence yields 0.49405, 0.49448 and 0.49401 BA at 1, 3 and 5 sessions, respectively. The observed Random Forest advantage over persistence is 0.01682 (1d), 0.01810 (3d) and 0.00832 (5d), but its paired 95\% bootstrap intervals are respectively $[-0.011995,0.048259]$, $[-0.020657,0.058564]$ and $[-0.032170,0.049256]$. All nine ML-versus-persistence paired intervals include zero. The corresponding results do not establish reliable incremental directional discrimination even when the point estimates appear slightly above 0.5.
+
+\begin{table}[htbp]\centering\small
+\caption{Exploratory paired 20-session block-bootstrap comparisons. Differences are balanced-accuracy units. Every interval includes zero; comparisons are unadjusted and are not primary confirmatory evidence.}\label{tab:paired}
+\begin{tabular}{@{}lcrrr@{}}\toprule
+Neural minus comparator & Horizon & $\Delta$BA & 95\% lower & 95\% upper \\ \midrule
+DLinear minus Random Forest & 1d & -0.011369 & -0.028785 & 0.006511 \\
+PatchTST minus Random Forest & 3d & -0.011405 & -0.047068 & 0.021790 \\
+iTransformer minus Random Forest & 5d & 0.007419 & -0.041597 & 0.059962 \\
+\bottomrule\end{tabular}
+\end{table}
+
+\subsection{Volatility-regime effects and directional prediction bias}
+The train-defined Low, Normal and High subsets contain 2,524, 1,577 and 1,199 endpoints, respectively (Fig.~\ref{fig:regimes}). Table~\ref{tab:regimes} compares selected neural leaders and Random Forest, purely as descriptive decompositions. The strongest contrast concerns five-session iTransformer: BA 0.53465 and ROC-AUC 0.53667 under Low volatility, versus BA 0.45280 and ROC-AUC 0.41447 under High volatility. This 8.19-percentage-point BA difference is not a preregistered interaction test and does not demonstrate validated conditional skill. Supplementary Fig.~S3 displays the same frozen categorical regimes across all three horizons for four illustrative model families without implying a formal interaction test.
+
+\begin{table}[htbp]\centering\small
+\caption{Exploratory regime-level BA (Low/Normal/High), calculated using original frozen thresholds. Regime sizes are common across horizons.}\label{tab:regimes}
+\begin{tabular}{@{}llrrr@{}}\toprule
+Horizon & Model & Low (2,524) & Normal (1,577) & High (1,199) \\ \midrule
+1d & DLinear & 0.50501 & 0.50195 & 0.48852 \\
+1d & Random Forest & 0.51520 & 0.50363 & 0.51738 \\
+3d & PatchTST & 0.50399 & 0.50823 & 0.48665 \\
+3d & Random Forest & 0.50273 & 0.51230 & 0.53327 \\
+5d & iTransformer & 0.53465 & 0.52013 & 0.45280 \\
+5d & Random Forest & 0.50038 & 0.50392 & 0.52080 \\
+\bottomrule\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=.87\textwidth]{fig03_regime_5d.pdf}
+\caption{Five-session iTransformer and Random Forest balanced accuracy by train-defined volatility regime. All contrasts are descriptive, not tests of a prespecified interaction.}\label{fig:regimes}
+\end{figure}
+
+The three-session PatchTST predicted the positive class for 93.98\% (Low), 94.99\% (Normal) and 95.50\% (High) of endpoints even though observed positive proportions were 49.37\%, 47.43\% and 46.37\%, respectively. One-session DLinear predicted positive on 81.89--94.41\% of observations across regimes. The five-session iTransformer predicted positive on 17.47\% of Low-regime endpoints against an observed positive rate of 51.55\%. These imbalances could arise from frozen thresholds, class priors, model calibration or distribution shift, but the subgroup tables cannot identify a unique causal mechanism. Post-test threshold revision would invalidate the current confirmatory evaluation. The model-level directional imbalance is visualized in Fig.~\ref{fig:prediction_rate_bias}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.99\linewidth]{fig06_prediction_rate_diagnostics.pdf}
+  \caption{Exploratory model-by-model directional prediction-rate profiles for the eight frozen five-seed neural ensembles across one-, three-, and five-session horizons. Each row represents one architecture on 5,300 endpoints; points show the fraction predicted upward and dashed vertical lines show the observed positive-class proportion. This is a descriptive diagnostic, not a calibration or significance test.}
+  \label{fig:prediction_rate_bias}
+\end{figure}
+
+
+\subsection{Continuity-segment, stock-wise and quarterly robustness}
+The first segment (960 stock rows, 48 sessions) is shorter than the second (4,340 rows, 217 sessions). Selected five-session iTransformer BA changes from 0.48289 in segment 0 to 0.51949 in segment 1, while 1-session Random Forest changes from 0.53436 to 0.50869. A session-count difference and shared market shocks caution against treating these as independent subset-level discoveries. Supplementary Fig.~S4 displays the two genuine segments as disconnected observations and does not interpolate across the 147-calendar-day break.
+
+\begin{table}[htbp]\centering\small
+\caption{Exploratory balanced accuracy in the two disjoint continuity segments. All models retain the same frozen decision functions.}\label{tab:segments}
+\begin{tabular}{@{}llrr@{}}\toprule
+Horizon & Model & Segment 0 (960) & Segment 1 (4,340) \\ \midrule
+1d & DLinear & 0.50338 & 0.49994 \\
+1d & Random Forest & 0.53436 & 0.50869 \\
+3d & PatchTST & 0.50457 & 0.50074 \\
+3d & Random Forest & 0.50611 & 0.52134 \\
+5d & iTransformer & 0.48289 & 0.51949 \\
+5d & Random Forest & 0.51339 & 0.51175 \\
+\bottomrule\end{tabular}
+\end{table}
+
+Across the 20 stocks, median stock-level BA is 0.50196 for 1-day DLinear (10/20 stocks above 0.50), 0.50378 for 3-day PatchTST (13/20) and 0.51059 for 5-day iTransformer (13/20). Random Forest medians are 0.51037 (14/20), 0.51445 (14/20) and 0.50089 (10/20) at the respective horizons. The 5-session iTransformer BA ranges from 0.43971 on ASIANPAINT.NS to 0.66648 on HDFCBANK.NS, with ICICIBANK.NS at 0.59352. These extremes were identified after observing test results, and stock-wise n=265 is not a guarantee of 265 independent target events. They must not be construed as stock-specific confirmatory evidence or used for post-test asset selection. Figure~\ref{fig:stock_level_heatmap} displays the complete descriptive cross-stock comparison. The corresponding 20-equity boxplot distributions, also purely exploratory, are provided in Supplementary Fig.~S5.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.99\linewidth]{fig07_stock_level_heatmap.pdf}
+  \caption{Exploratory stock-level balanced-accuracy heatmap (percent) for the descriptively leading neural architecture and Random Forest at each horizon. All 20 equities contribute 265 endpoints, and all 120 cells display source-derived values. Neural leaders were identified from held-out outcomes; the figure does not support stock-specific model selection or claims of independently validated superiority.}
+  \label{fig:stock_level_heatmap}
+\end{figure}
+
+
+\begin{table}[htbp]\centering\small
+\caption{Descriptive 5-session BA by calendar quarter. Missing 2025 Q2 and unsampled July 2025 are shown explicitly; quarterly row counts are 20 times the number of observed market sessions.}\label{tab:quarters}
+\begin{tabular}{@{}lrrr@{}}\toprule
+Quarter & Endpoints & iTransformer BA & Random Forest BA \\ \midrule
+2025 Q1 & 960 & 0.48289 & 0.51339 \\
+2025 Q2 & 0 & \nd & \nd \\
+2025 Q3 (Aug--Sep) & 820 & 0.56400 & 0.43750 \\
+2025 Q4 & 1,240 & 0.49920 & 0.54778 \\
+2026 Q1 & 1,180 & 0.48001 & 0.49004 \\
+2026 Q2 (through 22 Jun) & 1,100 & 0.55153 & 0.55075 \\
+\bottomrule\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=.87\textwidth]{fig04_quarter_5d.pdf}
+\caption{Quarterly five-session balanced accuracy. The observations are deliberately not connected across the absent 2025 Q2 interval; July 2025 is also unscored.}\label{fig:quarter}
+\end{figure}
+
+The 5-session iTransformer quarterly BA ranges from 0.48001 to 0.56400 (Fig.~\ref{fig:quarter}). Three-session Random Forest ranges from 0.43754 (2025 Q3) to 0.56228 (2026 Q2). The test interval's missing 2025 Q2 and July 2025 preclude interpreting this sequence as an uninterrupted monthly or quarterly backtest. Quarterly comparisons are diagnostic only and involve overlapping multi-session target intervals.
+
+\FloatBarrier
+\section{Discussion}\label{sec:discussion}
+\subsection{No reliable positive neural evidence under the frozen protocol}
+The principal finding is negative: none of the 24 five-seed-ensemble neural combinations passes the one-sided BA benchmark after dependence-aware BH correction. All primary $q$ values equal 1.000, and the best neural point estimates are approximately 0.50. These results do not prove that Indian equity returns are statistically unforecastable. Rather, they limit positive claims for the eight specified architectures, the chosen causal inputs and development schedule, the frozen classification thresholds, and the amended 265-session test cohort. Confidence intervals do not substantiate a practically material discrimination advantage.
+
+\subsection{Model complexity, probability ranking and class-prediction collapse}
+Simple linear models and modern Transformers alike produced near-chance classification. High-capacity sequence modeling is not intrinsically beneficial for a dataset dominated by price, momentum and volatility indicators. The corresponding ROC-AUC values are generally near or below 0.5, while some classification outputs are heavily concentrated in one class. The degenerate FRNet and Fredformer cases illustrate why a nominal 0.5 BA should be interpreted alongside sensitivity, specificity and predicted-positive fraction. Model calibration metrics are also relevant: a high predicted-positive fraction does not necessarily imply the same numerical fraction of predicted probabilities near one, because fixed thresholds determine the class conversion. Differentiating ranking failure from threshold-placement failure would require predeclared additional validation, not test-driven retuning.
+
+\subsection{Why conventional ML is competitive but not established as superior}
+Random Forest exhibits descriptively higher BA than all neural families at one and three sessions, with slightly higher ROC-AUC. These results are compatible with the possibility that engineered tabular features do not require deep temporal representation to capture their limited available signal, but they do not demonstrate a systematic superiority theorem. The direct selected-neural--Random Forest confidence intervals cross zero, as do all nine ML-versus-persistence intervals. Because ML comparators belong to the additional exploratory layer, they must not be represented as part of the original neural confirmatory registry or selected as a new ``winner'' based on these observed values.
+
+\subsection{Market regime, temporal shift and heterogeneity}
+Low-volatility five-session iTransformer performance appears favorable, but high-volatility discrimination is substantially worse. Similarly, isolated bank-stock scores and favorable calendar quarters coexist with losses elsewhere. The observations are consistent with heterogeneous behavior or distribution shift, not proof that regime conditioning, sector selection or tactical switching would improve future trading performance. No regime-switching strategy was trained and prospectively evaluated. All subgroup findings are descriptive, with no selective subgroup multiplicity adjustment or formally powered interaction test.
+
+\subsection{The significance of the post-freeze amendment}
+A distinctive aspect of this benchmark is its recorded failure recovery rather than a perfectly uninterrupted execution narrative. The original structural test sample overstated the number of endpoints with valid 60-session histories. Restricting to same-stock, same-continuity input windows corrects a mechanical interface violation but also changes the evaluation population after the original registration. This amendment can be methodologically reasonable yet limits any claim that the entire final-test protocol was fully prespecified. The use of two disjoint segments also required within-segment bootstrap blocks; ignoring the gap would fabricate temporal adjacency. Independent replication on a subsequently untouched time window is the appropriate validation for broader predictive claims.
+
+\subsection{Limitations and scope of inference}\label{sec:limitations}
+There are at least six limitations. First, the retrospective 20-stock universe may be affected by survivorship and sample-selection considerations. Second, the final-test sample comprises only 265 distinct sessions, not 5,300 independent experimental units, and a substantial 147-calendar-day coverage break excludes the whole of 2025 Q2. Third, five seeds and a finite grid of configurations do not span all possible optimization policies. Fourth, cross-sectional and temporal dependence are partly handled by segment-stratified block resampling, but validity still depends on assumptions about block lengths, effective sample size and regime persistence. Fifth, the corporate-action conventions, provider revisions, code/data access rights and exact historical vendor records must be verified against the archived source manifests for external reproducibility; the earlier rejected raw-data counts cannot be imported. Sixth, the owner-conducted, post-freeze methodological approval is not independent third-party auditing or publicly timestamped preregistration. Finally, no signed-return, transaction-cost, Sharpe-ratio or deployable profitability analysis was completed under this revised experiment, and no economic-return claim follows from classification BA.
+
+\section{Conclusion}\label{sec:conclusion}
+Eight modern neural time-series model families were compared for one-, three- and five-session return direction on a 20-equity NSE panel using a 63-feature, 60-session causal interface and fixed development-only architecture, seed and threshold rules. After an explicitly documented post-freeze continuity amendment, the held-out evaluation covered 5,300 aligned stock--session endpoints on 265 dates split across two disjoint periods. All 40 frozen neural seed packages and 23 result artifacts were authenticated. None of the 24 neural primary hypotheses showed statistically supported above-chance BA following segment-aware bootstrap inference and Benjamini--Hochberg correction. Development-trained conventional ML comparators were descriptively competitive but were not shown to outperform persistence reliably. Exploratory regime, stock and quarterly analyses showed substantial prediction imbalance and conditional instability. The contribution is an auditable, appropriately qualified multi-horizon negative-evidence benchmark; prospective evaluation on later unseen data and replication across universes are needed before broader claims of generality or trading usefulness can be made.
+
+\section*{Funding}
+
+
+\section*{Ethics approval}
+This study used publicly accessible historical market data and did not involve human participants, animals, or personally identifiable private information. Therefore, ethics approval was not required.
+
+\section*{Data availability}
+
+Raw OHLCV data were obtained from Yahoo Finance through the \texttt{yfinance} Python interface and are not redistributed. The public repository contains the final Jupyter notebook used to retrieve the source data and reconstruct the quality-controlled panel, predictor matrix, target variables, chronological partitions, regime labels, analyses, tables, and figures. Use of the raw market data remains subject to the original provider's terms of use.
+
+\section*{Code availability}
+
+The final Jupyter notebook implementing data acquisition, source-data quality control, corporate-action adjustment, feature and target construction, horizon purging, model development, held-out prediction generation, dependence-aware inference, ablation analysis, directional-utility evaluation, and figure generation is publicly available at:
+
+\url{https://github.com/harmangahir-Apple/Stock_Price_Predicion_RALS_CPO}.
+
+\section*{Acknowledgements}
+
+The authors acknowledge the computational resources and academic support available during the completion of this work.
+
+\section*{Author contributions}
+H.S. conceived the study, designed the experimental framework, collected and processed the data, implemented the models, performed the statistical analysis, generated the figures, and drafted the manuscript. S.S. contributed to methodological supervision, validation design, and critical revision of the experimental protocol. R.D. \& D.S. contributed to machine-learning interpretation, manuscript review, and refinement of the technical presentation. H.P. \& Y.D.J contributed to financial-market framing, machine-learning interpretation, interpretation of results, supervision, investigation and manuscript -writing \& revision. All authors reviewed and approved the final manuscript.
+
+\section*{Competing interests}
+
+The authors declare no competing interests.
+
+
+\begin{thebibliography}{99}
+
+\bibitem{Kadu2025SearchRescue}
+Kadu, P. P. \& Bamnote, G. R. An accurate stock price prediction using deep recurrent neural network with search and rescue approach. \textit{International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems} (2025). https://doi.org/10.1142/S0218488525500187
+
+\bibitem{Paul2023}
+Paul, M. K. \& Das, P. A comparative study of deep learning algorithms for forecasting Indian stock market trends. \textit{International Journal of Advanced Computer Science and Applications} (2023). https://doi.org/10.14569/IJACSA.2023.0141098
+
+\bibitem{Agrawal2021}
+Agrawal, M., Shukla, P. K., Nair, R., Nayyar, A. \& Masud, M. Stock prediction based on technical indicators using deep learning model. \textit{Computers, Materials and Continua} (2021). https://doi.org/10.32604/cmc.2022.014637
+
+\bibitem{Barua2024}
+Barua, M., Kumar, T., Raj, K. \& Roy, A. M. Comparative analysis of deep learning models for stock price prediction in the Indian market. \textit{FinTech} (2024). https://doi.org/10.3390/fintech3040029
+
+\bibitem{Chauhan2023}
+Chauhan, A. et al. Stock price forecasting using PSO hypertuned neural nets and ensembling. \textit{Applied Soft Computing} (2023). https://doi.org/10.1016/j.asoc.2023.110835
+
+\bibitem{Ravi2025}
+Ravi, G. \& Selvakumar, D. S. Dynamic deep stock price prediction network with support of multi-source information. \textit{International Journal of Intelligent Engineering and Systems} (2025). https://doi.org/10.22266/ijies2025.0930.09
+
+\bibitem{Singh2026DBSTAN}
+Singh, P. \& Raman, B. Dual-branch spectral-trend attention network with gated flux--momentum decomposition for multiscale financial time-series forecasting. \textit{Journal of Forecasting} (2026). https://doi.org/10.1002/for.70116
+
+\bibitem{Srivastava2024}
+Srivastava, T., Mullick, I. \& Bedi, J. Association mining based deep learning approach for financial time-series forecasting. \textit{Applied Soft Computing} (2024). https://doi.org/10.1016/j.asoc.2024.111469
+
+\bibitem{Bao2026StrictChronological}
+Bao, Z., Li, X., Shi, M., Huang, Y. \& Du, J. Strictly chronological CNN embeddings with gradient-boosted trees for next-day log-return forecasting. \textit{Symmetry} (2026). https://doi.org/10.3390/sym18030416
+
+\bibitem{Khansama2025SGRNet}
+Khansama, R. R. et al. SGR-Net: A synergistic attention network for robust stock market forecasting. \textit{Forecasting} (2025). https://doi.org/10.3390/forecast7030050
+
+\bibitem{Banik2022SwingTrading}
+Banik, S. et al. LSTM based decision support system for swing trading in stock market. \textit{Knowledge-Based Systems} (2022). https://doi.org/10.1016/j.knosys.2021.107994
+
+\bibitem{Manogna2025PortfolioML}
+Manogna, R. L. \& Kulkarni, N. Portfolio optimization model for stock price prediction using machine learning. \textit{Journal of Statistical Theory and Applications} (2025). https://doi.org/10.1007/s44199-025-00140-z
+
+\bibitem{Kumarappan2024}
+Kumarappan, J., Rajasekar, E., Vairavasundaram, S., Kotecha, K. \& Kulkarni, A. Siamese graph convolutional split-attention network with NLP based social sentimental data for enhanced stock price predictions. \textit{Journal of Big Data} (2024). https://doi.org/10.1186/s40537-024-01016-2
+
+\bibitem{Gami2026EquitySniper}
+Gami, D. \& Jha, A. K. The ``Equity Sniper'' protocol: A precision-optimised framework for predicting extreme alpha moves via precursor signals. \textit{International Journal of Intelligent Engineering and Systems} (2026). https://doi.org/10.22266/ijies2026.0531.47
+
+\bibitem{Glasserman2024LookAheadBias}
+Glasserman, P. \& Lin, C. Assessing look-ahead bias in stock return predictions generated by GPT sentiment analysis. \textit{Journal of Financial Data Science} (2024). https://doi.org/10.3905/jfds.2023.1.143
+
+\bibitem{Rajkarnikar2026XAttnFusion}
+Rajkarnikar, J., Joshi, S. \& Zhou, Z. Macro--market fusion with cross-attention for equity return prediction. \textit{Mathematics} (2026). https://doi.org/10.3390/math14081361
+
+\bibitem{Singh2023IncrementalLearning}
+Singh, T., Kalra, R., Mishra, S., Satakshi \& Kumar, M. An efficient real-time stock prediction exploiting incremental learning and deep learning. \textit{Evolving Systems} (2023). https://doi.org/10.1007/s12530-022-09481-x
+
+\bibitem{Yang2026AsymAlpha}
+Yang, R. et al. Dynamic asymmetric relational learning for stock price movement prediction. \textit{Data Mining and Knowledge Discovery} (2026). https://doi.org/10.1007/s10618-026-01201-2
+
+\bibitem{Yu2025FFIRNet}
+Yu, X., Lv, Z., Chen, Y., Shen, C. \& Chen, C. FFIR-Net: A feature fusion and inter-stock relationship network for stock price movement prediction. \textit{International Journal of General Systems} (2025). https://doi.org/10.1080/03081079.2025.2590080
+
+\bibitem{Singh2025NiftyTechnicalIndicators}
+Singh, S. K. \& Praveen, S. A comparative analysis of tree-based ensembles and deep learning for equity price forecasting using feature-engineered advance technical indicators. \textit{International Journal of Applied Mathematics} (2025). https://doi.org/10.12732/ijam.v38i2s.124
+
+\bibitem{Paul2026AdaptiveVolatilityLSTM}
+Paul, P. S., Mukherjee, R., Ahmed, S., Alhumam, A. \& Guha Roy, D. Adaptive stock price volatility forecasting using enhanced kMedoids clustering with attention based LSTM for day trading. \textit{Discover Computing} (2026). https://doi.org/10.1007/s10791-026-10079-z
+
+\bibitem{Sun2026MART}
+Sun, Y. et al. An efficient big data framework for validating the random walk hypothesis in high-frequency markets via neural networks and large language models. \textit{Expert Systems with Applications} (2026). https://doi.org/10.1016/j.eswa.2026.131358
+
+\bibitem{Pele2026LLMVaR}
+Pele, D. T. et al. In the beginning was the Word: LLM-VaR and LLM-ES. \textit{Expert Systems with Applications} (2026). https://doi.org/10.1016/j.eswa.2025.128676
+
+\bibitem{Agarwal2022PortfolioMVO}
+Agarwal, S. \& Muppalaneni, N. B. Portfolio optimization in stocks using mean--variance optimization and the efficient frontier. \textit{International Journal of Information Technology} (2022). https://doi.org/10.1007/s41870-022-01052-2
+
+\bibitem{Shastry2024Intraday}
+Shastry, K. A. Machine learning-based framework for intraday stock price movement prediction using open prices and historical data. \textit{Journal of Financial Data Science} (2024). https://doi.org/10.3905/jfds.2024.1.171
+
+\bibitem{Yang2026ACHGL}
+Yang, S., Deng, W., Zeng, Z. \& Yang, B. AC-HGL: Heterogeneous graph representation learning through adaptive correlation for stock movement prediction. \textit{Pattern Recognition} (2026). https://doi.org/10.1016/j.patcog.2026.113605
+
+\bibitem{Liu2026DCGNN}
+Liu, H., Hu, B., Zhou, Y. \& Zhou, Y. A dynamic-causal lens of stock interactions: Graph modeling from symbolic movement patterns. \textit{IEEE Transactions on Knowledge and Data Engineering} (2026). https://doi.org/10.1109/TKDE.2025.3638410
+
+\bibitem{Patel2025MR2TNet}
+Patel, M., Goyal, S., Jariwala, K. \& Chattopadhyay, C. A multi relational graph-based approach for stock movement prediction and portfolio optimization. \textit{Neurocomputing} (2025). https://doi.org/10.1016/j.neucom.2025.131104
+
+\bibitem{Friday2026MetaAdaptive}
+Friday, I. K., Pati, S. P., Mishra, D. \& Mishra, S. A meta-adaptive framework combining gated attention mechanisms and feature-wise modulation for multi-horizon stock price movement prediction. \textit{IEEE Access} (2026). https://doi.org/10.1109/ACCESS.2026.3663386
+
+\bibitem{Kalaiarasan2025PatchTSTFDPO}
+Kalaiarasan, G., Premjith, B. \& Madhu Manjiparambil, N. A forecast-driven deep learning framework using ICEEMDAN and PatchTST for stock prediction and dynamic portfolio optimization. \textit{IEEE Access} (2025). https://doi.org/10.1109/ACCESS.2025.3648786
+
+\end{thebibliography}
+\end{document}

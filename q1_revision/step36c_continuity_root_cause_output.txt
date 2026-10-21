@@ -1,0 +1,263 @@
+==============================================================================================================
+STEP 36C — FROZEN CONTINUITY BOUNDARY ROOT-CAUSE AUDIT
+==============================================================================================================
+
+[1] PRESERVE FINAL-TEST ACCESS STATE
+Access state: RAW_TEST_REOPENED_FOR_TECHNICAL_RECOVERY
+Completed filesystem opens: 2
+Final-test scored: False
+PASS — no additional test access permitted
+
+[2] VERIFY FROZEN MEMBERSHIP LEDGER
+PASS — membership SHA256: 82772196c92e88f1926a75a70c42f5f19119d7245d93b8364455fd28642ee121
+Membership rows: 50320
+Stocks: 20
+
+[3] LOCATE ALL CONTINUITY-SEGMENT TRANSITIONS
+Total stock-level segment transitions: 20
+
+Transitions by date:
+Date
+2025-05-12    20
+
+First 30 transitions:
+       Ticker previous_date       Date  previous_segment  continuity_segment_id  previous_session  market_session_id  session_gap
+ASIANPAINT.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+  AXISBANK.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+BAJFINANCE.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+BHARTIARTL.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+  HDFCBANK.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+HINDUNILVR.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+ ICICIBANK.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+      INFY.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+       ITC.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+ KOTAKBANK.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+        LT.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+    MARUTI.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+      NTPC.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+ POWERGRID.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+  RELIANCE.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+      SBIN.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+ SUNPHARMA.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+       TCS.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+     TITAN.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+ULTRACEMCO.NS    2025-03-17 2025-05-12               0.0                      1            2268.0               2303         35.0
+
+[4] INSPECT MAY 2025 SEGMENT BOUNDARY
+      Date  market_session_id  continuity_segment_id  outer_final_test_common_multitask
+2025-05-12               2303                      1                               True
+2025-05-13               2304                      1                               True
+2025-05-14               2305                      1                               True
+2025-05-15               2306                      1                               True
+2025-05-16               2307                      1                               True
+2025-05-19               2308                      1                               True
+2025-05-20               2309                      1                               True
+2025-05-21               2310                      1                               True
+2025-05-22               2311                      1                               True
+2025-05-23               2312                      1                               True
+2025-05-26               2313                      1                               True
+2025-05-27               2314                      1                               True
+2025-05-28               2315                      1                               True
+2025-05-29               2316                      1                               True
+2025-05-30               2317                      1                               True
+
+[5] COMPARE TWO CAUSAL-HISTORY CHECKS
+Frozen common endpoints: 6480
+Same-segment 60-session compatible: 5300
+Session-only 60-session compatible: 5300
+Require crossing a segment boundary: 0
+Not compatible even ignoring segments: 1180
+
+Diagnostic cross-boundary dates:
+
+[6] READ FROZEN SOURCE REFERENCES TO CONTINUITY
+
+SOURCE: step09_construct_targets_v3.py
+Matching lines: 22
+  581:     required = {
+  582:         "Date",
+  583:         "Ticker",
+  584:         "continuity_segment_id",
+  585:         "close",
+  586:         *feature_columns,
+  587:     }
+  588:     missing = required - set(ref.columns)
+-------------------------------------------------------
+  639:     if src["market_session_id"].isna().any():
+  640:         raise RuntimeError("Step-05 date missing from master calendar.")
+  641:     src["market_session_id"] = src["market_session_id"].astype("int64")
+  642:     src["target_continuity_segment_id"] = segment_ids(src["Date"], breaks)
+  643: 
+  644:     cross = src.groupby("Date")["Ticker"].nunique()
+  645:     if not (cross == EXPECTED_STOCK_COUNT).all():
+  646:         raise RuntimeError("Step-05 price source is not a complete stock panel.")
+-------------------------------------------------------
+  650:             "Ticker",
+  651:             "market_session_id",
+  652:             "Date",
+  653:             "target_continuity_segment_id",
+  654:             "Model_Close",
+  655:         ]
+  656:     ].copy()
+  657: 
+-------------------------------------------------------
+  669:     right = lookup.rename(
+  670:         columns={
+  671:             "Model_Close": "step05_model_close",
+  672:             "target_continuity_segment_id": "step05_segment_id",
+  673:         }
+  674:     )
+  675:     cmp = ref[
+  676:         ["Ticker", "market_session_id", "continuity_segment_id", "close"]
+-------------------------------------------------------
+  677:     ].merge(
+  678:         right[
+  679:             ["Ticker", "market_session_id", "step05_model_close", "step05_segment_id"]
+  680:         ],
+-------------------------------------------------------
+  690:     price_exact = np.array_equal(a, b, equal_nan=True)
+  691: 
+  692:     segment_exact = np.array_equal(
+  693:         cmp["continuity_segment_id"].to_numpy(dtype=np.int64),
+  694:         cmp["step05_segment_id"].to_numpy(dtype=np.int64),
+  695:     )
+  696: 
+  697:     if not price_exact:
+-------------------------------------------------------
+  723:     horizon: int,
+  724: ) -> pd.DataFrame:
+  725:     base = ref[
+  726:         ["Ticker", "market_session_id", "continuity_segment_id"]
+  727:     ].copy()
+  728:     base["requested_id"] = base["market_session_id"] + int(horizon)
+  729: 
+  730:     endpoint = lookup.rename(
+-------------------------------------------------------
+  741:                 "Ticker",
+  742:                 "candidate_id",
+  743:                 "candidate_date",
+  744:                 "target_continuity_segment_id",
+  745:                 "candidate_close",
+  746:             ]
+  747:         ],
+  748:         left_on=["Ticker", "requested_id"],
+-------------------------------------------------------
+  754: 
+  755:     same = (
+  756:         matched["candidate_id"].notna()
+  757:         & matched["target_continuity_segment_id"].notna()
+  758:         & (
+  759:             matched["target_continuity_segment_id"]
+  760:             == matched["continuity_segment_id"]
+  761:         )
+-------------------------------------------------------
+  762:     )
+  763: 
+-------------------------------------------------------
+
+SOURCE: step10_chronological_splits_v3.py
+Matching lines: 5
+  628:         "Ticker",
+  629:         "Date",
+  630:         "market_session_id",
+  631:         "continuity_segment_id",
+  632:         *feature_columns,
+  633:         *AUXILIARY_TARGET_COLUMNS,
+  634:     }
+  635:     for h in HORIZONS:
+-------------------------------------------------------
+  636:         required |= {
+  637:             f"target_market_session_id_{h}d",
+  638:             f"target_continuity_segment_id_{h}d",
+  639:             f"target_date_{h}d",
+  640:             f"direction_{h}d",
+  641:         }
+  642: 
+-------------------------------------------------------
+  691: 
+  692:             target_seg = panel.loc[
+  693:                 ids,
+  694:                 f"target_continuity_segment_id_{h}d",
+  695:             ].astype("int64")
+  696:             ref_seg = panel.loc[ids, "continuity_segment_id"].astype("int64")
+  697:             if not np.array_equal(target_seg.to_numpy(), ref_seg.to_numpy()):
+  698:                 raise RuntimeError(f"{h}d target crosses continuity segment.")
+-------------------------------------------------------
+  699: 
+  700:     dev = panel["Date"].between(
+-------------------------------------------------------
+ 1404:         panel = load_target_panel(upstream["feature_columns"])
+ 1405: 
+ 1406:         membership = panel[
+ 1407:             ["Ticker", "Date", "market_session_id", "continuity_segment_id"]
+ 1408:         ].copy()
+ 1409:         membership["outer_partition"] = np.where(
+ 1410:             panel["Date"].between(
+ 1411:                 DEVELOPMENT_START,
+-------------------------------------------------------
+
+SOURCE: step13_sequence_indices_v3.py
+Matching lines: 32
+  100: STEP_NAME = "STEP 13 — CAUSAL 60-SESSION SEQUENCE INDICES"
+  101: SCHEMA_VERSION = "1.0"
+  102: 
+  103: LOOKBACK = 60
+  104: HORIZONS = (1, 3, 5)
+  105: FOLDS = (1, 2, 3, 4, 5)
+  106: 
+  107: EXPECTED_FEATURE_COUNT = 63
+-------------------------------------------------------
+  108: EXPECTED_STOCK_COUNT = len(cfg.STOCK_TICKERS)
+  109: 
+  110: ALLOW_VALIDATION_LOOKBACK_INTO_TRAIN = True
+  111: REQUIRE_SAME_TICKER = True
+  112: REQUIRE_SAME_CONTINUITY_SEGMENT = True
+  113: REQUIRE_TARGET_INSIDE_ENDPOINT_PARTITION = True
+  114: 
+-------------------------------------------------------
+  319:     if status != "VERIFIED_EXISTING":
+  320:         raise RuntimeError("Step-00 freeze is not VERIFIED_EXISTING.")
+  321: 
+  322:     configured_lookback = getattr(cfg, "LOOKBACK", LOOKBACK)
+  323:     if int(configured_lookback) != LOOKBACK:
+  324:         raise RuntimeError(
+  325:             f"Configured lookback is {configured_lookback}, expected {LOOKBACK}."
+  326:         )
+-------------------------------------------------------
+  327: 
+-------------------------------------------------------
+  328:     # If these policy flags exist in the frozen config, they must agree.
+  329:     if hasattr(cfg, "USE_CAUSAL_CROSS_BOUNDARY_LOOKBACK"):
+-------------------------------------------------------
+  330:         if not bool(cfg.USE_CAUSAL_CROSS_BOUNDARY_LOOKBACK):
+  331:             raise RuntimeError(
+  332:                 "Frozen configuration disables causal cross-boundary lookback."
+  333:             )
+-------------------------------------------------------
+  334: 
+-------------------------------------------------------
+  335:     if hasattr(cfg, "REQUIRE_LOOKBACK_WITHIN_SAME_SPLIT"):
+  336:         if bool(cfg.REQUIRE_LOOKBACK_WITHIN_SAME_SPLIT):
+  337:             raise RuntimeError(
+  338:                 "Frozen configuration still requires lookback inside one split."
+  339:             )
+-------------------------------------------------------
+  340: 
+-------------------------------------------------------
+ 1023:         "Ticker",
+ 1024:         "Date",
+ 1025:         "market_session_id",
+ 1026:         "continuity_segment_id",
+ 1027:         "regime_id",
+ 1028:         "regime_name",
+ 1029:         "regime_threshold_fit_scope",
+ 1030:         "eligible_1d",
+-------------------------------------------------------
+
+==============================================================================================================
+STEP 36C READ-ONLY DIAGNOSTIC COMPLETE
+Raw final-test parquet opened: FALSE
+Test-label values inspected: FALSE
+Frozen models, thresholds and datasets modified: FALSE
+Additional test access authorized: FALSE
+==============================================================================================================

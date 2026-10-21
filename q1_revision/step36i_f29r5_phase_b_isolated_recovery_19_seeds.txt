@@ -1,0 +1,145 @@
+============================================================
+PROCESS-ISOLATED RECOVERY: MLF seed 43
+============================================================
+BEFORE: 21/40 verified | Executing MLF seed 43
+n_heads 4
+n_heads 4
+PASS — MLF seed 43 | 22/40 verified | 18 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: MLF seed 44
+============================================================
+BEFORE: 22/40 verified | Executing MLF seed 44
+n_heads 4
+n_heads 4
+PASS — MLF seed 44 | 23/40 verified | 17 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: MLF seed 45
+============================================================
+BEFORE: 23/40 verified | Executing MLF seed 45
+n_heads 4
+n_heads 4
+PASS — MLF seed 45 | 24/40 verified | 16 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: MLF seed 46
+============================================================
+BEFORE: 24/40 verified | Executing MLF seed 46
+n_heads 4
+n_heads 4
+PASS — MLF seed 46 | 25/40 verified | 15 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: NLINEAR seed 42
+============================================================
+BEFORE: 25/40 verified | Executing NLINEAR seed 42
+PASS — NLINEAR seed 42 | 26/40 verified | 14 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: NLINEAR seed 43
+============================================================
+BEFORE: 26/40 verified | Executing NLINEAR seed 43
+PASS — NLINEAR seed 43 | 27/40 verified | 13 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: NLINEAR seed 44
+============================================================
+BEFORE: 27/40 verified | Executing NLINEAR seed 44
+PASS — NLINEAR seed 44 | 28/40 verified | 12 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: NLINEAR seed 45
+============================================================
+BEFORE: 28/40 verified | Executing NLINEAR seed 45
+PASS — NLINEAR seed 45 | 29/40 verified | 11 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: NLINEAR seed 46
+============================================================
+BEFORE: 29/40 verified | Executing NLINEAR seed 46
+PASS — NLINEAR seed 46 | 30/40 verified | 10 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: PATCHTST seed 42
+============================================================
+BEFORE: 30/40 verified | Executing PATCHTST seed 42
+PASS — PATCHTST seed 42 | 31/40 verified | 9 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: PATCHTST seed 43
+============================================================
+BEFORE: 31/40 verified | Executing PATCHTST seed 43
+PASS — PATCHTST seed 43 | 32/40 verified | 8 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: PATCHTST seed 44
+============================================================
+BEFORE: 32/40 verified | Executing PATCHTST seed 44
+PASS — PATCHTST seed 44 | 33/40 verified | 7 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: PATCHTST seed 45
+============================================================
+BEFORE: 33/40 verified | Executing PATCHTST seed 45
+PASS — PATCHTST seed 45 | 34/40 verified | 6 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: PATCHTST seed 46
+============================================================
+BEFORE: 34/40 verified | Executing PATCHTST seed 46
+PASS — PATCHTST seed 46 | 35/40 verified | 5 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: TIMESNET seed 42
+============================================================
+BEFORE: 35/40 verified | Executing TIMESNET seed 42
+PASS — TIMESNET seed 42 | 36/40 verified | 4 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: TIMESNET seed 43
+============================================================
+BEFORE: 36/40 verified | Executing TIMESNET seed 43
+PASS — TIMESNET seed 43 | 37/40 verified | 3 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: TIMESNET seed 44
+============================================================
+BEFORE: 37/40 verified | Executing TIMESNET seed 44
+PASS — TIMESNET seed 44 | 38/40 verified | 2 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: TIMESNET seed 45
+============================================================
+BEFORE: 38/40 verified | Executing TIMESNET seed 45
+PASS — TIMESNET seed 45 | 39/40 verified | 1 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+PROCESS-ISOLATED RECOVERY: TIMESNET seed 46
+============================================================
+BEFORE: 39/40 verified | Executing TIMESNET seed 46
+PASS — TIMESNET seed 46 | 40/40 verified | 0 remaining
+Fresh Python process completed successfully
+Raw sealed test reopened: FALSE
+============================================================
+ALL 19 PROCESS-ISOLATED RECOVERY RUNS COMPLETED
+Expected total: 40/40 frozen checkpoints
+============================================================

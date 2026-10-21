@@ -1,0 +1,1093 @@
+=======================================================================================================================================
+STEP-34 IMPLEMENTATION PRE-FLIGHT — EXISTING TRAINING ENGINE INSPECTION
+=======================================================================================================================================
+
+CANDIDATE SOURCE FILES
+---------------------------------------------------------------------------------------------------------------------------------------
+step27_stage1_execution_v3.py
+step27a_timesnetb_microbatch4_feasibility_v1.py
+step27a_timesnetb_microbatch4_feasibility_v1_fix1.py
+step27b_timesnetb_microbatch8_feasibility_v1.py
+step27c_timesnetb_microbatch16_feasibility_v1.py
+step27d_timesnetb_microbatch32_feasibility_v1.py
+step27e_timesnetb_microbatch64_feasibility_v1.py
+step27f_freeze_timesnetb_mb64_protocol_amendment_v1.py
+step27g_timesnetb_mb64_compatibility_runner_v1.py
+step27h_amendment_aware_stage1_continuation_v1.py
+step27i_amendment_aware_stage1_final_freeze_v1.py
+step29_selected_config_fixed_seed_robustness_v1.py
+step29a_stage2_seed_scope_compatibility_runner_v1.py
+step26_stage1_runner_dryrun_v3.py
+
+=======================================================================================================================================
+step27_stage1_execution_v3.py
+=======================================================================================================================================
+FUNCTIONS:
+  fit_dir                                       lines 260-266
+  fit_manifest_path                             lines 269-270
+  build_source_semantic                         lines 376-405
+  build_input_semantic                          lines 516-620
+  execution_maps                                lines 674-728
+  finite_metric_payload                         lines 735-763
+  verify_completed_fit                          lines 766-879
+  archive_incomplete_fit                        lines 882-907
+  worker_fit                                    lines 914-1510
+  flatten_fit                                   lines 1652-1750
+CLASSES:
+
+=======================================================================================================================================
+step27a_timesnetb_microbatch4_feasibility_v1.py
+=======================================================================================================================================
+FUNCTIONS:
+CLASSES:
+
+=======================================================================================================================================
+step27a_timesnetb_microbatch4_feasibility_v1_fix1.py
+=======================================================================================================================================
+FUNCTIONS:
+CLASSES:
+
+=======================================================================================================================================
+step27b_timesnetb_microbatch8_feasibility_v1.py
+=======================================================================================================================================
+FUNCTIONS:
+CLASSES:
+
+=======================================================================================================================================
+step27c_timesnetb_microbatch16_feasibility_v1.py
+=======================================================================================================================================
+FUNCTIONS:
+CLASSES:
+
+=======================================================================================================================================
+step27d_timesnetb_microbatch32_feasibility_v1.py
+=======================================================================================================================================
+FUNCTIONS:
+CLASSES:
+
+=======================================================================================================================================
+step27e_timesnetb_microbatch64_feasibility_v1.py
+=======================================================================================================================================
+FUNCTIONS:
+CLASSES:
+
+=======================================================================================================================================
+step27f_freeze_timesnetb_mb64_protocol_amendment_v1.py
+=======================================================================================================================================
+FUNCTIONS:
+CLASSES:
+
+=======================================================================================================================================
+step27g_timesnetb_mb64_compatibility_runner_v1.py
+=======================================================================================================================================
+FUNCTIONS:
+  build_source_semantic                         lines 214-244
+  amended_execution_maps                        lines 302-365
+  attach_amendment_to_fit_manifest              lines 385-408
+  amended_verify_completed_fit                  lines 411-457
+CLASSES:
+
+=======================================================================================================================================
+step27h_amendment_aware_stage1_continuation_v1.py
+=======================================================================================================================================
+FUNCTIONS:
+  verify_all_timesnetb_fits                     lines 238-272
+CLASSES:
+
+=======================================================================================================================================
+step27i_amendment_aware_stage1_final_freeze_v1.py
+=======================================================================================================================================
+FUNCTIONS:
+  build_source_semantic                         lines 196-237
+  build_fit_register                            lines 458-545
+  build_completion_register                     lines 548-587
+  build_freeze_semantic                         lines 594-720
+CLASSES:
+
+=======================================================================================================================================
+step29_selected_config_fixed_seed_robustness_v1.py
+=======================================================================================================================================
+FUNCTIONS:
+  execution_state                               lines 181-188
+  verify_seed42_reuse                           lines 195-235
+  build_plan                                    lines 238-247
+  fit_dir                                       lines 250-251
+  verify_new_fit                                lines 257-278
+CLASSES:
+
+=======================================================================================================================================
+step29a_stage2_seed_scope_compatibility_runner_v1.py
+=======================================================================================================================================
+FUNCTIONS:
+  execution_state                               lines 249-256
+  verify_seed42_reuse                           lines 263-303
+  build_plan                                    lines 306-315
+  fit_dir                                       lines 318-319
+  verify_new_fit                                lines 325-346
+CLASSES:
+
+=======================================================================================================================================
+step26_stage1_runner_dryrun_v3.py
+=======================================================================================================================================
+FUNCTIONS:
+  set_training_determinism                      lines 470-499
+  epoch_permutation                             lines 502-513
+  build_candidate_model                         lines 520-692
+  train_logical_batch                           lines 703-809
+  compute_stage1_metrics                        lines 891-973
+  checkpoint_payload                            lines 976-1005
+  save_checkpoint_atomic                        lines 1008-1014
+  load_checkpoint_into_model                    lines 1017-1029
+  fit_artifact_schema                           lines 1036-1128
+CLASSES:
+
+=======================================================================================================================================
+AUTHORITATIVE STEP-27 SOURCE SELECTED
+=======================================================================================================================================
+/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step27_stage1_execution_v3.py
+
+---------------------------------------------------------------------------------------------------------------------------------------
+LINES 17–60
+---------------------------------------------------------------------------------------------------------------------------------------
+   17:   * 16 candidate configurations x 5 chronological folds = 80 fits
+   18:   * Stage-1 seed = 42 only
+   19:   * joint 1d/3d/5d directional outputs
+   20:   * logical/effective batch = 256
+   21:   * candidate-specific physical microbatch = frozen Step-24 schedule
+   22:   * candidate-independent epoch permutation =
+   23:         np.random.default_rng(np.random.SeedSequence([42, fold, epoch]))
+   24:   * FP32, AMP=False, TF32=False
+   25:   * AdamW, candidate-specific frozen LR, weight_decay=1e-4
+   26:   * BCEWithLogitsLoss(reduction="mean"), no class weighting
+   27:   * exact sample-weighted accumulation:
+   28:         micro_mean_BCE * (micro_n / actual_logical_n)
+   29:   * gradient clipping global L2 norm 1.0 exactly once per logical batch
+   30:   * max_epochs=100, minimum stopping epoch=10, patience=12
+   31:   * strict checkpoint improvement on validation_mean_directional_bce
+   32:   * exact ties retain the earlier checkpoint
+   33:   * validation sequential/no-shuffle/no-grad
+   34:   * best checkpoint restored before Stage-1 metrics/predictions
+   35:   * prediction probability = sigmoid(logit)
+   36:   * threshold = probability >= 0.50
+   37:   * metrics = BA, ROC-AUC, MCC, PR-AUC, Brier per horizon and unweighted macro
+   38:   * no threshold tuning, no best-seed selection, no configuration selection
+   39:   * final-test access is prohibited
+   40: 
+   41: Critical implementation rule
+   42: ----------------------------
+   43: The actual reusable training/model/checkpoint/metric helpers are imported from
+   44: the frozen Step-26 runner.  Step 27 does not reimplement that engine.
+   45: 
+   46: Resumability
+   47: ------------
+   48: Each model/config/fold runs in a fresh subprocess. A fit is considered complete
+   49: only when fit_manifest.json exists AND every canonical artifact registered in
+   50: that manifest passes hash verification.  fit_manifest.json is written last by
+   51: the worker.  Invalid/incomplete fit directories are archived and rerun from
+   52: scratch.
+   53: 
+   54: Recommended staged execution
+   55: ----------------------------
+   56: 1) Freeze/verify the Step-27 source and development input register only:
+   57:        python step27_stage1_execution_v3.py --prepare-only
+   58: 
+   59: 2) After auditing PREPARE PASS, run exactly one real fit:
+   60:        python step27_stage1_execution_v3.py --max-new-fits 1
+
+---------------------------------------------------------------------------------------------------------------------------------------
+LINES 136–181
+---------------------------------------------------------------------------------------------------------------------------------------
+  136: EXPECTED_FOLDS = 5
+  137: EXPECTED_FITS = 80
+  138: 
+  139: SEED = 42
+  140: LOOKBACK = 60
+  141: FEATURES = 63
+  142: OUTPUTS = 3
+  143: HORIZONS = (1, 3, 5)
+  144: LOGICAL_BATCH = 256
+  145: 
+  146: WEIGHT_DECAY = 1e-4
+  147: GRADIENT_CLIP_NORM = 1.0
+  148: MAX_EPOCHS = 100
+  149: MINIMUM_EPOCH_BEFORE_STOPPING = 10
+  150: EARLY_STOPPING_PATIENCE = 12
+  151: SCREENING_THRESHOLD = 0.50
+  152: 
+  153: RESULT_PREFIX = "__STEP27_RESULT__"
+  154: 
+  155: SCRIPT = Path(__file__).resolve()
+  156: Q1_DIR = SCRIPT.parent
+  157: 
+  158: STEP26_SCRIPT = Q1_DIR / "step26_stage1_runner_dryrun_v3.py"
+  159: STEP26_FROZEN_SCRIPT = cfg.MANIFEST_DIR / "step26_stage1_runner_dryrun_frozen.py"
+  160: STEP26_FREEZE = cfg.MANIFEST_DIR / "26_stage1_runner_dryrun_freeze.json"
+  161: STEP26_MANIFEST = cfg.MANIFEST_DIR / "26_stage1_runner_dryrun_manifest.json"
+  162: STEP26_MANIFEST_SHA = cfg.MANIFEST_DIR / "26_stage1_runner_dryrun_manifest.sha256"
+  163: 
+  164: STEP25_BATCH_PLAN = cfg.AUDIT_DIR / "25_stage1_fold_batch_plan.csv"
+  165: STEP10_TEST_SEAL = cfg.MANIFEST_DIR / "10_final_test_seal.json"
+  166: FORBIDDEN_TEST_FILENAME = "10_final_test_locked_panel.parquet"
+  167: 
+  168: RUN_ROOT = cfg.EXPERIMENT_ROOT_DIR / "stage1_fits"
+  169: 
+  170: SOURCE_FREEZE_JSON = cfg.MANIFEST_DIR / "27_stage1_execution_source_freeze.json"
+  171: SOURCE_FROZEN_SCRIPT = cfg.MANIFEST_DIR / "step27_stage1_execution_frozen.py"
+  172: 
+  173: INPUT_REGISTER_JSON = cfg.MANIFEST_DIR / "27_stage1_development_input_register.json"
+  174: 
+  175: FIT_REGISTER_CSV = cfg.AUDIT_DIR / "27_stage1_fit_register.csv"
+  176: COMPLETION_HASH_CSV = cfg.AUDIT_DIR / "27_stage1_completion_hash_register.csv"
+  177: OUTPUT_HASH_CSV = cfg.AUDIT_DIR / "27_stage1_execution_output_hashes.csv"
+  178: 
+  179: FREEZE_JSON = cfg.MANIFEST_DIR / "27_stage1_execution_freeze.json"
+  180: MANIFEST_JSON = cfg.MANIFEST_DIR / "27_stage1_execution_manifest.json"
+  181: MANIFEST_SHA = cfg.MANIFEST_DIR / "27_stage1_execution_manifest.sha256"
+
+---------------------------------------------------------------------------------------------------------------------------------------
+LINES 368–410
+---------------------------------------------------------------------------------------------------------------------------------------
+  368:         "global_final_test_state": "LOCKED_NOT_OPENED",
+  369:     }
+  370: 
+  371: 
+  372: # =============================================================================
+  373: # 4. IMMUTABLE STEP-27 SOURCE FREEZE
+  374: # =============================================================================
+  375: 
+  376: def build_source_semantic(upstream: dict) -> dict:
+  377:     return {
+  378:         "schema_version": SCHEMA_VERSION,
+  379:         "status": "STAGE1_EXECUTION_SOURCE_FROZEN",
+  380:         "configuration_fingerprint_sha256": EXPECTED_CONFIGURATION_FINGERPRINT,
+  381:         "step27_execution_source_sha256": sha256_file(SCRIPT),
+  382:         "upstream": {
+  383:             "step24_fingerprint_sha256": EXPECTED_STEP24_FINGERPRINT,
+  384:             "step24_manifest_sha256": EXPECTED_STEP24_MANIFEST_SHA256,
+  385:             "step25_fingerprint_sha256": EXPECTED_STEP25_FINGERPRINT,
+  386:             "step25_manifest_sha256": EXPECTED_STEP25_MANIFEST_SHA256,
+  387:             "step26_fingerprint_sha256": EXPECTED_STEP26_FINGERPRINT,
+  388:             "step26_manifest_sha256": EXPECTED_STEP26_MANIFEST_SHA256,
+  389:             "step26_source_sha256": upstream["step26_source_sha256"],
+  390:         },
+  391:         "execution_scope": {
+  392:             "models": EXPECTED_MODELS,
+  393:             "candidate_configurations": EXPECTED_CANDIDATES,
+  394:             "folds": list(FOLDS),
+  395:             "total_fits": EXPECTED_FITS,
+  396:             "seed": SEED,
+  397:             "configuration_selection_inside_step27": False,
+  398:             "threshold_optimization_inside_step27": False,
+  399:             "best_seed_selection_inside_step27": False,
+  400:         },
+  401:         "final_test_policy": {
+  402:             "allowed": False,
+  403:             "test_parquet_opened_or_hashed": False,
+  404:         },
+  405:     }
+  406: 
+  407: 
+  408: def ensure_source_freeze(upstream: dict) -> tuple[str, str]:
+  409:     semantic = build_source_semantic(upstream)
+  410:     expected_fp = canonical_hash(semantic)
+
+---------------------------------------------------------------------------------------------------------------------------------------
+LINES 508–550
+---------------------------------------------------------------------------------------------------------------------------------------
+  508:         "shape": [int(x) for x in arr.shape],
+  509:         "dtype": str(arr.dtype),
+  510:         "ndim": int(arr.ndim),
+  511:     }
+  512:     del arr
+  513:     return result
+  514: 
+  515: 
+  516: def build_input_semantic(upstream: dict, source_fp: str) -> dict:
+  517:     batch_plan = pd.read_csv(STEP25_BATCH_PLAN)
+  518: 
+  519:     if len(batch_plan) != EXPECTED_FITS:
+  520:         raise RuntimeError(
+  521:             f"Expected {EXPECTED_FITS} Step-25 batch-plan rows; "
+  522:             f"found {len(batch_plan)}."
+  523:         )
+  524: 
+  525:     records = []
+  526: 
+  527:     for fold in FOLDS:
+  528:         expected_train = (
+  529:             batch_plan[batch_plan["fold"] == fold]["train_sequences"]
+  530:             .astype(int)
+  531:             .unique()
+  532:         )
+  533:         expected_val = (
+  534:             batch_plan[batch_plan["fold"] == fold]["validation_sequences"]
+  535:             .astype(int)
+  536:             .unique()
+  537:         )
+  538: 
+  539:         if len(expected_train) != 1 or len(expected_val) != 1:
+  540:             raise RuntimeError(f"Fold {fold}: Step-25 count contract is ambiguous.")
+  541: 
+  542:         expected_train_n = int(expected_train[0])
+  543:         expected_val_n = int(expected_val[0])
+  544: 
+  545:         for split, expected_n in (
+  546:             ("train", expected_train_n),
+  547:             ("validation", expected_val_n),
+  548:         ):
+  549:             x_path = resolve_development_array(
+  550:                 fold, split, "X_full"
+
+---------------------------------------------------------------------------------------------------------------------------------------
+LINES 666–755
+---------------------------------------------------------------------------------------------------------------------------------------
+  666:         raise RuntimeError("Input register key count is not 20.")
+  667:     return out
+  668: 
+  669: 
+  670: # =============================================================================
+  671: # 6. FROZEN CANDIDATE/FOLD EXECUTION MAP
+  672: # =============================================================================
+  673: 
+  674: def execution_maps(upstream: dict) -> tuple[dict, pd.DataFrame]:
+  675:     schedule = upstream["schedule"]
+  676:     if len(schedule) != EXPECTED_CANDIDATES:
+  677:         raise RuntimeError("Step-24 schedule does not contain 16 candidates.")
+  678: 
+  679:     schedule_map = {
+  680:         (r["model_id"], r["config_id"]): r
+  681:         for r in schedule
+  682:     }
+  683:     if len(schedule_map) != EXPECTED_CANDIDATES:
+  684:         raise RuntimeError("Step-24 schedule keys are not unique.")
+  685: 
+  686:     models = {k[0] for k in schedule_map}
+  687:     if models != set(MODEL_ORDER):
+  688:         raise RuntimeError(
+  689:             f"Unexpected model set in Step-24 schedule: {sorted(models)}"
+  690:         )
+  691: 
+  692:     for model_id in MODEL_ORDER:
+  693:         config_ids = sorted(
+  694:             config_id
+  695:             for mid, config_id in schedule_map
+  696:             if mid == model_id
+  697:         )
+  698:         if len(config_ids) != 2:
+  699:             raise RuntimeError(
+  700:                 f"{model_id}: expected two candidate configurations."
+  701:             )
+  702: 
+  703:     batch_plan = pd.read_csv(STEP25_BATCH_PLAN)
+  704:     if len(batch_plan) != EXPECTED_FITS:
+  705:         raise RuntimeError("Step-25 batch plan is not 80 rows.")
+  706: 
+  707:     for key, group in batch_plan.groupby(
+  708:         ["model_id", "config_id"],
+  709:         sort=True,
+  710:     ):
+  711:         if key not in schedule_map:
+  712:             raise RuntimeError(f"Step-25 plan contains unknown candidate: {key}")
+  713: 
+  714:         physical_values = (
+  715:             group["physical_microbatch_size"].astype(int).unique()
+  716:         )
+  717:         if len(physical_values) != 1:
+  718:             raise RuntimeError(f"{key}: multiple physical microbatch sizes.")
+  719: 
+  720:         if int(physical_values[0]) != int(
+  721:             schedule_map[key]["physical_microbatch_size"]
+  722:         ):
+  723:             raise RuntimeError(f"{key}: Step-24/Step-25 physical batch drift.")
+  724: 
+  725:         if sorted(group["fold"].astype(int).tolist()) != list(FOLDS):
+  726:             raise RuntimeError(f"{key}: incomplete Step-25 fold plan.")
+  727: 
+  728:     return schedule_map, batch_plan
+  729: 
+  730: 
+  731: # =============================================================================
+  732: # 7. FIT MANIFEST VERIFICATION / RESUME
+  733: # =============================================================================
+  734: 
+  735: def finite_metric_payload(metrics: dict) -> bool:
+  736:     try:
+  737:         per_h = metrics["per_horizon"]
+  738:         macro = metrics["macro_horizon_unweighted"]
+  739: 
+  740:         for h in ("1d", "3d", "5d"):
+  741:             for metric in (
+  742:                 "balanced_accuracy",
+  743:                 "roc_auc",
+  744:                 "mcc",
+  745:                 "pr_auc",
+  746:                 "brier_score",
+  747:             ):
+  748:                 if not math.isfinite(float(per_h[h][metric])):
+  749:                     return False
+  750: 
+  751:         for metric in (
+  752:             "balanced_accuracy",
+  753:             "roc_auc",
+  754:             "mcc",
+  755:             "pr_auc",
+
+---------------------------------------------------------------------------------------------------------------------------------------
+LINES 794–842
+---------------------------------------------------------------------------------------------------------------------------------------
+  794:         if payload.get("model_id") != model_id:
+  795:             return None
+  796:         if payload.get("config_id") != config_id:
+  797:             return None
+  798:         if int(payload.get("fold")) != int(fold):
+  799:             return None
+  800:         if int(payload.get("seed")) != SEED:
+  801:             return None
+  802:         if int(payload.get("logical_batch_size")) != LOGICAL_BATCH:
+  803:             return None
+  804: 
+  805:         physical_expected = int(
+  806:             schedule_map[(model_id, config_id)]["physical_microbatch_size"]
+  807:         )
+  808:         if int(payload.get("physical_microbatch_size")) != physical_expected:
+  809:             return None
+  810: 
+  811:         if float(payload.get("threshold")) != SCREENING_THRESHOLD:
+  812:             return None
+  813: 
+  814:         inputs = payload.get("inputs", {})
+  815:         expected_input_keys = {
+  816:             "train_x": (fold, "train", "X_full"),
+  817:             "train_y": (fold, "train", "y_direction"),
+  818:             "validation_x": (fold, "validation", "X_full"),
+  819:             "validation_y": (fold, "validation", "y_direction"),
+  820:         }
+  821: 
+  822:         for manifest_key, register_key in expected_input_keys.items():
+  823:             rec = inputs.get(manifest_key)
+  824:             source = input_map[register_key]
+  825:             if not rec:
+  826:                 return None
+  827:             if Path(rec["path"]).resolve() != Path(source["path"]).resolve():
+  828:                 return None
+  829:             if rec["sha256"] != source["sha256"]:
+  830:                 return None
+  831:             if int(rec["size_bytes"]) != int(source["size_bytes"]):
+  832:                 return None
+  833: 
+  834:         artifacts = payload.get("artifacts", {})
+  835:         for key in (
+  836:             "best_checkpoint",
+  837:             "epoch_history",
+  838:             "validation_predictions",
+  839:             "fit_metrics",
+  840:         ):
+  841:             rec = artifacts.get(key)
+  842:             if not rec:
+
+---------------------------------------------------------------------------------------------------------------------------------------
+LINES 933–975
+---------------------------------------------------------------------------------------------------------------------------------------
+  933:     if (model_id, config_id) not in schedule_map:
+  934:         raise RuntimeError(
+  935:             f"Unknown frozen candidate: {model_id}/{config_id}"
+  936:         )
+  937:     if fold not in FOLDS:
+  938:         raise RuntimeError(f"Unexpected fold: {fold}")
+  939: 
+  940:     schedule = schedule_map[(model_id, config_id)]
+  941:     physical_microbatch = int(schedule["physical_microbatch_size"])
+  942: 
+  943:     fold_plan = batch_plan[
+  944:         (batch_plan["model_id"] == model_id)
+  945:         & (batch_plan["config_id"] == config_id)
+  946:         & (batch_plan["fold"] == fold)
+  947:     ]
+  948:     if len(fold_plan) != 1:
+  949:         raise RuntimeError("Candidate/fold Step-25 plan lookup failed.")
+  950: 
+  951:     expected_train_n = int(fold_plan.iloc[0]["train_sequences"])
+  952:     expected_val_n = int(fold_plan.iloc[0]["validation_sequences"])
+  953: 
+  954:     train_x_rec = input_map[(fold, "train", "X_full")]
+  955:     train_y_rec = input_map[(fold, "train", "y_direction")]
+  956:     val_x_rec = input_map[(fold, "validation", "X_full")]
+  957:     val_y_rec = input_map[(fold, "validation", "y_direction")]
+  958: 
+  959:     x_train = np.load(
+  960:         train_x_rec["path"],
+  961:         mmap_mode="r",
+  962:         allow_pickle=False,
+  963:     )
+  964:     y_train = np.load(
+  965:         train_y_rec["path"],
+  966:         mmap_mode="r",
+  967:         allow_pickle=False,
+  968:     )
+  969:     x_val = np.load(
+  970:         val_x_rec["path"],
+  971:         mmap_mode="r",
+  972:         allow_pickle=False,
+  973:     )
+  974:     y_val = np.load(
+  975:         val_y_rec["path"],
+
+---------------------------------------------------------------------------------------------------------------------------------------
+LINES 1013–1067
+---------------------------------------------------------------------------------------------------------------------------------------
+ 1013:     s26.set_training_determinism(SEED)
+ 1014: 
+ 1015:     device = torch.device("cuda:0")
+ 1016:     device_index = 0
+ 1017: 
+ 1018:     model, build_metadata, repository = s26.build_candidate_model(
+ 1019:         model_id=model_id,
+ 1020:         config_id=config_id,
+ 1021:         physical_microbatch=physical_microbatch,
+ 1022:         device=device,
+ 1023:     )
+ 1024: 
+ 1025:     learning_rate = float(build_metadata["learning_rate"])
+ 1026: 
+ 1027:     criterion = nn.BCEWithLogitsLoss(reduction="mean")
+ 1028:     optimizer = torch.optim.AdamW(
+ 1029:         model.parameters(),
+ 1030:         lr=learning_rate,
+ 1031:         betas=s26.BETAS,
+ 1032:         eps=s26.ADAMW_EPS,
+ 1033:         weight_decay=WEIGHT_DECAY,
+ 1034:     )
+ 1035: 
+ 1036:     trainable_parameters = int(
+ 1037:         sum(p.numel() for p in model.parameters() if p.requires_grad)
+ 1038:     )
+ 1039:     total_parameters = int(
+ 1040:         sum(p.numel() for p in model.parameters())
+ 1041:     )
+ 1042: 
+ 1043:     directory = fit_dir(model_id, config_id, fold)
+ 1044:     directory.mkdir(parents=True, exist_ok=True)
+ 1045: 
+ 1046:     checkpoint_path = directory / "best_checkpoint.pt"
+ 1047:     history_path = directory / "epoch_history.csv"
+ 1048:     predictions_path = directory / "validation_predictions.npz"
+ 1049:     metrics_path = directory / "fit_metrics.json"
+ 1050:     manifest_path = directory / "fit_manifest.json"
+ 1051: 
+ 1052:     # Worker starts from a clean canonical fit directory. The master archives
+ 1053:     # any prior incomplete/invalid directory before launching this worker.
+ 1054:     for path in (
+ 1055:         checkpoint_path,
+ 1056:         history_path,
+ 1057:         predictions_path,
+ 1058:         metrics_path,
+ 1059:         manifest_path,
+ 1060:     ):
+ 1061:         if path.exists():
+ 1062:             path.unlink()
+ 1063: 
+ 1064:     torch.cuda.empty_cache()
+ 1065:     torch.cuda.reset_peak_memory_stats(device_index)
+ 1066: 
+ 1067:     best_val_bce = math.inf
+
+---------------------------------------------------------------------------------------------------------------------------------------
+LINES 1086–1179
+---------------------------------------------------------------------------------------------------------------------------------------
+ 1086:         sample_weighted_train_bce_sum = 0.0
+ 1087:         train_samples_seen = 0
+ 1088:         grad_norms = []
+ 1089:         logical_updates = 0
+ 1090: 
+ 1091:         for logical_start in range(
+ 1092:             0,
+ 1093:             len(permutation),
+ 1094:             LOGICAL_BATCH,
+ 1095:         ):
+ 1096:             logical_indices = permutation[
+ 1097:                 logical_start:
+ 1098:                 logical_start + LOGICAL_BATCH
+ 1099:             ]
+ 1100: 
+ 1101:             update = s26.train_logical_batch(
+ 1102:                 model=model,
+ 1103:                 optimizer=optimizer,
+ 1104:                 criterion=criterion,
+ 1105:                 x_source=x_train,
+ 1106:                 y_source=y_train,
+ 1107:                 logical_indices=logical_indices,
+ 1108:                 physical_microbatch=physical_microbatch,
+ 1109:                 device=device,
+ 1110:             )
+ 1111: 
+ 1112:             logical_n = int(update["logical_batch_n"])
+ 1113: 
+ 1114:             sample_weighted_train_bce_sum += (
+ 1115:                 float(update["weighted_mean_bce"]) * logical_n
+ 1116:             )
+ 1117:             train_samples_seen += logical_n
+ 1118:             grad_norms.append(
+ 1119:                 float(update["preclip_gradient_norm"])
+ 1120:             )
+ 1121:             logical_updates += 1
+ 1122: 
+ 1123:         torch.cuda.synchronize(device_index)
+ 1124:         train_seconds = time.perf_counter() - train_started
+ 1125:         total_training_seconds += train_seconds
+ 1126: 
+ 1127:         if train_samples_seen != len(x_train):
+ 1128:             raise RuntimeError(
+ 1129:                 f"Epoch {epoch}: training coverage mismatch "
+ 1130:                 f"{train_samples_seen} != {len(x_train)}"
+ 1131:             )
+ 1132:         if logical_updates != math.ceil(len(x_train) / LOGICAL_BATCH):
+ 1133:             raise RuntimeError("Logical-update count drift.")
+ 1134: 
+ 1135:         train_bce = (
+ 1136:             sample_weighted_train_bce_sum / train_samples_seen
+ 1137:         )
+ 1138: 
+ 1139:         validation_started = time.perf_counter()
+ 1140:         val_result = s26.evaluate_directional(
+ 1141:             model=model,
+ 1142:             criterion=criterion,
+ 1143:             x_source=x_val,
+ 1144:             y_source=y_val,
+ 1145:             physical_microbatch=physical_microbatch,
+ 1146:             device=device,
+ 1147:         )
+ 1148:         torch.cuda.synchronize(device_index)
+ 1149:         validation_seconds = (
+ 1150:             time.perf_counter() - validation_started
+ 1151:         )
+ 1152:         total_validation_seconds += validation_seconds
+ 1153: 
+ 1154:         val_bce = float(
+ 1155:             val_result["validation_mean_directional_bce"]
+ 1156:         )
+ 1157: 
+ 1158:         if not math.isfinite(train_bce):
+ 1159:             raise FloatingPointError("Non-finite epoch training BCE.")
+ 1160:         if not math.isfinite(val_bce):
+ 1161:             raise FloatingPointError("Non-finite validation BCE.")
+ 1162: 
+ 1163:         improved = val_bce < best_val_bce
+ 1164: 
+ 1165:         if improved:
+ 1166:             best_val_bce = val_bce
+ 1167:             best_epoch = int(epoch)
+ 1168:             stale_epochs = 0
+ 1169: 
+ 1170:             checkpoint = s26.checkpoint_payload(
+ 1171:                 model,
+ 1172:                 epoch=epoch,
+ 1173:                 validation_mean_directional_bce=val_bce,
+ 1174:                 model_id=model_id,
+ 1175:                 config_id=config_id,
+ 1176:                 fold=fold,
+ 1177:             )
+ 1178:             s26.save_checkpoint_atomic(
+ 1179:                 checkpoint_path,
+
+---------------------------------------------------------------------------------------------------------------------------------------
+LINES 1189–1231
+---------------------------------------------------------------------------------------------------------------------------------------
+ 1189: 
+ 1190:         epoch_seconds = time.perf_counter() - epoch_started
+ 1191: 
+ 1192:         epoch_rows.append(
+ 1193:             {
+ 1194:                 "epoch": int(epoch),
+ 1195:                 "train_mean_directional_bce": float(train_bce),
+ 1196:                 "validation_mean_directional_bce": float(val_bce),
+ 1197:                 "learning_rate": learning_rate,
+ 1198:                 "mean_preclip_gradient_norm": float(
+ 1199:                     np.mean(grad_norms)
+ 1200:                 ),
+ 1201:                 "epoch_seconds": float(epoch_seconds),
+ 1202:                 "training_seconds": float(train_seconds),
+ 1203:                 "validation_seconds": float(validation_seconds),
+ 1204:                 "logical_optimizer_updates": int(logical_updates),
+ 1205:                 "strict_checkpoint_improvement": bool(improved),
+ 1206:                 "consecutive_nonimproving_epochs": int(stale_epochs),
+ 1207:                 "stop_after_epoch": bool(stop_after_epoch),
+ 1208:             }
+ 1209:         )
+ 1210: 
+ 1211:         print(
+ 1212:             f"EPOCH {model_id}/{config_id}/fold{fold} "
+ 1213:             f"{epoch:03d} "
+ 1214:             f"trainBCE={train_bce:.6f} "
+ 1215:             f"valBCE={val_bce:.6f} "
+ 1216:             f"best={best_val_bce:.6f}@{best_epoch} "
+ 1217:             f"stale={stale_epochs:02d} "
+ 1218:             f"sec={epoch_seconds:.1f}",
+ 1219:             flush=True,
+ 1220:         )
+ 1221: 
+ 1222:         del val_result
+ 1223: 
+ 1224:         if stop_after_epoch:
+ 1225:             stopped_early = True
+ 1226:             break
+ 1227: 
+ 1228:     if best_epoch is None or not checkpoint_path.is_file():
+ 1229:         raise RuntimeError("No best validation checkpoint was produced.")
+ 1230: 
+ 1231:     # Restore the strict minimum-validation-BCE checkpoint BEFORE Stage-1
+
+---------------------------------------------------------------------------------------------------------------------------------------
+LINES 1245–1287
+---------------------------------------------------------------------------------------------------------------------------------------
+ 1245:     ):
+ 1246:         raise RuntimeError("Restored checkpoint BCE mismatch.")
+ 1247: 
+ 1248:     best_eval = s26.evaluate_directional(
+ 1249:         model=model,
+ 1250:         criterion=criterion,
+ 1251:         x_source=x_val,
+ 1252:         y_source=y_val,
+ 1253:         physical_microbatch=physical_microbatch,
+ 1254:         device=device,
+ 1255:     )
+ 1256: 
+ 1257:     restored_bce = float(
+ 1258:         best_eval["validation_mean_directional_bce"]
+ 1259:     )
+ 1260:     if not math.isclose(
+ 1261:         restored_bce,
+ 1262:         best_val_bce,
+ 1263:         rel_tol=0.0,
+ 1264:         abs_tol=1e-7,
+ 1265:     ):
+ 1266:         raise RuntimeError(
+ 1267:             "Best-checkpoint validation BCE did not reproduce after restore.\n"
+ 1268:             f"Stored: {best_val_bce}\nRestored: {restored_bce}"
+ 1269:         )
+ 1270: 
+ 1271:     y_val_int = np.asarray(
+ 1272:         y_val,
+ 1273:         dtype=np.int64,
+ 1274:     )
+ 1275: 
+ 1276:     stage1_metrics = s26.compute_stage1_metrics(
+ 1277:         y_true=y_val_int,
+ 1278:         probabilities=best_eval["probabilities"],
+ 1279:         threshold=SCREENING_THRESHOLD,
+ 1280:     )
+ 1281: 
+ 1282:     # Required canonical prediction artifact. Labels are NOT duplicated.
+ 1283:     pred_tmp = predictions_path.with_name(
+ 1284:         predictions_path.name + ".tmp.npz"
+ 1285:     )
+ 1286:     np.savez_compressed(
+ 1287:         pred_tmp,
+
+---------------------------------------------------------------------------------------------------------------------------------------
+LINES 1385–1440
+---------------------------------------------------------------------------------------------------------------------------------------
+ 1385:         "step25_engine_fingerprint_sha256":
+ 1386:             EXPECTED_STEP25_FINGERPRINT,
+ 1387:         "step26_runner_fingerprint_sha256":
+ 1388:             EXPECTED_STEP26_FINGERPRINT,
+ 1389:         "model_id": model_id,
+ 1390:         "config_id": config_id,
+ 1391:         "fold": int(fold),
+ 1392:         "seed": SEED,
+ 1393:         "logical_batch_size": LOGICAL_BATCH,
+ 1394:         "physical_microbatch_size": physical_microbatch,
+ 1395:         "full_logical_accumulation_steps": int(
+ 1396:             schedule["gradient_accumulation_steps"]
+ 1397:         ),
+ 1398:         "partial_logical_batch_rule":
+ 1399:             "exact sample-weighted micro_n/logical_n; no drop/pad/duplicate",
+ 1400:         "learning_rate": learning_rate,
+ 1401:         "weight_decay": WEIGHT_DECAY,
+ 1402:         "gradient_clip_norm": GRADIENT_CLIP_NORM,
+ 1403:         "optimizer": "AdamW",
+ 1404:         "adamw_betas": list(s26.BETAS),
+ 1405:         "adamw_eps": s26.ADAMW_EPS,
+ 1406:         "loss": "BCEWithLogitsLoss(reduction='mean')",
+ 1407:         "dtype": "float32",
+ 1408:         "amp_enabled": False,
+ 1409:         "tf32_enabled": False,
+ 1410:         "scheduler": "none",
+ 1411:         "train_shuffle":
+ 1412:             "SeedSequence([42, fold, epoch]); candidate-independent",
+ 1413:         "validation_shuffle": False,
+ 1414:         "checkpoint_metric":
+ 1415:             "validation_mean_directional_bce",
+ 1416:         "checkpoint_mode": "min",
+ 1417:         "checkpoint_strict_improvement": True,
+ 1418:         "checkpoint_tie_policy":
+ 1419:             "retain earlier epoch on exact tie",
+ 1420:         "max_epochs": MAX_EPOCHS,
+ 1421:         "minimum_epoch_before_stopping":
+ 1422:             MINIMUM_EPOCH_BEFORE_STOPPING,
+ 1423:         "early_stopping_patience":
+ 1424:             EARLY_STOPPING_PATIENCE,
+ 1425:         "threshold": SCREENING_THRESHOLD,
+ 1426:         "threshold_operator": "probability >= 0.50",
+ 1427:         "horizon_order": list(HORIZONS),
+ 1428:         "epochs_run": int(len(epoch_rows)),
+ 1429:         "best_epoch": int(best_epoch),
+ 1430:         "best_validation_mean_directional_bce":
+ 1431:             float(best_val_bce),
+ 1432:         "stopped_early": bool(stopped_early),
+ 1433:         "trainable_parameter_count": trainable_parameters,
+ 1434:         "total_parameter_count": total_parameters,
+ 1435:         "inputs": {
+ 1436:             key: {
+ 1437:                 "path": value["path"],
+ 1438:                 "size_bytes": int(value["size_bytes"]),
+ 1439:                 "sha256": value["sha256"],
+ 1440:                 "shape": value["shape"],
+
+---------------------------------------------------------------------------------------------------------------------------------------
+LINES 1495–1537
+---------------------------------------------------------------------------------------------------------------------------------------
+ 1495:                 ]
+ 1496:             ),
+ 1497:         "macro_brier_score":
+ 1498:             float(
+ 1499:                 stage1_metrics["macro_horizon_unweighted"][
+ 1500:                     "brier_score"
+ 1501:                 ]
+ 1502:             ),
+ 1503:         "physical_microbatch_size": physical_microbatch,
+ 1504:         "trainable_parameter_count": trainable_parameters,
+ 1505:         "peak_cuda_allocated_mib":
+ 1506:             peak_allocated_bytes / (1024 ** 2),
+ 1507:         "wall_seconds": wall_seconds,
+ 1508:         "fit_manifest_path": str(manifest_path.resolve()),
+ 1509:         "fit_manifest_sha256": sha256_file(manifest_path),
+ 1510:     }
+ 1511: 
+ 1512: 
+ 1513: def worker_main(
+ 1514:     model_id: str,
+ 1515:     config_id: str,
+ 1516:     fold: int,
+ 1517: ) -> int:
+ 1518:     try:
+ 1519:         result = worker_fit(
+ 1520:             model_id=model_id,
+ 1521:             config_id=config_id,
+ 1522:             fold=int(fold),
+ 1523:         )
+ 1524:         print(
+ 1525:             RESULT_PREFIX
+ 1526:             + json.dumps(
+ 1527:                 result,
+ 1528:                 sort_keys=True,
+ 1529:                 ensure_ascii=False,
+ 1530:             ),
+ 1531:             flush=True,
+ 1532:         )
+ 1533:         return 0
+ 1534: 
+ 1535:     except Exception as exc:
+ 1536:         failure = {
+ 1537:             "status": "FAIL",
+
+---------------------------------------------------------------------------------------------------------------------------------------
+LINES 1657–1702
+---------------------------------------------------------------------------------------------------------------------------------------
+ 1657:         Path(manifest["artifacts"]["fit_metrics"]["path"])
+ 1658:     )
+ 1659: 
+ 1660:     row = {
+ 1661:         "model_id": manifest["model_id"],
+ 1662:         "config_id": manifest["config_id"],
+ 1663:         "fold": int(manifest["fold"]),
+ 1664:         "seed": int(manifest["seed"]),
+ 1665:         "physical_microbatch_size": int(
+ 1666:             manifest["physical_microbatch_size"]
+ 1667:         ),
+ 1668:         "learning_rate": float(manifest["learning_rate"]),
+ 1669:         "train_n": int(
+ 1670:             manifest["inputs"]["train_x"]["shape"][0]
+ 1671:         ),
+ 1672:         "validation_n": int(
+ 1673:             manifest["inputs"]["validation_x"]["shape"][0]
+ 1674:         ),
+ 1675:         "epochs_run": int(manifest["epochs_run"]),
+ 1676:         "best_epoch": int(manifest["best_epoch"]),
+ 1677:         "best_validation_mean_directional_bce": float(
+ 1678:             manifest["best_validation_mean_directional_bce"]
+ 1679:         ),
+ 1680:         "stopped_early": bool(manifest["stopped_early"]),
+ 1681:         "trainable_parameter_count": int(
+ 1682:             manifest["trainable_parameter_count"]
+ 1683:         ),
+ 1684:         "total_parameter_count": int(
+ 1685:             manifest["total_parameter_count"]
+ 1686:         ),
+ 1687:         "training_seconds": float(
+ 1688:             metrics["training_seconds"]
+ 1689:         ),
+ 1690:         "wall_seconds": float(metrics["wall_seconds"]),
+ 1691:         "peak_cuda_allocated_mib": float(
+ 1692:             metrics["peak_cuda_allocated_bytes"]
+ 1693:         ) / (1024 ** 2),
+ 1694:         "macro_balanced_accuracy": float(
+ 1695:             metrics["macro_horizon_unweighted"][
+ 1696:                 "balanced_accuracy"
+ 1697:             ]
+ 1698:         ),
+ 1699:         "macro_roc_auc": float(
+ 1700:             metrics["macro_horizon_unweighted"][
+ 1701:                 "roc_auc"
+ 1702:             ]
+
+---------------------------------------------------------------------------------------------------------------------------------------
+LINES 1903–1954
+---------------------------------------------------------------------------------------------------------------------------------------
+ 1903:         "execution_scope": {
+ 1904:             "models": EXPECTED_MODELS,
+ 1905:             "candidate_configurations": EXPECTED_CANDIDATES,
+ 1906:             "folds": list(FOLDS),
+ 1907:             "completed_fits": EXPECTED_FITS,
+ 1908:             "seed": SEED,
+ 1909:         },
+ 1910:         "protocol": {
+ 1911:             "logical_batch_size": LOGICAL_BATCH,
+ 1912:             "physical_microbatch_source":
+ 1913:                 "frozen Step-24 candidate schedule",
+ 1914:             "candidate_independent_shuffle":
+ 1915:                 "SeedSequence([42, fold, epoch])",
+ 1916:             "optimizer": "AdamW",
+ 1917:             "weight_decay": WEIGHT_DECAY,
+ 1918:             "loss":
+ 1919:                 "BCEWithLogitsLoss(reduction='mean')",
+ 1920:             "gradient_clip_norm": GRADIENT_CLIP_NORM,
+ 1921:             "max_epochs": MAX_EPOCHS,
+ 1922:             "minimum_epoch_before_stopping":
+ 1923:                 MINIMUM_EPOCH_BEFORE_STOPPING,
+ 1924:             "patience": EARLY_STOPPING_PATIENCE,
+ 1925:             "checkpoint_metric":
+ 1926:                 "validation_mean_directional_bce",
+ 1927:             "checkpoint_mode": "min",
+ 1928:             "threshold": SCREENING_THRESHOLD,
+ 1929:             "configuration_selection_performed": False,
+ 1930:             "threshold_optimization_performed": False,
+ 1931:             "best_seed_selection_performed": False,
+ 1932:         },
+ 1933:         "fit_register": {
+ 1934:             "path": str(FIT_REGISTER_CSV.resolve()),
+ 1935:             "rows": int(len(fit_df)),
+ 1936:             "sha256": sha256_file(FIT_REGISTER_CSV),
+ 1937:         },
+ 1938:         "completion_hash_register": {
+ 1939:             "path": str(COMPLETION_HASH_CSV.resolve()),
+ 1940:             "rows": int(len(completion_df)),
+ 1941:             "sha256": sha256_file(COMPLETION_HASH_CSV),
+ 1942:         },
+ 1943:         "development_input_register": {
+ 1944:             "path": str(INPUT_REGISTER_JSON.resolve()),
+ 1945:             "sha256": sha256_file(INPUT_REGISTER_JSON),
+ 1946:             "fingerprint_sha256": input_fp,
+ 1947:         },
+ 1948:         "protection_state": {
+ 1949:             "development_training_used": True,
+ 1950:             "development_validation_used": True,
+ 1951:             "configuration_selection_performed": False,
+ 1952:             "threshold_optimization_performed": False,
+ 1953:             "best_seed_selection_performed": False,
+ 1954:             "final_test_data_opened": False,
+
+---------------------------------------------------------------------------------------------------------------------------------------
+LINES 2285–2327
+---------------------------------------------------------------------------------------------------------------------------------------
+ 2285:         folds = [int(args.fold)]
+ 2286: 
+ 2287:     new_fits = 0
+ 2288:     skipped_fits = 0
+ 2289: 
+ 2290:     for model_id, config_id in ordered_keys:
+ 2291:         physical = int(
+ 2292:             schedule_map[(model_id, config_id)][
+ 2293:                 "physical_microbatch_size"
+ 2294:             ]
+ 2295:         )
+ 2296: 
+ 2297:         for fold in folds:
+ 2298:             prior = verify_completed_fit(
+ 2299:                 model_id,
+ 2300:                 config_id,
+ 2301:                 fold,
+ 2302:                 source_fp=source_fp,
+ 2303:                 input_fp=input_fp,
+ 2304:                 schedule_map=schedule_map,
+ 2305:                 input_map=input_map,
+ 2306:             )
+ 2307: 
+ 2308:             if prior is not None:
+ 2309:                 skipped_fits += 1
+ 2310:                 metrics = load_json(
+ 2311:                     Path(
+ 2312:                         prior["artifacts"]["fit_metrics"]["path"]
+ 2313:                     )
+ 2314:                 )
+ 2315:                 print(
+ 2316:                     f"SKIP {model_id:<14} {config_id:<20} "
+ 2317:                     f"fold={fold} COMPLETE+HASHED "
+ 2318:                     f"best={prior['best_epoch']} "
+ 2319:                     f"BA={metrics['macro_horizon_unweighted']['balanced_accuracy']:.6f}"
+ 2320:                 )
+ 2321:                 continue
+ 2322: 
+ 2323:             if (
+ 2324:                 args.max_new_fits is not None
+ 2325:                 and new_fits >= args.max_new_fits
+ 2326:             ):
+ 2327:                 print("-" * 140)
+
+=======================================================================================================================================
+STEP-33 SCHEDULE PREVIEW
+=======================================================================================================================================
+/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/33_final_development_refit_epoch_schedule.csv
+Rows    : 40
+Columns : ['model_id', 'config_id', 'seed', 'fold_best_epochs', 'final_refit_epochs', 'duration_rule', 'validation_during_final_refit', 'early_stopping_during_final_refit', 'checkpoint_policy', 'final_development_n', 'logical_batch_size', 'physical_microbatch_size', 'shuffle_seed_contract', 'final_development_partition_token', 'best_seed_selection', 'final_test_used']
+
+    model_id      config_id  seed fold_best_epochs  final_refit_epochs                                  duration_rule  validation_during_final_refit  early_stopping_during_final_refit     checkpoint_policy  final_development_n  logical_batch_size  physical_microbatch_size        shuffle_seed_contract  final_development_partition_token  best_seed_selection  final_test_used
+     DLINEAR      DLINEAR_B    42       1,1,1,10,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                       128 SeedSequence([seed,0,epoch])                                  0                False            False
+     DLINEAR      DLINEAR_B    43        2,1,1,9,2                   2 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                       128 SeedSequence([seed,0,epoch])                                  0                False            False
+     DLINEAR      DLINEAR_B    44       2,1,1,12,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                       128 SeedSequence([seed,0,epoch])                                  0                False            False
+     DLINEAR      DLINEAR_B    45        1,1,1,9,2                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                       128 SeedSequence([seed,0,epoch])                                  0                False            False
+     DLINEAR      DLINEAR_B    46       1,1,3,11,3                   3 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                       128 SeedSequence([seed,0,epoch])                                  0                False            False
+  FREDFORMER   FREDFORMER_B    42        1,1,1,1,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        16 SeedSequence([seed,0,epoch])                                  0                False            False
+  FREDFORMER   FREDFORMER_B    43        1,1,1,3,2                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        16 SeedSequence([seed,0,epoch])                                  0                False            False
+  FREDFORMER   FREDFORMER_B    44        1,1,1,1,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        16 SeedSequence([seed,0,epoch])                                  0                False            False
+  FREDFORMER   FREDFORMER_B    45        1,1,1,1,2                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        16 SeedSequence([seed,0,epoch])                                  0                False            False
+  FREDFORMER   FREDFORMER_B    46        1,1,1,1,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        16 SeedSequence([seed,0,epoch])                                  0                False            False
+       FRNET        FRNET_A    42        1,1,1,4,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        64 SeedSequence([seed,0,epoch])                                  0                False            False
+       FRNET        FRNET_A    43        1,1,1,3,2                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        64 SeedSequence([seed,0,epoch])                                  0                False            False
+       FRNET        FRNET_A    44        1,1,1,2,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        64 SeedSequence([seed,0,epoch])                                  0                False            False
+       FRNET        FRNET_A    45        1,1,1,2,2                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        64 SeedSequence([seed,0,epoch])                                  0                False            False
+       FRNET        FRNET_A    46        1,1,3,4,2                   2 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        64 SeedSequence([seed,0,epoch])                                  0                False            False
+ITRANSFORMER ITRANSFORMER_A    42        1,1,1,4,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                       128 SeedSequence([seed,0,epoch])                                  0                False            False
+ITRANSFORMER ITRANSFORMER_A    43        1,1,1,2,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                       128 SeedSequence([seed,0,epoch])                                  0                False            False
+ITRANSFORMER ITRANSFORMER_A    44        1,1,1,1,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                       128 SeedSequence([seed,0,epoch])                                  0                False            False
+ITRANSFORMER ITRANSFORMER_A    45        1,1,1,1,2                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                       128 SeedSequence([seed,0,epoch])                                  0                False            False
+ITRANSFORMER ITRANSFORMER_A    46        1,1,1,1,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                       128 SeedSequence([seed,0,epoch])                                  0                False            False
+         MLF          MLF_A    42      1,11,2,11,9                   9 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        32 SeedSequence([seed,0,epoch])                                  0                False            False
+         MLF          MLF_A    43        2,1,3,9,2                   2 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        32 SeedSequence([seed,0,epoch])                                  0                False            False
+         MLF          MLF_A    44        3,1,3,2,1                   2 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        32 SeedSequence([seed,0,epoch])                                  0                False            False
+         MLF          MLF_A    45      1,10,1,10,2                   2 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        32 SeedSequence([seed,0,epoch])                                  0                False            False
+         MLF          MLF_A    46        2,2,3,7,3                   3 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        32 SeedSequence([seed,0,epoch])                                  0                False            False
+     NLINEAR      NLINEAR_B    42       1,1,3,12,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                       128 SeedSequence([seed,0,epoch])                                  0                False            False
+     NLINEAR      NLINEAR_B    43        1,2,1,7,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                       128 SeedSequence([seed,0,epoch])                                  0                False            False
+     NLINEAR      NLINEAR_B    44        2,1,2,1,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                       128 SeedSequence([seed,0,epoch])                                  0                False            False
+     NLINEAR      NLINEAR_B    45       1,1,1,13,2                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                       128 SeedSequence([seed,0,epoch])                                  0                False            False
+     NLINEAR      NLINEAR_B    46       1,1,1,11,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                       128 SeedSequence([seed,0,epoch])                                  0                False            False
+    PATCHTST     PATCHTST_B    42        1,1,1,1,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        64 SeedSequence([seed,0,epoch])                                  0                False            False
+    PATCHTST     PATCHTST_B    43        1,1,1,2,2                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        64 SeedSequence([seed,0,epoch])                                  0                False            False
+    PATCHTST     PATCHTST_B    44        1,1,1,2,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        64 SeedSequence([seed,0,epoch])                                  0                False            False
+    PATCHTST     PATCHTST_B    45        1,1,2,2,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        64 SeedSequence([seed,0,epoch])                                  0                False            False
+    PATCHTST     PATCHTST_B    46        1,1,1,2,1                   1 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        64 SeedSequence([seed,0,epoch])                                  0                False            False
+    TIMESNET     TIMESNET_B    42        1,2,2,4,6                   2 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        64 SeedSequence([seed,0,epoch])                                  0                False            False
+    TIMESNET     TIMESNET_B    43        1,5,1,4,5                   4 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        64 SeedSequence([seed,0,epoch])                                  0                False            False
+    TIMESNET     TIMESNET_B    44        3,1,3,2,2                   2 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        64 SeedSequence([seed,0,epoch])                                  0                False            False
+    TIMESNET     TIMESNET_B    45        1,6,3,2,2                   2 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        64 SeedSequence([seed,0,epoch])                                  0                False            False
+    TIMESNET     TIMESNET_B    46        2,1,3,6,6                   3 MEDIAN_OF_5_SAME_SEED_ROLLING_FOLD_BEST_EPOCHS                          False                              False FINAL_SCHEDULED_EPOCH                42360                 256                        64 SeedSequence([seed,0,epoch])                                  0                False            False

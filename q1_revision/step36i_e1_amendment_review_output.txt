@@ -1,0 +1,39 @@
+==============================================================================================================
+STEP 36I-E1 — POST-FREEZE PROTOCOL AMENDMENT REVIEW DRAFT
+==============================================================================================================
+
+[1] VERIFY ALL REQUIRED EVIDENCE
+PASS: 36i_protocol_deviation_DRAFT.json
+PASS: 36i_candidate_sequence_eligible_keys_DRAFT.csv
+PASS: 36i_d2f_full_synthetic_rehearsal_DRAFT.json
+PASS: 36i_d2g_synthetic_scoring_DRAFT.json
+PASS: 35_final_test_evaluation_contract_freeze_manifest.json
+PASS — amendment remains unapproved
+PASS — access history unchanged
+
+[2] VERIFY BOTH HISTORICAL FAILURE LOGS
+PASS: first_execute
+PASS: second_execute
+
+[3] VERIFY CORRECTED COHORT AND SEGMENTS
+Original structural endpoints: 6480
+Proposed evaluation endpoints: 5300
+Excluded endpoints: 1180
+Excluded share: 18.21%
+Continuity segments: 48 and 217 sessions
+
+[4] CREATE REVIEW RECORD — NOT AN AUTHORIZATION
+
+[5] DRAFT REVIEW ARTIFACTS
+Review JSON: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/step36i_e1_protocol_amendment_review_draft/36i_e1_protocol_amendment_review_DRAFT.json
+Review SHA256: e6c50c7dbbca89f3bd0ad6dd42f61c14cac15355cda7ff2eacaa5612f170eca0
+Disclosure Markdown: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/step36i_e1_protocol_amendment_review_draft/36i_e1_manuscript_methodological_disclosure_DRAFT.md
+Disclosure SHA256: 0112f46a0a3a82883d3aff514eeaa471f9a755588742f15904f68351b4243210
+
+==============================================================================================================
+STEP 36I-E1 COMPLETE — REVIEW DRAFT ONLY
+Formal protocol amendment approved: FALSE
+Production final-test inference executed: FALSE
+Original Step-35 freeze modified: FALSE
+Additional sealed-test access authorized: FALSE
+==============================================================================================================

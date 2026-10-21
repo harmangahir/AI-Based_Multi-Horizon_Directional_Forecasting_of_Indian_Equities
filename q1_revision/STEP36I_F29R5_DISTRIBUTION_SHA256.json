@@ -1,0 +1,10 @@
+{
+  "files": {
+    "STEP36I_F29R5_FROZEN_ML_INTEGRATION_NOTES.md": "0091935f30e75411a3a51ed13a501fdb1075f5efd82601acfb371fd361c5d3ff",
+    "step36i_f20r3_frozen_ml_finalizer_CANDIDATE.py": "a9b9d44470a7cba6aeb54a4a734b6ebf7b52a3194c9b6f645bae38ad297dfc5d",
+    "step36i_f29r5_frozen_ml_extended_signature_gated_CANDIDATE.py": "bc073d6bf565ddbc06fa87007e897eaea16f1cce75cc8940d2b7a0f9a33be220",
+    "step36i_f29r5_ml_baseline_scoring_REVIEW_ONLY.py": "45758d962d7d16e9e500e88be1560ca97a5298a3cc3f247d7d8a03a6a15ee49f"
+  },
+  "schema": "STEP36I_F29R5_DISTRIBUTION_V1",
+  "test_read_authorized": false
+}

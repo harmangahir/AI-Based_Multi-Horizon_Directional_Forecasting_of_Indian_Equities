@@ -1,0 +1,20 @@
+====================================================================================================
+STEP 36I-F27 — INDEPENDENT F26 PHASE A RELEASE-BLOCKER AUDIT (READ-ONLY)
+====================================================================================================
+[1] REVIEWED SOURCE/SCIENTIFIC CONTRACT IDENTITY
+PASS — F18/F20/F22/F23/F24/F25/F26, Step35, F13E verified; historical reads=2, scored=0
+[2] LIVE GATE AND TRUE COMPOSITION ORDER
+PASS — real Phase A disabled; release source orders review, reservation, single-read, journal, seal, receipt
+PASS — cooperative lock lexically encloses read, Phase A seal and receipt transaction
+[3] INDEPENDENT RELEASE BLOCKERS (NOT CLEARED BY THE PREFLIGHT)
+BLOCKER A — F23 approval/permit fields are self-asserted JSON; independently authenticated signoff/permit missing
+BLOCKER B — development-history file is reopened by pathname after hashing (input-binding/TOCTOU not resolved)
+BLOCKER C — after third read, parsing/materialization failure can strand the one-use attempt before arrays seal
+PASS — F26 rechecks all seven reserved output paths before Phase A directory creation
+BLOCKER D — cooperative flock alone cannot exclude uncooperative writers; ownership/security review pending
+BLOCKER E — independently approved Phase B/live release and explicit third-read authority still absent
+[4] IMMUTABILITY AND RELEASE DECISION
+PASS — historical marker unchanged; no raw-test file accessed; no outputs created
+F27 SOURCE AUDIT: PASS WITH FIVE RELEASE BLOCKERS — PRODUCTION SIGNOFF DENIED
+Scientific amendment: STUDY-OWNER APPROVED | Third read: NOT AUTHORIZED | Real scoring: NOT DONE
+====================================================================================================

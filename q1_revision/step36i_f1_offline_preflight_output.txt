@@ -1,0 +1,19 @@
+=============================================================================================================
+STEP 36I-F1 — AMENDED PRODUCTION IMPLEMENTATION, READ-ONLY PREFLIGHT
+=============================================================================================================
+[1] FROZEN E2 SOURCE, STEP35 AND ACCESS HISTORY
+PASS — original Step35 contract intact; exactly 2 historical reads; real test unscored
+[2] FROZEN AMENDED COHORT AND INFERENCE SPECIFICATION
+PASS — 6480 original structural rows, 5300 causal candidate endpoints, 265 dates
+PASS — 40 frozen model-seed specifications; 24 fixed thresholds
+[3] E4 SYNTHETIC TRANSACTION AND OUTPUT ISOLATION
+PASS — 10 committed E4 artifacts rehashed and size-checked; amended output namespace vacant
+[4] FAIL-CLOSED LOGIC AND RUNNER BOUNDARIES
+PASS — original cohort negative control rejected; all real-execution gates DENIED
+=============================================================================================================
+STEP 36I-F1 READ-ONLY PREFLIGHT: PASS
+Implementation scope: in-memory cohort/materialization, 40-model inference, ensemble scoring
+Raw test opened: FALSE | Real GPU inference: FALSE | Real test scored: FALSE
+Additional read authorized: FALSE | Protocol approved: FALSE | Production CLI: DISABLED
+Next: independent F1 implementation review and completion of approved access/transaction design
+=============================================================================================================

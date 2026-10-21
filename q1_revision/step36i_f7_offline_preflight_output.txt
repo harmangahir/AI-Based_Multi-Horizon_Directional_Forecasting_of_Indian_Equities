@@ -1,0 +1,17 @@
+==============================================================================================================
+STEP 36I-F7 — ONE-READ LOADER + DURABLE RESERVATION BOUNDARY, OFFLINE REVIEW
+==============================================================================================================
+[1] F1–F6 / E2 source hashes, original Step35, access and vacant output namespace
+PASS — six reviewed implementation files, bundle and contract; 2 historic reads, 0 scored
+[2] Single-open byte loader, SHA-256 match, in-memory consumer and no retry
+PASS — synthetic successful fixture exactly once; all fixture opens including negative cases=3
+[3] Durable access reservation, crash, replay, symlink, digest-tamper and journal integrity
+PASS — reservation precedes file open; failures irreversibly consume fixture slot
+[4] Production CLI and scientific amendment gates
+PASS — protected real loader and production commit are uncallable in this review build
+==============================================================================================================
+STEP 36I-F7 PASS — READ-ONCE ACCESS BOUNDARY TESTED AGAINST SYNTHETIC BYTES ONLY
+Real test opened: FALSE | GPU: FALSE | Real scored: FALSE | Source/marker modified: FALSE
+Production CLI: DENIED | Protocol approved: FALSE | Third read authorized: FALSE
+REMAINING — reviewed production launcher, real transaction integration, amendment review/approval
+==============================================================================================================

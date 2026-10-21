@@ -1,0 +1,41 @@
+==============================================================================================================
+STEP 36I-A — PROTOCOL DEVIATION PROVENANCE AND COHORT DRAFT
+==============================================================================================================
+
+[1] VERIFY ORIGINAL SCIENTIFIC FREEZE
+PASS: 35_final_test_evaluation_contract_freeze_manifest.json
+PASS: 10_split_membership.parquet
+PASS — two raw-test reads recorded, no held-out scoring
+
+[2] VERIFY SOURCE RECOVERY PROVENANCE
+PASS: original_step36
+PASS: recovery_step36
+PASS: step36a_amendment
+
+[3] VERIFY ORIGINAL FAILURE EVIDENCE
+PRESERVED: first_execute 56a5187d3882951fc2cf31bf72b1e3360b3f27bbd0f0b5eb175a08a30d1ae3bf
+PRESERVED: second_execute d7ffdb6f0516ce54d43fcfaa79097dfb9d1a1f161db1564f9babe47cc6ac693d
+PRESERVED: latest_failure_json fe5e5bf9d73923ac918a0ab30803b1412457fd9db3b8c5f15886e751af986f1b
+
+[4] RECONSTRUCT PROPOSED COHORT — STRUCTURAL KEYS ONLY
+Original endpoints : 6480
+Candidate endpoints: 5300
+Excluded endpoints : 1180
+Periods:
+{'segment': 0, 'sessions': 48, 'rows': 960, 'first_date': '2025-01-01', 'last_date': '2025-03-07'}
+{'segment': 1, 'sessions': 217, 'rows': 4340, 'first_date': '2025-08-01', 'last_date': '2026-06-22'}
+
+[5] WRITE NEW DRAFT PROVENANCE ARTIFACTS
+DRAFT keys: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/step36i_protocol_review_draft/36i_candidate_sequence_eligible_keys_DRAFT.csv
+DRAFT key SHA: 4c9364df9e761b81d0776cdf927a88f25d785178640cb3ffe380ad93673a9d65
+DRAFT proposal: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/step36i_protocol_review_draft/36i_protocol_deviation_DRAFT.json
+DRAFT proposal SHA: ce89aebe2467fcb2003639aa00256d0670ce2ac2ac96fd140041dfd7a1895df8
+
+==============================================================================================================
+STEP 36I-A COMPLETED — DRAFT EVIDENCE ONLY
+Original Step-35 freeze modified: FALSE
+Sealed test parquet opened: FALSE
+Held-out metrics computed: FALSE
+Protocol amendment approved: FALSE
+Further raw-test access approved: FALSE
+==============================================================================================================

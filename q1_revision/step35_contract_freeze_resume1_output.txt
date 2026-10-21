@@ -1,0 +1,107 @@
+============================================================================================================================================
+STEP 35 — FINAL-TEST EVALUATION CONTRACT FREEZE
+============================================================================================================================================
+Final-test parquet access : PROHIBITED
+Final-test hashing        : PROHIBITED
+Final-test class balance  : NOT INSPECTED
+Final-test metrics        : NOT COMPUTED
+
+[1] VERIFYING UPSTREAM FREEZES
+--------------------------------------------------------------------------------------------------------------------------------------------
+Step-14 manifest SHA : b19b034bd31bb5d426e78c58f808d9e4c9cba16281e666984aae2c8bf6a150a0
+Step-32 manifest SHA : 474b77ac670bbb7f61870372cdb98a6d7ac3ecaa4db8864ceb096fe9b26c39f0
+Step-34 manifest SHA : 2224aa145e4bdbce2563586cd1a28742facd29638985f29fb4c6a34fa9bcaf48
+Step-34 global FP    : 1ede9c52aaadf66ea4e82f777c4c03fcccece419bff0867c2a434e3fb13828c0
+PASS
+
+[2] VERIFYING FINAL-TEST SEAL METADATA WITHOUT ACCESSING TEST DATA
+--------------------------------------------------------------------------------------------------------------------------------------------
+Outer test rows         : 6,680
+Outer test dates        : 334
+Common evaluation rows  : 6,480
+Common evaluation dates : 324
+Stocks                  : 20
+Test parquet read       : False
+Test parquet hashed     : False
+PASS
+
+[3] VERIFYING DEVELOPMENT-FROZEN TRANSFORMATION STATE
+--------------------------------------------------------------------------------------------------------------------------------------------
+Predictor scaler       : 11_final_development_minmax_scaler.joblib
+Predictor scaler SHA   : 65f617fd809e993f70400e83c4890534713c99a99ca8c59ddf18de8301556d4a
+Predictor scaler clip  : False
+Regime threshold rows  : 20
+Regime threshold file  : 12_final_development_regime_thresholds.csv
+Development history SHA: c166253e781031095c9c90fc864973e2b12e5fe2b8950d81e7fda0f9c2eba9bd
+PASS
+
+[4] VERIFYING DEVELOPMENT-OOF PROBABILITY THRESHOLDS
+--------------------------------------------------------------------------------------------------------------------------------------------
+Threshold rows          : 24/24
+Threshold source        : pooled five-seed DEVELOPMENT OOF
+Threshold operator      : probability >= frozen threshold
+Final-test optimization : PROHIBITED
+PASS
+
+[5] VERIFYING 40 FROZEN FINAL-DEVELOPMENT CHECKPOINTS
+--------------------------------------------------------------------------------------------------------------------------------------------
+Verified checkpoints     : 40/40
+Best-seed promotion      : PROHIBITED
+Seed ensemble            : arithmetic mean of five probabilities
+PASS
+
+[6] CROSS-CHECKING FINAL MODELS AGAINST THRESHOLD CONTRACT
+--------------------------------------------------------------------------------------------------------------------------------------------
+All 8 architecture/config mappings agree.
+PASS
+
+[7] FREEZING FINAL-TEST MATERIALIZATION / INFERENCE / STATISTICAL CONTRACT
+--------------------------------------------------------------------------------------------------------------------------------------------
+Contract fingerprint : 44949863de7e82c3c303ca55beff8c59ae3206ea7eb542a9aab115ff88632bfc
+PASS
+
+[8] WRITING IMMUTABLE STEP-35 ARTIFACTS
+--------------------------------------------------------------------------------------------------------------------------------------------
+Inference plan       : /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/35_final_test_inference_plan.csv
+Threshold snapshot   : /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/35_final_test_threshold_contract.csv
+Frozen source        : /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/step35_freeze_final_test_contract_v1_frozen.py
+Contract manifest    : /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/35_final_test_evaluation_contract_freeze_manifest.json
+Contract manifest SHA: 6f715055fa30759fd9aa9b31655759bbd4dca25398f1d6d2cd39be5bf3bed1d7
+PASS
+
+[9] FINAL PROTECTION CHECK
+--------------------------------------------------------------------------------------------------------------------------------------------
+Global final-test lock : LOCKED_NOT_OPENED
+Final-test opened      : False
+Final-test scored      : False
+PASS
+
+============================================================================================================================================
+STEP 35 COMPLETE — FINAL-TEST EVALUATION CONTRACT FROZEN
+============================================================================================================================================
+Architectures                     : 8
+Fixed seed models                 : 40
+Frozen thresholds                 : 24
+Expected final-test endpoints     : 6,480
+Expected final-test dates         : 324
+Expected stocks/date              : 20
+Probability ensemble             : MEAN OF FIVE SEED PROBABILITIES
+Threshold tuning on final test   : PROHIBITED
+Best-seed promotion              : PROHIBITED
+Post-test model promotion        : PROHIBITED
+Primary inferential metric       : BALANCED ACCURACY
+Primary dependence correction    : CIRCULAR MOVING BLOCK BOOTSTRAP, L=20
+Bootstrap replications           : 2,000
+Sensitivity block lengths        : 10 / 20 / 40
+Multiple testing                 : BH-FDR, 24 PRIMARY BA TESTS
+Final-test parquet opened        : False
+Final-test parquet hashed        : False
+Final-test class balance seen    : False
+Final-test metrics computed      : False
+Final-test state                 : LOCKED_NOT_OPENED
+Contract fingerprint             : 44949863de7e82c3c303ca55beff8c59ae3206ea7eb542a9aab115ff88632bfc
+Freeze manifest SHA256           : 6f715055fa30759fd9aa9b31655759bbd4dca25398f1d6d2cd39be5bf3bed1d7
+============================================================================================================================================
+NEXT GATE: STEP36_ONE_TIME_FINAL_TEST_MATERIALIZATION_INFERENCE_SCORING
+DO NOT OPEN THE FINAL TEST MANUALLY.
+============================================================================================================================================

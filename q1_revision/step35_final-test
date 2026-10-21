@@ -1,0 +1,2305 @@
+========================================================================================================================
+STEP-35 PRE-FLIGHT — FINAL-TEST CONTRACT INSPECTION
+========================================================================================================================
+
+[1] STEP-34 FINAL FREEZE
+------------------------------------------------------------------------------------------------------------------------
+Path   : /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/34_final_development_refit_final_freeze_manifest.json
+SHA256 : 2224aa145e4bdbce2563586cd1a28742facd29638985f29fb4c6a34fa9bcaf48
+status: STEP34_FINAL_DEVELOPMENT_REFITS_FINAL_FREEZE_COMPLETE
+global_step34_fingerprint: 1ede9c52aaadf66ea4e82f777c4c03fcccece419bff0867c2a434e3fb13828c0
+Protection state:
+{
+  "architecture_selection_performed": false,
+  "best_seed_promotion_performed": false,
+  "best_seed_selection_performed": false,
+  "final_test_data_opened": false,
+  "final_test_metric_computed": false,
+  "final_test_state": "LOCKED_NOT_OPENED",
+  "threshold_reoptimization_performed": false
+}
+
+[2] STEP-10 FINAL-TEST SEAL METADATA
+------------------------------------------------------------------------------------------------------------------------
+
+Manifest: 10_final_test_seal.json
+{
+  "common_multitask_structural_rows": 6480,
+  "configuration_fingerprint_sha256": "9675cb42e5544d9a3cda235208b33cc4c27f7583531535505b42056aa86b04dd",
+  "file_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step10_chronological_splits/final_test_locked/10_final_test_locked_panel.parquet",
+  "first_reference_date": "2025-01-01",
+  "generated_at_utc": "2026-10-04T05:34:17+00:00",
+  "global_final_test_lock_sha256": "e6b67feaa5ca06ce9e659edbdeb56083051c9cea09995b208c7a6c962b5b0e84",
+  "global_final_test_lock_state": "LOCKED_NOT_OPENED",
+  "last_reference_date": "2026-06-30",
+  "note": "This Step-10 seal does not replace or mutate the global Step-00 final-test lock.",
+  "permitted_use_before_final_model_freeze": "none",
+  "reference_rows": 6680,
+  "relative_path": "feature_data/step10_chronological_splits/final_test_locked/10_final_test_locked_panel.parquet",
+  "schema_version": "1.0",
+  "sha256": "ab325ede85fbb6d7819e85472274b82d151d350f39a872a17747c6978b1dddae",
+  "status": "SEALED_NOT_OPENED",
+  "step09_manifest_sha256": "553d93abe5868ab6ecd21e41fa27da5231e203e2689091e85fe4baba057f206f",
+  "step09_target_panel_sha256": "8fcc17cadadbed3a77f60c56c64abd5c7efbde188d466260bc5337e4ddd70ddf",
+  "stock_count": 20,
+  "test_class_distribution_reported": false,
+  "test_model_performance_computed": false,
+  "unique_reference_dates": 334
+}
+
+[3] STEP-14 MODEL-ARRAY MANIFEST
+------------------------------------------------------------------------------------------------------------------------
+Path   : /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/14_model_array_manifest.json
+SHA256 : b19b034bd31bb5d426e78c58f808d9e4c9cba16281e666984aae2c8bf6a150a0
+{
+  "array_interface": {
+    "X_dtype": "float32",
+    "auxiliary_dtype": "float32",
+    "categorical_id_dtype": "int64",
+    "common_multitask_only": true,
+    "continuous_feature_count": 63,
+    "direction_dtype": "int64",
+    "lookback_sessions": 60,
+    "market_feature_count": 16,
+    "stock_feature_count": 47
+  },
+  "artifacts": {
+    "14_array_hashes.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/14_array_hashes.csv",
+      "relative_path": "audits/14_array_hashes.csv",
+      "sha256": "6d3c5911bdfb2204e3f38c63cd647a47208f92f36a04bd8f4ce339243156ec7f",
+      "size_bytes": 51674
+    },
+    "14_array_integrity_audit.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/14_array_integrity_audit.csv",
+      "relative_path": "audits/14_array_integrity_audit.csv",
+      "sha256": "7ccfe8e12df43361714437e0f135ae5fe1f362e680fe60e87b97b35632656711",
+      "size_bytes": 1815
+    },
+    "14_array_summary.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/14_array_summary.csv",
+      "relative_path": "audits/14_array_summary.csv",
+      "sha256": "30148f66e6ad7c267c43cc3320c8e02a8587ded372cad3c448fefefdb2ca5813",
+      "size_bytes": 1147
+    },
+    "14_array_summary.json": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/14_array_summary.json",
+      "relative_path": "audits/14_array_summary.json",
+      "sha256": "b1d9211fea2f8da448ae8b0ba34a683563bf682494d40eafeb049df20ed63eb8",
+      "size_bytes": 2253
+    },
+    "14_auxiliary_inverse_transform_audit.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/14_auxiliary_inverse_transform_audit.csv",
+      "relative_path": "audits/14_auxiliary_inverse_transform_audit.csv",
+      "sha256": "0ec79c29b700bdfc7fa10224adcb7dd69c247db351e971e6a65737a3e29d9446",
+      "size_bytes": 1284
+    },
+    "14_auxiliary_scaler_audit.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/14_auxiliary_scaler_audit.csv",
+      "relative_path": "audits/14_auxiliary_scaler_audit.csv",
+      "sha256": "d80ad579591fe0f7a0eb4d322bfeefd68303cf562231644b494983acfc5b3d02",
+      "size_bytes": 10121
+    },
+    "14_auxiliary_validation_range_audit.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/14_auxiliary_validation_range_audit.csv",
+      "relative_path": "audits/14_auxiliary_validation_range_audit.csv",
+      "sha256": "ef1f229f7f8db75b05770de26d09c0be62792ce96b31258bc3e4bf14572853d8",
+      "size_bytes": 4097
+    },
+    "14_endpoint_reconciliation_audit.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/14_endpoint_reconciliation_audit.csv",
+      "relative_path": "audits/14_endpoint_reconciliation_audit.csv",
+      "sha256": "6d0d8fa2b12487a2c022136a62e88d22c98849bbfe4bf7901b5b1faf07fe98e8",
+      "size_bytes": 774
+    },
+    "14_final_development_X_full.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_X_full.npy",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_X_full.npy",
+      "sha256": "c6857902355ffdf4dd4feb5c10f079f27e9b66a8c3ba5c749c959be7caee1778",
+      "size_bytes": 640483328
+    },
+    "14_final_development_X_market.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_X_market.npy",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_X_market.npy",
+      "sha256": "2966515caf9f275672ea7b46f82f3fb17f470dd348d9671757bdd8608aabbd9b",
+      "size_bytes": 162662528
+    },
+    "14_final_development_X_stock.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_X_stock.npy",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_X_stock.npy",
+      "sha256": "79d781b498b8c220869e182248b1e25d36bd1b1ec3794ec4a63a42186baafe94",
+      "size_bytes": 477820928
+    },
+    "14_final_development_auxiliary_target_minmax_scaler.joblib": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_auxiliary_target_minmax_scaler.joblib",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_auxiliary_target_minmax_scaler.joblib",
+      "sha256": "413b977ad2fd29a4b41128c81c4c56a68da994a5ba77965719f6199777f866e4",
+      "size_bytes": 953
+    },
+    "14_final_development_metadata.parquet": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_metadata.parquet",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_metadata.parquet",
+      "sha256": "c4163e0c70ccccf125bb74938da0819e3631f45ab4f509c357be4fc2999bb1b3",
+      "size_bytes": 4654561
+    },
+    "14_final_development_regime_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_regime_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_regime_id.npy",
+      "sha256": "5820a024b7bcb00e6b617fa031bd4d47ffb4a8c72595a90771ec2831c6612ee3",
+      "size_bytes": 339008
+    },
+    "14_final_development_stock_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_stock_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_stock_id.npy",
+      "sha256": "27d962270444f6e9d01c450e40350d19679df7a1c985e0ce3c7487c3a87d74ef",
+      "size_bytes": 339008
+    },
+    "14_final_development_y_aux_raw.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_y_aux_raw.npy",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_y_aux_raw.npy",
+      "sha256": "7d4977b88e152062f21bb27a6ac62d477cd3736830b1fe8f2d72ba14ab500350",
+      "size_bytes": 1694528
+    },
+    "14_final_development_y_aux_scaled.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_y_aux_scaled.npy",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_y_aux_scaled.npy",
+      "sha256": "bef28f8e85c19467ea41458dc5d4e352c2864fc61c9591113ff5366bc1332f4e",
+      "size_bytes": 1694528
+    },
+    "14_final_development_y_direction.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_y_direction.npy",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_y_direction.npy",
+      "sha256": "c01a8d376b9b63ef808882bf2dbd36fc6cf7c6f20d1e68cbf7755396ffb8eea8",
+      "size_bytes": 1016768
+    },
+    "14_fold_1_auxiliary_target_minmax_scaler.joblib": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_auxiliary_target_minmax_scaler.joblib",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_auxiliary_target_minmax_scaler.joblib",
+      "sha256": "493b759db01cff3087fe80f8d75ff56130ad7092f3acae3e5cb2de62ee45428c",
+      "size_bytes": 984
+    },
+    "14_fold_1_train_X_full.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_X_full.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_X_full.npy",
+      "sha256": "3bf720cce8fdd21d87189b7e274a167910cf9e156fbce81692f76633b47e70ae",
+      "size_bytes": 266414528
+    },
+    "14_fold_1_train_X_market.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_X_market.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_X_market.npy",
+      "sha256": "9ba71cb178b6bf88657049163b2cdbf4fb64b6a004920b60d2f84a4bfa4a1f68",
+      "size_bytes": 67660928
+    },
+    "14_fold_1_train_X_stock.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_X_stock.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_X_stock.npy",
+      "sha256": "789660cc3907afe0a92acf60c4cd9b0c437d0dadf6f20da4d65388c5ad30becf",
+      "size_bytes": 198753728
+    },
+    "14_fold_1_train_metadata.parquet": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_metadata.parquet",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_metadata.parquet",
+      "sha256": "b32daa6db0426b57558a9884ddfbdad2d23d3ee2ff00b40ecbca2e7e280b8e9f",
+      "size_bytes": 1933216
+    },
+    "14_fold_1_train_regime_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_regime_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_regime_id.npy",
+      "sha256": "32d133e2545b49054e8654a945fe9c7bc8ebf3ba7eb70f1d60d51d23a2ad6eb8",
+      "size_bytes": 141088
+    },
+    "14_fold_1_train_stock_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_stock_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_stock_id.npy",
+      "sha256": "01a4ef50a1eeb128ff77b9319e4e978da7901f3fec4c61e4fc206fe7a6bcfa21",
+      "size_bytes": 141088
+    },
+    "14_fold_1_train_y_aux_raw.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_y_aux_raw.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_y_aux_raw.npy",
+      "sha256": "989d74d4b5d976e7c96e8d89cfee5ba8591af76810a62b66bec2b99d53414fe5",
+      "size_bytes": 704928
+    },
+    "14_fold_1_train_y_aux_scaled.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_y_aux_scaled.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_y_aux_scaled.npy",
+      "sha256": "bdfc92befde1a2fc1dfa5a6512be95ee47067c40b272bdabe591039be4ea5dc4",
+      "size_bytes": 704928
+    },
+    "14_fold_1_train_y_direction.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_y_direction.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_y_direction.npy",
+      "sha256": "81f8231ed037eda6d0aa0a37ca3cbca5d98b7df7064163db7757c90d59557007",
+      "size_bytes": 423008
+    },
+    "14_fold_1_validation_X_full.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_validation_X_full.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_validation_X_full.npy",
+      "sha256": "e21cf9cbfe989917232c437157cff355947cac5de2d5c871f2d955bfd8367ffd",
+      "size_bytes": 74088128
+    },
+    "14_fold_1_validation_X_market.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_validation_X_market.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_validation_X_market.npy",
+      "sha256": "582a49cb169f6b8ad4222ca34b0a580325bf20cef8ba3ba98de6f2172b910eac",
+      "size_bytes": 18816128
+    },
+    "14_fold_1_validation_X_stock.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_validation_X_stock.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_validation_X_stock.npy",
+      "sha256": "0974891583d8bff3e6a01c6da53b9f04785080b430ca448ae1bb2da16f18d943",
+      "size_bytes": 55272128
+    },
+    "14_fold_1_validation_metadata.parquet": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_ar
+
+[4] CANDIDATE SOURCE FILES
+------------------------------------------------------------------------------------------------------------------------
+
+========================================================================================================================
+step10_chronological_splits_v3.py
+========================================================================================================================
+FUNCTIONS:
+  split_design_payload                             lines 491-517
+  load_target_panel                                lines 619-713
+  evaluate_partition                               lines 746-826
+  build_outer                                      lines 849-883
+  build_folds                                      lines 886-948
+CLASSES:
+
+========================================================================================================================
+step11_unified_preprocessing_v3.py
+========================================================================================================================
+FUNCTIONS:
+  load_sources                                     lines 454-494
+  fit_scaler                                       lines 582-601
+  transform                                        lines 604-615
+  scaler_audit_rows                                lines 687-717
+  scaler_metadata                                  lines 757-798
+CLASSES:
+
+========================================================================================================================
+step12_volatility_regimes_v3.py
+========================================================================================================================
+FUNCTIONS:
+  load_development_sources                         lines 1123-1320
+  load_scaled_panel                                lines 1449-1520
+  fit_threshold_state                              lines 1597-1745
+  apply_threshold_state                            lines 1748-1854
+CLASSES:
+
+========================================================================================================================
+step13_sequence_indices_v3.py
+========================================================================================================================
+FUNCTIONS:
+  load_membership                                  lines 943-978
+  load_step12_panel                                lines 981-1111
+  build_history_lookup                             lines 1293-1375
+  build_sequence_index                             lines 1382-1843
+CLASSES:
+
+========================================================================================================================
+step14_materialize_model_arrays_v3.py
+========================================================================================================================
+FUNCTIONS:
+  load_development                                 lines 418-424
+  load_panel                                       lines 427-436
+  load_index                                       lines 439-454
+  build_history                                    lines 490-508
+  materialize_x                                    lines 511-529
+  scaler_rows                                      lines 554-563
+  build_arrays                                     lines 574-584
+  audit_arrays                                     lines 587-604
+  save_metadata                                    lines 616-628
+  save_scaler                                      lines 631-637
+  materialize_partition                            lines 640-658
+CLASSES:
+
+========================================================================================================================
+step16_freeze_stage1_model_registry_v3.py
+========================================================================================================================
+FUNCTIONS:
+  build_dependency_audit                           lines 1039-1077
+  build_reference_register                         lines 1084-1162
+  build_model_registry                             lines 1169-1271
+  build_hyperparameter_candidates                  lines 1278-1442
+  build_training_protocol                          lines 1449-1506
+  threshold_grid                                   lines 1513-1550
+  build_selection_protocol                         lines 1553-1691
+  build_ablation_plan                              lines 1698-1745
+  build_run_budget                                 lines 1909-2011
+CLASSES:
+
+========================================================================================================================
+step32_development_oof_threshold_optimization_v1.py
+========================================================================================================================
+FUNCTIONS:
+  load_json                                        lines 188-203
+  threshold_confusion                              lines 279-423
+CLASSES:
+
+========================================================================================================================
+step33_freeze_final_development_refit_duration_contract_v1.py
+========================================================================================================================
+FUNCTIONS:
+  load_json                                        lines 238-248
+CLASSES:
+
+========================================================================================================================
+step34_final_development_refit_execution_v1.py
+========================================================================================================================
+FUNCTIONS:
+  load_json                                        lines 375-389
+  build_source_semantic                            lines 873-966
+  build_protocol_reference                         lines 1047-1332
+  build_execution_plan                             lines 1396-1585
+CLASSES:
+
+========================================================================================================================
+STEP-14 SOURCE CONTEXT: step14_materialize_model_arrays_v3.py
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 1–16
+------------------------------------------------------------------------------------------------------------------------
+    1: #!/usr/bin/env python3
+    2: # -*- coding: utf-8 -*-
+    3: """
+    4: STEP 14 — CLEAN V3 MODEL-READY SEQUENCE ARRAY MATERIALIZATION
+    5: 
+    6: Materializes the frozen Step-13 common-multitask sequence endpoints into:
+    7:     X_full       (n,60,63) float32
+    8:     X_stock      (n,60,47) float32
+    9:     X_market     (n,60,16) float32
+   10:     y_direction  (n,3)     int64     [1d,3d,5d]
+   11:     y_aux_raw    (n,10)    float32
+   12:     y_aux_scaled (n,10)    float32
+   13:     stock_id     (n,)      int64
+   14:     regime_id    (n,)      int64
+   15: 
+   16: For each fold, the 10 auxiliary targets are MinMax-scaled from TRAIN common
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 4–19
+------------------------------------------------------------------------------------------------------------------------
+    4: STEP 14 — CLEAN V3 MODEL-READY SEQUENCE ARRAY MATERIALIZATION
+    5: 
+    6: Materializes the frozen Step-13 common-multitask sequence endpoints into:
+    7:     X_full       (n,60,63) float32
+    8:     X_stock      (n,60,47) float32
+    9:     X_market     (n,60,16) float32
+   10:     y_direction  (n,3)     int64     [1d,3d,5d]
+   11:     y_aux_raw    (n,10)    float32
+   12:     y_aux_scaled (n,10)    float32
+   13:     stock_id     (n,)      int64
+   14:     regime_id    (n,)      int64
+   15: 
+   16: For each fold, the 10 auxiliary targets are MinMax-scaled from TRAIN common
+   17: sequence endpoints only (clip=False), then the frozen transform is applied to
+   18: validation. A separate final-development auxiliary scaler is fitted on the
+   19: final-development common endpoints. Direction labels are never scaled.
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 12–27
+------------------------------------------------------------------------------------------------------------------------
+   12:     y_aux_scaled (n,10)    float32
+   13:     stock_id     (n,)      int64
+   14:     regime_id    (n,)      int64
+   15: 
+   16: For each fold, the 10 auxiliary targets are MinMax-scaled from TRAIN common
+   17: sequence endpoints only (clip=False), then the frozen transform is applied to
+   18: validation. A separate final-development auxiliary scaler is fitted on the
+   19: final-development common endpoints. Direction labels are never scaled.
+   20: 
+   21: No sequence membership is redefined. No feature selection, model fitting,
+   22: probability-threshold tuning, or final-test access occurs here.
+   23: 
+   24: Run:
+   25:     python step14_materialize_model_arrays_v3.py
+   26: Verify:
+   27:     python step14_materialize_model_arrays_v3.py --verify-only
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 29–44
+------------------------------------------------------------------------------------------------------------------------
+   29: 
+   30: from __future__ import annotations
+   31: 
+   32: import argparse
+   33: import gc
+   34: import hashlib
+   35: import importlib.metadata as importlib_metadata
+   36: import json
+   37: import os
+   38: import shutil
+   39: import sys
+   40: import traceback
+   41: from datetime import datetime, timezone
+   42: from pathlib import Path
+   43: from typing import Any, Dict, Optional
+   44: 
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 43–58
+------------------------------------------------------------------------------------------------------------------------
+   43: from typing import Any, Dict, Optional
+   44: 
+   45: import joblib
+   46: import numpy as np
+   47: import pandas as pd
+   48: import sklearn
+   49: from sklearn.preprocessing import MinMaxScaler
+   50: 
+   51: SCRIPT_FILE = Path(__file__).resolve()
+   52: SCRIPT_DIR = SCRIPT_FILE.parent
+   53: if SCRIPT_DIR.name != "q1_revision":
+   54:     raise RuntimeError("Place this script inside <repository>/q1_revision/.")
+   55: if str(SCRIPT_DIR) not in sys.path:
+   56:     sys.path.insert(0, str(SCRIPT_DIR))
+   57: import step00_config as cfg
+   58: 
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 70–85
+------------------------------------------------------------------------------------------------------------------------
+   70: AUX_COLUMNS = [
+   71:     "future_close_1d", "future_close_3d", "future_close_5d",
+   72:     "future_return_1d", "future_return_3d", "future_return_5d",
+   73:     "future_log_return_1d", "future_log_return_3d", "future_log_return_5d",
+   74:     "realized_volatility_5d",
+   75: ]
+   76: FORBIDDEN_TEST_FILENAME = "10_final_test_locked_panel.parquet"
+   77: 
+   78: STEP01_ENV = cfg.ENVIRONMENT_DIR / "01_environment_audit.json"
+   79: UPSTREAM = {
+   80:     1: (cfg.MANIFEST_DIR / "01_environment_audit_manifest.json", cfg.MANIFEST_DIR / "01_environment_audit_manifest.sha256"),
+   81:     2: (cfg.MANIFEST_DIR / "02_market_data_acquisition_manifest.json", cfg.MANIFEST_DIR / "02_market_data_acquisition_manifest.sha256"),
+   82:     3: (cfg.MANIFEST_DIR / "03_market_integrity_audit_manifest.json", cfg.MANIFEST_DIR / "03_market_integrity_audit_manifest.sha256"),
+   83:     4: (cfg.MANIFEST_DIR / "04_session_policy_manifest.json", cfg.MANIFEST_DIR / "04_session_policy_manifest.sha256"),
+   84:     5: (cfg.MANIFEST_DIR / "05_clean_model_panel_manifest.json", cfg.MANIFEST_DIR / "05_clean_model_panel_manifest.sha256"),
+   85:     6: (cfg.MANIFEST_DIR / "06_stock_feature_manifest.json", cfg.MANIFEST_DIR / "06_stock_feature_manifest.sha256"),
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 89–104
+------------------------------------------------------------------------------------------------------------------------
+   89:     10: (cfg.MANIFEST_DIR / "10_chronological_split_manifest.json", cfg.MANIFEST_DIR / "10_chronological_split_manifest.sha256"),
+   90:     11: (cfg.MANIFEST_DIR / "11_preprocessing_manifest.json", cfg.MANIFEST_DIR / "11_preprocessing_manifest.sha256"),
+   91:     12: (cfg.MANIFEST_DIR / "12_volatility_regime_manifest.json", cfg.MANIFEST_DIR / "12_volatility_regime_manifest.sha256"),
+   92:     13: (cfg.MANIFEST_DIR / "13_sequence_index_manifest.json", cfg.MANIFEST_DIR / "13_sequence_index_manifest.sha256"),
+   93: }
+   94: STEP10_DEVELOPMENT = cfg.FEATURE_DATA_DIR / "step10_chronological_splits" / "development" / "10_development_target_panel.parquet"
+   95: STEP10_TEST_SEAL = cfg.MANIFEST_DIR / "10_final_test_seal.json"
+   96: STEP12_ROOT = cfg.FEATURE_DATA_DIR / "step12_volatility_regimes"
+   97: STEP12_FINAL = STEP12_ROOT / "final_development" / "12_final_development_scaled_regimes.parquet"
+   98: STEP13_ROOT = cfg.FEATURE_DATA_DIR / "step13_sequence_indices"
+   99: STEP13_FINAL = STEP13_ROOT / "final_development" / "13_final_development_sequence_index.parquet"
+  100: 
+  101: OUT_DIR = cfg.FEATURE_DATA_DIR / "step14_model_arrays"
+  102: FINAL_DIR = OUT_DIR / "final_development"
+  103: ARRAY_SUMMARY_CSV = cfg.AUDIT_DIR / "14_array_summary.csv"
+  104: AUX_SCALER_AUDIT_CSV = cfg.AUDIT_DIR / "14_auxiliary_scaler_audit.csv"
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 91–106
+------------------------------------------------------------------------------------------------------------------------
+   91:     12: (cfg.MANIFEST_DIR / "12_volatility_regime_manifest.json", cfg.MANIFEST_DIR / "12_volatility_regime_manifest.sha256"),
+   92:     13: (cfg.MANIFEST_DIR / "13_sequence_index_manifest.json", cfg.MANIFEST_DIR / "13_sequence_index_manifest.sha256"),
+   93: }
+   94: STEP10_DEVELOPMENT = cfg.FEATURE_DATA_DIR / "step10_chronological_splits" / "development" / "10_development_target_panel.parquet"
+   95: STEP10_TEST_SEAL = cfg.MANIFEST_DIR / "10_final_test_seal.json"
+   96: STEP12_ROOT = cfg.FEATURE_DATA_DIR / "step12_volatility_regimes"
+   97: STEP12_FINAL = STEP12_ROOT / "final_development" / "12_final_development_scaled_regimes.parquet"
+   98: STEP13_ROOT = cfg.FEATURE_DATA_DIR / "step13_sequence_indices"
+   99: STEP13_FINAL = STEP13_ROOT / "final_development" / "13_final_development_sequence_index.parquet"
+  100: 
+  101: OUT_DIR = cfg.FEATURE_DATA_DIR / "step14_model_arrays"
+  102: FINAL_DIR = OUT_DIR / "final_development"
+  103: ARRAY_SUMMARY_CSV = cfg.AUDIT_DIR / "14_array_summary.csv"
+  104: AUX_SCALER_AUDIT_CSV = cfg.AUDIT_DIR / "14_auxiliary_scaler_audit.csv"
+  105: AUX_VALIDATION_RANGE_CSV = cfg.AUDIT_DIR / "14_auxiliary_validation_range_audit.csv"
+  106: AUX_INVERSE_AUDIT_CSV = cfg.AUDIT_DIR / "14_auxiliary_inverse_transform_audit.csv"
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 93–108
+------------------------------------------------------------------------------------------------------------------------
+   93: }
+   94: STEP10_DEVELOPMENT = cfg.FEATURE_DATA_DIR / "step10_chronological_splits" / "development" / "10_development_target_panel.parquet"
+   95: STEP10_TEST_SEAL = cfg.MANIFEST_DIR / "10_final_test_seal.json"
+   96: STEP12_ROOT = cfg.FEATURE_DATA_DIR / "step12_volatility_regimes"
+   97: STEP12_FINAL = STEP12_ROOT / "final_development" / "12_final_development_scaled_regimes.parquet"
+   98: STEP13_ROOT = cfg.FEATURE_DATA_DIR / "step13_sequence_indices"
+   99: STEP13_FINAL = STEP13_ROOT / "final_development" / "13_final_development_sequence_index.parquet"
+  100: 
+  101: OUT_DIR = cfg.FEATURE_DATA_DIR / "step14_model_arrays"
+  102: FINAL_DIR = OUT_DIR / "final_development"
+  103: ARRAY_SUMMARY_CSV = cfg.AUDIT_DIR / "14_array_summary.csv"
+  104: AUX_SCALER_AUDIT_CSV = cfg.AUDIT_DIR / "14_auxiliary_scaler_audit.csv"
+  105: AUX_VALIDATION_RANGE_CSV = cfg.AUDIT_DIR / "14_auxiliary_validation_range_audit.csv"
+  106: AUX_INVERSE_AUDIT_CSV = cfg.AUDIT_DIR / "14_auxiliary_inverse_transform_audit.csv"
+  107: ARRAY_INTEGRITY_CSV = cfg.AUDIT_DIR / "14_array_integrity_audit.csv"
+  108: ENDPOINT_RECONCILIATION_CSV = cfg.AUDIT_DIR / "14_endpoint_reconciliation_audit.csv"
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 96–111
+------------------------------------------------------------------------------------------------------------------------
+   96: STEP12_ROOT = cfg.FEATURE_DATA_DIR / "step12_volatility_regimes"
+   97: STEP12_FINAL = STEP12_ROOT / "final_development" / "12_final_development_scaled_regimes.parquet"
+   98: STEP13_ROOT = cfg.FEATURE_DATA_DIR / "step13_sequence_indices"
+   99: STEP13_FINAL = STEP13_ROOT / "final_development" / "13_final_development_sequence_index.parquet"
+  100: 
+  101: OUT_DIR = cfg.FEATURE_DATA_DIR / "step14_model_arrays"
+  102: FINAL_DIR = OUT_DIR / "final_development"
+  103: ARRAY_SUMMARY_CSV = cfg.AUDIT_DIR / "14_array_summary.csv"
+  104: AUX_SCALER_AUDIT_CSV = cfg.AUDIT_DIR / "14_auxiliary_scaler_audit.csv"
+  105: AUX_VALIDATION_RANGE_CSV = cfg.AUDIT_DIR / "14_auxiliary_validation_range_audit.csv"
+  106: AUX_INVERSE_AUDIT_CSV = cfg.AUDIT_DIR / "14_auxiliary_inverse_transform_audit.csv"
+  107: ARRAY_INTEGRITY_CSV = cfg.AUDIT_DIR / "14_array_integrity_audit.csv"
+  108: ENDPOINT_RECONCILIATION_CSV = cfg.AUDIT_DIR / "14_endpoint_reconciliation_audit.csv"
+  109: SOURCE_HASH_CSV = cfg.AUDIT_DIR / "14_source_file_hashes.csv"
+  110: HASH_REGISTER_CSV = cfg.AUDIT_DIR / "14_array_hashes.csv"
+  111: SUMMARY_JSON = cfg.AUDIT_DIR / "14_array_summary.json"
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 98–113
+------------------------------------------------------------------------------------------------------------------------
+   98: STEP13_ROOT = cfg.FEATURE_DATA_DIR / "step13_sequence_indices"
+   99: STEP13_FINAL = STEP13_ROOT / "final_development" / "13_final_development_sequence_index.parquet"
+  100: 
+  101: OUT_DIR = cfg.FEATURE_DATA_DIR / "step14_model_arrays"
+  102: FINAL_DIR = OUT_DIR / "final_development"
+  103: ARRAY_SUMMARY_CSV = cfg.AUDIT_DIR / "14_array_summary.csv"
+  104: AUX_SCALER_AUDIT_CSV = cfg.AUDIT_DIR / "14_auxiliary_scaler_audit.csv"
+  105: AUX_VALIDATION_RANGE_CSV = cfg.AUDIT_DIR / "14_auxiliary_validation_range_audit.csv"
+  106: AUX_INVERSE_AUDIT_CSV = cfg.AUDIT_DIR / "14_auxiliary_inverse_transform_audit.csv"
+  107: ARRAY_INTEGRITY_CSV = cfg.AUDIT_DIR / "14_array_integrity_audit.csv"
+  108: ENDPOINT_RECONCILIATION_CSV = cfg.AUDIT_DIR / "14_endpoint_reconciliation_audit.csv"
+  109: SOURCE_HASH_CSV = cfg.AUDIT_DIR / "14_source_file_hashes.csv"
+  110: HASH_REGISTER_CSV = cfg.AUDIT_DIR / "14_array_hashes.csv"
+  111: SUMMARY_JSON = cfg.AUDIT_DIR / "14_array_summary.json"
+  112: MANIFEST_JSON = cfg.MANIFEST_DIR / "14_model_array_manifest.json"
+  113: MANIFEST_SHA = cfg.MANIFEST_DIR / "14_model_array_manifest.sha256"
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 166–181
+------------------------------------------------------------------------------------------------------------------------
+  166: 
+  167: def artifact(path: Path):
+  168:     return {"path": str(path), "relative_path": rel(path), "size_bytes": int(path.stat().st_size), "sha256": sha256_file(path)}
+  169: 
+  170: 
+  171: def pkgver(name: str):
+  172:     try: return importlib_metadata.version(name)
+  173:     except importlib_metadata.PackageNotFoundError: return None
+  174: 
+  175: 
+  176: def verify_sidecar(manifest: Path, sidecar: Path, label: str) -> str:
+  177:     if not manifest.exists() or not sidecar.exists():
+  178:         raise RuntimeError(f"{label} manifest/sidecar missing.")
+  179:     expected = sidecar.read_text(encoding="utf-8").strip().split()[0]
+  180:     observed = sha256_file(manifest)
+  181:     if expected != observed:
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 167–182
+------------------------------------------------------------------------------------------------------------------------
+  167: def artifact(path: Path):
+  168:     return {"path": str(path), "relative_path": rel(path), "size_bytes": int(path.stat().st_size), "sha256": sha256_file(path)}
+  169: 
+  170: 
+  171: def pkgver(name: str):
+  172:     try: return importlib_metadata.version(name)
+  173:     except importlib_metadata.PackageNotFoundError: return None
+  174: 
+  175: 
+  176: def verify_sidecar(manifest: Path, sidecar: Path, label: str) -> str:
+  177:     if not manifest.exists() or not sidecar.exists():
+  178:         raise RuntimeError(f"{label} manifest/sidecar missing.")
+  179:     expected = sidecar.read_text(encoding="utf-8").strip().split()[0]
+  180:     observed = sha256_file(manifest)
+  181:     if expected != observed:
+  182:         raise RuntimeError(f"{label} manifest SHA mismatch: expected={expected}, observed={observed}")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 203–218
+------------------------------------------------------------------------------------------------------------------------
+  203:         configuration_fingerprint=fp,
+  204:     )
+  205:     if status != "VERIFIED_EXISTING":
+  206:         raise RuntimeError("Step-00 freeze is not VERIFIED_EXISTING.")
+  207:     if int(getattr(cfg, "LOOKBACK", LOOKBACK)) != LOOKBACK:
+  208:         raise RuntimeError("Frozen lookback is not 60.")
+  209:     lock_path = cfg.get_final_test_lock_path()
+  210:     lock = json.loads(lock_path.read_text(encoding="utf-8"))
+  211:     if lock.get("state") != "LOCKED_NOT_OPENED" or lock.get("final_test_opened") is not False or lock.get("final_test_scored") is not False:
+  212:         raise RuntimeError("Global final-test lock is not pristine.")
+  213:     return {"fingerprint": fp, "step00_manifest_sha": manifest_sha, "lock_path": str(lock_path), "lock_sha": sha256_file(lock_path), "state": lock["state"]}
+  214: 
+  215: 
+  216: def verify_environment():
+  217:     audit = json.loads(STEP01_ENV.read_text(encoding="utf-8"))
+  218:     expected_python = audit.get("system", {}).get("python_executable")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 205–220
+------------------------------------------------------------------------------------------------------------------------
+  205:     if status != "VERIFIED_EXISTING":
+  206:         raise RuntimeError("Step-00 freeze is not VERIFIED_EXISTING.")
+  207:     if int(getattr(cfg, "LOOKBACK", LOOKBACK)) != LOOKBACK:
+  208:         raise RuntimeError("Frozen lookback is not 60.")
+  209:     lock_path = cfg.get_final_test_lock_path()
+  210:     lock = json.loads(lock_path.read_text(encoding="utf-8"))
+  211:     if lock.get("state") != "LOCKED_NOT_OPENED" or lock.get("final_test_opened") is not False or lock.get("final_test_scored") is not False:
+  212:         raise RuntimeError("Global final-test lock is not pristine.")
+  213:     return {"fingerprint": fp, "step00_manifest_sha": manifest_sha, "lock_path": str(lock_path), "lock_sha": sha256_file(lock_path), "state": lock["state"]}
+  214: 
+  215: 
+  216: def verify_environment():
+  217:     audit = json.loads(STEP01_ENV.read_text(encoding="utf-8"))
+  218:     expected_python = audit.get("system", {}).get("python_executable")
+  219:     if expected_python and Path(expected_python).resolve() != Path(sys.executable).resolve():
+  220:         raise RuntimeError(f"Wrong Python environment. frozen={expected_python}, current={sys.executable}")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 351–366
+------------------------------------------------------------------------------------------------------------------------
+  351: 
+  352:     expected_stock_id_map = {ticker: int(i) for i, ticker in enumerate(cfg.STOCK_TICKERS)}
+  353:     if manifests[13].get("stock_id_map") != expected_stock_id_map:
+  354:         raise RuntimeError("Step-13 stock_id_map differs from Step-00 ticker order.")
+  355: 
+  356:     seal = json.loads(STEP10_TEST_SEAL.read_text(encoding="utf-8"))
+  357:     if seal.get("status") != "SEALED_NOT_OPENED" or seal.get("global_final_test_lock_state") != "LOCKED_NOT_OPENED":
+  358:         raise RuntimeError("Step-10 test seal is not pristine.")
+  359: 
+  360:     return {
+  361:         "shas": shas, "manifests": manifests,
+  362:         "stock_features": stock_features, "market_features": market_features, "all_features": all_features,
+  363:         "feature_interface_sha": interface_sha,
+  364:         "feature_partition_policy": "first_47_stock_then_last_16_nifty",
+  365:         "split_design_sha": split_sha,
+  366:         "development_sha": dev_sha, "step12_hashes": step12_hashes, "step13_hashes": step13_hashes,
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 363–378
+------------------------------------------------------------------------------------------------------------------------
+  363:         "feature_interface_sha": interface_sha,
+  364:         "feature_partition_policy": "first_47_stock_then_last_16_nifty",
+  365:         "split_design_sha": split_sha,
+  366:         "development_sha": dev_sha, "step12_hashes": step12_hashes, "step13_hashes": step13_hashes,
+  367:         "final12_sha": final12_sha, "final13_sha": final13_sha,
+  368:         "stock_id_map": expected_stock_id_map,
+  369:         "test_seal_status": seal["status"], "sealed_test_sha_metadata_only": seal.get("sha256"),
+  370:     }
+  371: 
+  372: 
+  373: def canonical_outputs():
+  374:     return (
+  375:         OUT_DIR, ARRAY_SUMMARY_CSV, AUX_SCALER_AUDIT_CSV, AUX_VALIDATION_RANGE_CSV,
+  376:         AUX_INVERSE_AUDIT_CSV, ARRAY_INTEGRITY_CSV, ENDPOINT_RECONCILIATION_CSV,
+  377:         SOURCE_HASH_CSV, HASH_REGISTER_CSV, SUMMARY_JSON, MANIFEST_JSON, MANIFEST_SHA,
+  378:         FROZEN_SCRIPT, SUMMARY_TXT,
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 369–384
+------------------------------------------------------------------------------------------------------------------------
+  369:         "test_seal_status": seal["status"], "sealed_test_sha_metadata_only": seal.get("sha256"),
+  370:     }
+  371: 
+  372: 
+  373: def canonical_outputs():
+  374:     return (
+  375:         OUT_DIR, ARRAY_SUMMARY_CSV, AUX_SCALER_AUDIT_CSV, AUX_VALIDATION_RANGE_CSV,
+  376:         AUX_INVERSE_AUDIT_CSV, ARRAY_INTEGRITY_CSV, ENDPOINT_RECONCILIATION_CSV,
+  377:         SOURCE_HASH_CSV, HASH_REGISTER_CSV, SUMMARY_JSON, MANIFEST_JSON, MANIFEST_SHA,
+  378:         FROZEN_SCRIPT, SUMMARY_TXT,
+  379:     )
+  380: 
+  381: 
+  382: def assert_fresh():
+  383:     collisions = [p for p in canonical_outputs() if p.exists()]
+  384:     if collisions:
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 387–402
+------------------------------------------------------------------------------------------------------------------------
+  387: 
+  388: def create_stage():
+  389:     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+  390:     root = cfg.FEATURE_DATA_DIR / f"_step14_staging_{stamp}_{os.getpid()}"
+  391:     root.mkdir(parents=True, exist_ok=False)
+  392:     for fold in FOLDS: (root / f"fold_{fold}").mkdir()
+  393:     (root / "final_development").mkdir()
+  394:     return root
+  395: 
+  396: 
+  397: def archive_partial():
+  398:     if MANIFEST_JSON.exists(): return None
+  399:     existing = [p for p in canonical_outputs() if p.exists()]
+  400:     if not existing: return None
+  401:     FAILED_DIR.mkdir(parents=True, exist_ok=True)
+  402:     dest = FAILED_DIR / f"partial_artifacts_{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}"
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 485–500
+------------------------------------------------------------------------------------------------------------------------
+  485:         "market_session_ids_exact_step12_to_step13": session_ok, "direction_labels_binary": True,
+  486:         "auxiliary_targets_finite": True,
+  487:     }
+  488: 
+  489: 
+  490: def build_history(train_panel: pd.DataFrame, validation_panel: Optional[pd.DataFrame], partition: str, features: list[str]):
+  491:     if partition in ("train", "final_development"):
+  492:         hdf = train_panel.copy()
+  493:     elif partition == "validation":
+  494:         hdf = pd.concat([train_panel, validation_panel], ignore_index=True).sort_values(["Date", "Ticker"]).reset_index(drop=True)
+  495:     else:
+  496:         raise RuntimeError(f"Unknown partition {partition}")
+  497:     if hdf[["Ticker", "Date"]].duplicated().any(): raise RuntimeError(f"{partition}: duplicate history keys.")
+  498:     lookup = {}
+  499:     for (ticker, segment), g in hdf.groupby(["Ticker", "continuity_segment_id"], sort=True):
+  500:         g = g.sort_values("Date").reset_index(drop=True)
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 528–543
+------------------------------------------------------------------------------------------------------------------------
+  528:         X[int(row.array_row_index)] = seq
+  529:     return X
+  530: 
+  531: 
+  532: def fit_aux(endpoints: pd.DataFrame, scope: str):
+  533:     raw = endpoints[AUX_COLUMNS].astype(np.float64)
+  534:     scaler = MinMaxScaler(feature_range=(0.0, 1.0), copy=True, clip=False)
+  535:     scaled = scaler.fit_transform(raw)
+  536:     if scaler.n_features_in_ != len(AUX_COLUMNS): raise RuntimeError(f"{scope}: auxiliary scaler feature-count mismatch.")
+  537:     if hasattr(scaler, "feature_names_in_") and list(scaler.feature_names_in_) != AUX_COLUMNS: raise RuntimeError(f"{scope}: auxiliary target order mismatch.")
+  538:     if np.any(np.asarray(scaler.data_range_) == 0.0): raise RuntimeError(f"{scope}: constant auxiliary target detected.")
+  539:     if not np.allclose(scaled.min(0), 0.0, rtol=0.0, atol=1e-10) or not np.allclose(scaled.max(0), 1.0, rtol=0.0, atol=1e-10):
+  540:         raise RuntimeError(f"{scope}: training auxiliary scale is not [0,1].")
+  541:     return scaler, scaled
+  542: 
+  543: 
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 529–544
+------------------------------------------------------------------------------------------------------------------------
+  529:     return X
+  530: 
+  531: 
+  532: def fit_aux(endpoints: pd.DataFrame, scope: str):
+  533:     raw = endpoints[AUX_COLUMNS].astype(np.float64)
+  534:     scaler = MinMaxScaler(feature_range=(0.0, 1.0), copy=True, clip=False)
+  535:     scaled = scaler.fit_transform(raw)
+  536:     if scaler.n_features_in_ != len(AUX_COLUMNS): raise RuntimeError(f"{scope}: auxiliary scaler feature-count mismatch.")
+  537:     if hasattr(scaler, "feature_names_in_") and list(scaler.feature_names_in_) != AUX_COLUMNS: raise RuntimeError(f"{scope}: auxiliary target order mismatch.")
+  538:     if np.any(np.asarray(scaler.data_range_) == 0.0): raise RuntimeError(f"{scope}: constant auxiliary target detected.")
+  539:     if not np.allclose(scaled.min(0), 0.0, rtol=0.0, atol=1e-10) or not np.allclose(scaled.max(0), 1.0, rtol=0.0, atol=1e-10):
+  540:         raise RuntimeError(f"{scope}: training auxiliary scale is not [0,1].")
+  541:     return scaler, scaled
+  542: 
+  543: 
+  544: def aux_inverse(scaler, endpoints, scaled, scope, fold, partition):
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 530–545
+------------------------------------------------------------------------------------------------------------------------
+  530: 
+  531: 
+  532: def fit_aux(endpoints: pd.DataFrame, scope: str):
+  533:     raw = endpoints[AUX_COLUMNS].astype(np.float64)
+  534:     scaler = MinMaxScaler(feature_range=(0.0, 1.0), copy=True, clip=False)
+  535:     scaled = scaler.fit_transform(raw)
+  536:     if scaler.n_features_in_ != len(AUX_COLUMNS): raise RuntimeError(f"{scope}: auxiliary scaler feature-count mismatch.")
+  537:     if hasattr(scaler, "feature_names_in_") and list(scaler.feature_names_in_) != AUX_COLUMNS: raise RuntimeError(f"{scope}: auxiliary target order mismatch.")
+  538:     if np.any(np.asarray(scaler.data_range_) == 0.0): raise RuntimeError(f"{scope}: constant auxiliary target detected.")
+  539:     if not np.allclose(scaled.min(0), 0.0, rtol=0.0, atol=1e-10) or not np.allclose(scaled.max(0), 1.0, rtol=0.0, atol=1e-10):
+  540:         raise RuntimeError(f"{scope}: training auxiliary scale is not [0,1].")
+  541:     return scaler, scaled
+  542: 
+  543: 
+  544: def aux_inverse(scaler, endpoints, scaled, scope, fold, partition):
+  545:     raw = endpoints[AUX_COLUMNS].to_numpy(np.float64)
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 531–546
+------------------------------------------------------------------------------------------------------------------------
+  531: 
+  532: def fit_aux(endpoints: pd.DataFrame, scope: str):
+  533:     raw = endpoints[AUX_COLUMNS].astype(np.float64)
+  534:     scaler = MinMaxScaler(feature_range=(0.0, 1.0), copy=True, clip=False)
+  535:     scaled = scaler.fit_transform(raw)
+  536:     if scaler.n_features_in_ != len(AUX_COLUMNS): raise RuntimeError(f"{scope}: auxiliary scaler feature-count mismatch.")
+  537:     if hasattr(scaler, "feature_names_in_") and list(scaler.feature_names_in_) != AUX_COLUMNS: raise RuntimeError(f"{scope}: auxiliary target order mismatch.")
+  538:     if np.any(np.asarray(scaler.data_range_) == 0.0): raise RuntimeError(f"{scope}: constant auxiliary target detected.")
+  539:     if not np.allclose(scaled.min(0), 0.0, rtol=0.0, atol=1e-10) or not np.allclose(scaled.max(0), 1.0, rtol=0.0, atol=1e-10):
+  540:         raise RuntimeError(f"{scope}: training auxiliary scale is not [0,1].")
+  541:     return scaler, scaled
+  542: 
+  543: 
+  544: def aux_inverse(scaler, endpoints, scaled, scope, fold, partition):
+  545:     raw = endpoints[AUX_COLUMNS].to_numpy(np.float64)
+  546:     back = scaler.inverse_transform(scaled)
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 532–547
+------------------------------------------------------------------------------------------------------------------------
+  532: def fit_aux(endpoints: pd.DataFrame, scope: str):
+  533:     raw = endpoints[AUX_COLUMNS].astype(np.float64)
+  534:     scaler = MinMaxScaler(feature_range=(0.0, 1.0), copy=True, clip=False)
+  535:     scaled = scaler.fit_transform(raw)
+  536:     if scaler.n_features_in_ != len(AUX_COLUMNS): raise RuntimeError(f"{scope}: auxiliary scaler feature-count mismatch.")
+  537:     if hasattr(scaler, "feature_names_in_") and list(scaler.feature_names_in_) != AUX_COLUMNS: raise RuntimeError(f"{scope}: auxiliary target order mismatch.")
+  538:     if np.any(np.asarray(scaler.data_range_) == 0.0): raise RuntimeError(f"{scope}: constant auxiliary target detected.")
+  539:     if not np.allclose(scaled.min(0), 0.0, rtol=0.0, atol=1e-10) or not np.allclose(scaled.max(0), 1.0, rtol=0.0, atol=1e-10):
+  540:         raise RuntimeError(f"{scope}: training auxiliary scale is not [0,1].")
+  541:     return scaler, scaled
+  542: 
+  543: 
+  544: def aux_inverse(scaler, endpoints, scaled, scope, fold, partition):
+  545:     raw = endpoints[AUX_COLUMNS].to_numpy(np.float64)
+  546:     back = scaler.inverse_transform(scaled)
+  547:     diff = np.abs(back - raw)
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 535–550
+------------------------------------------------------------------------------------------------------------------------
+  535:     scaled = scaler.fit_transform(raw)
+  536:     if scaler.n_features_in_ != len(AUX_COLUMNS): raise RuntimeError(f"{scope}: auxiliary scaler feature-count mismatch.")
+  537:     if hasattr(scaler, "feature_names_in_") and list(scaler.feature_names_in_) != AUX_COLUMNS: raise RuntimeError(f"{scope}: auxiliary target order mismatch.")
+  538:     if np.any(np.asarray(scaler.data_range_) == 0.0): raise RuntimeError(f"{scope}: constant auxiliary target detected.")
+  539:     if not np.allclose(scaled.min(0), 0.0, rtol=0.0, atol=1e-10) or not np.allclose(scaled.max(0), 1.0, rtol=0.0, atol=1e-10):
+  540:         raise RuntimeError(f"{scope}: training auxiliary scale is not [0,1].")
+  541:     return scaler, scaled
+  542: 
+  543: 
+  544: def aux_inverse(scaler, endpoints, scaled, scope, fold, partition):
+  545:     raw = endpoints[AUX_COLUMNS].to_numpy(np.float64)
+  546:     back = scaler.inverse_transform(scaled)
+  547:     diff = np.abs(back - raw)
+  548:     norm_base = np.maximum.reduce([np.ones(raw.shape[1]), np.max(np.abs(raw), axis=0), np.asarray(scaler.data_range_, dtype=np.float64)])
+  549:     max_abs = float(diff.max()); max_norm = float((diff / norm_base.reshape(1, -1)).max())
+  550:     if max_norm > 1e-12: raise RuntimeError(f"{scope}: auxiliary inverse audit failed: {max_norm:.3e}")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 538–553
+------------------------------------------------------------------------------------------------------------------------
+  538:     if np.any(np.asarray(scaler.data_range_) == 0.0): raise RuntimeError(f"{scope}: constant auxiliary target detected.")
+  539:     if not np.allclose(scaled.min(0), 0.0, rtol=0.0, atol=1e-10) or not np.allclose(scaled.max(0), 1.0, rtol=0.0, atol=1e-10):
+  540:         raise RuntimeError(f"{scope}: training auxiliary scale is not [0,1].")
+  541:     return scaler, scaled
+  542: 
+  543: 
+  544: def aux_inverse(scaler, endpoints, scaled, scope, fold, partition):
+  545:     raw = endpoints[AUX_COLUMNS].to_numpy(np.float64)
+  546:     back = scaler.inverse_transform(scaled)
+  547:     diff = np.abs(back - raw)
+  548:     norm_base = np.maximum.reduce([np.ones(raw.shape[1]), np.max(np.abs(raw), axis=0), np.asarray(scaler.data_range_, dtype=np.float64)])
+  549:     max_abs = float(diff.max()); max_norm = float((diff / norm_base.reshape(1, -1)).max())
+  550:     if max_norm > 1e-12: raise RuntimeError(f"{scope}: auxiliary inverse audit failed: {max_norm:.3e}")
+  551:     return {"scope": scope, "fold": np.nan if fold is None else fold, "partition": partition, "rows": int(len(endpoints)), "maximum_absolute_difference": max_abs, "maximum_normalized_difference": max_norm, "normalized_tolerance": 1e-12, "passed": True}
+  552: 
+  553: 
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 540–555
+------------------------------------------------------------------------------------------------------------------------
+  540:         raise RuntimeError(f"{scope}: training auxiliary scale is not [0,1].")
+  541:     return scaler, scaled
+  542: 
+  543: 
+  544: def aux_inverse(scaler, endpoints, scaled, scope, fold, partition):
+  545:     raw = endpoints[AUX_COLUMNS].to_numpy(np.float64)
+  546:     back = scaler.inverse_transform(scaled)
+  547:     diff = np.abs(back - raw)
+  548:     norm_base = np.maximum.reduce([np.ones(raw.shape[1]), np.max(np.abs(raw), axis=0), np.asarray(scaler.data_range_, dtype=np.float64)])
+  549:     max_abs = float(diff.max()); max_norm = float((diff / norm_base.reshape(1, -1)).max())
+  550:     if max_norm > 1e-12: raise RuntimeError(f"{scope}: auxiliary inverse audit failed: {max_norm:.3e}")
+  551:     return {"scope": scope, "fold": np.nan if fold is None else fold, "partition": partition, "rows": int(len(endpoints)), "maximum_absolute_difference": max_abs, "maximum_normalized_difference": max_norm, "normalized_tolerance": 1e-12, "passed": True}
+  552: 
+  553: 
+  554: def scaler_rows(scaler, scope, fold, fit_rows):
+  555:     rows = []
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 542–557
+------------------------------------------------------------------------------------------------------------------------
+  542: 
+  543: 
+  544: def aux_inverse(scaler, endpoints, scaled, scope, fold, partition):
+  545:     raw = endpoints[AUX_COLUMNS].to_numpy(np.float64)
+  546:     back = scaler.inverse_transform(scaled)
+  547:     diff = np.abs(back - raw)
+  548:     norm_base = np.maximum.reduce([np.ones(raw.shape[1]), np.max(np.abs(raw), axis=0), np.asarray(scaler.data_range_, dtype=np.float64)])
+  549:     max_abs = float(diff.max()); max_norm = float((diff / norm_base.reshape(1, -1)).max())
+  550:     if max_norm > 1e-12: raise RuntimeError(f"{scope}: auxiliary inverse audit failed: {max_norm:.3e}")
+  551:     return {"scope": scope, "fold": np.nan if fold is None else fold, "partition": partition, "rows": int(len(endpoints)), "maximum_absolute_difference": max_abs, "maximum_normalized_difference": max_norm, "normalized_tolerance": 1e-12, "passed": True}
+  552: 
+  553: 
+  554: def scaler_rows(scaler, scope, fold, fit_rows):
+  555:     rows = []
+  556:     for i, target in enumerate(AUX_COLUMNS):
+  557:         rows.append({
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 548–563
+------------------------------------------------------------------------------------------------------------------------
+  548:     norm_base = np.maximum.reduce([np.ones(raw.shape[1]), np.max(np.abs(raw), axis=0), np.asarray(scaler.data_range_, dtype=np.float64)])
+  549:     max_abs = float(diff.max()); max_norm = float((diff / norm_base.reshape(1, -1)).max())
+  550:     if max_norm > 1e-12: raise RuntimeError(f"{scope}: auxiliary inverse audit failed: {max_norm:.3e}")
+  551:     return {"scope": scope, "fold": np.nan if fold is None else fold, "partition": partition, "rows": int(len(endpoints)), "maximum_absolute_difference": max_abs, "maximum_normalized_difference": max_norm, "normalized_tolerance": 1e-12, "passed": True}
+  552: 
+  553: 
+  554: def scaler_rows(scaler, scope, fold, fit_rows):
+  555:     rows = []
+  556:     for i, target in enumerate(AUX_COLUMNS):
+  557:         rows.append({
+  558:             "scope": scope, "fold": np.nan if fold is None else fold, "target_number": i+1, "target": target, "fit_rows": int(fit_rows),
+  559:             "train_data_min": float(scaler.data_min_[i]), "train_data_max": float(scaler.data_max_[i]), "train_data_range": float(scaler.data_range_[i]),
+  560:             "scaler_scale": float(scaler.scale_[i]), "scaler_min": float(scaler.min_[i]), "feature_range_low": 0.0, "feature_range_high": 1.0,
+  561:             "clip": False, "validation_used_in_fit": False, "final_test_used_in_fit": False,
+  562:         })
+  563:     return rows
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 553–568
+------------------------------------------------------------------------------------------------------------------------
+  553: 
+  554: def scaler_rows(scaler, scope, fold, fit_rows):
+  555:     rows = []
+  556:     for i, target in enumerate(AUX_COLUMNS):
+  557:         rows.append({
+  558:             "scope": scope, "fold": np.nan if fold is None else fold, "target_number": i+1, "target": target, "fit_rows": int(fit_rows),
+  559:             "train_data_min": float(scaler.data_min_[i]), "train_data_max": float(scaler.data_max_[i]), "train_data_range": float(scaler.data_range_[i]),
+  560:             "scaler_scale": float(scaler.scale_[i]), "scaler_min": float(scaler.min_[i]), "feature_range_low": 0.0, "feature_range_high": 1.0,
+  561:             "clip": False, "validation_used_in_fit": False, "final_test_used_in_fit": False,
+  562:         })
+  563:     return rows
+  564: 
+  565: 
+  566: def validation_range_rows(fold, scaled):
+  567:     rows = []
+  568:     for i, target in enumerate(AUX_COLUMNS):
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 554–569
+------------------------------------------------------------------------------------------------------------------------
+  554: def scaler_rows(scaler, scope, fold, fit_rows):
+  555:     rows = []
+  556:     for i, target in enumerate(AUX_COLUMNS):
+  557:         rows.append({
+  558:             "scope": scope, "fold": np.nan if fold is None else fold, "target_number": i+1, "target": target, "fit_rows": int(fit_rows),
+  559:             "train_data_min": float(scaler.data_min_[i]), "train_data_max": float(scaler.data_max_[i]), "train_data_range": float(scaler.data_range_[i]),
+  560:             "scaler_scale": float(scaler.scale_[i]), "scaler_min": float(scaler.min_[i]), "feature_range_low": 0.0, "feature_range_high": 1.0,
+  561:             "clip": False, "validation_used_in_fit": False, "final_test_used_in_fit": False,
+  562:         })
+  563:     return rows
+  564: 
+  565: 
+  566: def validation_range_rows(fold, scaled):
+  567:     rows = []
+  568:     for i, target in enumerate(AUX_COLUMNS):
+  569:         v = scaled[:, i]; below = int((v < 0).sum()); above = int((v > 1).sum())
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 555–570
+------------------------------------------------------------------------------------------------------------------------
+  555:     rows = []
+  556:     for i, target in enumerate(AUX_COLUMNS):
+  557:         rows.append({
+  558:             "scope": scope, "fold": np.nan if fold is None else fold, "target_number": i+1, "target": target, "fit_rows": int(fit_rows),
+  559:             "train_data_min": float(scaler.data_min_[i]), "train_data_max": float(scaler.data_max_[i]), "train_data_range": float(scaler.data_range_[i]),
+  560:             "scaler_scale": float(scaler.scale_[i]), "scaler_min": float(scaler.min_[i]), "feature_range_low": 0.0, "feature_range_high": 1.0,
+  561:             "clip": False, "validation_used_in_fit": False, "final_test_used_in_fit": False,
+  562:         })
+  563:     return rows
+  564: 
+  565: 
+  566: def validation_range_rows(fold, scaled):
+  567:     rows = []
+  568:     for i, target in enumerate(AUX_COLUMNS):
+  569:         v = scaled[:, i]; below = int((v < 0).sum()); above = int((v > 1).sum())
+  570:         rows.append({"fold": fold, "target": target, "validation_min": float(v.min()), "validation_max": float(v.max()), "below_zero_count": below, "above_one_count": above, "outside_0_1_count": below + above, "clip": False, "scaler_refit_on_validation": False})
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 564–579
+------------------------------------------------------------------------------------------------------------------------
+  564: 
+  565: 
+  566: def validation_range_rows(fold, scaled):
+  567:     rows = []
+  568:     for i, target in enumerate(AUX_COLUMNS):
+  569:         v = scaled[:, i]; below = int((v < 0).sum()); above = int((v > 1).sum())
+  570:         rows.append({"fold": fold, "target": target, "validation_min": float(v.min()), "validation_max": float(v.max()), "below_zero_count": below, "above_one_count": above, "outside_0_1_count": below + above, "clip": False, "scaler_refit_on_validation": False})
+  571:     return rows
+  572: 
+  573: 
+  574: def build_arrays(endpoints, X_full, aux_scaled):
+  575:     return {
+  576:         "X_full": X_full,
+  577:         "X_stock": X_full[:, :, :STOCK_FEATURE_COUNT].copy(),
+  578:         "X_market": X_full[:, :, STOCK_FEATURE_COUNT:].copy(),
+  579:         "y_direction": endpoints[DIRECTION_COLUMNS].to_numpy(dtype=np.int64),
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 568–583
+------------------------------------------------------------------------------------------------------------------------
+  568:     for i, target in enumerate(AUX_COLUMNS):
+  569:         v = scaled[:, i]; below = int((v < 0).sum()); above = int((v > 1).sum())
+  570:         rows.append({"fold": fold, "target": target, "validation_min": float(v.min()), "validation_max": float(v.max()), "below_zero_count": below, "above_one_count": above, "outside_0_1_count": below + above, "clip": False, "scaler_refit_on_validation": False})
+  571:     return rows
+  572: 
+  573: 
+  574: def build_arrays(endpoints, X_full, aux_scaled):
+  575:     return {
+  576:         "X_full": X_full,
+  577:         "X_stock": X_full[:, :, :STOCK_FEATURE_COUNT].copy(),
+  578:         "X_market": X_full[:, :, STOCK_FEATURE_COUNT:].copy(),
+  579:         "y_direction": endpoints[DIRECTION_COLUMNS].to_numpy(dtype=np.int64),
+  580:         "y_aux_raw": endpoints[AUX_COLUMNS].to_numpy(dtype=np.float32),
+  581:         "y_aux_scaled": aux_scaled.astype(np.float32),
+  582:         "stock_id": endpoints["stock_id"].to_numpy(dtype=np.int64),
+  583:         "regime_id": endpoints["regime_id"].to_numpy(dtype=np.int64),
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 570–585
+------------------------------------------------------------------------------------------------------------------------
+  570:         rows.append({"fold": fold, "target": target, "validation_min": float(v.min()), "validation_max": float(v.max()), "below_zero_count": below, "above_one_count": above, "outside_0_1_count": below + above, "clip": False, "scaler_refit_on_validation": False})
+  571:     return rows
+  572: 
+  573: 
+  574: def build_arrays(endpoints, X_full, aux_scaled):
+  575:     return {
+  576:         "X_full": X_full,
+  577:         "X_stock": X_full[:, :, :STOCK_FEATURE_COUNT].copy(),
+  578:         "X_market": X_full[:, :, STOCK_FEATURE_COUNT:].copy(),
+  579:         "y_direction": endpoints[DIRECTION_COLUMNS].to_numpy(dtype=np.int64),
+  580:         "y_aux_raw": endpoints[AUX_COLUMNS].to_numpy(dtype=np.float32),
+  581:         "y_aux_scaled": aux_scaled.astype(np.float32),
+  582:         "stock_id": endpoints["stock_id"].to_numpy(dtype=np.int64),
+  583:         "regime_id": endpoints["regime_id"].to_numpy(dtype=np.int64),
+  584:     }
+  585: 
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 571–586
+------------------------------------------------------------------------------------------------------------------------
+  571:     return rows
+  572: 
+  573: 
+  574: def build_arrays(endpoints, X_full, aux_scaled):
+  575:     return {
+  576:         "X_full": X_full,
+  577:         "X_stock": X_full[:, :, :STOCK_FEATURE_COUNT].copy(),
+  578:         "X_market": X_full[:, :, STOCK_FEATURE_COUNT:].copy(),
+  579:         "y_direction": endpoints[DIRECTION_COLUMNS].to_numpy(dtype=np.int64),
+  580:         "y_aux_raw": endpoints[AUX_COLUMNS].to_numpy(dtype=np.float32),
+  581:         "y_aux_scaled": aux_scaled.astype(np.float32),
+  582:         "stock_id": endpoints["stock_id"].to_numpy(dtype=np.int64),
+  583:         "regime_id": endpoints["regime_id"].to_numpy(dtype=np.int64),
+  584:     }
+  585: 
+  586: 
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 572–587
+------------------------------------------------------------------------------------------------------------------------
+  572: 
+  573: 
+  574: def build_arrays(endpoints, X_full, aux_scaled):
+  575:     return {
+  576:         "X_full": X_full,
+  577:         "X_stock": X_full[:, :, :STOCK_FEATURE_COUNT].copy(),
+  578:         "X_market": X_full[:, :, STOCK_FEATURE_COUNT:].copy(),
+  579:         "y_direction": endpoints[DIRECTION_COLUMNS].to_numpy(dtype=np.int64),
+  580:         "y_aux_raw": endpoints[AUX_COLUMNS].to_numpy(dtype=np.float32),
+  581:         "y_aux_scaled": aux_scaled.astype(np.float32),
+  582:         "stock_id": endpoints["stock_id"].to_numpy(dtype=np.int64),
+  583:         "regime_id": endpoints["regime_id"].to_numpy(dtype=np.int64),
+  584:     }
+  585: 
+  586: 
+  587: def audit_arrays(arrays, n, scope, fold, partition):
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 573–588
+------------------------------------------------------------------------------------------------------------------------
+  573: 
+  574: def build_arrays(endpoints, X_full, aux_scaled):
+  575:     return {
+  576:         "X_full": X_full,
+  577:         "X_stock": X_full[:, :, :STOCK_FEATURE_COUNT].copy(),
+  578:         "X_market": X_full[:, :, STOCK_FEATURE_COUNT:].copy(),
+  579:         "y_direction": endpoints[DIRECTION_COLUMNS].to_numpy(dtype=np.int64),
+  580:         "y_aux_raw": endpoints[AUX_COLUMNS].to_numpy(dtype=np.float32),
+  581:         "y_aux_scaled": aux_scaled.astype(np.float32),
+  582:         "stock_id": endpoints["stock_id"].to_numpy(dtype=np.int64),
+  583:         "regime_id": endpoints["regime_id"].to_numpy(dtype=np.int64),
+  584:     }
+  585: 
+  586: 
+  587: def audit_arrays(arrays, n, scope, fold, partition):
+  588:     shapes = {
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 583–598
+------------------------------------------------------------------------------------------------------------------------
+  583:         "regime_id": endpoints["regime_id"].to_numpy(dtype=np.int64),
+  584:     }
+  585: 
+  586: 
+  587: def audit_arrays(arrays, n, scope, fold, partition):
+  588:     shapes = {
+  589:         "X_full": (n, 60, 63), "X_stock": (n, 60, 47), "X_market": (n, 60, 16),
+  590:         "y_direction": (n, 3), "y_aux_raw": (n, 10), "y_aux_scaled": (n, 10), "stock_id": (n,), "regime_id": (n,),
+  591:     }
+  592:     dtypes = {"X_full": np.float32, "X_stock": np.float32, "X_market": np.float32, "y_direction": np.int64, "y_aux_raw": np.float32, "y_aux_scaled": np.float32, "stock_id": np.int64, "regime_id": np.int64}
+  593:     for name in shapes:
+  594:         if arrays[name].shape != shapes[name] or arrays[name].dtype != np.dtype(dtypes[name]):
+  595:             raise RuntimeError(f"{scope}: {name} shape/dtype mismatch: {arrays[name].shape}, {arrays[name].dtype}")
+  596:     stock_exact = np.array_equal(arrays["X_stock"], arrays["X_full"][:, :, :47])
+  597:     market_exact = np.array_equal(arrays["X_market"], arrays["X_full"][:, :, 47:])
+  598:     if not stock_exact or not market_exact: raise RuntimeError(f"{scope}: modality slice mismatch.")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 584–599
+------------------------------------------------------------------------------------------------------------------------
+  584:     }
+  585: 
+  586: 
+  587: def audit_arrays(arrays, n, scope, fold, partition):
+  588:     shapes = {
+  589:         "X_full": (n, 60, 63), "X_stock": (n, 60, 47), "X_market": (n, 60, 16),
+  590:         "y_direction": (n, 3), "y_aux_raw": (n, 10), "y_aux_scaled": (n, 10), "stock_id": (n,), "regime_id": (n,),
+  591:     }
+  592:     dtypes = {"X_full": np.float32, "X_stock": np.float32, "X_market": np.float32, "y_direction": np.int64, "y_aux_raw": np.float32, "y_aux_scaled": np.float32, "stock_id": np.int64, "regime_id": np.int64}
+  593:     for name in shapes:
+  594:         if arrays[name].shape != shapes[name] or arrays[name].dtype != np.dtype(dtypes[name]):
+  595:             raise RuntimeError(f"{scope}: {name} shape/dtype mismatch: {arrays[name].shape}, {arrays[name].dtype}")
+  596:     stock_exact = np.array_equal(arrays["X_stock"], arrays["X_full"][:, :, :47])
+  597:     market_exact = np.array_equal(arrays["X_market"], arrays["X_full"][:, :, 47:])
+  598:     if not stock_exact or not market_exact: raise RuntimeError(f"{scope}: modality slice mismatch.")
+  599:     if not np.isin(arrays["y_direction"], [0, 1]).all(): raise RuntimeError(f"{scope}: non-binary direction label.")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 586–601
+------------------------------------------------------------------------------------------------------------------------
+  586: 
+  587: def audit_arrays(arrays, n, scope, fold, partition):
+  588:     shapes = {
+  589:         "X_full": (n, 60, 63), "X_stock": (n, 60, 47), "X_market": (n, 60, 16),
+  590:         "y_direction": (n, 3), "y_aux_raw": (n, 10), "y_aux_scaled": (n, 10), "stock_id": (n,), "regime_id": (n,),
+  591:     }
+  592:     dtypes = {"X_full": np.float32, "X_stock": np.float32, "X_market": np.float32, "y_direction": np.int64, "y_aux_raw": np.float32, "y_aux_scaled": np.float32, "stock_id": np.int64, "regime_id": np.int64}
+  593:     for name in shapes:
+  594:         if arrays[name].shape != shapes[name] or arrays[name].dtype != np.dtype(dtypes[name]):
+  595:             raise RuntimeError(f"{scope}: {name} shape/dtype mismatch: {arrays[name].shape}, {arrays[name].dtype}")
+  596:     stock_exact = np.array_equal(arrays["X_stock"], arrays["X_full"][:, :, :47])
+  597:     market_exact = np.array_equal(arrays["X_market"], arrays["X_full"][:, :, 47:])
+  598:     if not stock_exact or not market_exact: raise RuntimeError(f"{scope}: modality slice mismatch.")
+  599:     if not np.isin(arrays["y_direction"], [0, 1]).all(): raise RuntimeError(f"{scope}: non-binary direction label.")
+  600:     if not np.isin(arrays["regime_id"], [0, 1, 2]).all(): raise RuntimeError(f"{scope}: invalid regime ID.")
+  601:     if arrays["stock_id"].min() < 0 or arrays["stock_id"].max() >= len(cfg.STOCK_TICKERS): raise RuntimeError(f"{scope}: invalid stock ID.")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 590–605
+------------------------------------------------------------------------------------------------------------------------
+  590:         "y_direction": (n, 3), "y_aux_raw": (n, 10), "y_aux_scaled": (n, 10), "stock_id": (n,), "regime_id": (n,),
+  591:     }
+  592:     dtypes = {"X_full": np.float32, "X_stock": np.float32, "X_market": np.float32, "y_direction": np.int64, "y_aux_raw": np.float32, "y_aux_scaled": np.float32, "stock_id": np.int64, "regime_id": np.int64}
+  593:     for name in shapes:
+  594:         if arrays[name].shape != shapes[name] or arrays[name].dtype != np.dtype(dtypes[name]):
+  595:             raise RuntimeError(f"{scope}: {name} shape/dtype mismatch: {arrays[name].shape}, {arrays[name].dtype}")
+  596:     stock_exact = np.array_equal(arrays["X_stock"], arrays["X_full"][:, :, :47])
+  597:     market_exact = np.array_equal(arrays["X_market"], arrays["X_full"][:, :, 47:])
+  598:     if not stock_exact or not market_exact: raise RuntimeError(f"{scope}: modality slice mismatch.")
+  599:     if not np.isin(arrays["y_direction"], [0, 1]).all(): raise RuntimeError(f"{scope}: non-binary direction label.")
+  600:     if not np.isin(arrays["regime_id"], [0, 1, 2]).all(): raise RuntimeError(f"{scope}: invalid regime ID.")
+  601:     if arrays["stock_id"].min() < 0 or arrays["stock_id"].max() >= len(cfg.STOCK_TICKERS): raise RuntimeError(f"{scope}: invalid stock ID.")
+  602:     for name in ("X_full", "X_stock", "X_market", "y_aux_raw", "y_aux_scaled"):
+  603:         if not np.isfinite(arrays[name]).all(): raise RuntimeError(f"{scope}: non-finite {name}.")
+  604:     return {"scope": scope, "fold": np.nan if fold is None else fold, "partition": partition, "rows": n, "x_full_shape": str(arrays["X_full"].shape), "x_stock_shape": str(arrays["X_stock"].shape), "x_market_shape": str(arrays["X_market"].shape), "y_direction_shape": str(arrays["y_direction"].shape), "y_aux_shape": str(arrays["y_aux_scaled"].shape), "stock_slice_exact": stock_exact, "market_slice_exact": market_exact, "direction_binary": True, "regime_ids_valid": True, "stock_ids_valid": True, "finite_arrays": True, "passed": True}
+  605: 
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 591–606
+------------------------------------------------------------------------------------------------------------------------
+  591:     }
+  592:     dtypes = {"X_full": np.float32, "X_stock": np.float32, "X_market": np.float32, "y_direction": np.int64, "y_aux_raw": np.float32, "y_aux_scaled": np.float32, "stock_id": np.int64, "regime_id": np.int64}
+  593:     for name in shapes:
+  594:         if arrays[name].shape != shapes[name] or arrays[name].dtype != np.dtype(dtypes[name]):
+  595:             raise RuntimeError(f"{scope}: {name} shape/dtype mismatch: {arrays[name].shape}, {arrays[name].dtype}")
+  596:     stock_exact = np.array_equal(arrays["X_stock"], arrays["X_full"][:, :, :47])
+  597:     market_exact = np.array_equal(arrays["X_market"], arrays["X_full"][:, :, 47:])
+  598:     if not stock_exact or not market_exact: raise RuntimeError(f"{scope}: modality slice mismatch.")
+  599:     if not np.isin(arrays["y_direction"], [0, 1]).all(): raise RuntimeError(f"{scope}: non-binary direction label.")
+  600:     if not np.isin(arrays["regime_id"], [0, 1, 2]).all(): raise RuntimeError(f"{scope}: invalid regime ID.")
+  601:     if arrays["stock_id"].min() < 0 or arrays["stock_id"].max() >= len(cfg.STOCK_TICKERS): raise RuntimeError(f"{scope}: invalid stock ID.")
+  602:     for name in ("X_full", "X_stock", "X_market", "y_aux_raw", "y_aux_scaled"):
+  603:         if not np.isfinite(arrays[name]).all(): raise RuntimeError(f"{scope}: non-finite {name}.")
+  604:     return {"scope": scope, "fold": np.nan if fold is None else fold, "partition": partition, "rows": n, "x_full_shape": str(arrays["X_full"].shape), "x_stock_shape": str(arrays["X_stock"].shape), "x_market_shape": str(arrays["X_market"].shape), "y_direction_shape": str(arrays["y_direction"].shape), "y_aux_shape": str(arrays["y_aux_scaled"].shape), "stock_slice_exact": stock_exact, "market_slice_exact": market_exact, "direction_binary": True, "regime_ids_valid": True, "stock_ids_valid": True, "finite_arrays": True, "passed": True}
+  605: 
+  606: 
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 593–608
+------------------------------------------------------------------------------------------------------------------------
+  593:     for name in shapes:
+  594:         if arrays[name].shape != shapes[name] or arrays[name].dtype != np.dtype(dtypes[name]):
+  595:             raise RuntimeError(f"{scope}: {name} shape/dtype mismatch: {arrays[name].shape}, {arrays[name].dtype}")
+  596:     stock_exact = np.array_equal(arrays["X_stock"], arrays["X_full"][:, :, :47])
+  597:     market_exact = np.array_equal(arrays["X_market"], arrays["X_full"][:, :, 47:])
+  598:     if not stock_exact or not market_exact: raise RuntimeError(f"{scope}: modality slice mismatch.")
+  599:     if not np.isin(arrays["y_direction"], [0, 1]).all(): raise RuntimeError(f"{scope}: non-binary direction label.")
+  600:     if not np.isin(arrays["regime_id"], [0, 1, 2]).all(): raise RuntimeError(f"{scope}: invalid regime ID.")
+  601:     if arrays["stock_id"].min() < 0 or arrays["stock_id"].max() >= len(cfg.STOCK_TICKERS): raise RuntimeError(f"{scope}: invalid stock ID.")
+  602:     for name in ("X_full", "X_stock", "X_market", "y_aux_raw", "y_aux_scaled"):
+  603:         if not np.isfinite(arrays[name]).all(): raise RuntimeError(f"{scope}: non-finite {name}.")
+  604:     return {"scope": scope, "fold": np.nan if fold is None else fold, "partition": partition, "rows": n, "x_full_shape": str(arrays["X_full"].shape), "x_stock_shape": str(arrays["X_stock"].shape), "x_market_shape": str(arrays["X_market"].shape), "y_direction_shape": str(arrays["y_direction"].shape), "y_aux_shape": str(arrays["y_aux_scaled"].shape), "stock_slice_exact": stock_exact, "market_slice_exact": market_exact, "direction_binary": True, "regime_ids_valid": True, "stock_ids_valid": True, "finite_arrays": True, "passed": True}
+  605: 
+  606: 
+  607: def save_npy(array, path, scope, fold, partition, name):
+  608:     np.save(path, array, allow_pickle=False)
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 596–611
+------------------------------------------------------------------------------------------------------------------------
+  596:     stock_exact = np.array_equal(arrays["X_stock"], arrays["X_full"][:, :, :47])
+  597:     market_exact = np.array_equal(arrays["X_market"], arrays["X_full"][:, :, 47:])
+  598:     if not stock_exact or not market_exact: raise RuntimeError(f"{scope}: modality slice mismatch.")
+  599:     if not np.isin(arrays["y_direction"], [0, 1]).all(): raise RuntimeError(f"{scope}: non-binary direction label.")
+  600:     if not np.isin(arrays["regime_id"], [0, 1, 2]).all(): raise RuntimeError(f"{scope}: invalid regime ID.")
+  601:     if arrays["stock_id"].min() < 0 or arrays["stock_id"].max() >= len(cfg.STOCK_TICKERS): raise RuntimeError(f"{scope}: invalid stock ID.")
+  602:     for name in ("X_full", "X_stock", "X_market", "y_aux_raw", "y_aux_scaled"):
+  603:         if not np.isfinite(arrays[name]).all(): raise RuntimeError(f"{scope}: non-finite {name}.")
+  604:     return {"scope": scope, "fold": np.nan if fold is None else fold, "partition": partition, "rows": n, "x_full_shape": str(arrays["X_full"].shape), "x_stock_shape": str(arrays["X_stock"].shape), "x_market_shape": str(arrays["X_market"].shape), "y_direction_shape": str(arrays["y_direction"].shape), "y_aux_shape": str(arrays["y_aux_scaled"].shape), "stock_slice_exact": stock_exact, "market_slice_exact": market_exact, "direction_binary": True, "regime_ids_valid": True, "stock_ids_valid": True, "finite_arrays": True, "passed": True}
+  605: 
+  606: 
+  607: def save_npy(array, path, scope, fold, partition, name):
+  608:     np.save(path, array, allow_pickle=False)
+  609:     loaded = np.load(path, mmap_mode="r", allow_pickle=False)
+  610:     if loaded.shape != array.shape or loaded.dtype != array.dtype or not np.array_equal(np.asarray(loaded), array, equal_nan=True):
+  611:         raise RuntimeError(f"{path.name}: NumPy roundtrip failed.")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 598–613
+------------------------------------------------------------------------------------------------------------------------
+  598:     if not stock_exact or not market_exact: raise RuntimeError(f"{scope}: modality slice mismatch.")
+  599:     if not np.isin(arrays["y_direction"], [0, 1]).all(): raise RuntimeError(f"{scope}: non-binary direction label.")
+  600:     if not np.isin(arrays["regime_id"], [0, 1, 2]).all(): raise RuntimeError(f"{scope}: invalid regime ID.")
+  601:     if arrays["stock_id"].min() < 0 or arrays["stock_id"].max() >= len(cfg.STOCK_TICKERS): raise RuntimeError(f"{scope}: invalid stock ID.")
+  602:     for name in ("X_full", "X_stock", "X_market", "y_aux_raw", "y_aux_scaled"):
+  603:         if not np.isfinite(arrays[name]).all(): raise RuntimeError(f"{scope}: non-finite {name}.")
+  604:     return {"scope": scope, "fold": np.nan if fold is None else fold, "partition": partition, "rows": n, "x_full_shape": str(arrays["X_full"].shape), "x_stock_shape": str(arrays["X_stock"].shape), "x_market_shape": str(arrays["X_market"].shape), "y_direction_shape": str(arrays["y_direction"].shape), "y_aux_shape": str(arrays["y_aux_scaled"].shape), "stock_slice_exact": stock_exact, "market_slice_exact": market_exact, "direction_binary": True, "regime_ids_valid": True, "stock_ids_valid": True, "finite_arrays": True, "passed": True}
+  605: 
+  606: 
+  607: def save_npy(array, path, scope, fold, partition, name):
+  608:     np.save(path, array, allow_pickle=False)
+  609:     loaded = np.load(path, mmap_mode="r", allow_pickle=False)
+  610:     if loaded.shape != array.shape or loaded.dtype != array.dtype or not np.array_equal(np.asarray(loaded), array, equal_nan=True):
+  611:         raise RuntimeError(f"{path.name}: NumPy roundtrip failed.")
+  612:     del loaded
+  613:     return {"scope": scope, "fold": fold, "partition": partition, "artifact_kind": "npy", "array_name": name, "file_name": path.name, "size_bytes": int(path.stat().st_size), "sha256": sha256_file(path)}
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 610–625
+------------------------------------------------------------------------------------------------------------------------
+  610:     if loaded.shape != array.shape or loaded.dtype != array.dtype or not np.array_equal(np.asarray(loaded), array, equal_nan=True):
+  611:         raise RuntimeError(f"{path.name}: NumPy roundtrip failed.")
+  612:     del loaded
+  613:     return {"scope": scope, "fold": fold, "partition": partition, "artifact_kind": "npy", "array_name": name, "file_name": path.name, "size_bytes": int(path.stat().st_size), "sha256": sha256_file(path)}
+  614: 
+  615: 
+  616: def save_metadata(endpoints, path, scope, fold, partition):
+  617:     cols = [
+  618:         "array_row_index", "fold", "partition", "ticker", "stock_id", "continuity_segment_id", "reference_date", "reference_market_session_id",
+  619:         "sequence_start_date", "sequence_end_date", "lookback_crosses_partition_start", "historical_rows_before_partition", "regime_id", "regime_name",
+  620:         "regime_threshold_fit_scope", "target_date_1d", "target_date_3d", "target_date_5d", *DIRECTION_COLUMNS, *AUX_COLUMNS,
+  621:     ]
+  622:     missing = [c for c in cols if c not in endpoints.columns]
+  623:     if missing: raise RuntimeError(f"{scope}: metadata columns missing: {missing}")
+  624:     md = endpoints[cols].copy(); md.to_parquet(path, index=False, engine="pyarrow", compression="snappy")
+  625:     obs = pd.read_parquet(path, engine="pyarrow")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 617–632
+------------------------------------------------------------------------------------------------------------------------
+  617:     cols = [
+  618:         "array_row_index", "fold", "partition", "ticker", "stock_id", "continuity_segment_id", "reference_date", "reference_market_session_id",
+  619:         "sequence_start_date", "sequence_end_date", "lookback_crosses_partition_start", "historical_rows_before_partition", "regime_id", "regime_name",
+  620:         "regime_threshold_fit_scope", "target_date_1d", "target_date_3d", "target_date_5d", *DIRECTION_COLUMNS, *AUX_COLUMNS,
+  621:     ]
+  622:     missing = [c for c in cols if c not in endpoints.columns]
+  623:     if missing: raise RuntimeError(f"{scope}: metadata columns missing: {missing}")
+  624:     md = endpoints[cols].copy(); md.to_parquet(path, index=False, engine="pyarrow", compression="snappy")
+  625:     obs = pd.read_parquet(path, engine="pyarrow")
+  626:     if len(obs) != len(md) or not np.array_equal(obs["array_row_index"].to_numpy(np.int64), md["array_row_index"].to_numpy(np.int64)):
+  627:         raise RuntimeError(f"{scope}: metadata roundtrip failed.")
+  628:     return {"scope": scope, "fold": fold, "partition": partition, "artifact_kind": "metadata_parquet", "array_name": None, "file_name": path.name, "size_bytes": int(path.stat().st_size), "sha256": sha256_file(path)}
+  629: 
+  630: 
+  631: def save_scaler(scaler, path, scope, fold, partition):
+  632:     joblib.dump(scaler, path, compress=3)
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 621–636
+------------------------------------------------------------------------------------------------------------------------
+  621:     ]
+  622:     missing = [c for c in cols if c not in endpoints.columns]
+  623:     if missing: raise RuntimeError(f"{scope}: metadata columns missing: {missing}")
+  624:     md = endpoints[cols].copy(); md.to_parquet(path, index=False, engine="pyarrow", compression="snappy")
+  625:     obs = pd.read_parquet(path, engine="pyarrow")
+  626:     if len(obs) != len(md) or not np.array_equal(obs["array_row_index"].to_numpy(np.int64), md["array_row_index"].to_numpy(np.int64)):
+  627:         raise RuntimeError(f"{scope}: metadata roundtrip failed.")
+  628:     return {"scope": scope, "fold": fold, "partition": partition, "artifact_kind": "metadata_parquet", "array_name": None, "file_name": path.name, "size_bytes": int(path.stat().st_size), "sha256": sha256_file(path)}
+  629: 
+  630: 
+  631: def save_scaler(scaler, path, scope, fold, partition):
+  632:     joblib.dump(scaler, path, compress=3)
+  633:     loaded = joblib.load(path)
+  634:     if loaded.n_features_in_ != len(AUX_COLUMNS) or not np.array_equal(np.asarray(loaded.data_min_), np.asarray(scaler.data_min_)):
+  635:         raise RuntimeError(f"{scope}: persisted auxiliary scaler mismatch.")
+  636:     del loaded
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 622–637
+------------------------------------------------------------------------------------------------------------------------
+  622:     missing = [c for c in cols if c not in endpoints.columns]
+  623:     if missing: raise RuntimeError(f"{scope}: metadata columns missing: {missing}")
+  624:     md = endpoints[cols].copy(); md.to_parquet(path, index=False, engine="pyarrow", compression="snappy")
+  625:     obs = pd.read_parquet(path, engine="pyarrow")
+  626:     if len(obs) != len(md) or not np.array_equal(obs["array_row_index"].to_numpy(np.int64), md["array_row_index"].to_numpy(np.int64)):
+  627:         raise RuntimeError(f"{scope}: metadata roundtrip failed.")
+  628:     return {"scope": scope, "fold": fold, "partition": partition, "artifact_kind": "metadata_parquet", "array_name": None, "file_name": path.name, "size_bytes": int(path.stat().st_size), "sha256": sha256_file(path)}
+  629: 
+  630: 
+  631: def save_scaler(scaler, path, scope, fold, partition):
+  632:     joblib.dump(scaler, path, compress=3)
+  633:     loaded = joblib.load(path)
+  634:     if loaded.n_features_in_ != len(AUX_COLUMNS) or not np.array_equal(np.asarray(loaded.data_min_), np.asarray(scaler.data_min_)):
+  635:         raise RuntimeError(f"{scope}: persisted auxiliary scaler mismatch.")
+  636:     del loaded
+  637:     return {"scope": scope, "fold": fold, "partition": partition, "artifact_kind": "auxiliary_scaler_joblib", "array_name": None, "file_name": path.name, "size_bytes": int(path.stat().st_size), "sha256": sha256_file(path)}
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 625–640
+------------------------------------------------------------------------------------------------------------------------
+  625:     obs = pd.read_parquet(path, engine="pyarrow")
+  626:     if len(obs) != len(md) or not np.array_equal(obs["array_row_index"].to_numpy(np.int64), md["array_row_index"].to_numpy(np.int64)):
+  627:         raise RuntimeError(f"{scope}: metadata roundtrip failed.")
+  628:     return {"scope": scope, "fold": fold, "partition": partition, "artifact_kind": "metadata_parquet", "array_name": None, "file_name": path.name, "size_bytes": int(path.stat().st_size), "sha256": sha256_file(path)}
+  629: 
+  630: 
+  631: def save_scaler(scaler, path, scope, fold, partition):
+  632:     joblib.dump(scaler, path, compress=3)
+  633:     loaded = joblib.load(path)
+  634:     if loaded.n_features_in_ != len(AUX_COLUMNS) or not np.array_equal(np.asarray(loaded.data_min_), np.asarray(scaler.data_min_)):
+  635:         raise RuntimeError(f"{scope}: persisted auxiliary scaler mismatch.")
+  636:     del loaded
+  637:     return {"scope": scope, "fold": fold, "partition": partition, "artifact_kind": "auxiliary_scaler_joblib", "array_name": None, "file_name": path.name, "size_bytes": int(path.stat().st_size), "sha256": sha256_file(path)}
+  638: 
+  639: 
+  640: def materialize_partition(endpoints, train_panel, validation_panel, partition, features, aux_scaled, outdir, prefix, scope, fold):
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 626–641
+------------------------------------------------------------------------------------------------------------------------
+  626:     if len(obs) != len(md) or not np.array_equal(obs["array_row_index"].to_numpy(np.int64), md["array_row_index"].to_numpy(np.int64)):
+  627:         raise RuntimeError(f"{scope}: metadata roundtrip failed.")
+  628:     return {"scope": scope, "fold": fold, "partition": partition, "artifact_kind": "metadata_parquet", "array_name": None, "file_name": path.name, "size_bytes": int(path.stat().st_size), "sha256": sha256_file(path)}
+  629: 
+  630: 
+  631: def save_scaler(scaler, path, scope, fold, partition):
+  632:     joblib.dump(scaler, path, compress=3)
+  633:     loaded = joblib.load(path)
+  634:     if loaded.n_features_in_ != len(AUX_COLUMNS) or not np.array_equal(np.asarray(loaded.data_min_), np.asarray(scaler.data_min_)):
+  635:         raise RuntimeError(f"{scope}: persisted auxiliary scaler mismatch.")
+  636:     del loaded
+  637:     return {"scope": scope, "fold": fold, "partition": partition, "artifact_kind": "auxiliary_scaler_joblib", "array_name": None, "file_name": path.name, "size_bytes": int(path.stat().st_size), "sha256": sha256_file(path)}
+  638: 
+  639: 
+  640: def materialize_partition(endpoints, train_panel, validation_panel, partition, features, aux_scaled, outdir, prefix, scope, fold):
+  641:     history = build_history(train_panel, validation_panel, partition, features)
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 628–643
+------------------------------------------------------------------------------------------------------------------------
+  628:     return {"scope": scope, "fold": fold, "partition": partition, "artifact_kind": "metadata_parquet", "array_name": None, "file_name": path.name, "size_bytes": int(path.stat().st_size), "sha256": sha256_file(path)}
+  629: 
+  630: 
+  631: def save_scaler(scaler, path, scope, fold, partition):
+  632:     joblib.dump(scaler, path, compress=3)
+  633:     loaded = joblib.load(path)
+  634:     if loaded.n_features_in_ != len(AUX_COLUMNS) or not np.array_equal(np.asarray(loaded.data_min_), np.asarray(scaler.data_min_)):
+  635:         raise RuntimeError(f"{scope}: persisted auxiliary scaler mismatch.")
+  636:     del loaded
+  637:     return {"scope": scope, "fold": fold, "partition": partition, "artifact_kind": "auxiliary_scaler_joblib", "array_name": None, "file_name": path.name, "size_bytes": int(path.stat().st_size), "sha256": sha256_file(path)}
+  638: 
+  639: 
+  640: def materialize_partition(endpoints, train_panel, validation_panel, partition, features, aux_scaled, outdir, prefix, scope, fold):
+  641:     history = build_history(train_panel, validation_panel, partition, features)
+  642:     X = materialize_x(endpoints, history)
+  643:     arrays = build_arrays(endpoints, X, aux_scaled)
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 629–644
+------------------------------------------------------------------------------------------------------------------------
+  629: 
+  630: 
+  631: def save_scaler(scaler, path, scope, fold, partition):
+  632:     joblib.dump(scaler, path, compress=3)
+  633:     loaded = joblib.load(path)
+  634:     if loaded.n_features_in_ != len(AUX_COLUMNS) or not np.array_equal(np.asarray(loaded.data_min_), np.asarray(scaler.data_min_)):
+  635:         raise RuntimeError(f"{scope}: persisted auxiliary scaler mismatch.")
+  636:     del loaded
+  637:     return {"scope": scope, "fold": fold, "partition": partition, "artifact_kind": "auxiliary_scaler_joblib", "array_name": None, "file_name": path.name, "size_bytes": int(path.stat().st_size), "sha256": sha256_file(path)}
+  638: 
+  639: 
+  640: def materialize_partition(endpoints, train_panel, validation_panel, partition, features, aux_scaled, outdir, prefix, scope, fold):
+  641:     history = build_history(train_panel, validation_panel, partition, features)
+  642:     X = materialize_x(endpoints, history)
+  643:     arrays = build_arrays(endpoints, X, aux_scaled)
+  644:     integrity = audit_arrays(arrays, len(endpoints), scope, fold, partition)
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 631–646
+------------------------------------------------------------------------------------------------------------------------
+  631: def save_scaler(scaler, path, scope, fold, partition):
+  632:     joblib.dump(scaler, path, compress=3)
+  633:     loaded = joblib.load(path)
+  634:     if loaded.n_features_in_ != len(AUX_COLUMNS) or not np.array_equal(np.asarray(loaded.data_min_), np.asarray(scaler.data_min_)):
+  635:         raise RuntimeError(f"{scope}: persisted auxiliary scaler mismatch.")
+  636:     del loaded
+  637:     return {"scope": scope, "fold": fold, "partition": partition, "artifact_kind": "auxiliary_scaler_joblib", "array_name": None, "file_name": path.name, "size_bytes": int(path.stat().st_size), "sha256": sha256_file(path)}
+  638: 
+  639: 
+  640: def materialize_partition(endpoints, train_panel, validation_panel, partition, features, aux_scaled, outdir, prefix, scope, fold):
+  641:     history = build_history(train_panel, validation_panel, partition, features)
+  642:     X = materialize_x(endpoints, history)
+  643:     arrays = build_arrays(endpoints, X, aux_scaled)
+  644:     integrity = audit_arrays(arrays, len(endpoints), scope, fold, partition)
+  645:     records = []
+  646:     for name, array in arrays.items():
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 642–657
+------------------------------------------------------------------------------------------------------------------------
+  642:     X = materialize_x(endpoints, history)
+  643:     arrays = build_arrays(endpoints, X, aux_scaled)
+  644:     integrity = audit_arrays(arrays, len(endpoints), scope, fold, partition)
+  645:     records = []
+  646:     for name, array in arrays.items():
+  647:         records.append(save_npy(array, outdir / f"{prefix}_{name}.npy", scope, fold, partition, name))
+  648:     records.append(save_metadata(endpoints, outdir / f"{prefix}_metadata.parquet", scope, fold, partition))
+  649:     total = sum(r["size_bytes"] for r in records)
+  650:     summary = {
+  651:         "scope": scope, "fold": np.nan if fold is None else fold, "partition": partition, "sequences": int(len(endpoints)), "lookback": 60,
+  652:         "features": 63, "stock_features": 47, "market_features": 16, "direction_targets": 3, "auxiliary_targets": 10,
+  653:         "cross_boundary_lookback_endpoints": int(endpoints["lookback_crosses_partition_start"].sum()),
+  654:         "auxiliary_scaled_values_outside_0_1": int((arrays["y_aux_scaled"] < 0).sum() + (arrays["y_aux_scaled"] > 1).sum()),
+  655:         "saved_bytes": int(total), "saved_gib": float(total / (1024 ** 3)),
+  656:     }
+  657:     del history, X, arrays; gc.collect()
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 656–671
+------------------------------------------------------------------------------------------------------------------------
+  656:     }
+  657:     del history, X, arrays; gc.collect()
+  658:     return summary, integrity, records
+  659: 
+  660: 
+  661: def source_hashes():
+  662:     sources = [("current_step00", Path(cfg.__file__).resolve()), ("current_step14", SCRIPT_FILE.resolve()), ("step10_development", STEP10_DEVELOPMENT.resolve()), ("step10_test_seal_metadata", STEP10_TEST_SEAL.resolve()), ("step12_final", STEP12_FINAL.resolve()), ("step13_final_index", STEP13_FINAL.resolve())]
+  663:     for fold in FOLDS:
+  664:         for partition in PARTITIONS:
+  665:             sources += [(f"step12_fold_{fold}_{partition}", step12_path(fold, partition).resolve()), (f"step13_fold_{fold}_{partition}", step13_path(fold, partition).resolve())]
+  666:     for step, (mp, sp) in UPSTREAM.items():
+  667:         sources += [(f"step{step:02d}_manifest", mp.resolve()), (f"step{step:02d}_manifest_sha", sp.resolve())]
+  668:     rows = []
+  669:     for role, path in sources:
+  670:         if path.name == FORBIDDEN_TEST_FILENAME: raise RuntimeError("Forbidden test parquet entered Step-14 source register.")
+  671:         if not path.exists(): raise RuntimeError(f"Missing Step-14 source: {path}")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 719–734
+------------------------------------------------------------------------------------------------------------------------
+  719:         print(f"       Global final-test state   : {step00['state']}")
+  720:         print("       Final-test parquet access : PROHIBITED")
+  721: 
+  722:         stage = "collision"; print("[2/10] Checking immutable Step-14 output target..."); assert_fresh(); cfg.create_directories()
+  723:         stage = "load"; print("[3/10] Loading frozen development targets and 47+16 feature interface...")
+  724:         development = load_development(); features = upstream["all_features"]
+  725:         print("       X_full                  : (n, 60, 63) float32")
+  726:         print("       X_stock / X_market      : (n,60,47) / (n,60,16)")
+  727:         print(f"       Auxiliary targets       : {len(AUX_COLUMNS)} | clip=False")
+  728: 
+  729:         stage = "staging"; staging = create_stage()
+  730:         summaries = []; integrity_rows = []; reconciliation_rows = []; scaler_audits = []; val_range_rows = []; inverse_rows = []; staged_records = []
+  731: 
+  732:         stage = "folds"; print("[4/10] Materializing five rolling-origin train/validation array pairs...")
+  733:         for fold in FOLDS:
+  734:             train_panel = load_panel(step12_path(fold, "train"), features, f"fold_{fold}_train_step12")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 724–739
+------------------------------------------------------------------------------------------------------------------------
+  724:         development = load_development(); features = upstream["all_features"]
+  725:         print("       X_full                  : (n, 60, 63) float32")
+  726:         print("       X_stock / X_market      : (n,60,47) / (n,60,16)")
+  727:         print(f"       Auxiliary targets       : {len(AUX_COLUMNS)} | clip=False")
+  728: 
+  729:         stage = "staging"; staging = create_stage()
+  730:         summaries = []; integrity_rows = []; reconciliation_rows = []; scaler_audits = []; val_range_rows = []; inverse_rows = []; staged_records = []
+  731: 
+  732:         stage = "folds"; print("[4/10] Materializing five rolling-origin train/validation array pairs...")
+  733:         for fold in FOLDS:
+  734:             train_panel = load_panel(step12_path(fold, "train"), features, f"fold_{fold}_train_step12")
+  735:             val_panel = load_panel(step12_path(fold, "validation"), features, f"fold_{fold}_validation_step12")
+  736:             train_index = load_index(step13_path(fold, "train"), f"fold_{fold}_train_step13")
+  737:             val_index = load_index(step13_path(fold, "validation"), f"fold_{fold}_validation_step13")
+  738:             train_ep, rec1 = attach_targets(train_index, development, train_panel, f"fold_{fold}_train")
+  739:             val_ep, rec2 = attach_targets(val_index, development, val_panel, f"fold_{fold}_validation")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 736–751
+------------------------------------------------------------------------------------------------------------------------
+  736:             train_index = load_index(step13_path(fold, "train"), f"fold_{fold}_train_step13")
+  737:             val_index = load_index(step13_path(fold, "validation"), f"fold_{fold}_validation_step13")
+  738:             train_ep, rec1 = attach_targets(train_index, development, train_panel, f"fold_{fold}_train")
+  739:             val_ep, rec2 = attach_targets(val_index, development, val_panel, f"fold_{fold}_validation")
+  740:             reconciliation_rows += [rec1, rec2]
+  741: 
+  742:             scaler, train_aux = fit_aux(train_ep, f"fold_{fold}_train")
+  743:             val_aux = scaler.transform(val_ep[AUX_COLUMNS].astype(np.float64))
+  744:             if not np.isfinite(val_aux).all(): raise RuntimeError(f"Fold {fold}: non-finite validation auxiliary values.")
+  745:             scaler_audits += scaler_rows(scaler, "fold_training", fold, len(train_ep))
+  746:             val_range_rows += validation_range_rows(fold, val_aux)
+  747:             inverse_rows += [aux_inverse(scaler, train_ep, train_aux, f"fold_{fold}_train", fold, "train"), aux_inverse(scaler, val_ep, val_aux, f"fold_{fold}_validation", fold, "validation")]
+  748: 
+  749:             fdir = staging / f"fold_{fold}"
+  750:             staged_records.append(save_scaler(scaler, fdir / f"14_fold_{fold}_auxiliary_target_minmax_scaler.joblib", f"fold_{fold}_aux_scaler", fold, "train_fit"))
+  751:             s, a, r = materialize_partition(train_ep, train_panel, None, "train", features, train_aux, fdir, f"14_fold_{fold}_train", f"fold_{fold}_train", fold)
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 737–752
+------------------------------------------------------------------------------------------------------------------------
+  737:             val_index = load_index(step13_path(fold, "validation"), f"fold_{fold}_validation_step13")
+  738:             train_ep, rec1 = attach_targets(train_index, development, train_panel, f"fold_{fold}_train")
+  739:             val_ep, rec2 = attach_targets(val_index, development, val_panel, f"fold_{fold}_validation")
+  740:             reconciliation_rows += [rec1, rec2]
+  741: 
+  742:             scaler, train_aux = fit_aux(train_ep, f"fold_{fold}_train")
+  743:             val_aux = scaler.transform(val_ep[AUX_COLUMNS].astype(np.float64))
+  744:             if not np.isfinite(val_aux).all(): raise RuntimeError(f"Fold {fold}: non-finite validation auxiliary values.")
+  745:             scaler_audits += scaler_rows(scaler, "fold_training", fold, len(train_ep))
+  746:             val_range_rows += validation_range_rows(fold, val_aux)
+  747:             inverse_rows += [aux_inverse(scaler, train_ep, train_aux, f"fold_{fold}_train", fold, "train"), aux_inverse(scaler, val_ep, val_aux, f"fold_{fold}_validation", fold, "validation")]
+  748: 
+  749:             fdir = staging / f"fold_{fold}"
+  750:             staged_records.append(save_scaler(scaler, fdir / f"14_fold_{fold}_auxiliary_target_minmax_scaler.joblib", f"fold_{fold}_aux_scaler", fold, "train_fit"))
+  751:             s, a, r = materialize_partition(train_ep, train_panel, None, "train", features, train_aux, fdir, f"14_fold_{fold}_train", f"fold_{fold}_train", fold)
+  752:             summaries.append(s); integrity_rows.append(a); staged_records += r
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 739–754
+------------------------------------------------------------------------------------------------------------------------
+  739:             val_ep, rec2 = attach_targets(val_index, development, val_panel, f"fold_{fold}_validation")
+  740:             reconciliation_rows += [rec1, rec2]
+  741: 
+  742:             scaler, train_aux = fit_aux(train_ep, f"fold_{fold}_train")
+  743:             val_aux = scaler.transform(val_ep[AUX_COLUMNS].astype(np.float64))
+  744:             if not np.isfinite(val_aux).all(): raise RuntimeError(f"Fold {fold}: non-finite validation auxiliary values.")
+  745:             scaler_audits += scaler_rows(scaler, "fold_training", fold, len(train_ep))
+  746:             val_range_rows += validation_range_rows(fold, val_aux)
+  747:             inverse_rows += [aux_inverse(scaler, train_ep, train_aux, f"fold_{fold}_train", fold, "train"), aux_inverse(scaler, val_ep, val_aux, f"fold_{fold}_validation", fold, "validation")]
+  748: 
+  749:             fdir = staging / f"fold_{fold}"
+  750:             staged_records.append(save_scaler(scaler, fdir / f"14_fold_{fold}_auxiliary_target_minmax_scaler.joblib", f"fold_{fold}_aux_scaler", fold, "train_fit"))
+  751:             s, a, r = materialize_partition(train_ep, train_panel, None, "train", features, train_aux, fdir, f"14_fold_{fold}_train", f"fold_{fold}_train", fold)
+  752:             summaries.append(s); integrity_rows.append(a); staged_records += r
+  753:             s, a, r = materialize_partition(val_ep, train_panel, val_panel, "validation", features, val_aux, fdir, f"14_fold_{fold}_validation", f"fold_{fold}_validation", fold)
+  754:             summaries.append(s); integrity_rows.append(a); staged_records += r
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 741–756
+------------------------------------------------------------------------------------------------------------------------
+  741: 
+  742:             scaler, train_aux = fit_aux(train_ep, f"fold_{fold}_train")
+  743:             val_aux = scaler.transform(val_ep[AUX_COLUMNS].astype(np.float64))
+  744:             if not np.isfinite(val_aux).all(): raise RuntimeError(f"Fold {fold}: non-finite validation auxiliary values.")
+  745:             scaler_audits += scaler_rows(scaler, "fold_training", fold, len(train_ep))
+  746:             val_range_rows += validation_range_rows(fold, val_aux)
+  747:             inverse_rows += [aux_inverse(scaler, train_ep, train_aux, f"fold_{fold}_train", fold, "train"), aux_inverse(scaler, val_ep, val_aux, f"fold_{fold}_validation", fold, "validation")]
+  748: 
+  749:             fdir = staging / f"fold_{fold}"
+  750:             staged_records.append(save_scaler(scaler, fdir / f"14_fold_{fold}_auxiliary_target_minmax_scaler.joblib", f"fold_{fold}_aux_scaler", fold, "train_fit"))
+  751:             s, a, r = materialize_partition(train_ep, train_panel, None, "train", features, train_aux, fdir, f"14_fold_{fold}_train", f"fold_{fold}_train", fold)
+  752:             summaries.append(s); integrity_rows.append(a); staged_records += r
+  753:             s, a, r = materialize_partition(val_ep, train_panel, val_panel, "validation", features, val_aux, fdir, f"14_fold_{fold}_validation", f"fold_{fold}_validation", fold)
+  754:             summaries.append(s); integrity_rows.append(a); staged_records += r
+  755:             outside = int((val_aux < 0).sum() + (val_aux > 1).sum())
+  756:             print(f"       Fold {fold}: train n={len(train_ep):>6,} | val n={len(val_ep):>5,} | val cross={int(val_ep['lookback_crosses_partition_start'].sum()):>5,} | aux outside[0,1]={outside:>6,}")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 744–759
+------------------------------------------------------------------------------------------------------------------------
+  744:             if not np.isfinite(val_aux).all(): raise RuntimeError(f"Fold {fold}: non-finite validation auxiliary values.")
+  745:             scaler_audits += scaler_rows(scaler, "fold_training", fold, len(train_ep))
+  746:             val_range_rows += validation_range_rows(fold, val_aux)
+  747:             inverse_rows += [aux_inverse(scaler, train_ep, train_aux, f"fold_{fold}_train", fold, "train"), aux_inverse(scaler, val_ep, val_aux, f"fold_{fold}_validation", fold, "validation")]
+  748: 
+  749:             fdir = staging / f"fold_{fold}"
+  750:             staged_records.append(save_scaler(scaler, fdir / f"14_fold_{fold}_auxiliary_target_minmax_scaler.joblib", f"fold_{fold}_aux_scaler", fold, "train_fit"))
+  751:             s, a, r = materialize_partition(train_ep, train_panel, None, "train", features, train_aux, fdir, f"14_fold_{fold}_train", f"fold_{fold}_train", fold)
+  752:             summaries.append(s); integrity_rows.append(a); staged_records += r
+  753:             s, a, r = materialize_partition(val_ep, train_panel, val_panel, "validation", features, val_aux, fdir, f"14_fold_{fold}_validation", f"fold_{fold}_validation", fold)
+  754:             summaries.append(s); integrity_rows.append(a); staged_records += r
+  755:             outside = int((val_aux < 0).sum() + (val_aux > 1).sum())
+  756:             print(f"       Fold {fold}: train n={len(train_ep):>6,} | val n={len(val_ep):>5,} | val cross={int(val_ep['lookback_crosses_partition_start'].sum()):>5,} | aux outside[0,1]={outside:>6,}")
+  757:             del train_panel, val_panel, train_index, val_index, train_ep, val_ep, scaler, train_aux, val_aux; gc.collect()
+  758: 
+  759:         stage = "final_dev"; print("[5/10] Materializing final-development refit arrays...")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 751–766
+------------------------------------------------------------------------------------------------------------------------
+  751:             s, a, r = materialize_partition(train_ep, train_panel, None, "train", features, train_aux, fdir, f"14_fold_{fold}_train", f"fold_{fold}_train", fold)
+  752:             summaries.append(s); integrity_rows.append(a); staged_records += r
+  753:             s, a, r = materialize_partition(val_ep, train_panel, val_panel, "validation", features, val_aux, fdir, f"14_fold_{fold}_validation", f"fold_{fold}_validation", fold)
+  754:             summaries.append(s); integrity_rows.append(a); staged_records += r
+  755:             outside = int((val_aux < 0).sum() + (val_aux > 1).sum())
+  756:             print(f"       Fold {fold}: train n={len(train_ep):>6,} | val n={len(val_ep):>5,} | val cross={int(val_ep['lookback_crosses_partition_start'].sum()):>5,} | aux outside[0,1]={outside:>6,}")
+  757:             del train_panel, val_panel, train_index, val_index, train_ep, val_ep, scaler, train_aux, val_aux; gc.collect()
+  758: 
+  759:         stage = "final_dev"; print("[5/10] Materializing final-development refit arrays...")
+  760:         final_panel = load_panel(STEP12_FINAL, features, "final_development_step12")
+  761:         final_index = load_index(STEP13_FINAL, "final_development_step13")
+  762:         final_ep, final_rec = attach_targets(final_index, development, final_panel, "final_development")
+  763:         reconciliation_rows.append(final_rec)
+  764:         final_scaler, final_aux = fit_aux(final_ep, "final_development")
+  765:         scaler_audits += scaler_rows(final_scaler, "final_development", None, len(final_ep))
+  766:         inverse_rows.append(aux_inverse(final_scaler, final_ep, final_aux, "final_development", None, "final_development"))
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 754–769
+------------------------------------------------------------------------------------------------------------------------
+  754:             summaries.append(s); integrity_rows.append(a); staged_records += r
+  755:             outside = int((val_aux < 0).sum() + (val_aux > 1).sum())
+  756:             print(f"       Fold {fold}: train n={len(train_ep):>6,} | val n={len(val_ep):>5,} | val cross={int(val_ep['lookback_crosses_partition_start'].sum()):>5,} | aux outside[0,1]={outside:>6,}")
+  757:             del train_panel, val_panel, train_index, val_index, train_ep, val_ep, scaler, train_aux, val_aux; gc.collect()
+  758: 
+  759:         stage = "final_dev"; print("[5/10] Materializing final-development refit arrays...")
+  760:         final_panel = load_panel(STEP12_FINAL, features, "final_development_step12")
+  761:         final_index = load_index(STEP13_FINAL, "final_development_step13")
+  762:         final_ep, final_rec = attach_targets(final_index, development, final_panel, "final_development")
+  763:         reconciliation_rows.append(final_rec)
+  764:         final_scaler, final_aux = fit_aux(final_ep, "final_development")
+  765:         scaler_audits += scaler_rows(final_scaler, "final_development", None, len(final_ep))
+  766:         inverse_rows.append(aux_inverse(final_scaler, final_ep, final_aux, "final_development", None, "final_development"))
+  767:         fdir = staging / "final_development"
+  768:         staged_records.append(save_scaler(final_scaler, fdir / "14_final_development_auxiliary_target_minmax_scaler.joblib", "final_development_aux_scaler", None, "final_development_fit"))
+  769:         s, a, r = materialize_partition(final_ep, final_panel, None, "final_development", features, final_aux, fdir, "14_final_development", "final_development", None)
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 755–770
+------------------------------------------------------------------------------------------------------------------------
+  755:             outside = int((val_aux < 0).sum() + (val_aux > 1).sum())
+  756:             print(f"       Fold {fold}: train n={len(train_ep):>6,} | val n={len(val_ep):>5,} | val cross={int(val_ep['lookback_crosses_partition_start'].sum()):>5,} | aux outside[0,1]={outside:>6,}")
+  757:             del train_panel, val_panel, train_index, val_index, train_ep, val_ep, scaler, train_aux, val_aux; gc.collect()
+  758: 
+  759:         stage = "final_dev"; print("[5/10] Materializing final-development refit arrays...")
+  760:         final_panel = load_panel(STEP12_FINAL, features, "final_development_step12")
+  761:         final_index = load_index(STEP13_FINAL, "final_development_step13")
+  762:         final_ep, final_rec = attach_targets(final_index, development, final_panel, "final_development")
+  763:         reconciliation_rows.append(final_rec)
+  764:         final_scaler, final_aux = fit_aux(final_ep, "final_development")
+  765:         scaler_audits += scaler_rows(final_scaler, "final_development", None, len(final_ep))
+  766:         inverse_rows.append(aux_inverse(final_scaler, final_ep, final_aux, "final_development", None, "final_development"))
+  767:         fdir = staging / "final_development"
+  768:         staged_records.append(save_scaler(final_scaler, fdir / "14_final_development_auxiliary_target_minmax_scaler.joblib", "final_development_aux_scaler", None, "final_development_fit"))
+  769:         s, a, r = materialize_partition(final_ep, final_panel, None, "final_development", features, final_aux, fdir, "14_final_development", "final_development", None)
+  770:         summaries.append(s); integrity_rows.append(a); staged_records += r
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 756–771
+------------------------------------------------------------------------------------------------------------------------
+  756:             print(f"       Fold {fold}: train n={len(train_ep):>6,} | val n={len(val_ep):>5,} | val cross={int(val_ep['lookback_crosses_partition_start'].sum()):>5,} | aux outside[0,1]={outside:>6,}")
+  757:             del train_panel, val_panel, train_index, val_index, train_ep, val_ep, scaler, train_aux, val_aux; gc.collect()
+  758: 
+  759:         stage = "final_dev"; print("[5/10] Materializing final-development refit arrays...")
+  760:         final_panel = load_panel(STEP12_FINAL, features, "final_development_step12")
+  761:         final_index = load_index(STEP13_FINAL, "final_development_step13")
+  762:         final_ep, final_rec = attach_targets(final_index, development, final_panel, "final_development")
+  763:         reconciliation_rows.append(final_rec)
+  764:         final_scaler, final_aux = fit_aux(final_ep, "final_development")
+  765:         scaler_audits += scaler_rows(final_scaler, "final_development", None, len(final_ep))
+  766:         inverse_rows.append(aux_inverse(final_scaler, final_ep, final_aux, "final_development", None, "final_development"))
+  767:         fdir = staging / "final_development"
+  768:         staged_records.append(save_scaler(final_scaler, fdir / "14_final_development_auxiliary_target_minmax_scaler.joblib", "final_development_aux_scaler", None, "final_development_fit"))
+  769:         s, a, r = materialize_partition(final_ep, final_panel, None, "final_development", features, final_aux, fdir, "14_final_development", "final_development", None)
+  770:         summaries.append(s); integrity_rows.append(a); staged_records += r
+  771:         print(f"       Final-development n    : {len(final_ep):,}")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 758–773
+------------------------------------------------------------------------------------------------------------------------
+  758: 
+  759:         stage = "final_dev"; print("[5/10] Materializing final-development refit arrays...")
+  760:         final_panel = load_panel(STEP12_FINAL, features, "final_development_step12")
+  761:         final_index = load_index(STEP13_FINAL, "final_development_step13")
+  762:         final_ep, final_rec = attach_targets(final_index, development, final_panel, "final_development")
+  763:         reconciliation_rows.append(final_rec)
+  764:         final_scaler, final_aux = fit_aux(final_ep, "final_development")
+  765:         scaler_audits += scaler_rows(final_scaler, "final_development", None, len(final_ep))
+  766:         inverse_rows.append(aux_inverse(final_scaler, final_ep, final_aux, "final_development", None, "final_development"))
+  767:         fdir = staging / "final_development"
+  768:         staged_records.append(save_scaler(final_scaler, fdir / "14_final_development_auxiliary_target_minmax_scaler.joblib", "final_development_aux_scaler", None, "final_development_fit"))
+  769:         s, a, r = materialize_partition(final_ep, final_panel, None, "final_development", features, final_aux, fdir, "14_final_development", "final_development", None)
+  770:         summaries.append(s); integrity_rows.append(a); staged_records += r
+  771:         print(f"       Final-development n    : {len(final_ep):,}")
+  772:         print(f"       Final-development X    : ({len(final_ep):,}, 60, 63)")
+  773:         print("       Final-test arrays      : NOT CREATED")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 759–774
+------------------------------------------------------------------------------------------------------------------------
+  759:         stage = "final_dev"; print("[5/10] Materializing final-development refit arrays...")
+  760:         final_panel = load_panel(STEP12_FINAL, features, "final_development_step12")
+  761:         final_index = load_index(STEP13_FINAL, "final_development_step13")
+  762:         final_ep, final_rec = attach_targets(final_index, development, final_panel, "final_development")
+  763:         reconciliation_rows.append(final_rec)
+  764:         final_scaler, final_aux = fit_aux(final_ep, "final_development")
+  765:         scaler_audits += scaler_rows(final_scaler, "final_development", None, len(final_ep))
+  766:         inverse_rows.append(aux_inverse(final_scaler, final_ep, final_aux, "final_development", None, "final_development"))
+  767:         fdir = staging / "final_development"
+  768:         staged_records.append(save_scaler(final_scaler, fdir / "14_final_development_auxiliary_target_minmax_scaler.joblib", "final_development_aux_scaler", None, "final_development_fit"))
+  769:         s, a, r = materialize_partition(final_ep, final_panel, None, "final_development", features, final_aux, fdir, "14_final_development", "final_development", None)
+  770:         summaries.append(s); integrity_rows.append(a); staged_records += r
+  771:         print(f"       Final-development n    : {len(final_ep):,}")
+  772:         print(f"       Final-development X    : ({len(final_ep):,}, 60, 63)")
+  773:         print("       Final-test arrays      : NOT CREATED")
+  774:         del final_panel, final_index, final_ep, final_scaler, final_aux; gc.collect()
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 760–775
+------------------------------------------------------------------------------------------------------------------------
+  760:         final_panel = load_panel(STEP12_FINAL, features, "final_development_step12")
+  761:         final_index = load_index(STEP13_FINAL, "final_development_step13")
+  762:         final_ep, final_rec = attach_targets(final_index, development, final_panel, "final_development")
+  763:         reconciliation_rows.append(final_rec)
+  764:         final_scaler, final_aux = fit_aux(final_ep, "final_development")
+  765:         scaler_audits += scaler_rows(final_scaler, "final_development", None, len(final_ep))
+  766:         inverse_rows.append(aux_inverse(final_scaler, final_ep, final_aux, "final_development", None, "final_development"))
+  767:         fdir = staging / "final_development"
+  768:         staged_records.append(save_scaler(final_scaler, fdir / "14_final_development_auxiliary_target_minmax_scaler.joblib", "final_development_aux_scaler", None, "final_development_fit"))
+  769:         s, a, r = materialize_partition(final_ep, final_panel, None, "final_development", features, final_aux, fdir, "14_final_development", "final_development", None)
+  770:         summaries.append(s); integrity_rows.append(a); staged_records += r
+  771:         print(f"       Final-development n    : {len(final_ep):,}")
+  772:         print(f"       Final-development X    : ({len(final_ep):,}, 60, 63)")
+  773:         print("       Final-test arrays      : NOT CREATED")
+  774:         del final_panel, final_index, final_ep, final_scaler, final_aux; gc.collect()
+  775: 
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 761–776
+------------------------------------------------------------------------------------------------------------------------
+  761:         final_index = load_index(STEP13_FINAL, "final_development_step13")
+  762:         final_ep, final_rec = attach_targets(final_index, development, final_panel, "final_development")
+  763:         reconciliation_rows.append(final_rec)
+  764:         final_scaler, final_aux = fit_aux(final_ep, "final_development")
+  765:         scaler_audits += scaler_rows(final_scaler, "final_development", None, len(final_ep))
+  766:         inverse_rows.append(aux_inverse(final_scaler, final_ep, final_aux, "final_development", None, "final_development"))
+  767:         fdir = staging / "final_development"
+  768:         staged_records.append(save_scaler(final_scaler, fdir / "14_final_development_auxiliary_target_minmax_scaler.joblib", "final_development_aux_scaler", None, "final_development_fit"))
+  769:         s, a, r = materialize_partition(final_ep, final_panel, None, "final_development", features, final_aux, fdir, "14_final_development", "final_development", None)
+  770:         summaries.append(s); integrity_rows.append(a); staged_records += r
+  771:         print(f"       Final-development n    : {len(final_ep):,}")
+  772:         print(f"       Final-development X    : ({len(final_ep):,}, 60, 63)")
+  773:         print("       Final-test arrays      : NOT CREATED")
+  774:         del final_panel, final_index, final_ep, final_scaler, final_aux; gc.collect()
+  775: 
+  776:         stage = "audits"; print("[6/10] Building array, auxiliary-scaling and reconciliation audits...")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 762–777
+------------------------------------------------------------------------------------------------------------------------
+  762:         final_ep, final_rec = attach_targets(final_index, development, final_panel, "final_development")
+  763:         reconciliation_rows.append(final_rec)
+  764:         final_scaler, final_aux = fit_aux(final_ep, "final_development")
+  765:         scaler_audits += scaler_rows(final_scaler, "final_development", None, len(final_ep))
+  766:         inverse_rows.append(aux_inverse(final_scaler, final_ep, final_aux, "final_development", None, "final_development"))
+  767:         fdir = staging / "final_development"
+  768:         staged_records.append(save_scaler(final_scaler, fdir / "14_final_development_auxiliary_target_minmax_scaler.joblib", "final_development_aux_scaler", None, "final_development_fit"))
+  769:         s, a, r = materialize_partition(final_ep, final_panel, None, "final_development", features, final_aux, fdir, "14_final_development", "final_development", None)
+  770:         summaries.append(s); integrity_rows.append(a); staged_records += r
+  771:         print(f"       Final-development n    : {len(final_ep):,}")
+  772:         print(f"       Final-development X    : ({len(final_ep):,}, 60, 63)")
+  773:         print("       Final-test arrays      : NOT CREATED")
+  774:         del final_panel, final_index, final_ep, final_scaler, final_aux; gc.collect()
+  775: 
+  776:         stage = "audits"; print("[6/10] Building array, auxiliary-scaling and reconciliation audits...")
+  777:         summary_df = pd.DataFrame(summaries); integrity_df = pd.DataFrame(integrity_rows); rec_df = pd.DataFrame(reconciliation_rows); scaler_df = pd.DataFrame(scaler_audits); val_df = pd.DataFrame(val_range_rows); inv_df = pd.DataFrame(inverse_rows)
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 763–778
+------------------------------------------------------------------------------------------------------------------------
+  763:         reconciliation_rows.append(final_rec)
+  764:         final_scaler, final_aux = fit_aux(final_ep, "final_development")
+  765:         scaler_audits += scaler_rows(final_scaler, "final_development", None, len(final_ep))
+  766:         inverse_rows.append(aux_inverse(final_scaler, final_ep, final_aux, "final_development", None, "final_development"))
+  767:         fdir = staging / "final_development"
+  768:         staged_records.append(save_scaler(final_scaler, fdir / "14_final_development_auxiliary_target_minmax_scaler.joblib", "final_development_aux_scaler", None, "final_development_fit"))
+  769:         s, a, r = materialize_partition(final_ep, final_panel, None, "final_development", features, final_aux, fdir, "14_final_development", "final_development", None)
+  770:         summaries.append(s); integrity_rows.append(a); staged_records += r
+  771:         print(f"       Final-development n    : {len(final_ep):,}")
+  772:         print(f"       Final-development X    : ({len(final_ep):,}, 60, 63)")
+  773:         print("       Final-test arrays      : NOT CREATED")
+  774:         del final_panel, final_index, final_ep, final_scaler, final_aux; gc.collect()
+  775: 
+  776:         stage = "audits"; print("[6/10] Building array, auxiliary-scaling and reconciliation audits...")
+  777:         summary_df = pd.DataFrame(summaries); integrity_df = pd.DataFrame(integrity_rows); rec_df = pd.DataFrame(reconciliation_rows); scaler_df = pd.DataFrame(scaler_audits); val_df = pd.DataFrame(val_range_rows); inv_df = pd.DataFrame(inverse_rows)
+  778:         if len(summary_df) != 11 or len(integrity_df) != 11 or len(rec_df) != 11: raise RuntimeError("Expected exactly 11 materialized/reconciled partitions.")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 767–782
+------------------------------------------------------------------------------------------------------------------------
+  767:         fdir = staging / "final_development"
+  768:         staged_records.append(save_scaler(final_scaler, fdir / "14_final_development_auxiliary_target_minmax_scaler.joblib", "final_development_aux_scaler", None, "final_development_fit"))
+  769:         s, a, r = materialize_partition(final_ep, final_panel, None, "final_development", features, final_aux, fdir, "14_final_development", "final_development", None)
+  770:         summaries.append(s); integrity_rows.append(a); staged_records += r
+  771:         print(f"       Final-development n    : {len(final_ep):,}")
+  772:         print(f"       Final-development X    : ({len(final_ep):,}, 60, 63)")
+  773:         print("       Final-test arrays      : NOT CREATED")
+  774:         del final_panel, final_index, final_ep, final_scaler, final_aux; gc.collect()
+  775: 
+  776:         stage = "audits"; print("[6/10] Building array, auxiliary-scaling and reconciliation audits...")
+  777:         summary_df = pd.DataFrame(summaries); integrity_df = pd.DataFrame(integrity_rows); rec_df = pd.DataFrame(reconciliation_rows); scaler_df = pd.DataFrame(scaler_audits); val_df = pd.DataFrame(val_range_rows); inv_df = pd.DataFrame(inverse_rows)
+  778:         if len(summary_df) != 11 or len(integrity_df) != 11 or len(rec_df) != 11: raise RuntimeError("Expected exactly 11 materialized/reconciled partitions.")
+  779:         if not integrity_df["passed"].all() or not inv_df["passed"].all(): raise RuntimeError("Array or auxiliary inverse audit failed.")
+  780:         for c in ("target_dates_exact_step10_to_step13", "regime_ids_exact_step12_to_step13", "continuity_ids_exact_step12_to_step13", "market_session_ids_exact_step12_to_step13", "direction_labels_binary", "auxiliary_targets_finite"):
+  781:             if not rec_df[c].all(): raise RuntimeError(f"Endpoint reconciliation failed: {c}")
+  782:         print(f"       Materialized partitions  : {len(summary_df)}")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 768–783
+------------------------------------------------------------------------------------------------------------------------
+  768:         staged_records.append(save_scaler(final_scaler, fdir / "14_final_development_auxiliary_target_minmax_scaler.joblib", "final_development_aux_scaler", None, "final_development_fit"))
+  769:         s, a, r = materialize_partition(final_ep, final_panel, None, "final_development", features, final_aux, fdir, "14_final_development", "final_development", None)
+  770:         summaries.append(s); integrity_rows.append(a); staged_records += r
+  771:         print(f"       Final-development n    : {len(final_ep):,}")
+  772:         print(f"       Final-development X    : ({len(final_ep):,}, 60, 63)")
+  773:         print("       Final-test arrays      : NOT CREATED")
+  774:         del final_panel, final_index, final_ep, final_scaler, final_aux; gc.collect()
+  775: 
+  776:         stage = "audits"; print("[6/10] Building array, auxiliary-scaling and reconciliation audits...")
+  777:         summary_df = pd.DataFrame(summaries); integrity_df = pd.DataFrame(integrity_rows); rec_df = pd.DataFrame(reconciliation_rows); scaler_df = pd.DataFrame(scaler_audits); val_df = pd.DataFrame(val_range_rows); inv_df = pd.DataFrame(inverse_rows)
+  778:         if len(summary_df) != 11 or len(integrity_df) != 11 or len(rec_df) != 11: raise RuntimeError("Expected exactly 11 materialized/reconciled partitions.")
+  779:         if not integrity_df["passed"].all() or not inv_df["passed"].all(): raise RuntimeError("Array or auxiliary inverse audit failed.")
+  780:         for c in ("target_dates_exact_step10_to_step13", "regime_ids_exact_step12_to_step13", "continuity_ids_exact_step12_to_step13", "market_session_ids_exact_step12_to_step13", "direction_labels_binary", "auxiliary_targets_finite"):
+  781:             if not rec_df[c].all(): raise RuntimeError(f"Endpoint reconciliation failed: {c}")
+  782:         print(f"       Materialized partitions  : {len(summary_df)}")
+  783:         print(f"       All array audits pass    : {bool(integrity_df['passed'].all())}")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 771–786
+------------------------------------------------------------------------------------------------------------------------
+  771:         print(f"       Final-development n    : {len(final_ep):,}")
+  772:         print(f"       Final-development X    : ({len(final_ep):,}, 60, 63)")
+  773:         print("       Final-test arrays      : NOT CREATED")
+  774:         del final_panel, final_index, final_ep, final_scaler, final_aux; gc.collect()
+  775: 
+  776:         stage = "audits"; print("[6/10] Building array, auxiliary-scaling and reconciliation audits...")
+  777:         summary_df = pd.DataFrame(summaries); integrity_df = pd.DataFrame(integrity_rows); rec_df = pd.DataFrame(reconciliation_rows); scaler_df = pd.DataFrame(scaler_audits); val_df = pd.DataFrame(val_range_rows); inv_df = pd.DataFrame(inverse_rows)
+  778:         if len(summary_df) != 11 or len(integrity_df) != 11 or len(rec_df) != 11: raise RuntimeError("Expected exactly 11 materialized/reconciled partitions.")
+  779:         if not integrity_df["passed"].all() or not inv_df["passed"].all(): raise RuntimeError("Array or auxiliary inverse audit failed.")
+  780:         for c in ("target_dates_exact_step10_to_step13", "regime_ids_exact_step12_to_step13", "continuity_ids_exact_step12_to_step13", "market_session_ids_exact_step12_to_step13", "direction_labels_binary", "auxiliary_targets_finite"):
+  781:             if not rec_df[c].all(): raise RuntimeError(f"Endpoint reconciliation failed: {c}")
+  782:         print(f"       Materialized partitions  : {len(summary_df)}")
+  783:         print(f"       All array audits pass    : {bool(integrity_df['passed'].all())}")
+  784:         print(f"       Endpoint reconciliations : {len(rec_df)}")
+  785:         print(f"       Aux inverse checks       : {len(inv_df)}")
+  786: 
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 790–805
+------------------------------------------------------------------------------------------------------------------------
+  790:         promoted = []
+  791:         for rec in staged_records:
+  792:             p = FINAL_DIR / rec["file_name"] if rec["fold"] is None else OUT_DIR / f"fold_{rec['fold']}" / rec["file_name"]
+  793:             if not p.exists() or sha256_file(p) != rec["sha256"]: raise RuntimeError(f"Promoted artifact mismatch: {p}")
+  794:             promoted.append({**rec, "file_path": str(p), "relative_path": rel(p)})
+  795: 
+  796:         write_csv(ARRAY_SUMMARY_CSV, summary_df); write_csv(AUX_SCALER_AUDIT_CSV, scaler_df); write_csv(AUX_VALIDATION_RANGE_CSV, val_df); write_csv(AUX_INVERSE_AUDIT_CSV, inv_df); write_csv(ARRAY_INTEGRITY_CSV, integrity_df); write_csv(ENDPOINT_RECONCILIATION_CSV, rec_df); write_csv(SOURCE_HASH_CSV, source_hashes())
+  797:         for p in (ARRAY_SUMMARY_CSV, AUX_SCALER_AUDIT_CSV, AUX_VALIDATION_RANGE_CSV, AUX_INVERSE_AUDIT_CSV, ARRAY_INTEGRITY_CSV, ENDPOINT_RECONCILIATION_CSV, SOURCE_HASH_CSV):
+  798:             promoted.append({"scope": p.stem, "fold": None, "partition": None, "artifact_kind": "audit", "array_name": None, "file_name": p.name, "size_bytes": int(p.stat().st_size), "sha256": sha256_file(p), "file_path": str(p), "relative_path": rel(p)})
+  799: 
+  800:         stage = "freeze"; print("[8/10] Freezing Step-14 summary, source snapshot and manifest...")
+  801:         if sha256_file(Path(step00["lock_path"])) != step00["lock_sha"]: raise RuntimeError("Global final-test lock changed during Step 14.")
+  802:         total_bytes = int(summary_df["saved_bytes"].sum()); val_outside = int(val_df["outside_0_1_count"].sum())
+  803:         summary = {
+  804:             "schema_version": SCHEMA_VERSION, "step": {"step_number": 14, "step_id": "14", "step_name": STEP_NAME, "status": "PASS"}, "generated_at_utc": utc_now(),
+  805:             "configuration_fingerprint_sha256": step00["fingerprint"], "step13_manifest_sha256": upstream["shas"][13], "feature_interface_sha256": upstream["feature_interface_sha"], "split_design_sha256": upstream["split_design_sha"],
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 791–806
+------------------------------------------------------------------------------------------------------------------------
+  791:         for rec in staged_records:
+  792:             p = FINAL_DIR / rec["file_name"] if rec["fold"] is None else OUT_DIR / f"fold_{rec['fold']}" / rec["file_name"]
+  793:             if not p.exists() or sha256_file(p) != rec["sha256"]: raise RuntimeError(f"Promoted artifact mismatch: {p}")
+  794:             promoted.append({**rec, "file_path": str(p), "relative_path": rel(p)})
+  795: 
+  796:         write_csv(ARRAY_SUMMARY_CSV, summary_df); write_csv(AUX_SCALER_AUDIT_CSV, scaler_df); write_csv(AUX_VALIDATION_RANGE_CSV, val_df); write_csv(AUX_INVERSE_AUDIT_CSV, inv_df); write_csv(ARRAY_INTEGRITY_CSV, integrity_df); write_csv(ENDPOINT_RECONCILIATION_CSV, rec_df); write_csv(SOURCE_HASH_CSV, source_hashes())
+  797:         for p in (ARRAY_SUMMARY_CSV, AUX_SCALER_AUDIT_CSV, AUX_VALIDATION_RANGE_CSV, AUX_INVERSE_AUDIT_CSV, ARRAY_INTEGRITY_CSV, ENDPOINT_RECONCILIATION_CSV, SOURCE_HASH_CSV):
+  798:             promoted.append({"scope": p.stem, "fold": None, "partition": None, "artifact_kind": "audit", "array_name": None, "file_name": p.name, "size_bytes": int(p.stat().st_size), "sha256": sha256_file(p), "file_path": str(p), "relative_path": rel(p)})
+  799: 
+  800:         stage = "freeze"; print("[8/10] Freezing Step-14 summary, source snapshot and manifest...")
+  801:         if sha256_file(Path(step00["lock_path"])) != step00["lock_sha"]: raise RuntimeError("Global final-test lock changed during Step 14.")
+  802:         total_bytes = int(summary_df["saved_bytes"].sum()); val_outside = int(val_df["outside_0_1_count"].sum())
+  803:         summary = {
+  804:             "schema_version": SCHEMA_VERSION, "step": {"step_number": 14, "step_id": "14", "step_name": STEP_NAME, "status": "PASS"}, "generated_at_utc": utc_now(),
+  805:             "configuration_fingerprint_sha256": step00["fingerprint"], "step13_manifest_sha256": upstream["shas"][13], "feature_interface_sha256": upstream["feature_interface_sha"], "split_design_sha256": upstream["split_design_sha"],
+  806:             "array_interface": {"lookback_sessions": 60, "full_features": 63, "stock_features": 47, "market_features": 16, "direction_targets": 3, "auxiliary_targets": 10, "X_dtype": "float32", "direction_dtype": "int64", "auxiliary_dtype": "float32", "categorical_id_dtype": "int64"},
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 801–816
+------------------------------------------------------------------------------------------------------------------------
+  801:         if sha256_file(Path(step00["lock_path"])) != step00["lock_sha"]: raise RuntimeError("Global final-test lock changed during Step 14.")
+  802:         total_bytes = int(summary_df["saved_bytes"].sum()); val_outside = int(val_df["outside_0_1_count"].sum())
+  803:         summary = {
+  804:             "schema_version": SCHEMA_VERSION, "step": {"step_number": 14, "step_id": "14", "step_name": STEP_NAME, "status": "PASS"}, "generated_at_utc": utc_now(),
+  805:             "configuration_fingerprint_sha256": step00["fingerprint"], "step13_manifest_sha256": upstream["shas"][13], "feature_interface_sha256": upstream["feature_interface_sha"], "split_design_sha256": upstream["split_design_sha"],
+  806:             "array_interface": {"lookback_sessions": 60, "full_features": 63, "stock_features": 47, "market_features": 16, "direction_targets": 3, "auxiliary_targets": 10, "X_dtype": "float32", "direction_dtype": "int64", "auxiliary_dtype": "float32", "categorical_id_dtype": "int64"},
+  807:             "auxiliary_scaling_policy": {"scaler": "MinMaxScaler", "feature_range": [0.0, 1.0], "clip": False, "fold_fit_scope": "fold-training common sequence endpoints only", "validation_used_in_fit": False, "final_development_fit_scope": "final-development common sequence endpoints only", "final_test_used_in_fit": False, "directional_targets_scaled": False, "validation_values_outside_0_1_total": val_outside},
+  808:             "storage": {"total_saved_bytes": total_bytes, "total_saved_gib": total_bytes / (1024 ** 3)},
+  809:             "pipeline_state": {"rolling_fold_common_multitask_arrays_materialized": True, "rolling_fold_auxiliary_scalers_fitted": True, "final_development_refit_arrays_created": True, "final_development_auxiliary_scaler_fitted": True, "feature_selection_applied": False, "models_fitted": False, "probability_threshold_selection_performed": False, "final_test_arrays_created": False},
+  810:             "test_protection": {"step10_seal_status": upstream["test_seal_status"], "sealed_test_sha256_from_metadata_only": upstream["sealed_test_sha_metadata_only"], "sealed_test_parquet_opened_or_hashed_by_step14": False, "global_final_test_state": step00["state"], "global_lock_unchanged": True},
+  811:         }
+  812:         atomic_json(SUMMARY_JSON, summary); shutil.copy2(SCRIPT_FILE, FROZEN_SCRIPT)
+  813:         atomic_text(SUMMARY_TXT, "\n".join([STEP_NAME, "="*100, "Status: PASS", f"Step-13 manifest: {upstream['shas'][13]}", f"63-feature interface: {upstream['feature_interface_sha']}", f"Split-design SHA-256: {upstream['split_design_sha']}", "Fold common-multitask arrays: True", "Final-development arrays: True", "Auxiliary clipping: False", "Final-test parquet accessed: False", f"Global final-test state: {step00['state']}"]) + "\n")
+  814:         for p in (SUMMARY_JSON, FROZEN_SCRIPT, SUMMARY_TXT):
+  815:             promoted.append({"scope": p.stem, "fold": None, "partition": None, "artifact_kind": "freeze_metadata", "array_name": None, "file_name": p.name, "size_bytes": int(p.stat().st_size), "sha256": sha256_file(p), "file_path": str(p), "relative_path": rel(p)})
+  816:         write_csv(HASH_REGISTER_CSV, pd.DataFrame(promoted))
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 803–818
+------------------------------------------------------------------------------------------------------------------------
+  803:         summary = {
+  804:             "schema_version": SCHEMA_VERSION, "step": {"step_number": 14, "step_id": "14", "step_name": STEP_NAME, "status": "PASS"}, "generated_at_utc": utc_now(),
+  805:             "configuration_fingerprint_sha256": step00["fingerprint"], "step13_manifest_sha256": upstream["shas"][13], "feature_interface_sha256": upstream["feature_interface_sha"], "split_design_sha256": upstream["split_design_sha"],
+  806:             "array_interface": {"lookback_sessions": 60, "full_features": 63, "stock_features": 47, "market_features": 16, "direction_targets": 3, "auxiliary_targets": 10, "X_dtype": "float32", "direction_dtype": "int64", "auxiliary_dtype": "float32", "categorical_id_dtype": "int64"},
+  807:             "auxiliary_scaling_policy": {"scaler": "MinMaxScaler", "feature_range": [0.0, 1.0], "clip": False, "fold_fit_scope": "fold-training common sequence endpoints only", "validation_used_in_fit": False, "final_development_fit_scope": "final-development common sequence endpoints only", "final_test_used_in_fit": False, "directional_targets_scaled": False, "validation_values_outside_0_1_total": val_outside},
+  808:             "storage": {"total_saved_bytes": total_bytes, "total_saved_gib": total_bytes / (1024 ** 3)},
+  809:             "pipeline_state": {"rolling_fold_common_multitask_arrays_materialized": True, "rolling_fold_auxiliary_scalers_fitted": True, "final_development_refit_arrays_created": True, "final_development_auxiliary_scaler_fitted": True, "feature_selection_applied": False, "models_fitted": False, "probability_threshold_selection_performed": False, "final_test_arrays_created": False},
+  810:             "test_protection": {"step10_seal_status": upstream["test_seal_status"], "sealed_test_sha256_from_metadata_only": upstream["sealed_test_sha_metadata_only"], "sealed_test_parquet_opened_or_hashed_by_step14": False, "global_final_test_state": step00["state"], "global_lock_unchanged": True},
+  811:         }
+  812:         atomic_json(SUMMARY_JSON, summary); shutil.copy2(SCRIPT_FILE, FROZEN_SCRIPT)
+  813:         atomic_text(SUMMARY_TXT, "\n".join([STEP_NAME, "="*100, "Status: PASS", f"Step-13 manifest: {upstream['shas'][13]}", f"63-feature interface: {upstream['feature_interface_sha']}", f"Split-design SHA-256: {upstream['split_design_sha']}", "Fold common-multitask arrays: True", "Final-development arrays: True", "Auxiliary clipping: False", "Final-test parquet accessed: False", f"Global final-test state: {step00['state']}"]) + "\n")
+  814:         for p in (SUMMARY_JSON, FROZEN_SCRIPT, SUMMARY_TXT):
+  815:             promoted.append({"scope": p.stem, "fold": None, "partition": None, "artifact_kind": "freeze_metadata", "array_name": None, "file_name": p.name, "size_bytes": int(p.stat().st_size), "sha256": sha256_file(p), "file_path": str(p), "relative_path": rel(p)})
+  816:         write_csv(HASH_REGISTER_CSV, pd.DataFrame(promoted))
+  817:         artifact_paths = [Path(r["file_path"]) for r in promoted] + [HASH_REGISTER_CSV]
+  818:         manifest = {
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 804–819
+------------------------------------------------------------------------------------------------------------------------
+  804:             "schema_version": SCHEMA_VERSION, "step": {"step_number": 14, "step_id": "14", "step_name": STEP_NAME, "status": "PASS"}, "generated_at_utc": utc_now(),
+  805:             "configuration_fingerprint_sha256": step00["fingerprint"], "step13_manifest_sha256": upstream["shas"][13], "feature_interface_sha256": upstream["feature_interface_sha"], "split_design_sha256": upstream["split_design_sha"],
+  806:             "array_interface": {"lookback_sessions": 60, "full_features": 63, "stock_features": 47, "market_features": 16, "direction_targets": 3, "auxiliary_targets": 10, "X_dtype": "float32", "direction_dtype": "int64", "auxiliary_dtype": "float32", "categorical_id_dtype": "int64"},
+  807:             "auxiliary_scaling_policy": {"scaler": "MinMaxScaler", "feature_range": [0.0, 1.0], "clip": False, "fold_fit_scope": "fold-training common sequence endpoints only", "validation_used_in_fit": False, "final_development_fit_scope": "final-development common sequence endpoints only", "final_test_used_in_fit": False, "directional_targets_scaled": False, "validation_values_outside_0_1_total": val_outside},
+  808:             "storage": {"total_saved_bytes": total_bytes, "total_saved_gib": total_bytes / (1024 ** 3)},
+  809:             "pipeline_state": {"rolling_fold_common_multitask_arrays_materialized": True, "rolling_fold_auxiliary_scalers_fitted": True, "final_development_refit_arrays_created": True, "final_development_auxiliary_scaler_fitted": True, "feature_selection_applied": False, "models_fitted": False, "probability_threshold_selection_performed": False, "final_test_arrays_created": False},
+  810:             "test_protection": {"step10_seal_status": upstream["test_seal_status"], "sealed_test_sha256_from_metadata_only": upstream["sealed_test_sha_metadata_only"], "sealed_test_parquet_opened_or_hashed_by_step14": False, "global_final_test_state": step00["state"], "global_lock_unchanged": True},
+  811:         }
+  812:         atomic_json(SUMMARY_JSON, summary); shutil.copy2(SCRIPT_FILE, FROZEN_SCRIPT)
+  813:         atomic_text(SUMMARY_TXT, "\n".join([STEP_NAME, "="*100, "Status: PASS", f"Step-13 manifest: {upstream['shas'][13]}", f"63-feature interface: {upstream['feature_interface_sha']}", f"Split-design SHA-256: {upstream['split_design_sha']}", "Fold common-multitask arrays: True", "Final-development arrays: True", "Auxiliary clipping: False", "Final-test parquet accessed: False", f"Global final-test state: {step00['state']}"]) + "\n")
+  814:         for p in (SUMMARY_JSON, FROZEN_SCRIPT, SUMMARY_TXT):
+  815:             promoted.append({"scope": p.stem, "fold": None, "partition": None, "artifact_kind": "freeze_metadata", "array_name": None, "file_name": p.name, "size_bytes": int(p.stat().st_size), "sha256": sha256_file(p), "file_path": str(p), "relative_path": rel(p)})
+  816:         write_csv(HASH_REGISTER_CSV, pd.DataFrame(promoted))
+  817:         artifact_paths = [Path(r["file_path"]) for r in promoted] + [HASH_REGISTER_CSV]
+  818:         manifest = {
+  819:             "schema_version": SCHEMA_VERSION, "step": {"step_number": 14, "step_id": "14", "step_name": STEP_NAME, "status": "PASS"}, "frozen_at_utc": utc_now(), "experiment_tag": cfg.EXPERIMENT_TAG,
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 809–824
+------------------------------------------------------------------------------------------------------------------------
+  809:             "pipeline_state": {"rolling_fold_common_multitask_arrays_materialized": True, "rolling_fold_auxiliary_scalers_fitted": True, "final_development_refit_arrays_created": True, "final_development_auxiliary_scaler_fitted": True, "feature_selection_applied": False, "models_fitted": False, "probability_threshold_selection_performed": False, "final_test_arrays_created": False},
+  810:             "test_protection": {"step10_seal_status": upstream["test_seal_status"], "sealed_test_sha256_from_metadata_only": upstream["sealed_test_sha_metadata_only"], "sealed_test_parquet_opened_or_hashed_by_step14": False, "global_final_test_state": step00["state"], "global_lock_unchanged": True},
+  811:         }
+  812:         atomic_json(SUMMARY_JSON, summary); shutil.copy2(SCRIPT_FILE, FROZEN_SCRIPT)
+  813:         atomic_text(SUMMARY_TXT, "\n".join([STEP_NAME, "="*100, "Status: PASS", f"Step-13 manifest: {upstream['shas'][13]}", f"63-feature interface: {upstream['feature_interface_sha']}", f"Split-design SHA-256: {upstream['split_design_sha']}", "Fold common-multitask arrays: True", "Final-development arrays: True", "Auxiliary clipping: False", "Final-test parquet accessed: False", f"Global final-test state: {step00['state']}"]) + "\n")
+  814:         for p in (SUMMARY_JSON, FROZEN_SCRIPT, SUMMARY_TXT):
+  815:             promoted.append({"scope": p.stem, "fold": None, "partition": None, "artifact_kind": "freeze_metadata", "array_name": None, "file_name": p.name, "size_bytes": int(p.stat().st_size), "sha256": sha256_file(p), "file_path": str(p), "relative_path": rel(p)})
+  816:         write_csv(HASH_REGISTER_CSV, pd.DataFrame(promoted))
+  817:         artifact_paths = [Path(r["file_path"]) for r in promoted] + [HASH_REGISTER_CSV]
+  818:         manifest = {
+  819:             "schema_version": SCHEMA_VERSION, "step": {"step_number": 14, "step_id": "14", "step_name": STEP_NAME, "status": "PASS"}, "frozen_at_utc": utc_now(), "experiment_tag": cfg.EXPERIMENT_TAG,
+  820:             "configuration_fingerprint_sha256": step00["fingerprint"], "step00_manifest_sha256": step00["step00_manifest_sha"],
+  821:             **{f"step{s:02d}_manifest_sha256": upstream["shas"][s] for s in range(1, 14)},
+  822:             "feature_interface_sha256": upstream["feature_interface_sha"], "ordered_63_features": features, "stock_features": upstream["stock_features"], "market_features": upstream["market_features"], "split_design_sha256": upstream["split_design_sha"], "stock_id_map": upstream["stock_id_map"],
+  823:             "direction_target_order": DIRECTION_COLUMNS, "auxiliary_target_order": AUX_COLUMNS,
+  824:             "source_integrity": {"step10_development_panel_sha256": upstream["development_sha"], "step12_fold_panel_hashes": upstream["step12_hashes"], "step12_final_development_sha256": upstream["final12_sha"], "step13_fold_index_hashes": upstream["step13_hashes"], "step13_final_development_index_sha256": upstream["final13_sha"]},
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 818–833
+------------------------------------------------------------------------------------------------------------------------
+  818:         manifest = {
+  819:             "schema_version": SCHEMA_VERSION, "step": {"step_number": 14, "step_id": "14", "step_name": STEP_NAME, "status": "PASS"}, "frozen_at_utc": utc_now(), "experiment_tag": cfg.EXPERIMENT_TAG,
+  820:             "configuration_fingerprint_sha256": step00["fingerprint"], "step00_manifest_sha256": step00["step00_manifest_sha"],
+  821:             **{f"step{s:02d}_manifest_sha256": upstream["shas"][s] for s in range(1, 14)},
+  822:             "feature_interface_sha256": upstream["feature_interface_sha"], "ordered_63_features": features, "stock_features": upstream["stock_features"], "market_features": upstream["market_features"], "split_design_sha256": upstream["split_design_sha"], "stock_id_map": upstream["stock_id_map"],
+  823:             "direction_target_order": DIRECTION_COLUMNS, "auxiliary_target_order": AUX_COLUMNS,
+  824:             "source_integrity": {"step10_development_panel_sha256": upstream["development_sha"], "step12_fold_panel_hashes": upstream["step12_hashes"], "step12_final_development_sha256": upstream["final12_sha"], "step13_fold_index_hashes": upstream["step13_hashes"], "step13_final_development_index_sha256": upstream["final13_sha"]},
+  825:             "array_interface": {"lookback_sessions": 60, "continuous_feature_count": 63, "stock_feature_count": 47, "market_feature_count": 16, "X_dtype": "float32", "direction_dtype": "int64", "auxiliary_dtype": "float32", "categorical_id_dtype": "int64", "common_multitask_only": True},
+  826:             "auxiliary_scaling_policy": {"scaler": "MinMaxScaler", "feature_range": [0.0, 1.0], "clip": False, "fold_fit_scope": "fold-training common sequence endpoints only", "validation_used_in_fit": False, "final_development_fit_scope": "final-development common sequence endpoints only", "final_test_used_in_fit": False, "directional_targets_scaled": False},
+  827:             "sequence_policy": {"indices_reused_from_step13": True, "sequence_membership_recomputed": False, "validation_causal_training_history_preserved": True, "same_ticker_required": True, "same_continuity_segment_required": True},
+  828:             "test_protection": {"step10_seal_status": upstream["test_seal_status"], "global_final_test_state": step00["state"], "sealed_test_parquet_opened_or_hashed_by_step14": False, "final_test_arrays_created": False, "test_targets_scaled": False, "test_performance_computed": False},
+  829:             "pipeline_state": {"rolling_fold_sequence_arrays_materialized": True, "rolling_fold_auxiliary_scalers_fitted": True, "final_development_refit_arrays_created": True, "final_development_auxiliary_scaler_fitted": True, "feature_selection_applied": False, "models_fitted": False, "probability_threshold_selection_performed": False},
+  830:             "artifacts": {p.name: artifact(p) for p in artifact_paths},
+  831:         }
+  832:         atomic_json(MANIFEST_JSON, manifest); manifest_sha = sha256_file(MANIFEST_JSON); atomic_text(MANIFEST_SHA, f"{manifest_sha}  {MANIFEST_JSON.name}\n")
+  833: 
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 820–835
+------------------------------------------------------------------------------------------------------------------------
+  820:             "configuration_fingerprint_sha256": step00["fingerprint"], "step00_manifest_sha256": step00["step00_manifest_sha"],
+  821:             **{f"step{s:02d}_manifest_sha256": upstream["shas"][s] for s in range(1, 14)},
+  822:             "feature_interface_sha256": upstream["feature_interface_sha"], "ordered_63_features": features, "stock_features": upstream["stock_features"], "market_features": upstream["market_features"], "split_design_sha256": upstream["split_design_sha"], "stock_id_map": upstream["stock_id_map"],
+  823:             "direction_target_order": DIRECTION_COLUMNS, "auxiliary_target_order": AUX_COLUMNS,
+  824:             "source_integrity": {"step10_development_panel_sha256": upstream["development_sha"], "step12_fold_panel_hashes": upstream["step12_hashes"], "step12_final_development_sha256": upstream["final12_sha"], "step13_fold_index_hashes": upstream["step13_hashes"], "step13_final_development_index_sha256": upstream["final13_sha"]},
+  825:             "array_interface": {"lookback_sessions": 60, "continuous_feature_count": 63, "stock_feature_count": 47, "market_feature_count": 16, "X_dtype": "float32", "direction_dtype": "int64", "auxiliary_dtype": "float32", "categorical_id_dtype": "int64", "common_multitask_only": True},
+  826:             "auxiliary_scaling_policy": {"scaler": "MinMaxScaler", "feature_range": [0.0, 1.0], "clip": False, "fold_fit_scope": "fold-training common sequence endpoints only", "validation_used_in_fit": False, "final_development_fit_scope": "final-development common sequence endpoints only", "final_test_used_in_fit": False, "directional_targets_scaled": False},
+  827:             "sequence_policy": {"indices_reused_from_step13": True, "sequence_membership_recomputed": False, "validation_causal_training_history_preserved": True, "same_ticker_required": True, "same_continuity_segment_required": True},
+  828:             "test_protection": {"step10_seal_status": upstream["test_seal_status"], "global_final_test_state": step00["state"], "sealed_test_parquet_opened_or_hashed_by_step14": False, "final_test_arrays_created": False, "test_targets_scaled": False, "test_performance_computed": False},
+  829:             "pipeline_state": {"rolling_fold_sequence_arrays_materialized": True, "rolling_fold_auxiliary_scalers_fitted": True, "final_development_refit_arrays_created": True, "final_development_auxiliary_scaler_fitted": True, "feature_selection_applied": False, "models_fitted": False, "probability_threshold_selection_performed": False},
+  830:             "artifacts": {p.name: artifact(p) for p in artifact_paths},
+  831:         }
+  832:         atomic_json(MANIFEST_JSON, manifest); manifest_sha = sha256_file(MANIFEST_JSON); atomic_text(MANIFEST_SHA, f"{manifest_sha}  {MANIFEST_JSON.name}\n")
+  833: 
+  834:         stage = "validate"; print("[9/10] Validating frozen Step-14 artifact set...")
+  835:         verify_sidecar(MANIFEST_JSON, MANIFEST_SHA, "Step 14")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 822–837
+------------------------------------------------------------------------------------------------------------------------
+  822:             "feature_interface_sha256": upstream["feature_interface_sha"], "ordered_63_features": features, "stock_features": upstream["stock_features"], "market_features": upstream["market_features"], "split_design_sha256": upstream["split_design_sha"], "stock_id_map": upstream["stock_id_map"],
+  823:             "direction_target_order": DIRECTION_COLUMNS, "auxiliary_target_order": AUX_COLUMNS,
+  824:             "source_integrity": {"step10_development_panel_sha256": upstream["development_sha"], "step12_fold_panel_hashes": upstream["step12_hashes"], "step12_final_development_sha256": upstream["final12_sha"], "step13_fold_index_hashes": upstream["step13_hashes"], "step13_final_development_index_sha256": upstream["final13_sha"]},
+  825:             "array_interface": {"lookback_sessions": 60, "continuous_feature_count": 63, "stock_feature_count": 47, "market_feature_count": 16, "X_dtype": "float32", "direction_dtype": "int64", "auxiliary_dtype": "float32", "categorical_id_dtype": "int64", "common_multitask_only": True},
+  826:             "auxiliary_scaling_policy": {"scaler": "MinMaxScaler", "feature_range": [0.0, 1.0], "clip": False, "fold_fit_scope": "fold-training common sequence endpoints only", "validation_used_in_fit": False, "final_development_fit_scope": "final-development common sequence endpoints only", "final_test_used_in_fit": False, "directional_targets_scaled": False},
+  827:             "sequence_policy": {"indices_reused_from_step13": True, "sequence_membership_recomputed": False, "validation_causal_training_history_preserved": True, "same_ticker_required": True, "same_continuity_segment_required": True},
+  828:             "test_protection": {"step10_seal_status": upstream["test_seal_status"], "global_final_test_state": step00["state"], "sealed_test_parquet_opened_or_hashed_by_step14": False, "final_test_arrays_created": False, "test_targets_scaled": False, "test_performance_computed": False},
+  829:             "pipeline_state": {"rolling_fold_sequence_arrays_materialized": True, "rolling_fold_auxiliary_scalers_fitted": True, "final_development_refit_arrays_created": True, "final_development_auxiliary_scaler_fitted": True, "feature_selection_applied": False, "models_fitted": False, "probability_threshold_selection_performed": False},
+  830:             "artifacts": {p.name: artifact(p) for p in artifact_paths},
+  831:         }
+  832:         atomic_json(MANIFEST_JSON, manifest); manifest_sha = sha256_file(MANIFEST_JSON); atomic_text(MANIFEST_SHA, f"{manifest_sha}  {MANIFEST_JSON.name}\n")
+  833: 
+  834:         stage = "validate"; print("[9/10] Validating frozen Step-14 artifact set...")
+  835:         verify_sidecar(MANIFEST_JSON, MANIFEST_SHA, "Step 14")
+  836:         for rec in manifest["artifacts"].values():
+  837:             p = Path(rec["path"])
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 823–838
+------------------------------------------------------------------------------------------------------------------------
+  823:             "direction_target_order": DIRECTION_COLUMNS, "auxiliary_target_order": AUX_COLUMNS,
+  824:             "source_integrity": {"step10_development_panel_sha256": upstream["development_sha"], "step12_fold_panel_hashes": upstream["step12_hashes"], "step12_final_development_sha256": upstream["final12_sha"], "step13_fold_index_hashes": upstream["step13_hashes"], "step13_final_development_index_sha256": upstream["final13_sha"]},
+  825:             "array_interface": {"lookback_sessions": 60, "continuous_feature_count": 63, "stock_feature_count": 47, "market_feature_count": 16, "X_dtype": "float32", "direction_dtype": "int64", "auxiliary_dtype": "float32", "categorical_id_dtype": "int64", "common_multitask_only": True},
+  826:             "auxiliary_scaling_policy": {"scaler": "MinMaxScaler", "feature_range": [0.0, 1.0], "clip": False, "fold_fit_scope": "fold-training common sequence endpoints only", "validation_used_in_fit": False, "final_development_fit_scope": "final-development common sequence endpoints only", "final_test_used_in_fit": False, "directional_targets_scaled": False},
+  827:             "sequence_policy": {"indices_reused_from_step13": True, "sequence_membership_recomputed": False, "validation_causal_training_history_preserved": True, "same_ticker_required": True, "same_continuity_segment_required": True},
+  828:             "test_protection": {"step10_seal_status": upstream["test_seal_status"], "global_final_test_state": step00["state"], "sealed_test_parquet_opened_or_hashed_by_step14": False, "final_test_arrays_created": False, "test_targets_scaled": False, "test_performance_computed": False},
+  829:             "pipeline_state": {"rolling_fold_sequence_arrays_materialized": True, "rolling_fold_auxiliary_scalers_fitted": True, "final_development_refit_arrays_created": True, "final_development_auxiliary_scaler_fitted": True, "feature_selection_applied": False, "models_fitted": False, "probability_threshold_selection_performed": False},
+  830:             "artifacts": {p.name: artifact(p) for p in artifact_paths},
+  831:         }
+  832:         atomic_json(MANIFEST_JSON, manifest); manifest_sha = sha256_file(MANIFEST_JSON); atomic_text(MANIFEST_SHA, f"{manifest_sha}  {MANIFEST_JSON.name}\n")
+  833: 
+  834:         stage = "validate"; print("[9/10] Validating frozen Step-14 artifact set...")
+  835:         verify_sidecar(MANIFEST_JSON, MANIFEST_SHA, "Step 14")
+  836:         for rec in manifest["artifacts"].values():
+  837:             p = Path(rec["path"])
+  838:             if not p.exists() or sha256_file(p) != rec["sha256"]: raise RuntimeError(f"Frozen Step-14 artifact mismatch: {p}")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 837–852
+------------------------------------------------------------------------------------------------------------------------
+  837:             p = Path(rec["path"])
+  838:             if not p.exists() or sha256_file(p) != rec["sha256"]: raise RuntimeError(f"Frozen Step-14 artifact mismatch: {p}")
+  839:         if sha256_file(Path(step00["lock_path"])) != step00["lock_sha"]: raise RuntimeError("Global final-test lock changed during validation.")
+  840: 
+  841:         stage = "report"; print("[10/10] Final Step-14 report...")
+  842:         print(); print("-" * 136); print("ARRAY INTERFACE"); print("-" * 136)
+  843:         print("X_full                   : (n, 60, 63) float32")
+  844:         print("X_stock                  : (n, 60, 47) float32")
+  845:         print("X_market                 : (n, 60, 16) float32")
+  846:         print("y_direction              : (n, 3) int64")
+  847:         print("y_aux_raw / y_aux_scaled : (n, 10) float32")
+  848:         print("stock_id / regime_id     : (n,) int64")
+  849:         print("-" * 136); print("ROLLING-ORIGIN ARRAYS"); print("-" * 136)
+  850:         for row in summary_df.loc[summary_df["fold"].notna()].sort_values(["fold", "partition"]).itertuples(index=False):
+  851:             print(f"Fold {int(row.fold)} {row.partition:<10} | n={row.sequences:>6,} | X=({row.sequences:,},60,63) | cross={row.cross_boundary_lookback_endpoints:>5,} | aux outside[0,1]={row.auxiliary_scaled_values_outside_0_1:>6,} | saved={row.saved_gib:.3f} GiB")
+  852:         final_row = summary_df.loc[summary_df["partition"] == "final_development"].iloc[0]
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 840–855
+------------------------------------------------------------------------------------------------------------------------
+  840: 
+  841:         stage = "report"; print("[10/10] Final Step-14 report...")
+  842:         print(); print("-" * 136); print("ARRAY INTERFACE"); print("-" * 136)
+  843:         print("X_full                   : (n, 60, 63) float32")
+  844:         print("X_stock                  : (n, 60, 47) float32")
+  845:         print("X_market                 : (n, 60, 16) float32")
+  846:         print("y_direction              : (n, 3) int64")
+  847:         print("y_aux_raw / y_aux_scaled : (n, 10) float32")
+  848:         print("stock_id / regime_id     : (n,) int64")
+  849:         print("-" * 136); print("ROLLING-ORIGIN ARRAYS"); print("-" * 136)
+  850:         for row in summary_df.loc[summary_df["fold"].notna()].sort_values(["fold", "partition"]).itertuples(index=False):
+  851:             print(f"Fold {int(row.fold)} {row.partition:<10} | n={row.sequences:>6,} | X=({row.sequences:,},60,63) | cross={row.cross_boundary_lookback_endpoints:>5,} | aux outside[0,1]={row.auxiliary_scaled_values_outside_0_1:>6,} | saved={row.saved_gib:.3f} GiB")
+  852:         final_row = summary_df.loc[summary_df["partition"] == "final_development"].iloc[0]
+  853:         print("-" * 136); print("FINAL-DEVELOPMENT REFIT ARRAYS"); print("-" * 136)
+  854:         print(f"Sequences                  : {int(final_row['sequences']):,}")
+  855:         print(f"X_full                     : ({int(final_row['sequences']):,},60,63)")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 846–861
+------------------------------------------------------------------------------------------------------------------------
+  846:         print("y_direction              : (n, 3) int64")
+  847:         print("y_aux_raw / y_aux_scaled : (n, 10) float32")
+  848:         print("stock_id / regime_id     : (n,) int64")
+  849:         print("-" * 136); print("ROLLING-ORIGIN ARRAYS"); print("-" * 136)
+  850:         for row in summary_df.loc[summary_df["fold"].notna()].sort_values(["fold", "partition"]).itertuples(index=False):
+  851:             print(f"Fold {int(row.fold)} {row.partition:<10} | n={row.sequences:>6,} | X=({row.sequences:,},60,63) | cross={row.cross_boundary_lookback_endpoints:>5,} | aux outside[0,1]={row.auxiliary_scaled_values_outside_0_1:>6,} | saved={row.saved_gib:.3f} GiB")
+  852:         final_row = summary_df.loc[summary_df["partition"] == "final_development"].iloc[0]
+  853:         print("-" * 136); print("FINAL-DEVELOPMENT REFIT ARRAYS"); print("-" * 136)
+  854:         print(f"Sequences                  : {int(final_row['sequences']):,}")
+  855:         print(f"X_full                     : ({int(final_row['sequences']):,},60,63)")
+  856:         print("Auxiliary scaler           : FINAL-DEVELOPMENT ONLY")
+  857:         print("Final-test arrays           : NOT CREATED")
+  858:         print("-" * 136); print("INTEGRITY / STORAGE"); print("-" * 136)
+  859:         print(f"Materialized partitions    : {len(integrity_df)}")
+  860:         print(f"All array audits pass      : {bool(integrity_df['passed'].all())}")
+  861:         print(f"Stock modality exact       : {bool(integrity_df['stock_slice_exact'].all())}")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 849–864
+------------------------------------------------------------------------------------------------------------------------
+  849:         print("-" * 136); print("ROLLING-ORIGIN ARRAYS"); print("-" * 136)
+  850:         for row in summary_df.loc[summary_df["fold"].notna()].sort_values(["fold", "partition"]).itertuples(index=False):
+  851:             print(f"Fold {int(row.fold)} {row.partition:<10} | n={row.sequences:>6,} | X=({row.sequences:,},60,63) | cross={row.cross_boundary_lookback_endpoints:>5,} | aux outside[0,1]={row.auxiliary_scaled_values_outside_0_1:>6,} | saved={row.saved_gib:.3f} GiB")
+  852:         final_row = summary_df.loc[summary_df["partition"] == "final_development"].iloc[0]
+  853:         print("-" * 136); print("FINAL-DEVELOPMENT REFIT ARRAYS"); print("-" * 136)
+  854:         print(f"Sequences                  : {int(final_row['sequences']):,}")
+  855:         print(f"X_full                     : ({int(final_row['sequences']):,},60,63)")
+  856:         print("Auxiliary scaler           : FINAL-DEVELOPMENT ONLY")
+  857:         print("Final-test arrays           : NOT CREATED")
+  858:         print("-" * 136); print("INTEGRITY / STORAGE"); print("-" * 136)
+  859:         print(f"Materialized partitions    : {len(integrity_df)}")
+  860:         print(f"All array audits pass      : {bool(integrity_df['passed'].all())}")
+  861:         print(f"Stock modality exact       : {bool(integrity_df['stock_slice_exact'].all())}")
+  862:         print(f"Market modality exact      : {bool(integrity_df['market_slice_exact'].all())}")
+  863:         print(f"Endpoint reconciliations   : {len(rec_df)}")
+  864:         print(f"Aux inverse checks pass    : {bool(inv_df['passed'].all())}")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 850–865
+------------------------------------------------------------------------------------------------------------------------
+  850:         for row in summary_df.loc[summary_df["fold"].notna()].sort_values(["fold", "partition"]).itertuples(index=False):
+  851:             print(f"Fold {int(row.fold)} {row.partition:<10} | n={row.sequences:>6,} | X=({row.sequences:,},60,63) | cross={row.cross_boundary_lookback_endpoints:>5,} | aux outside[0,1]={row.auxiliary_scaled_values_outside_0_1:>6,} | saved={row.saved_gib:.3f} GiB")
+  852:         final_row = summary_df.loc[summary_df["partition"] == "final_development"].iloc[0]
+  853:         print("-" * 136); print("FINAL-DEVELOPMENT REFIT ARRAYS"); print("-" * 136)
+  854:         print(f"Sequences                  : {int(final_row['sequences']):,}")
+  855:         print(f"X_full                     : ({int(final_row['sequences']):,},60,63)")
+  856:         print("Auxiliary scaler           : FINAL-DEVELOPMENT ONLY")
+  857:         print("Final-test arrays           : NOT CREATED")
+  858:         print("-" * 136); print("INTEGRITY / STORAGE"); print("-" * 136)
+  859:         print(f"Materialized partitions    : {len(integrity_df)}")
+  860:         print(f"All array audits pass      : {bool(integrity_df['passed'].all())}")
+  861:         print(f"Stock modality exact       : {bool(integrity_df['stock_slice_exact'].all())}")
+  862:         print(f"Market modality exact      : {bool(integrity_df['market_slice_exact'].all())}")
+  863:         print(f"Endpoint reconciliations   : {len(rec_df)}")
+  864:         print(f"Aux inverse checks pass    : {bool(inv_df['passed'].all())}")
+  865:         print(f"Validation aux outside[0,1]: {val_outside:,} values retained")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 851–866
+------------------------------------------------------------------------------------------------------------------------
+  851:             print(f"Fold {int(row.fold)} {row.partition:<10} | n={row.sequences:>6,} | X=({row.sequences:,},60,63) | cross={row.cross_boundary_lookback_endpoints:>5,} | aux outside[0,1]={row.auxiliary_scaled_values_outside_0_1:>6,} | saved={row.saved_gib:.3f} GiB")
+  852:         final_row = summary_df.loc[summary_df["partition"] == "final_development"].iloc[0]
+  853:         print("-" * 136); print("FINAL-DEVELOPMENT REFIT ARRAYS"); print("-" * 136)
+  854:         print(f"Sequences                  : {int(final_row['sequences']):,}")
+  855:         print(f"X_full                     : ({int(final_row['sequences']):,},60,63)")
+  856:         print("Auxiliary scaler           : FINAL-DEVELOPMENT ONLY")
+  857:         print("Final-test arrays           : NOT CREATED")
+  858:         print("-" * 136); print("INTEGRITY / STORAGE"); print("-" * 136)
+  859:         print(f"Materialized partitions    : {len(integrity_df)}")
+  860:         print(f"All array audits pass      : {bool(integrity_df['passed'].all())}")
+  861:         print(f"Stock modality exact       : {bool(integrity_df['stock_slice_exact'].all())}")
+  862:         print(f"Market modality exact      : {bool(integrity_df['market_slice_exact'].all())}")
+  863:         print(f"Endpoint reconciliations   : {len(rec_df)}")
+  864:         print(f"Aux inverse checks pass    : {bool(inv_df['passed'].all())}")
+  865:         print(f"Validation aux outside[0,1]: {val_outside:,} values retained")
+  866:         print(f"Total persisted size       : {total_bytes / (1024 ** 3):.3f} GiB")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 872–887
+------------------------------------------------------------------------------------------------------------------------
+  872:         print("Models fitted              : False")
+  873:         print("Final-test parquet accessed: False")
+  874:         print(f"Global final-test state    : {step00['state']}")
+  875:         print("-" * 136); print("OUTPUT FILES"); print("-" * 136)
+  876:         print(f"Array root             : {OUT_DIR}")
+  877:         print(f"Array summary          : {ARRAY_SUMMARY_CSV}")
+  878:         print(f"Aux scaler audit       : {AUX_SCALER_AUDIT_CSV}")
+  879:         print(f"Aux validation audit   : {AUX_VALIDATION_RANGE_CSV}")
+  880:         print(f"Aux inverse audit      : {AUX_INVERSE_AUDIT_CSV}")
+  881:         print(f"Array integrity        : {ARRAY_INTEGRITY_CSV}")
+  882:         print(f"Endpoint reconciliation: {ENDPOINT_RECONCILIATION_CSV}")
+  883:         print(f"Manifest               : {MANIFEST_JSON}")
+  884:         print(f"Manifest SHA-256       : {manifest_sha}")
+  885:         print("=" * 136)
+  886:         print("PASS: Five train/validation common-multitask array pairs were materialized from frozen Step-13 indices.")
+  887:         print("PASS: 47-stock-feature and 16-market-feature tensors are exact slices of X_full.")
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 881–896
+------------------------------------------------------------------------------------------------------------------------
+  881:         print(f"Array integrity        : {ARRAY_INTEGRITY_CSV}")
+  882:         print(f"Endpoint reconciliation: {ENDPOINT_RECONCILIATION_CSV}")
+  883:         print(f"Manifest               : {MANIFEST_JSON}")
+  884:         print(f"Manifest SHA-256       : {manifest_sha}")
+  885:         print("=" * 136)
+  886:         print("PASS: Five train/validation common-multitask array pairs were materialized from frozen Step-13 indices.")
+  887:         print("PASS: 47-stock-feature and 16-market-feature tensors are exact slices of X_full.")
+  888:         print("PASS: Directional labels remain unscaled binary integer targets.")
+  889:         print("PASS: Auxiliary targets use fold-training-only scaling; validation is transformed without clipping/refitting.")
+  890:         print("PASS: Final-development arrays and auxiliary scaler were frozen from development data only.")
+  891:         print("PASS: The sealed final-test parquet was not opened, hashed, transformed, materialized, or inspected.")
+  892:         print("PASS: No feature selection, probability-threshold tuning, or forecasting model was performed.")
+  893:         print("=" * 136)
+  894:         print("Do not run the old Step-14 script. Do not run Step 15 yet. Paste the complete terminal output for audit.")
+  895:         return 0
+  896: 
+
+------------------------------------------------------------------------------------------------------------------------
+LINES 884–899
+------------------------------------------------------------------------------------------------------------------------
+  884:         print(f"Manifest SHA-256       : {manifest_sha}")
+  885:         print("=" * 136)
+  886:         print("PASS: Five train/validation common-multitask array pairs were materialized from frozen Step-13 indices.")
+  887:         print("PASS: 47-stock-feature and 16-market-feature tensors are exact slices of X_full.")
+  888:         print("PASS: Directional labels remain unscaled binary integer targets.")
+  889:         print("PASS: Auxiliary targets use fold-training-only scaling; validation is transformed without clipping/refitting.")
+  890:         print("PASS: Final-development arrays and auxiliary scaler were frozen from development data only.")
+  891:         print("PASS: The sealed final-test parquet was not opened, hashed, transformed, materialized, or inspected.")
+  892:         print("PASS: No feature selection, probability-threshold tuning, or forecasting model was performed.")
+  893:         print("=" * 136)
+  894:         print("Do not run the old Step-14 script. Do not run Step 15 yet. Paste the complete terminal output for audit.")
+  895:         return 0
+  896: 
+  897:     except Exception as exc:
+  898:         if staging is not None and staging.exists(): shutil.rmtree(staging, ignore_errors=True)
+  899:         archived = archive_partial(); FAILED_DIR.mkdir(parents=True, exist_ok=True)
+
+========================================================================================================================
+PRE-FLIGHT COMPLETE
+SEALED FINAL-TEST PARQUET WAS NOT OPENED OR HASHED BY THIS INSPECTION.
+========================================================================================================================

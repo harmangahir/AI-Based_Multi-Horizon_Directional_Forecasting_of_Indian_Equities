@@ -1,0 +1,120 @@
+{
+  "artifacts": {
+    "03_candidate_nifty_price_calendar.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/reference_data/03_candidate_nifty_price_calendar.csv",
+      "relative_path": "reference_data/03_candidate_nifty_price_calendar.csv",
+      "sha256": "dd9e3e6f2d23c4e675d40468edf71d06ed01bd3e29c7d2dff3ccfaf132ac64a6",
+      "size_bytes": 80179
+    },
+    "03_column_null_summary.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/03_column_null_summary.csv",
+      "relative_path": "audits/03_column_null_summary.csv",
+      "sha256": "564b2b35f5c6eeb348d133c8dfa3665d472adbbcaa40a1a606ccbc5e3227c40a",
+      "size_bytes": 6151
+    },
+    "03_corporate_action_adjustment_audit.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/03_corporate_action_adjustment_audit.csv",
+      "relative_path": "audits/03_corporate_action_adjustment_audit.csv",
+      "sha256": "602f9e3704778a3bd9d9f8bc335094bd3a530a9c25824dc55ff6815cdce3287f",
+      "size_bytes": 7430710
+    },
+    "03_cross_sectional_date_consensus.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/03_cross_sectional_date_consensus.csv",
+      "relative_path": "audits/03_cross_sectional_date_consensus.csv",
+      "sha256": "67d735e978b6468a8b942a0937971a5cb0b3aaa321ad3449bb13dfdce94e21b0",
+      "size_bytes": 783234
+    },
+    "03_invalid_ohlcv_rows.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/03_invalid_ohlcv_rows.csv",
+      "relative_path": "audits/03_invalid_ohlcv_rows.csv",
+      "sha256": "fe63f6422f9d92473750bbad3a57bec07e2aa13198e48eb9732ef476ed29946a",
+      "size_bytes": 164
+    },
+    "03_large_adjusted_return_flags.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/03_large_adjusted_return_flags.csv",
+      "relative_path": "audits/03_large_adjusted_return_flags.csv",
+      "sha256": "bd928249c96754c02707078037e2d761f78305811b0fa6215028220151b45c51",
+      "size_bytes": 880
+    },
+    "03_market_integrity_audit_summary.txt": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/reports/03_market_integrity_audit_summary.txt",
+      "relative_path": "reports/03_market_integrity_audit_summary.txt",
+      "sha256": "bb49fd9aa440d02bc1ffac0ec28328833652d2d0923a43332096d1733306598d",
+      "size_bytes": 877
+    },
+    "03_market_integrity_summary.json": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/03_market_integrity_summary.json",
+      "relative_path": "audits/03_market_integrity_summary.json",
+      "sha256": "c3eb6962e05a440e15d682dfe739417ca407f6174c58ea857de8a0c9b7764720",
+      "size_bytes": 5314
+    },
+    "03_missing_dates_vs_nifty.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/03_missing_dates_vs_nifty.csv",
+      "relative_path": "audits/03_missing_dates_vs_nifty.csv",
+      "sha256": "4821a5581942da48020b7469b1e9bf9980e3dc503cb39c8a7bf7e8f78c63b201",
+      "size_bytes": 12
+    },
+    "03_nifty_invalid_price_sessions.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/03_nifty_invalid_price_sessions.csv",
+      "relative_path": "audits/03_nifty_invalid_price_sessions.csv",
+      "sha256": "ebaf775789bc00e9cfa8a230d786c45457a662ad49e2be73accaf0835bafc5f2",
+      "size_bytes": 812
+    },
+    "03_nifty_session_audit.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/03_nifty_session_audit.csv",
+      "relative_path": "audits/03_nifty_session_audit.csv",
+      "sha256": "22c85a84d8037243f2dd7b6f94bcf215de6e3e30ab41ae6d61aca70c050f1303",
+      "size_bytes": 368221
+    },
+    "03_source_file_hashes.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/03_source_file_hashes.csv",
+      "relative_path": "audits/03_source_file_hashes.csv",
+      "sha256": "6088c0cfdd43b90611685e7e765a8889f39a88e834aa6e22814d12ca3925894e",
+      "size_bytes": 1488
+    },
+    "03_stock_coverage_summary.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/03_stock_coverage_summary.csv",
+      "relative_path": "audits/03_stock_coverage_summary.csv",
+      "sha256": "d97f1888a5b7641cec9ec490e6b8ec5d0c22ff3b7d2bbdc278c9ac9757d9b31f",
+      "size_bytes": 2522
+    },
+    "03_stock_only_dates.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/03_stock_only_dates.csv",
+      "relative_path": "audits/03_stock_only_dates.csv",
+      "sha256": "8cca651ce1eedd21b6d795a851eea802b1b30da52014838966782920081b0bd2",
+      "size_bytes": 12405
+    },
+    "03_synchronized_date_anomalies.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/03_synchronized_date_anomalies.csv",
+      "relative_path": "audits/03_synchronized_date_anomalies.csv",
+      "sha256": "e95b9d2f199aba19b2afaadaccddd2c7c1b6e01912bb051c87b6f8c3860205df",
+      "size_bytes": 6052
+    },
+    "03_zero_volume_rows.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/03_zero_volume_rows.csv",
+      "relative_path": "audits/03_zero_volume_rows.csv",
+      "sha256": "999eefcbfa3bc3dd37eeb184c59ff37b8852eb76f71d03ae6de7d24ab9c38782",
+      "size_bytes": 4561
+    },
+    "step03_market_integrity_audit_frozen.py": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/step03_market_integrity_audit_frozen.py",
+      "relative_path": "manifests/step03_market_integrity_audit_frozen.py",
+      "sha256": "aa043eadfcc8117fd94b118e72043f413a15892654ae5172428966db340faee7",
+      "size_bytes": 122496
+    }
+  },
+  "configuration_fingerprint_sha256": "9675cb42e5544d9a3cda235208b33cc4c27f7583531535505b42056aa86b04dd",
+  "experiment_tag": "q1_revision_v3_clean_2016_2026",
+  "final_test_state": "LOCKED_NOT_OPENED",
+  "frozen_at_utc": "2026-10-04T03:34:51+00:00",
+  "schema_version": "1.0",
+  "step": {
+    "status": "PASS",
+    "step_id": "03",
+    "step_name": "STEP 03 — MARKET COVERAGE, CALENDAR AND INTEGRITY AUDIT",
+    "step_number": 3
+  },
+  "step00_manifest_sha256": "d3f77c468eab3352c23bb613cccfb94cdf04a2cbad6a99f229e1a78b9c83eb48",
+  "step01_manifest_sha256": "6ca1930c37055d762105b30748af979154974558586cdf1ab33400d2b595acaa",
+  "step02_manifest_sha256": "0f42962ff091b798d70cee9ec06a7e5e813cee9101087bb42101e5bd97f04643"
+}

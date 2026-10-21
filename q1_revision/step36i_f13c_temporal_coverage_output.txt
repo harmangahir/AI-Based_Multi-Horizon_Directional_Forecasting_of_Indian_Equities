@@ -1,0 +1,52 @@
+====================================================================================================
+STEP 36I-F13C — SIGNED NON-LABEL TEMPORAL-COVERAGE AND INFERENCE-RISK REVIEW
+====================================================================================================
+[1] FROZEN SOURCES AND ACCESS BOUNDARY
+PASS — frozen membership/candidate/Step35 hashes; historical access 2 reads/0 scoring
+[2] EXACT DATE-CLUSTER AND SET DIFFERENCE AUDIT
+PASS — 6,480 original / 5,300 retained / 1,180 excluded; exactly 20 stocks per date
+PASS — candidate subset, key/segment negative controls, and excluded interval verified
+[3] NON-LABEL CALENDAR COVERAGE OF THE AMENDED COHORT
+MONTH     ORIGINAL  RETAINED  EXCLUDED  COVERAGE_PCT
+2025-01         23        23         0         100.0
+2025-02         20        20         0         100.0
+2025-03          5         5         0         100.0
+2025-05         15         0        15           0.0
+2025-06         21         0        21           0.0
+2025-07         23         0        23           0.0
+2025-08         19        19         0         100.0
+2025-09         22        22         0         100.0
+2025-10         21        21         0         100.0
+2025-11         19        19         0         100.0
+2025-12         22        22         0         100.0
+2026-01         20        20         0         100.0
+2026-02         20        20         0         100.0
+2026-03         19        19         0         100.0
+2026-04         20        20         0         100.0
+2026-05         19        19         0         100.0
+2026-06         16        16         0         100.0
+QUARTERLY COVERAGE (DATES):
+  2025Q1: original=48, retained=48, excluded=0
+  2025Q2: original=36, retained=0, excluded=36
+  2025Q3: original=64, retained=41, excluded=23
+  2025Q4: original=62, retained=62, excluded=0
+  2026Q1: original=59, retained=59, excluded=0
+  2026Q2: original=55, retained=55, excluded=0
+PASS — 265/324 dates retained = 81.79%; excluded fraction=18.21%
+[4] PRESPECIFIED BOOTSTRAP FEASIBILITY FLAGS — STRUCTURAL ONLY
+  Segment 0: 48 dates; block lengths as % of segment: L10=20.8%, L20=41.7%, L40=83.3%
+  Segment 1: 217 dates; block lengths as % of segment: L10=4.6%, L20=9.2%, L40=18.4%
+REVIEW REQUIRED — L=40 covers 83.3% of the 48-day short segment;
+                  sensitivity CI/p-value stability requires scrutiny, not automatic rejection.
+REVIEW REQUIRED — BH adjustment across 24 dependent tests requires explicit assumptions;
+                  dependency-robust sensitivity may be justified but must be labeled post-freeze.
+[5] CLAIM AND PERMISSION BOUNDARIES
+PASS — original manifest, candidate and access marker unchanged
+NOT ESTABLISHED — covariate/regime representativeness or comparative market difficulty;
+                  this date-only audit intentionally does NOT access any test predictors/labels.
+NOT APPROVED — post-freeze cohort/statistical amendment or third raw-test read
+====================================================================================================
+STEP 36I-F13C PASS — NON-LABEL TEMPORAL COVERAGE REVIEW ONLY
+Sealed test opened: FALSE | Test feature values/labels used: FALSE | GPU: FALSE
+Amendment approved: FALSE | Third read authorized: FALSE | Production: DENIED
+====================================================================================================

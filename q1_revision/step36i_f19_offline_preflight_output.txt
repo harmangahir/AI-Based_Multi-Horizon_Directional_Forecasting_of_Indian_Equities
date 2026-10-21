@@ -1,0 +1,17 @@
+======================================================================================================
+STEP 36I-F19 — CHECKPOINT-BOUND PHASE B PER-SEED INTEGRATION (REVIEW ONLY)
+======================================================================================================
+[1] REVIEWED SOURCE AND FROZEN WSL ACCESS BOUNDARY
+PASS — F1/F17/F18/F11, Step35, F13E identities; historical 2/0, third read denied
+[2] ACTUAL F18 PACKAGE / F1 PLAN AND WORKER CONTRACT, SYNTHETIC FIXTURE
+PASS — genuine F18 one-seed commit, checkpoint-bound rehash, 1 complete/39 pending
+PASS — wrong checkpoint, wrong Phase A, wrong batch, duplicate seed rejected
+PASS — corrupted saved output blocks resume without hidden overwrite
+[3] LIVE RELEASE AND PERMISSION GATES
+NOT CONNECTED — third-read journal, real Phase A loader, production CLI or authorized GPU execution
+PENDING — independent live-release source and scientific sign-off; separate third-read permission
+======================================================================================================
+STEP 36I-F19 PASS — ONE-SEED CHECKPOINT-BOUND RECOVERY INTEGRATION, SYNTHETIC ONLY
+Real raw test opened: FALSE | Real GPU: FALSE | Real test scored: FALSE
+Production entrypoint: DISABLED | Additional access authorized: FALSE
+======================================================================================================

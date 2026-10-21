@@ -1,0 +1,20 @@
+===============================================================================================
+STEP 36I-F29R5 — MANUAL PROCESS-ISOLATED PHASE B RECOVERY
+TARGET: MLF SEED 42 ONLY
+===============================================================================================
+PASS — original signed controller and both authorizations unchanged
+PASS — genuine signed authority and frozen upstream inputs verified
+Existing verified seeds: 20
+Missing seeds: 20
+PASS — existing 20 checkpoints authenticated
+Starting MLF seed 42 in a fresh Python process
+n_heads 4
+n_heads 4
+===============================================================================================
+MLF SEED 42 — PROCESS-ISOLATED RECOVERY PASS
+Committed and verified seeds: 21 / 40
+Remaining seeds: 19
+Original sealed test reopened: FALSE
+Existing completed checkpoints overwritten: FALSE
+Previous failure evidence removed: FALSE
+===============================================================================================

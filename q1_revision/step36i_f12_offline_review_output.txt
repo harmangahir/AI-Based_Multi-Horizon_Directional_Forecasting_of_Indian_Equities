@@ -1,0 +1,23 @@
+==========================================================================================================
+STEP 36I-F12 — INDEPENDENT SCIENTIFIC PROTOCOL AMENDMENT REVIEW (NON-LABEL ONLY)
+==========================================================================================================
+[1] ORIGINAL FROZEN CONTRACT AND E2 POST-FREEZE DEVIATION RECORD
+PASS — Step35 unchanged; hash-verified E2 deviation remains explicitly NOT APPROVED
+[2] READ-ONLY WSL ORIGINAL-COHORT VERSUS CANDIDATE KEY AUDIT
+PASS — exactly 6480/324 original vs 5300/265 proposed; excluded 1180/59 = 18.2099%
+PASS — removed dates: 2025-05-12 through 2025-07-31, all 20 stocks, segment 1
+PASS — retained segments {0: 48, 1: 217}; candidate is an exact frozen-membership subset
+[3] ORIGINAL STATISTICS, ACCESS HISTORY AND PROPOSED REPORTING STATUS
+PASS — original bootstrap B=2000, L=20 (+10/40 sensitivities), BA>.50, BH-FDR family 24
+PASS — proposed 48/217 segment-stratified design is explicitly POST-FREEZE, not original Step35
+PASS — historical access: 2 reads; no held-out performance metrics; no access modification
+[4] METHODOLOGICAL DECISION GATES — NO AUTOMATIC APPROVAL
+OPEN — independently confirm 1180 losses follow ONLY from 60-session causal-history eligibility
+OPEN — document excluded-window covariate/regime coverage and resulting selection-bias limitations
+OPEN — review validity of 48-session stratum with L=40 sensitivity and 24 dependent tests
+OPEN — independent methodological sign-off, amended claim status and third-read decision
+==========================================================================================================
+STEP 36I-F12 STRUCTURAL REVIEW: PASS — NOT SCIENTIFIC APPROVAL OR REAL-TEST AUTHORIZATION
+Sealed test read: FALSE | Real labels/metrics read: FALSE | Original files modified: FALSE
+Protocol approved: FALSE | Third read authorized: FALSE | Production enabled: FALSE
+==========================================================================================================

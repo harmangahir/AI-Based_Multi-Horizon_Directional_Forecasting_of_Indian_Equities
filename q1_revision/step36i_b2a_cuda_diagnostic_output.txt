@@ -1,0 +1,37 @@
+====================================================================================================
+STEP 36I-B2a — CUDA DEVICE AND MEMORY-API DIAGNOSTIC
+====================================================================================================
+
+[1] FINAL-TEST LOCK: PASS
+
+[2] PYTORCH / CUDA ENVIRONMENT
+PyTorch version : 2.12.1+cu130
+CUDA version    : 13.0
+CUDA available  : True
+Device count    : 1
+CUDA initialized: False
+GPU name        : NVIDIA GeForce RTX 5070 Laptop GPU
+Current device  : 0
+
+[3] BASIC CUDA TENSOR OPERATION
+PASS — GPU allocation and matrix multiplication
+PASS — CUDA synchronization
+CUDA initialized: True
+
+[4] TEST MEMORY-MONITORING FUNCTIONS
+PASS — empty_cache: None
+PASS — reset_peak_memory_stats(device): None
+PASS — reset_peak_memory_stats(): None
+PASS — memory_allocated(device): 33555456
+PASS — max_memory_allocated(device): 33555456
+PASS — max_memory_reserved(device): 35651584
+PASS — memory_stats(device): 123 entries
+
+[5] FINAL SAFETY CHECK
+Frozen model source modified: FALSE
+Model checkpoints modified: FALSE
+Raw final-test parquet opened: FALSE
+Final-test metrics computed: FALSE
+====================================================================================================
+STEP 36I-B2a DIAGNOSTIC COMPLETED
+====================================================================================================

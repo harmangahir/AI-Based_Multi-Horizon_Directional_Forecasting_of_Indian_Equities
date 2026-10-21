@@ -1,0 +1,8 @@
+Phase B: 15 completed; 25 missing checkpoints
+Running frozen ITRANSFORMER seed 42 — physical batch per signed plan
+Running frozen ITRANSFORMER seed 43 — physical batch per signed plan
+Running frozen ITRANSFORMER seed 44 — physical batch per signed plan
+Running frozen ITRANSFORMER seed 45 — physical batch per signed plan
+Running frozen ITRANSFORMER seed 46 — physical batch per signed plan
+Running frozen MLF seed 42 — physical batch per signed plan
+F29 FAIL-CLOSED: ModuleNotFoundError No module named 'layers.MLF_backbone'

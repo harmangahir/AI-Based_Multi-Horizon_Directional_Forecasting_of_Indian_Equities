@@ -1,0 +1,39 @@
+==============================================================================================================
+STEP 36I-B2 — EIGHT-ARCHITECTURE SYNTHETIC GPU PREFLIGHT
+==============================================================================================================
+
+TEST DLINEAR        seed=42 batch=128 tail=52
+PASS | tail=52 | peak allocated=39.42 MiB | peak reserved=56.0 MiB
+
+TEST NLINEAR        seed=42 batch=128 tail=52
+PASS | tail=52 | peak allocated=36.16 MiB | peak reserved=56.0 MiB
+
+TEST PATCHTST       seed=42 batch=64 tail=52
+PASS | tail=52 | peak allocated=236.42 MiB | peak reserved=332.0 MiB
+
+TEST TIMESNET       seed=42 batch=64 tail=52
+PASS | tail=52 | peak allocated=331.61 MiB | peak reserved=374.0 MiB
+
+TEST ITRANSFORMER   seed=42 batch=128 tail=52
+PASS | tail=52 | peak allocated=80.89 MiB | peak reserved=98.0 MiB
+
+TEST FREDFORMER     seed=42 batch=16 tail=4
+PASS | tail=4 | peak allocated=322.52 MiB | peak reserved=352.0 MiB
+
+TEST FRNET          seed=42 batch=64 tail=52
+PASS | tail=52 | peak allocated=754.39 MiB | peak reserved=820.0 MiB
+
+TEST MLF            seed=42 batch=32 tail=20
+PASS | tail=20 | peak allocated=666.45 MiB | peak reserved=928.0 MiB
+
+==============================================================================================================
+STEP 36I-B2 SYNTHETIC GPU PREFLIGHT PASS
+Model families: 8
+Seed per family: 42
+Report: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/step36i_b2_v2_synthetic_gpu_preflight_draft/36i_b2_v2_synthetic_gpu_results_DRAFT.json
+Report SHA256: e0546ac4fdd25b3ce426903aae7752ac81f6d7ebaf10a24c33e946b31b55b70d
+Raw final-test parquet accessed: FALSE
+Frozen source/checkpoints modified: FALSE
+Held-out metrics computed: FALSE
+Further test access authorized: FALSE
+==============================================================================================================

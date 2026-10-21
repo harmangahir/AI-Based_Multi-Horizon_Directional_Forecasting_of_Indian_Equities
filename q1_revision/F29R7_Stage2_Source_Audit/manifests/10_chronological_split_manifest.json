@@ -1,0 +1,273 @@
+{
+  "artifacts": {
+    "10_boundary_purge_examples.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/10_boundary_purge_examples.csv",
+      "relative_path": "audits/10_boundary_purge_examples.csv",
+      "sha256": "49f8d6659a9868122051be615f88f1f9eda6b514a24be59a777871db946bd963",
+      "size_bytes": 12471
+    },
+    "10_chronological_split_summary.json": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/10_chronological_split_summary.json",
+      "relative_path": "audits/10_chronological_split_summary.json",
+      "sha256": "b523586d1ee7dc42c1072eb317613a4ebb4358fa412c113e84c47e9dced824e2",
+      "size_bytes": 2159
+    },
+    "10_chronological_split_summary.txt": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/reports/10_chronological_split_summary.txt",
+      "relative_path": "reports/10_chronological_split_summary.txt",
+      "sha256": "09345321b7f84152e20adf1ed6c36d3cb0a1f7bdb0afff956c3d3f7ac845f02c",
+      "size_bytes": 678
+    },
+    "10_development_only_class_distribution.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/10_development_only_class_distribution.csv",
+      "relative_path": "audits/10_development_only_class_distribution.csv",
+      "sha256": "4a14668afade165f27b3b068c6e96398c3d0a04991add0e2c75ae37efbe0cb3d",
+      "size_bytes": 5589
+    },
+    "10_development_target_panel.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step10_chronological_splits/development/10_development_target_panel.csv",
+      "relative_path": "feature_data/step10_chronological_splits/development/10_development_target_panel.csv",
+      "sha256": "10343cd7e04976340dd17d60fb90cdca6bc20b83770976795611e13f38c71c0c",
+      "size_bytes": 64551021
+    },
+    "10_development_target_panel.parquet": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step10_chronological_splits/development/10_development_target_panel.parquet",
+      "relative_path": "feature_data/step10_chronological_splits/development/10_development_target_panel.parquet",
+      "sha256": "ae2581237116051ad17bb4d221e1d044011344defbaed4e84843fbcc79051a25",
+      "size_bytes": 23167973
+    },
+    "10_expanding_origin_purge_audit.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/10_expanding_origin_purge_audit.csv",
+      "relative_path": "audits/10_expanding_origin_purge_audit.csv",
+      "sha256": "15b3c0dde5eb4c0f844c0111a85e8996a8f4a73312e42bf744f5f83264dfaa1c",
+      "size_bytes": 2486
+    },
+    "10_final_test_locked_panel.parquet": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step10_chronological_splits/final_test_locked/10_final_test_locked_panel.parquet",
+      "relative_path": "feature_data/step10_chronological_splits/final_test_locked/10_final_test_locked_panel.parquet",
+      "sha256": "ab325ede85fbb6d7819e85472274b82d151d350f39a872a17747c6978b1dddae",
+      "size_bytes": 3471329
+    },
+    "10_final_test_seal.json": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/10_final_test_seal.json",
+      "relative_path": "manifests/10_final_test_seal.json",
+      "sha256": "b7bb17b51b5d1d175b90ca33efe2c17d4675717bbeaf613ec7c6af876d6440e6",
+      "size_bytes": 1478
+    },
+    "10_fold_definitions.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/10_fold_definitions.csv",
+      "relative_path": "audits/10_fold_definitions.csv",
+      "sha256": "94c867f5c2c80228fd9929a4f7ff22a6c515378ecfe371b2b65f87ecf2a72497",
+      "size_bytes": 927
+    },
+    "10_outer_split_purge_audit.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/10_outer_split_purge_audit.csv",
+      "relative_path": "audits/10_outer_split_purge_audit.csv",
+      "sha256": "cd5b8067ae10d4081e912e15c7f7aa1de5001519b7ac231227b888b1587dc8f4",
+      "size_bytes": 768
+    },
+    "10_source_file_hashes.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/10_source_file_hashes.csv",
+      "relative_path": "audits/10_source_file_hashes.csv",
+      "sha256": "1adfe1b373bb107ccc0b86087230957515110b35870f74428399bb8d86213d6e",
+      "size_bytes": 6737
+    },
+    "10_split_hashes.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/10_split_hashes.csv",
+      "relative_path": "audits/10_split_hashes.csv",
+      "sha256": "3a82696f24a91757793a294a728e841b118121beec766f8378ab78321785ebeb",
+      "size_bytes": 5367
+    },
+    "10_split_membership.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step10_chronological_splits/10_split_membership.csv",
+      "relative_path": "feature_data/step10_chronological_splits/10_split_membership.csv",
+      "sha256": "46f819cab22efe732d44e53287bfb6c0f5fc879164ab2571eba22a2a015bc17c",
+      "size_bytes": 18509055
+    },
+    "10_split_membership.parquet": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step10_chronological_splits/10_split_membership.parquet",
+      "relative_path": "feature_data/step10_chronological_splits/10_split_membership.parquet",
+      "sha256": "82772196c92e88f1926a75a70c42f5f19119d7245d93b8364455fd28642ee121",
+      "size_bytes": 108832
+    },
+    "10_split_structure_audit.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/10_split_structure_audit.csv",
+      "relative_path": "audits/10_split_structure_audit.csv",
+      "sha256": "bd1b166df85376dd114306c392f4de2a26bf1b4fa7da3ea1a4cdec8946ef3aa5",
+      "size_bytes": 725
+    },
+    "step10_chronological_splits_frozen.py": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/step10_chronological_splits_frozen.py",
+      "relative_path": "manifests/step10_chronological_splits_frozen.py",
+      "sha256": "ab829a6ab3bd16bdaa8c19a88df1cdbfa2393ff6dfaaaf70b54547e2e3a750cb",
+      "size_bytes": 68024
+    }
+  },
+  "configuration_fingerprint_sha256": "9675cb42e5544d9a3cda235208b33cc4c27f7583531535505b42056aa86b04dd",
+  "experiment_tag": "q1_revision_v3_clean_2016_2026",
+  "feature_interface_sha256": "4b6497c17ec1f43a4f9c78eaf381badabb7309272414a7b2853ae7d0885fd1b7",
+  "frozen_at_utc": "2026-10-04T05:34:17+00:00",
+  "ordered_63_features": [
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume",
+    "return_1d",
+    "log_return_1d",
+    "high_low_range",
+    "open_close_change",
+    "volume_change",
+    "return_lag_1",
+    "return_lag_2",
+    "return_lag_3",
+    "return_lag_5",
+    "rolling_mean_5",
+    "rolling_mean_10",
+    "rolling_mean_20",
+    "rolling_std_5",
+    "rolling_std_10",
+    "rolling_std_20",
+    "rolling_min_20",
+    "rolling_max_20",
+    "ema_12",
+    "ema_26",
+    "macd",
+    "macd_signal",
+    "macd_hist",
+    "rsi_14",
+    "stoch_k_14",
+    "stoch_d_3",
+    "bollinger_upper_20",
+    "bollinger_lower_20",
+    "bollinger_width_20",
+    "atr_14",
+    "adx_14",
+    "plus_di_14",
+    "minus_di_14",
+    "aroon_up_25",
+    "aroon_down_25",
+    "aroon_osc_25",
+    "obv",
+    "ad_line",
+    "vwap_20",
+    "volume_sma_20",
+    "close_to_rolling_mean_20",
+    "close_to_rolling_max_20",
+    "close_to_rolling_min_20",
+    "nifty_open",
+    "nifty_high",
+    "nifty_low",
+    "nifty_close",
+    "nifty_high_low_range",
+    "nifty_return_1d",
+    "nifty_log_return_1d",
+    "nifty_rolling_mean_5",
+    "nifty_rolling_mean_10",
+    "nifty_rolling_mean_20",
+    "nifty_rolling_std_5",
+    "nifty_rolling_std_10",
+    "nifty_rolling_std_20",
+    "nifty_momentum_5",
+    "nifty_momentum_10",
+    "nifty_momentum_20"
+  ],
+  "outer_split": {
+    "development_common_multitask_rows": 43540,
+    "development_reference_rows": 43640,
+    "final_test_common_multitask_structural_rows": 6480,
+    "final_test_reference_rows": 6680
+  },
+  "pipeline_state": {
+    "chronological_split_assigned": true,
+    "feature_selection_applied": false,
+    "horizon_boundary_purging_applied": true,
+    "models_fitted": false,
+    "regimes_constructed": false,
+    "scaling_applied": false,
+    "sequence_construction_performed": false
+  },
+  "schema_version": "1.0",
+  "split_design": {
+    "development": {
+      "end": "2024-12-31",
+      "start": "2016-01-01"
+    },
+    "endpoint_rule": "reference_and_exact_target_endpoint_must_be_inside_same_partition",
+    "final_test": {
+      "end": "2026-06-30",
+      "start": "2025-01-01"
+    },
+    "folds": [
+      {
+        "fold": 1,
+        "train_end": "2019-12-31",
+        "train_start": "2016-01-01",
+        "validation_end": "2020-12-31",
+        "validation_start": "2020-01-01"
+      },
+      {
+        "fold": 2,
+        "train_end": "2020-12-31",
+        "train_start": "2016-01-01",
+        "validation_end": "2021-12-31",
+        "validation_start": "2021-01-01"
+      },
+      {
+        "fold": 3,
+        "train_end": "2021-12-31",
+        "train_start": "2016-01-01",
+        "validation_end": "2022-12-31",
+        "validation_start": "2022-01-01"
+      },
+      {
+        "fold": 4,
+        "train_end": "2022-12-31",
+        "train_start": "2016-01-01",
+        "validation_end": "2023-12-31",
+        "validation_start": "2023-01-01"
+      },
+      {
+        "fold": 5,
+        "train_end": "2023-12-31",
+        "train_start": "2016-01-01",
+        "validation_end": "2024-12-31",
+        "validation_start": "2024-01-01"
+      }
+    ],
+    "horizons": [
+      1,
+      3,
+      5
+    ]
+  },
+  "split_design_sha256": "675ee08dda555e2a9fdabf9a3519d383f175c2073c26d3d113862b5c7a15a246",
+  "step": {
+    "status": "PASS",
+    "step_id": "10",
+    "step_name": "STEP 10 — CHRONOLOGICAL SPLITS, EXPANDING-ORIGIN FOLDS, AND HORIZON-BOUNDARY PURGING",
+    "step_number": 10
+  },
+  "step00_manifest_sha256": "d3f77c468eab3352c23bb613cccfb94cdf04a2cbad6a99f229e1a78b9c83eb48",
+  "step01_manifest_sha256": "6ca1930c37055d762105b30748af979154974558586cdf1ab33400d2b595acaa",
+  "step02_manifest_sha256": "0f42962ff091b798d70cee9ec06a7e5e813cee9101087bb42101e5bd97f04643",
+  "step03_manifest_sha256": "ad3a99d29a8c20e69be6a284f822bfb81e9a9a55b84c9c05dc417989fa6b1df4",
+  "step04_manifest_sha256": "ea4769ce0b6f928f8dc6733422d8426561a85edc515a7c859733f9cc67181602",
+  "step05_manifest_sha256": "de41e6592bd1547d51c0e2a08dd203f5e8a5200cfcc549a05d964960652b3ae6",
+  "step06_manifest_sha256": "3c2dac46867000953e75f1bf7be861e99b87824628dfd6af8e509923c4d691c1",
+  "step07_manifest_sha256": "b320daee22cb7fc563f3eb9e859316f1243809551a3e6615ec99b81f9c80ff9b",
+  "step08_manifest_sha256": "dd4e850de15f752425c6bf3df895010f089f5ad32459cb97046744871b5680a8",
+  "step09_manifest_sha256": "553d93abe5868ab6ecd21e41fa27da5231e203e2689091e85fe4baba057f206f",
+  "step09_target_panel_sha256": "8fcc17cadadbed3a77f60c56c64abd5c7efbde188d466260bc5337e4ddd70ddf",
+  "test_protection": {
+    "global_final_test_lock_unchanged": true,
+    "global_final_test_state": "LOCKED_NOT_OPENED",
+    "step10_test_artifact_status": "SEALED_NOT_OPENED",
+    "test_label_distribution_reported": false,
+    "test_performance_computed": false,
+    "test_used_for_feature_selection": false,
+    "test_used_for_model_selection": false,
+    "test_used_for_seed_selection": false,
+    "test_used_for_threshold_selection": false
+  }
+}

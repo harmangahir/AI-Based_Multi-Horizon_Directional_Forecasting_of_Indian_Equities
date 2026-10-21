@@ -1,0 +1,28 @@
+
+============================================================================================================================================
+STEP 36 FAILURE
+============================================================================================================================================
+Traceback (most recent call last):
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.py", line 1292, in main
+    return prepare_only()
+           ^^^^^^^^^^^^^^
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.py", line 367, in prepare_only
+    upstream = verify_upstream_without_test_access()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.py", line 242, in verify_upstream_without_test_access
+    require_file_sha(STEP32_MANIFEST, EXPECTED_STEP32_MANIFEST_SHA, "Step-32 manifest")
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.py", line 209, in require_file_sha
+    raise FileNotFoundError(f"{label} missing:\n{path}")
+FileNotFoundError: Step-32 manifest missing:
+/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/32_development_oof_threshold_optimization_final_freeze_manifest.json
+============================================================================================================================================
+Do not delete the access marker, materialized arrays, or partial prediction artifacts.
+============================================================================================================================================
+STEP 36 — ONE-TIME FINAL-TEST MATERIALIZATION, INFERENCE AND SCORING
+============================================================================================================================================
+MODE                     : PREPARE-ONLY
+Final-test parquet read  : PROHIBITED
+Final-test parquet hash  : PROHIBITED
+Final-test class balance : NOT INSPECTED
+Final-test metrics       : NOT COMPUTED
+--------------------------------------------------------------------------------------------------------------------------------------------

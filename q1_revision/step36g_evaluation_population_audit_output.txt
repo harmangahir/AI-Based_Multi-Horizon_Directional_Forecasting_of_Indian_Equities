@@ -1,0 +1,50 @@
+==============================================================================================================
+STEP 36G — READ-ONLY CORRECTED EVALUATION POPULATION AUDIT
+==============================================================================================================
+
+[1] VERIFY ORIGINAL ACCESS AND DATA FREEZES
+PASS — raw-test access history preserved
+PASS — Step-10 membership ledger hash unchanged
+PASS — no final-test performance results
+
+[2] VERIFY POST-BREAK FEATURE COMPLETENESS
+Segment-1 first date: 2025-03-19
+Segment-1 full dates: 314
+Segment-1 feature-complete dates: 281
+Feature warm-up sessions: 33
+PASS — all 20 stocks have identical 33-session warm-up
+
+[3] RECONSTRUCT 60-SESSION ELIGIBILITY FROM FROZEN LEDGER
+Original common endpoints: 6480
+60-session-compatible endpoints: 5300
+Structurally incompatible endpoints: 1180
+
+[4] VERIFY COMPLETE MARKET CROSS-SECTIONS
+PASS — original: 324 dates x 20 stocks
+PASS — candidate: 265 dates x 20 stocks
+PASS — excluded: 59 dates x 20 stocks
+
+Candidate first date: 2025-01-01
+Candidate last date : 2026-06-22
+
+Excluded first date: 2025-05-12
+Excluded last date : 2025-07-31
+
+[5] CANDIDATE DISTRIBUTION BY SEGMENT
+                       observations  sessions first_date  last_date
+continuity_segment_id                                              
+0                               960        48 2025-01-01 2025-03-07
+1                              4340       217 2025-08-01 2026-06-22
+
+[6] FINAL FEASIBILITY CHECK
+PASS — membership is internally consistent
+PASS — lookback remains 60 complete consecutive sessions
+PASS — same-stock and same-segment requirements preserved
+
+==============================================================================================================
+STEP 36G READ-ONLY AUDIT COMPLETE
+Frozen scientific protocol modified: FALSE
+Sealed final-test parquet reopened: FALSE
+Final-test predictions or metrics computed: FALSE
+Corrected evaluation cohort approved: NOT YET
+==============================================================================================================

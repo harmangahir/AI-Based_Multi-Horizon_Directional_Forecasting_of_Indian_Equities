@@ -1,0 +1,35 @@
+==================================================================================================
+F29R4 — ACTUAL DEVELOPMENT-ONLY TRAINING AND IMMUTABLE BASELINE FREEZE
+==================================================================================================
+NO sealed test access. Post-freeze supplementary comparators. Fixed hyperparameters.
+[1] Verify frozen Step35, Step14, Step12 digests
+[2] Read frozen non-test Step14 sequences and Step12 development labels
+PASS — exact Step14 cohort 42360 endpoints / 2118 dates / 63 features
+PASS — all 1d/3d/5d targets mature within 2016–2024 development
+PASS — 60-session frozen sequence last-timestep match; 63 causal indicators
+[3] FIT LOGREG | 1d | N=42360 | positives=21687
+PASS — LOGREG_1d.joblib | frozen SHA256=b26be5a7aa434fafbfb3e5695652c23e4b1123e018638199dee4cbe24fbe47ef
+[3] FIT LOGREG | 3d | N=42360 | positives=22522
+PASS — LOGREG_3d.joblib | frozen SHA256=3540d709d46a9f72d1f4ac05c0eab19d85117a42c0248508358f7e7ea9507908
+[3] FIT LOGREG | 5d | N=42360 | positives=23025
+PASS — LOGREG_5d.joblib | frozen SHA256=f3355bcd4c5a8c6ae10ab6fe427eb81d26af8f7ca15cf06f3592003e4df4efaa
+[3] FIT RANDOM_FOREST | 1d | N=42360 | positives=21687
+PASS — RANDOM_FOREST_1d.joblib | frozen SHA256=4da8e56d7437d109025226e789dd8f8c2cd17b5d652774787fa7ea9312ca4f62
+[3] FIT RANDOM_FOREST | 3d | N=42360 | positives=22522
+PASS — RANDOM_FOREST_3d.joblib | frozen SHA256=140689223635a814aaa2b02b0ea08fc5cee9d1590f19d610660980cfcee1f787
+[3] FIT RANDOM_FOREST | 5d | N=42360 | positives=23025
+PASS — RANDOM_FOREST_5d.joblib | frozen SHA256=0b152d166a3d543fc4c4c8c6618ef954c6af2d9b9cf673e9187f5d47278262ad
+[3] FIT XGBOOST | 1d | N=42360 | positives=21687
+PASS — XGBOOST_1d.joblib | frozen SHA256=36b3a674ac170dac3ead41b399873bc8841b9d597292de37196638730833f672
+[3] FIT XGBOOST | 3d | N=42360 | positives=22522
+PASS — XGBOOST_3d.joblib | frozen SHA256=decf5bb0abf9c13f45a5f9409533b464a227ae8dee4134008bfa1c0b0692ea1c
+[3] FIT XGBOOST | 5d | N=42360 | positives=23025
+PASS — XGBOOST_5d.joblib | frozen SHA256=9735bbe6bc2626a011b68b92b68d2ee1681f1f115384cad17320ec3b9a026bca
+==================================================================================================
+F29R4 PASS — NINE REAL DEVELOPMENT-TRAINED ML BASELINES FROZEN
+Freeze directory: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step36i_f29r4_devonly_ml_baselines_v1
+Manifest SHA256: de89cb9d2c17d374aea3870f66a5633d3a2b1a8d86a6c37310d31dc79d3be09f
+Development endpoints: 42360 | model files: 9
+Raw final test opened: FALSE | Raw test scored: FALSE | Third read authorized: FALSE
+F29R3 controller UNCHANGED; integration into supplementary finalizer still pending.
+==================================================================================================

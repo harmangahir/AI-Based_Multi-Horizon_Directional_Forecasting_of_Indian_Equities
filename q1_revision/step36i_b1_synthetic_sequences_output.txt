@@ -1,0 +1,13 @@
+==============================================================================================================
+STEP 36I-B1 — OFFLINE SYNTHETIC 60-SESSION MATERIALIZATION PREFLIGHT
+==============================================================================================================
+
+[1] VERIFY FREEZES AND ACCESS MARKER
+PASS: 36i_candidate_sequence_eligible_keys_DRAFT.csv
+PASS: 36i_protocol_deviation_DRAFT.json
+PASS: 10_split_membership.parquet
+PASS: step36_one_time_final_test_materialization_inference_scoring_v1.py
+PASS: 35_final_test_evaluation_contract_freeze_manifest.json
+Traceback (most recent call last):
+  File "<stdin>", line 63, in <module>
+RuntimeError: Preflight report directory already exists; refusing overwrite.

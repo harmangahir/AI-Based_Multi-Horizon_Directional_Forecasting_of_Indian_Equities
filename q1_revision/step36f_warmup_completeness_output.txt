@@ -1,0 +1,338 @@
+==============================================================================================================
+STEP 36F — FROZEN FEATURE WARM-UP AND COMPLETENESS AUDIT
+==============================================================================================================
+
+[1] VERIFY FINAL-TEST ACCESS LOCK
+PASS — two raw-test reads recorded
+PASS — no final-test scoring
+No further raw-data read is authorized
+
+[2] FROZEN STEP-06 WARM-UP AUDIT
+File: 06_stock_feature_warmup_audit.csv
+Rows: 1880
+Columns:
+['ticker', 'continuity_segment_id', 'feature', 'first_valid_position', 'warmup_missing_rows', 'internal_missing_values']
+
+Segment-1 audit records: 940
+Filtered to ASIANPAINT.NS
+
+Selected warm-up records:
+       ticker  continuity_segment_id           feature  first_valid_position  warmup_missing_rows
+ASIANPAINT.NS                      1              open                     0                    0
+ASIANPAINT.NS                      1              high                     0                    0
+ASIANPAINT.NS                      1               low                     0                    0
+ASIANPAINT.NS                      1             close                     0                    0
+ASIANPAINT.NS                      1            volume                     0                    0
+ASIANPAINT.NS                      1         return_1d                     1                    1
+ASIANPAINT.NS                      1     log_return_1d                     1                    1
+ASIANPAINT.NS                      1    high_low_range                     0                    0
+ASIANPAINT.NS                      1 open_close_change                     0                    0
+ASIANPAINT.NS                      1     volume_change                     1                    1
+ASIANPAINT.NS                      1      return_lag_1                     2                    2
+ASIANPAINT.NS                      1      return_lag_2                     3                    3
+ASIANPAINT.NS                      1      return_lag_3                     4                    4
+ASIANPAINT.NS                      1      return_lag_5                     6                    6
+ASIANPAINT.NS                      1    rolling_mean_5                     4                    4
+ASIANPAINT.NS                      1   rolling_mean_10                     9                    9
+ASIANPAINT.NS                      1   rolling_mean_20                    19                   19
+ASIANPAINT.NS                      1     rolling_std_5                     5                    5
+ASIANPAINT.NS                      1    rolling_std_10                    10                   10
+ASIANPAINT.NS                      1    rolling_std_20                    20                   20
+ASIANPAINT.NS                      1    rolling_min_20                    19                   19
+ASIANPAINT.NS                      1    rolling_max_20                    19                   19
+ASIANPAINT.NS                      1            ema_12                    11                   11
+ASIANPAINT.NS                      1            ema_26                    25                   25
+ASIANPAINT.NS                      1              macd                    25                   25
+
+first_valid_position: min=0, max=33
+
+warmup_missing_rows: min=0, max=33
+
+[3] DISCOVER STEP-07/08 COMPLETENESS AUDITS
+Matching audit files: 3
+
+FILE: 07_nifty_feature_warmup_audit.csv
+Bytes: 1872
+Rows: 32
+Columns: ['panel_name', 'feature', 'first_valid_position', 'first_valid_date', 'warmup_missing_rows', 'internal_post_warmup_missing']
+
+First 5 audit records:
+         panel_name              feature  first_valid_position first_valid_date  warmup_missing_rows  internal_post_warmup_missing
+full_nifty_calendar           nifty_open                     0       2016-01-04                    0                             0
+full_nifty_calendar           nifty_high                     0       2016-01-04                    0                             0
+full_nifty_calendar            nifty_low                     0       2016-01-04                    0                             0
+full_nifty_calendar          nifty_close                     0       2016-01-04                    0                             0
+full_nifty_calendar nifty_high_low_range                     0       2016-01-04                    0                             0
+
+FILE: 08_63_feature_segment_summary.csv
+Bytes: 194
+Rows: 2
+Columns: ['continuity_segment_id', 'full_rows', 'full_dates', 'stocks', 'first_date', 'last_date', 'complete_rows', 'complete_dates']
+
+Segment-1 records:
+ continuity_segment_id  full_rows  full_dates  stocks first_date  last_date  complete_rows  complete_dates
+                     1       6280         314      20 2025-03-19 2026-06-30           5620             281
+
+FILE: 08_complete_key_reconciliation.csv
+Bytes: 324
+Rows: 1
+Columns: ['step06_complete_rows', 'step08_complete_rows', 'step06_complete_dates', 'step08_complete_dates', 'step06_only_keys', 'step08_only_keys', 'exact_ticker_date_key_match', 'nifty_context_removed_additional_rows', 'complete_rows_per_stock', 'minimum_stocks_per_complete_date', 'maximum_stocks_per_complete_date']
+
+First 5 audit records:
+ step06_complete_rows  step08_complete_rows  step06_complete_dates  step08_complete_dates  step06_only_keys  step08_only_keys  exact_ticker_date_key_match  nifty_context_removed_additional_rows  complete_rows_per_stock  minimum_stocks_per_complete_date  maximum_stocks_per_complete_date
+                50320                 50320                   2516                   2516                 0                 0                         True                                  False                     2516                                20                                20
+
+[4] INSPECT STEP-06 COMPLETE-CASE LOGIC
+
+STEP-06 SOURCE LINES 3628-3765
+ 3628:         warmup_audit_rows = []
+ 3629: 
+ 3630:         for ticker in sorted(cfg.STOCK_TICKERS):
+ 3631:             ticker_source = (
+ 3632:                 source.loc[
+ 3633:                     source["Ticker"] == ticker
+ 3634:                 ]
+ 3635:                 .copy()
+ 3636:             )
+ 3637: 
+ 3638:             ticker_segment_ids = sorted(
+ 3639:                 ticker_source["continuity_segment_id"].unique()
+ 3640:             )
+ 3641: 
+ 3642:             if len(ticker_segment_ids) != expected_segment_count:
+ 3643:                 raise RuntimeError(
+ 3644:                     f"{ticker}: expected {expected_segment_count} "
+ 3645:                     "continuity segments."
+ 3646:                 )
+ 3647: 
+ 3648:             for segment_id in ticker_segment_ids:
+ 3649:                 segment = (
+ 3650:                     ticker_source.loc[
+ 3651:                         ticker_source["continuity_segment_id"]
+ 3652:                         == segment_id
+ 3653:                     ]
+ 3654:                     .sort_values("Date")
+ 3655:                     .reset_index(drop=True)
+ 3656:                 )
+ 3657: 
+ 3658:                 features = build_segment_features(
+ 3659:                     segment
+ 3660:                 )
+ 3661: 
+ 3662:                 feature_tables.append(
+ 3663:                     features
+ 3664:                 )
+ 3665: 
+ 3666:                 for feature in FEATURE_COLUMNS:
+ 3667:                     series = features[feature]
+ 3668:                     valid_positions = np.flatnonzero(
+ 3669:                         series.notna().to_numpy()
+ 3670:                     )
+ 3671: 
+ 3672:                     if len(valid_positions) == 0:
+ 3673:                         raise RuntimeError(
+ 3674:                             f"{ticker}, segment {segment_id}, "
+ 3675:                             f"{feature}: no valid values."
+ 3676:                         )
+ 3677: 
+ 3678:                     first_valid = int(valid_positions[0])
+ 3679: 
+ 3680:                     internal_missing = int(
+ 3681:                         series.iloc[
+ 3682:                             first_valid:
+ 3683:                         ]
+ 3684:                         .isna()
+ 3685:                         .sum()
+ 3686:                     )
+ 3687: 
+ 3688:                     if internal_missing != 0:
+ 3689:                         raise RuntimeError(
+ 3690:                             f"{ticker}, segment {segment_id}, "
+ 3691:                             f"{feature}: internal missing values after warm-up."
+ 3692:                         )
+ 3693: 
+ 3694:                     warmup_audit_rows.append(
+ 3695:                         {
+ 3696:                             "ticker": ticker,
+ 3697:                             "continuity_segment_id": int(segment_id),
+ 3698:                             "feature": feature,
+ 3699:                             "first_valid_position": first_valid,
+ 3700:                             "warmup_missing_rows": first_valid,
+ 3701:                             "internal_missing_values": internal_missing,
+ 3702:                         }
+ 3703:                     )
+ 3704: 
+ 3705:                 complete_mask = (
+ 3706:                     features[FEATURE_COLUMNS]
+ 3707:                     .notna()
+ 3708:                     .all(axis=1)
+ 3709:                 )
+ 3710: 
+ 3711:                 complete_positions = np.flatnonzero(
+ 3712:                     complete_mask.to_numpy()
+ 3713:                 )
+ 3714: 
+ 3715:                 if len(complete_positions) == 0:
+ 3716:                     raise RuntimeError(
+ 3717:                         f"{ticker}, segment {segment_id}: "
+ 3718:                         "no complete feature observations."
+ 3719:                     )
+ 3720: 
+ 3721:                 first_complete_position = int(
+ 3722:                     complete_positions[0]
+ 3723:                 )
+ 3724: 
+ 3725:                 if (
+ 3726:                     first_complete_position
+ 3727:                     != EXPECTED_FIRST_COMPLETE_POSITION
+ 3728:                 ):
+ 3729:                     raise RuntimeError(
+ 3730:                         f"{ticker}, segment {segment_id}: "
+ 3731:                         f"expected first complete position "
+ 3732:                         f"{EXPECTED_FIRST_COMPLETE_POSITION}, "
+ 3733:                         f"found {first_complete_position}."
+ 3734:                     )
+ 3735: 
+ 3736:                 segment_audit_rows.append(
+ 3737:                     {
+ 3738:                         "ticker": ticker,
+ 3739:                         "continuity_segment_id": int(segment_id),
+ 3740:                         "rows": int(len(features)),
+ 3741:                         "start_date": features["Date"].min(),
+ 3742:                         "end_date": features["Date"].max(),
+ 3743:                         "first_complete_position": first_complete_position,
+ 3744:                         "first_complete_date": features.loc[
+ 3745:                             first_complete_position,
+ 3746:                             "Date",
+ 3747:                         ],
+ 3748:                         "complete_feature_rows": int(
+ 3749:                             complete_mask.sum()
+ 3750:                         ),
+ 3751:                         "warmup_rows_removed_if_complete_case": (
+ 3752:                             first_complete_position
+ 3753:                         ),
+ 3754:                     }
+ 3755:                 )
+ 3756: 
+ 3757:         feature_panel = (
+ 3758:             pd.concat(
+ 3759:                 feature_tables,
+ 3760:                 ignore_index=True,
+ 3761:             )
+ 3762:             .sort_values(
+ 3763:                 ["Date", "Ticker"]
+ 3764:             )
+ 3765:             .reset_index(drop=True)
+
+[5] INSPECT STEP-08 SEGMENT COMPLETENESS LOGIC
+
+STEP-08 SOURCE LINES 2390-2490
+ 2390:             ),
+ 2391:         )
+ 2392:         .reset_index()
+ 2393:     )
+ 2394: 
+ 2395:     complete_counts = (
+ 2396:         complete
+ 2397:         .groupby("Ticker")
+ 2398:         .size()
+ 2399:         .rename(
+ 2400:             "complete_63_feature_rows"
+ 2401:         )
+ 2402:         .reset_index()
+ 2403:     )
+ 2404: 
+ 2405:     return (
+ 2406:         full
+ 2407:         .merge(
+ 2408:             complete_counts,
+ 2409:             on="Ticker",
+ 2410:             how="left",
+ 2411:             validate="one_to_one",
+ 2412:         )
+ 2413:     )
+ 2414: 
+ 2415: 
+ 2416: def build_segment_summary(
+ 2417:     merged: pd.DataFrame,
+ 2418:     complete: pd.DataFrame,
+ 2419: ) -> pd.DataFrame:
+ 2420:     full = (
+ 2421:         merged
+ 2422:         .groupby(
+ 2423:             "continuity_segment_id"
+ 2424:         )
+ 2425:         .agg(
+ 2426:             full_rows=(
+ 2427:                 "Date",
+ 2428:                 "size",
+ 2429:             ),
+ 2430:             full_dates=(
+ 2431:                 "Date",
+ 2432:                 "nunique",
+ 2433:             ),
+ 2434:             stocks=(
+ 2435:                 "Ticker",
+ 2436:                 "nunique",
+ 2437:             ),
+ 2438:             first_date=(
+ 2439:                 "Date",
+ 2440:                 "min",
+ 2441:             ),
+ 2442:             last_date=(
+ 2443:                 "Date",
+ 2444:                 "max",
+ 2445:             ),
+ 2446:         )
+ 2447:         .reset_index()
+ 2448:     )
+ 2449: 
+ 2450:     complete_summary = (
+ 2451:         complete
+ 2452:         .groupby(
+ 2453:             "continuity_segment_id"
+ 2454:         )
+ 2455:         .agg(
+ 2456:             complete_rows=(
+ 2457:                 "Date",
+ 2458:                 "size",
+ 2459:             ),
+ 2460:             complete_dates=(
+ 2461:                 "Date",
+ 2462:                 "nunique",
+ 2463:             ),
+ 2464:         )
+ 2465:         .reset_index()
+ 2466:     )
+ 2467: 
+ 2468:     return (
+ 2469:         full
+ 2470:         .merge(
+ 2471:             complete_summary,
+ 2472:             on="continuity_segment_id",
+ 2473:             how="left",
+ 2474:             validate="one_to_one",
+ 2475:         )
+ 2476:     )
+ 2477: 
+ 2478: 
+ 2479: # =============================================================================
+ 2480: # 16. STAGING / HASH HELPERS
+ 2481: # =============================================================================
+ 2482: 
+ 2483: def write_pair_staged(
+ 2484:     dataframe: pd.DataFrame,
+ 2485:     parquet_path: Path,
+ 2486:     csv_path: Path,
+ 2487: ) -> None:
+ 2488:     dataframe.to_parquet(
+ 2489:         parquet_path,
+ 2490:         index=False,
+
+==============================================================================================================
+STEP 36F READ-ONLY AUDIT COMPLETE
+Raw final-test parquet opened: FALSE
+Final-test labels or predictions inspected: FALSE
+Frozen artifacts modified: FALSE
+Additional raw-test access authorized: FALSE
+==============================================================================================================

@@ -1,0 +1,25 @@
+====================================================================================================
+STEP 36I-B2b — CUDA INITIALIZATION ROOT-CAUSE TEST
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+Mode: uninitialized
+CUDA initialized initially: False
+MEMORY_RESET: FAIL
+Exception: RuntimeError Invalid device argument 
+Process exit code: 0
+
+----------------------------------------------------------------------------------------------------
+Mode: initialized
+CUDA initialized initially: False
+CUDA initialized after probe: True
+MEMORY_RESET: PASS
+Process exit code: 0
+
+====================================================================================================
+ROOT-CAUSE DIAGNOSTIC FINISHED
+Frozen Step-36 script modified: FALSE
+Model checkpoints modified: FALSE
+Sealed final-test data opened: FALSE
+Additional final-test access authorized: FALSE
+====================================================================================================

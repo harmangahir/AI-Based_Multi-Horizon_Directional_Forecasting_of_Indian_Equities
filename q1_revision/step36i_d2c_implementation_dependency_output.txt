@@ -1,0 +1,524 @@
+==============================================================================================================
+STEP 36I-D2c — AMENDED EXECUTION DEPENDENCY REVIEW
+==============================================================================================================
+
+[1] HASHES AND ACCESS STATE: PASS
+
+[2] EXACT DEPENDENCY SOURCE EXCERPTS
+
+--------------------------------------------------------------------------------------------------------------
+OUTPUT PATHS AND FILE ISOLATION | lines 95-165
+--------------------------------------------------------------------------------------------------------------
+   95:     "FRNET": "FRNET_A",
+   96:     "MLF": "MLF_A",
+   97: }
+   98: EXPECTED_PHYSICAL_MB = {
+   99:     "DLINEAR": 128,
+  100:     "NLINEAR": 128,
+  101:     "PATCHTST": 64,
+  102:     "TIMESNET": 64,
+  103:     "ITRANSFORMER": 128,
+  104:     "FREDFORMER": 16,
+  105:     "FRNET": 64,
+  106:     "MLF": 32,
+  107: }
+  108: 
+  109: EXPERIMENT_ROOT = cfg.MANIFEST_DIR.parent
+  110: STEP10_TEST_SEAL = cfg.MANIFEST_DIR / "10_final_test_seal.json"
+  111: STEP14_MANIFEST = cfg.MANIFEST_DIR / "14_model_array_manifest.json"
+  112: STEP32_MANIFEST = cfg.MANIFEST_DIR / "32_development_threshold_final_freeze_manifest.json"
+  113: STEP34_MANIFEST = cfg.MANIFEST_DIR / "34_final_development_refit_final_freeze_manifest.json"
+  114: STEP35_MANIFEST = cfg.MANIFEST_DIR / "35_final_test_evaluation_contract_freeze_manifest.json"
+  115: STEP35_THRESHOLDS = cfg.AUDIT_DIR / "35_final_test_threshold_contract.csv"
+  116: STEP34_REGISTER = cfg.AUDIT_DIR / "34_final_development_refit_register.csv"
+  117: STEP35_INFERENCE_PLAN = cfg.AUDIT_DIR / "35_final_test_inference_plan.csv"
+  118: 
+  119: FINAL_DEV_HISTORY = (
+  120:     cfg.FEATURE_DATA_DIR / "step12_volatility_regimes" /
+  121:     "final_development" / "12_final_development_scaled_regimes.parquet"
+  122: )
+  123: FINAL_DEV_REGIME_THRESHOLDS = (
+  124:     cfg.FEATURE_DATA_DIR / "step12_volatility_regimes" /
+  125:     "final_development" / "12_final_development_regime_thresholds.csv"
+  126: )
+  127: 
+  128: PREACCESS_FREEZE = cfg.MANIFEST_DIR / "36_final_test_execution_preaccess_freeze_manifest.json"
+  129: PREACCESS_FREEZE_SHA = cfg.MANIFEST_DIR / "36_final_test_execution_preaccess_freeze_manifest.sha256"
+  130: FROZEN_SOURCE = cfg.MANIFEST_DIR / "step36_one_time_final_test_materialization_inference_scoring_v1_frozen.py"
+  131: ACCESS_MARKER = cfg.MANIFEST_DIR / "36_final_test_access_consumption_state.json"
+  132: 
+  133: # Step-36A technical-recovery provenance. The first authorized raw-test
+  134: # open stopped before scoring because the sealed parquet did not embed the
+  135: # convenience common-multitask flag. Recovery uses the already-frozen
+  136: # Step-10 structural membership ledger and permits exactly one logged
+  137: # technical reopen, with no scientific decision changes.
+  138: STEP10_MEMBERSHIP = (
+  139:     cfg.FEATURE_DATA_DIR / "step10_chronological_splits" / "10_split_membership.parquet"
+  140: )
+  141: EXPECTED_STEP10_MEMBERSHIP_SHA = (
+  142:     "82772196c92e88f1926a75a70c42f5f19119d7245d93b8364455fd28642ee121"
+  143: )
+  144: RECOVERY_AMENDMENT = (
+  145:     cfg.MANIFEST_DIR / "36a_schema_recovery_compatibility_amendment.json"
+  146: )
+  147: RECOVERY_FROZEN_SOURCE = (
+  148:     cfg.MANIFEST_DIR / "step36_one_time_final_test_materialization_inference_scoring_v1_recovery_frozen.py"
+  149: )
+  150: 
+  151: ARRAY_DIR = cfg.FEATURE_DATA_DIR / "step36_final_test_arrays"
+  152: ARRAY_MANIFEST = cfg.MANIFEST_DIR / "36_final_test_materialization_manifest.json"
+  153: PRED_ROOT = EXPERIMENT_ROOT / "final_test_evaluation" / "step36_predictions"
+  154: SEED_PRED_ROOT = PRED_ROOT / "seed_predictions"
+  155: ENSEMBLE_ROOT = PRED_ROOT / "ensemble_predictions"
+  156: METRICS_CSV = cfg.AUDIT_DIR / "36_final_test_metrics.csv"
+  157: CLASS_BALANCE_CSV = cfg.AUDIT_DIR / "36_final_test_class_balance.csv"
+  158: INFERENCE_REGISTER_CSV = cfg.AUDIT_DIR / "36_final_test_inference_register.csv"
+  159: ENSEMBLE_PREDICTIONS_PARQUET = EXPERIMENT_ROOT / "final_test_evaluation" / "36_final_test_ensemble_predictions.parquet"
+  160: ARTIFACT_REGISTER_CSV = cfg.AUDIT_DIR / "36_final_test_artifact_register.csv"
+  161: FINAL_MANIFEST = cfg.MANIFEST_DIR / "36_one_time_final_test_materialization_inference_scoring_manifest.json"
+  162: FINAL_MANIFEST_SHA = cfg.MANIFEST_DIR / "36_one_time_final_test_materialization_inference_scoring_manifest.sha256"
+  163: FAILURE_JSON = cfg.AUDIT_DIR / "36_final_test_execution_failure.json"
+  164: 
+  165: 
+
+--------------------------------------------------------------------------------------------------------------
+PREACCESS FREEZE STRUCTURE | lines 385-455
+--------------------------------------------------------------------------------------------------------------
+  385:     upstream = verify_upstream_without_test_access()
+  386:     source_sha = sha256_file(SCRIPT_FILE)
+  387: 
+  388:     payload = {
+  389:         "schema_version": SCHEMA_VERSION,
+  390:         "status": "STEP36_PREACCESS_EXECUTION_SOURCE_FROZEN",
+  391:         "frozen_at_utc": utc_now(),
+  392:         "source_file": str(SCRIPT_FILE),
+  393:         "source_sha256": source_sha,
+  394:         "step14_manifest_sha256": EXPECTED_STEP14_MANIFEST_SHA,
+  395:         "step32_manifest_sha256": EXPECTED_STEP32_MANIFEST_SHA,
+  396:         "step34_manifest_sha256": EXPECTED_STEP34_MANIFEST_SHA,
+  397:         "step34_global_fingerprint": EXPECTED_STEP34_GLOBAL_FP,
+  398:         "step35_manifest_sha256": EXPECTED_STEP35_MANIFEST_SHA,
+  399:         "step35_contract_fingerprint": EXPECTED_STEP35_CONTRACT_FP,
+  400:         "execution_contract": {
+  401:             "outer_test_rows_expected": EXPECTED_OUTER_TEST_ROWS,
+  402:             "outer_test_dates_expected": EXPECTED_OUTER_TEST_DATES,
+  403:             "common_test_rows_expected": EXPECTED_COMMON_ROWS,
+  404:             "common_test_dates_expected": EXPECTED_COMMON_DATES,
+  405:             "stock_count": EXPECTED_STOCKS,
+  406:             "lookback": EXPECTED_LOOKBACK,
+  407:             "feature_count": EXPECTED_FEATURES,
+  408:             "horizons": list(HORIZONS),
+  409:             "architectures": list(MODEL_ORDER),
+  410:             "seeds": list(EXPECTED_SEEDS),
+  411:             "final_checkpoints": EXPECTED_FITS,
+  412:             "frozen_thresholds": EXPECTED_THRESHOLDS,
+  413:             "seed_probability_ensemble": "ARITHMETIC_MEAN_OF_FIVE_SEED_PROBABILITIES",
+  414:             "threshold_operator": ">=",
+  415:             "test_threshold_tuning": False,
+  416:             "best_seed_selection": False,
+  417:             "architecture_selection": False,
+  418:             "post_test_model_promotion": False,
+  419:             "raw_test_filesystem_open_count": 1,
+  420:             "raw_test_reopen_after_materialization": False,
+  421:             "inference_resumable_from_materialized_arrays": True,
+  422:         },
+  423:         "sealed_test_metadata_only": {
+  424:             "path": upstream["test_seal"]["file_path"],
+  425:             "expected_sha256": upstream["test_seal"]["sha256"],
+  426:             "seal_status": upstream["test_seal"]["status"],
+  427:             "global_preaccess_state": upstream["test_seal"]["global_final_test_lock_state"],
+  428:         },
+  429:         "final_development_transform_state": {
+  430:             "predictor_scaler_path": str(upstream["scaler_path"]),
+  431:             "predictor_scaler_sha256": sha256_file(upstream["scaler_path"]),
+  432:             "regime_threshold_path": str(FINAL_DEV_REGIME_THRESHOLDS),
+  433:             "regime_threshold_sha256": sha256_file(FINAL_DEV_REGIME_THRESHOLDS),
+  434:             "development_history_path": str(FINAL_DEV_HISTORY),
+  435:             "development_history_sha256": sha256_file(FINAL_DEV_HISTORY),
+  436:         },
+  437:         "protection": {
+  438:             "final_test_opened_during_prepare": False,
+  439:             "final_test_hashed_during_prepare": False,
+  440:             "final_test_scored_during_prepare": False,
+  441:         },
+  442:     }
+  443:     payload["step36_preaccess_fingerprint"] = canonical_hash(payload)
+  444: 
+  445:     if PREACCESS_FREEZE.exists():
+  446:         existing = load_json(PREACCESS_FREEZE)
+  447:         if existing.get("source_sha256") != source_sha:
+  448:             raise RuntimeError("A Step-36 pre-access freeze exists for a different source. Do not overwrite it.")
+  449:         print("Existing pre-access freeze : VERIFIED")
+  450:     else:
+  451:         shutil.copy2(SCRIPT_FILE, FROZEN_SOURCE)
+  452:         atomic_json(PREACCESS_FREEZE, payload)
+  453:         freeze_sha = sha256_file(PREACCESS_FREEZE)
+  454:         atomic_text(PREACCESS_FREEZE_SHA, f"{freeze_sha}  {PREACCESS_FREEZE.name}\n")
+  455: 
+
+--------------------------------------------------------------------------------------------------------------
+PREACCESS FREEZE VALIDATION | lines 476-535
+--------------------------------------------------------------------------------------------------------------
+  476: def verify_preaccess_freeze() -> dict:
+  477:     if not PREACCESS_FREEZE.exists() or not PREACCESS_FREEZE_SHA.exists():
+  478:         raise RuntimeError("Step-36 pre-access freeze is missing. Run --prepare-only first.")
+  479: 
+  480:     expected = PREACCESS_FREEZE_SHA.read_text(encoding="utf-8").strip().split()[0]
+  481:     observed = sha256_file(PREACCESS_FREEZE)
+  482:     require_equal(observed, expected, "Step-36 pre-access freeze SHA sidecar")
+  483: 
+  484:     payload = load_json(PREACCESS_FREEZE)
+  485:     require_equal(
+  486:         payload.get("status"),
+  487:         "STEP36_PREACCESS_EXECUTION_SOURCE_FROZEN",
+  488:         "Step-36 pre-access status",
+  489:     )
+  490:     require_equal(
+  491:         sha256_file(FROZEN_SOURCE),
+  492:         payload["source_sha256"],
+  493:         "Original frozen Step-36 source",
+  494:     )
+  495: 
+  496:     current_source_sha = sha256_file(SCRIPT_FILE)
+  497:     if current_source_sha == payload["source_sha256"]:
+  498:         return payload
+  499: 
+  500:     if not RECOVERY_AMENDMENT.exists() or not RECOVERY_FROZEN_SOURCE.exists():
+  501:         raise RuntimeError(
+  502:             "Current Step-36 source differs from the original pre-access freeze, "
+  503:             "and no frozen Step-36A recovery amendment is present."
+  504:         )
+  505: 
+  506:     amendment = load_json(RECOVERY_AMENDMENT)
+  507:     require_equal(
+  508:         amendment.get("status"),
+  509:         "STEP36A_SCHEMA_RECOVERY_COMPATIBILITY_FROZEN",
+  510:         "Step-36A recovery status",
+  511:     )
+  512:     require_equal(
+  513:         amendment.get("original_preaccess_source_sha256"),
+  514:         payload["source_sha256"],
+  515:         "Step-36A original-source reference",
+  516:     )
+  517:     require_equal(
+  518:         amendment.get("recovery_source_sha256"),
+  519:         current_source_sha,
+  520:         "Step-36A recovery-source reference",
+  521:     )
+  522:     require_equal(
+  523:         sha256_file(RECOVERY_FROZEN_SOURCE),
+  524:         current_source_sha,
+  525:         "Frozen Step-36A recovery source",
+  526:     )
+  527:     require_equal(
+  528:         amendment.get("step10_membership_sha256"),
+  529:         EXPECTED_STEP10_MEMBERSHIP_SHA,
+  530:         "Step-36A membership-ledger reference",
+  531:     )
+  532:     return payload
+  533: 
+  534: 
+  535: def write_access_marker(state: str, **extra) -> None:
+
+--------------------------------------------------------------------------------------------------------------
+ELIGIBILITY AND TRANSFORMATION INTERFACE | lines 622-686
+--------------------------------------------------------------------------------------------------------------
+  622:     expected_counts = {
+  623:         "eligible_1d": 6640,
+  624:         "eligible_3d": 6560,
+  625:         "eligible_5d": 6480,
+  626:         "eligible_common_multitask": 6480,
+  627:     }
+  628:     for c, expected in expected_counts.items():
+  629:         require_equal(int(out[c].sum()), expected, f"Frozen final-test {c} rows")
+  630: 
+  631:     conjunction = out["eligible_1d"] & out["eligible_3d"] & out["eligible_5d"]
+  632:     if not np.array_equal(
+  633:         conjunction.to_numpy(),
+  634:         out["eligible_common_multitask"].to_numpy(),
+  635:     ):
+  636:         raise RuntimeError(
+  637:             "Step-10 final-test common-multitask flag is not the frozen "
+  638:             "1d/3d/5d intersection."
+  639:         )
+  640:     if not np.array_equal(
+  641:         out["eligible_5d"].to_numpy(),
+  642:         out["eligible_common_multitask"].to_numpy(),
+  643:     ):
+  644:         raise RuntimeError(
+  645:             "Frozen final-test 5d eligibility no longer equals common-multitask eligibility."
+  646:         )
+  647: 
+  648:     return out
+  649: 
+  650: 
+  651: def load_and_parse_raw_test_exactly_once(test_path: Path, expected_sha: str) -> tuple[pd.DataFrame, str]:
+  652:     with test_path.open("rb") as handle:
+  653:         raw_bytes = handle.read()
+  654:     observed_sha = sha256_bytes(raw_bytes)
+  655:     require_equal(observed_sha, expected_sha, "Sealed final-test parquet SHA")
+  656:     frame = pd.read_parquet(io.BytesIO(raw_bytes), engine="pyarrow")
+  657:     del raw_bytes
+  658:     gc.collect()
+  659:     return frame, observed_sha
+  660: 
+  661: 
+  662: def apply_frozen_regimes(raw_test: pd.DataFrame) -> pd.DataFrame:
+  663:     import step12_volatility_regimes_v3 as s12
+  664:     thresholds = pd.read_csv(FINAL_DEV_REGIME_THRESHOLDS)
+  665:     out = s12.apply_threshold_state(raw_test.copy(), thresholds, fit_scope="final_development")
+  666:     out["regime_threshold_fit_scope"] = "final_development"
+  667:     return out
+  668: 
+  669: 
+  670: def transform_frozen_predictors(frame: pd.DataFrame, features: list[str], scaler_path: Path) -> pd.DataFrame:
+  671:     scaler = joblib.load(scaler_path)
+  672:     if int(scaler.n_features_in_) != len(features):
+  673:         raise RuntimeError("Final-development scaler width mismatch at execution.")
+  674:     if bool(getattr(scaler, "clip", False)) is not False:
+  675:         raise RuntimeError("Final-development scaler clip drift.")
+  676:     if hasattr(scaler, "feature_names_in_") and list(scaler.feature_names_in_) != features:
+  677:         raise RuntimeError("Final-development scaler feature-order drift.")
+  678:     transformed = scaler.transform(frame[features].astype(np.float64))
+  679:     if not np.isfinite(transformed).all():
+  680:         raise RuntimeError("Non-finite final-test scaled predictor detected.")
+  681:     out = frame.copy()
+  682:     out.loc[:, features] = transformed
+  683:     del scaler, transformed
+  684:     return out
+  685: 
+  686: 
+
+--------------------------------------------------------------------------------------------------------------
+POST-OPEN SEQUENCE CONSTRUCTION | lines 949-965
+--------------------------------------------------------------------------------------------------------------
+  949: 
+  950:     test_regimes = apply_frozen_regimes(raw_test)
+  951:     test_scaled = transform_frozen_predictors(
+  952:         test_regimes, upstream["features"], upstream["scaler_path"]
+  953:     )
+  954:     endpoints = build_common_endpoints(test_scaled, upstream["stock_id_map"])
+  955: 
+  956:     final_dev = normalize_dates(
+  957:         pd.read_parquet(FINAL_DEV_HISTORY, engine="pyarrow")
+  958:     )
+  959:     lookup = build_history_lookup(final_dev, test_scaled, upstream["features"])
+  960:     X_full, metadata = materialize_sequences(
+  961:         endpoints, lookup, upstream["features"]
+  962:     )
+  963:     y_direction = metadata[list(DIRECTION_COLUMNS)].to_numpy(dtype=np.int64)
+  964:     stock_id = metadata["stock_id"].to_numpy(dtype=np.int64)
+  965:     regime_id = metadata["regime_id"].to_numpy(dtype=np.int64)
+
+--------------------------------------------------------------------------------------------------------------
+STAGING AND ARTIFACT PERSISTENCE | lines 1008-1030
+--------------------------------------------------------------------------------------------------------------
+ 1008:             )
+ 1009:         os.replace(staging, ARRAY_DIR)
+ 1010:     except Exception:
+ 1011:         if staging.exists():
+ 1012:             shutil.rmtree(staging, ignore_errors=True)
+ 1013:         raise
+ 1014: 
+ 1015:     artifacts = {
+ 1016:         p.name: artifact_record(p)
+ 1017:         for p in sorted(ARRAY_DIR.iterdir())
+ 1018:         if p.is_file()
+ 1019:     }
+ 1020:     manifest = {
+ 1021:         "schema_version": SCHEMA_VERSION,
+ 1022:         "status": "STEP36_FINAL_TEST_MATERIALIZATION_COMPLETE",
+ 1023:         "created_at_utc": utc_now(),
+ 1024:         "step35_manifest_sha256": EXPECTED_STEP35_MANIFEST_SHA,
+ 1025:         "step35_contract_fingerprint": EXPECTED_STEP35_CONTRACT_FP,
+ 1026:         "step36a_recovery_amendment": {
+ 1027:             "path": str(RECOVERY_AMENDMENT),
+ 1028:             "sha256": sha256_file(RECOVERY_AMENDMENT),
+ 1029:             "reason": (
+ 1030:                 "schema-only recovery using frozen Step-10 membership ledger; "
+
+--------------------------------------------------------------------------------------------------------------
+FROZEN WORKER DISPATCH | lines 1233-1300
+--------------------------------------------------------------------------------------------------------------
+ 1233: def execute_all_workers() -> pd.DataFrame:
+ 1234:     SEED_PRED_ROOT.mkdir(parents=True, exist_ok=True)
+ 1235:     rows = []
+ 1236:     for model_id in MODEL_ORDER:
+ 1237:         for seed in EXPECTED_SEEDS:
+ 1238:             m = verify_worker_complete(model_id, seed)
+ 1239:             if m is None:
+ 1240:                 print(f"RUN  {model_id:14s} seed={seed}")
+ 1241:                 env = os.environ.copy()
+ 1242:                 env["PYTHONDONTWRITEBYTECODE"] = "1"
+ 1243:                 proc = subprocess.run(
+ 1244:                     [sys.executable, str(SCRIPT_FILE), "--worker", "--worker-model", model_id, "--worker-seed", str(seed)],
+ 1245:                     cwd=str(SCRIPT_DIR), env=env, text=True, capture_output=True,
+ 1246:                 )
+ 1247:                 if proc.stdout:
+ 1248:                     print(proc.stdout, end="")
+ 1249:                 if proc.stderr:
+ 1250:                     print(proc.stderr, end="", file=sys.stderr)
+ 1251:                 if proc.returncode != 0:
+ 1252:                     raise RuntimeError(f"Step-36 worker failed: {model_id}/seed{seed}")
+ 1253:                 m = verify_worker_complete(model_id, seed)
+ 1254:                 if m is None:
+ 1255:                     raise RuntimeError(f"Worker success but artifact verification failed: {model_id}/seed{seed}")
+ 1256:             else:
+ 1257:                 print(f"SKIP {model_id:14s} seed={seed} COMPLETE+HASHED")
+ 1258:             rows.append({
+ 1259:                 "model_id": model_id,
+ 1260:                 "config_id": EXPECTED_CONFIG[model_id],
+ 1261:                 "seed": seed,
+ 1262:                 "status": "PASS",
+ 1263:                 "physical_microbatch_size": int(m["physical_microbatch_size"]),
+ 1264:                 "inference_seconds": float(m["inference_seconds"]),
+ 1265:                 "examples_per_second": float(m["examples_per_second"]),
+ 1266:                 "peak_cuda_allocated_mib": float(m["peak_cuda_allocated_mib"]),
+ 1267:                 "prediction_path": m["prediction_artifact"]["path"],
+ 1268:                 "prediction_sha256": m["prediction_artifact"]["sha256"],
+ 1269:             })
+ 1270:     df = pd.DataFrame(rows)
+ 1271:     require_equal(len(df), EXPECTED_FITS, "Inference register rows")
+ 1272:     write_csv_atomic(INFERENCE_REGISTER_CSV, df)
+ 1273:     return df
+ 1274: 
+ 1275: 
+ 1276: def frozen_threshold_map() -> dict[tuple[str, int], float]:
+ 1277:     df = pd.read_csv(STEP35_THRESHOLDS)
+ 1278:     col = "selected_threshold" if "selected_threshold" in df.columns else "threshold"
+ 1279:     result = {(str(r.model_id), int(r.horizon_days)): float(getattr(r, col)) for r in df.itertuples(index=False)}
+ 1280:     require_equal(len(result), EXPECTED_THRESHOLDS, "Frozen threshold map size")
+ 1281:     return result
+ 1282: 
+ 1283: 
+ 1284: def binary_diagnostics(y: np.ndarray, p: np.ndarray, threshold: float) -> dict:
+ 1285:     pred = (p >= threshold).astype(np.int64)
+ 1286:     tn, fp, fn, tp = [int(x) for x in confusion_matrix(y, pred, labels=[0, 1]).ravel()]
+ 1287:     return {
+ 1288:         "balanced_accuracy": float(balanced_accuracy_score(y, pred)),
+ 1289:         "roc_auc": float(roc_auc_score(y, p)),
+ 1290:         "mcc": float(matthews_corrcoef(y, pred)),
+ 1291:         "pr_auc": float(average_precision_score(y, p)),
+ 1292:         "brier_score": float(brier_score_loss(y, p)),
+ 1293:         "sensitivity": float(tp / (tp + fn)) if (tp + fn) else float("nan"),
+ 1294:         "specificity": float(tn / (tn + fp)) if (tn + fp) else float("nan"),
+ 1295:         "predicted_positive_rate": float(pred.mean()),
+ 1296:         "tp": tp, "tn": tn, "fp": fp, "fn": fn,
+ 1297:     }
+ 1298: 
+ 1299: 
+ 1300: def build_ensembles_and_score() -> tuple[pd.DataFrame, pd.DataFrame]:
+
+--------------------------------------------------------------------------------------------------------------
+FINAL CLI AND EXECUTION MODES | lines 1535-1614
+--------------------------------------------------------------------------------------------------------------
+ 1535: 
+ 1536:     print("[5] FINAL STEP-36 FREEZE")
+ 1537:     final = freeze_final_outputs(materialization, inference_df, metrics_df, class_df)
+ 1538:     final = verify_final_complete()
+ 1539:     print("PASS")
+ 1540:     print("-" * 140)
+ 1541: 
+ 1542:     print("=" * 140)
+ 1543:     print("STEP 36 COMPLETE — ONE-TIME FINAL TEST CONSUMED AND SCORED")
+ 1544:     print("=" * 140)
+ 1545:     print(f"Final-test common rows        : {EXPECTED_COMMON_ROWS:,}")
+ 1546:     print(f"Final-test common dates       : {EXPECTED_COMMON_DATES:,}")
+ 1547:     print(f"Architectures                 : {EXPECTED_ARCHITECTURES}")
+ 1548:     print(f"Seed checkpoints              : {EXPECTED_FITS}")
+ 1549:     print(f"Frozen thresholds             : {EXPECTED_THRESHOLDS}")
+ 1550:     print("Best-seed selection           : NOT PERFORMED")
+ 1551:     print("Architecture promotion        : NOT PERFORMED")
+ 1552:     print("Threshold reoptimization      : NOT PERFORMED")
+ 1553:     print("Raw test filesystem open count: 1")
+ 1554:     print("Raw test reopen               : False")
+ 1555:     print("Bootstrap/FDR                 : NOT YET PERFORMED")
+ 1556:     print(f"Global Step-36 fingerprint   : {final['global_step36_fingerprint']}")
+ 1557:     print(f"Final manifest SHA256         : {sha256_file(FINAL_MANIFEST)}")
+ 1558:     print("=" * 140)
+ 1559:     print("NEXT GATE: dependence-aware final-test inference (moving-block bootstrap + BH-FDR).")
+ 1560:     return 0
+ 1561: 
+ 1562: 
+ 1563: def parse_args() -> argparse.Namespace:
+ 1564:     parser = argparse.ArgumentParser()
+ 1565:     mode = parser.add_mutually_exclusive_group(required=True)
+ 1566:     mode.add_argument("--prepare-only", action="store_true")
+ 1567:     mode.add_argument("--execute", action="store_true")
+ 1568:     mode.add_argument("--worker", action="store_true")
+ 1569:     parser.add_argument("--worker-model", type=str)
+ 1570:     parser.add_argument("--worker-seed", type=int)
+ 1571:     return parser.parse_args()
+ 1572: 
+ 1573: 
+ 1574: def main() -> int:
+ 1575:     args = parse_args()
+ 1576:     try:
+ 1577:         if args.prepare_only:
+ 1578:             return prepare_only()
+ 1579:         if args.worker:
+ 1580:             if args.worker_model is None or args.worker_seed is None:
+ 1581:                 raise RuntimeError("--worker requires --worker-model and --worker-seed.")
+ 1582:             return run_worker(args.worker_model, int(args.worker_seed))
+ 1583:         if args.execute:
+ 1584:             return execute()
+ 1585:         raise RuntimeError("No valid mode selected.")
+ 1586:     except Exception as exc:
+ 1587:         failure = {
+ 1588:             "schema_version": SCHEMA_VERSION,
+ 1589:             "status": "FAIL",
+ 1590:             "failed_at_utc": utc_now(),
+ 1591:             "script": str(SCRIPT_FILE),
+ 1592:             "script_sha256": sha256_file(SCRIPT_FILE) if SCRIPT_FILE.exists() else None,
+ 1593:             "exception_type": type(exc).__name__,
+ 1594:             "exception": str(exc),
+ 1595:             "traceback": traceback.format_exc(),
+ 1596:             "access_marker_state": marker_state(),
+ 1597:             "array_manifest_exists": ARRAY_MANIFEST.exists(),
+ 1598:             "final_manifest_exists": FINAL_MANIFEST.exists(),
+ 1599:         }
+ 1600:         try:
+ 1601:             atomic_json(FAILURE_JSON, failure)
+ 1602:         except Exception:
+ 1603:             pass
+ 1604:         print("\n" + "=" * 140, file=sys.stderr)
+ 1605:         print("STEP 36 FAILURE", file=sys.stderr)
+ 1606:         print("=" * 140, file=sys.stderr)
+ 1607:         traceback.print_exc()
+ 1608:         print("=" * 140, file=sys.stderr)
+ 1609:         print("Do not delete the access marker, materialized arrays, or partial prediction artifacts.", file=sys.stderr)
+ 1610:         return 1
+ 1611: 
+ 1612: 
+ 1613: if __name__ == "__main__":
+ 1614:     raise SystemExit(main())
+
+[3] TOP-LEVEL FUNCTION AND MODE INVENTORY
+verify_upstream_without_test_access          258-371
+prepare_only                                 374-473
+verify_preaccess_freeze                      476-532
+write_access_marker                          535-549
+materialize_sequences                        779-830
+verify_materialized_arrays                   841-867
+materialize_final_test                       870-1091
+worker_output_dir                           1102-1103
+worker_manifest_path                        1106-1107
+verify_worker_complete                      1110-1120
+run_worker                                  1123-1230
+execute_all_workers                         1233-1273
+build_ensembles_and_score                   1300-1379
+freeze_final_outputs                        1382-1478
+verify_final_complete                       1481-1489
+execute                                     1492-1560
+
+[4] NEW AMENDED IMPLEMENTATION STATUS
+step36i_d2_amended_execution_DRAFT.py: exists=False
+step36i_d2_amended_execution_preflight.py: exists=False
+
+==============================================================================================================
+STEP 36I-D2c READ-ONLY DEPENDENCY REVIEW COMPLETE
+Original source modified: FALSE
+Amended runner executed: FALSE
+Sealed test opened: FALSE
+Additional raw-test access authorized: FALSE
+==============================================================================================================

@@ -1,0 +1,597 @@
+==============================================================================================================
+STEP 36I-D2a — TARGETED SOURCE REVIEW BEFORE AMENDED IMPLEMENTATION
+==============================================================================================================
+
+[1] VERIFY ORIGINAL SOURCE AND TEST ACCESS HISTORY
+PASS — recovered Step-36 source hash
+PASS — two recorded final-test accesses
+PASS — no final-test scoring
+
+[2] VERIFY CORRECTED COHORT AND PREFLIGHT EVIDENCE
+PASS: candidate_keys
+PASS: synthetic_sequences
+PASS: synthetic_gpu
+PASS: synthetic_bootstrap
+
+[3] EXTRACT EXACT SOURCE BLOCKS
+
+--------------------------------------------------------------------------------------------------------------
+ORIGINAL CONSTANTS AND PATHS — LINES 60-95
+--------------------------------------------------------------------------------------------------------------
+   60: 
+   61: EXPECTED_STEP14_MANIFEST_SHA = "b19b034bd31bb5d426e78c58f808d9e4c9cba16281e666984aae2c8bf6a150a0"
+   62: EXPECTED_STEP32_MANIFEST_SHA = "474b77ac670bbb7f61870372cdb98a6d7ac3ecaa4db8864ceb096fe9b26c39f0"
+   63: EXPECTED_STEP34_MANIFEST_SHA = "2224aa145e4bdbce2563586cd1a28742facd29638985f29fb4c6a34fa9bcaf48"
+   64: EXPECTED_STEP34_GLOBAL_FP = "1ede9c52aaadf66ea4e82f777c4c03fcccece419bff0867c2a434e3fb13828c0"
+   65: EXPECTED_STEP35_MANIFEST_SHA = "6f715055fa30759fd9aa9b31655759bbd4dca25398f1d6d2cd39be5bf3bed1d7"
+   66: EXPECTED_STEP35_CONTRACT_FP = "44949863de7e82c3c303ca55beff8c59ae3206ea7eb542a9aab115ff88632bfc"
+   67: 
+   68: EXPECTED_OUTER_TEST_ROWS = 6680
+   69: EXPECTED_OUTER_TEST_DATES = 334
+   70: EXPECTED_COMMON_ROWS = 6480
+   71: EXPECTED_COMMON_DATES = 324
+   72: EXPECTED_STOCKS = 20
+   73: EXPECTED_LOOKBACK = 60
+   74: EXPECTED_FEATURES = 63
+   75: EXPECTED_STOCK_FEATURES = 47
+   76: EXPECTED_MARKET_FEATURES = 16
+   77: EXPECTED_ARCHITECTURES = 8
+   78: EXPECTED_SEEDS = (42, 43, 44, 45, 46)
+   79: EXPECTED_FITS = 40
+   80: EXPECTED_THRESHOLDS = 24
+   81: HORIZONS = (1, 3, 5)
+   82: DIRECTION_COLUMNS = ("direction_1d", "direction_3d", "direction_5d")
+   83: 
+   84: MODEL_ORDER = (
+   85:     "DLINEAR", "NLINEAR", "PATCHTST", "TIMESNET",
+   86:     "ITRANSFORMER", "FREDFORMER", "FRNET", "MLF",
+   87: )
+   88: EXPECTED_CONFIG = {
+   89:     "DLINEAR": "DLINEAR_B",
+   90:     "NLINEAR": "NLINEAR_B",
+   91:     "PATCHTST": "PATCHTST_B",
+   92:     "TIMESNET": "TIMESNET_B",
+   93:     "ITRANSFORMER": "ITRANSFORMER_A",
+   94:     "FREDFORMER": "FREDFORMER_B",
+   95:     "FRNET": "FRNET_A",
+
+--------------------------------------------------------------------------------------------------------------
+FROZEN MEMBERSHIP / ELIGIBILITY INTERFACE — LINES 555-625
+--------------------------------------------------------------------------------------------------------------
+  555: 
+  556: def normalize_dates(frame: pd.DataFrame) -> pd.DataFrame:
+  557:     frame = frame.copy()
+  558:     frame["Date"] = pd.to_datetime(frame["Date"], errors="raise").dt.normalize()
+  559:     for h in HORIZONS:
+  560:         c = f"target_date_{h}d"
+  561:         if c in frame.columns:
+  562:             frame[c] = pd.to_datetime(frame[c], errors="coerce").dt.normalize()
+  563:     return frame
+  564: 
+  565: 
+  566: def attach_frozen_final_test_membership(frame: pd.DataFrame) -> pd.DataFrame:
+  567:     require_file_sha(
+  568:         STEP10_MEMBERSHIP,
+  569:         EXPECTED_STEP10_MEMBERSHIP_SHA,
+  570:         "Step-10 structural membership ledger",
+  571:     )
+  572:     membership = pd.read_parquet(STEP10_MEMBERSHIP, engine="pyarrow")
+  573:     membership["Date"] = pd.to_datetime(
+  574:         membership["Date"], errors="raise"
+  575:     ).dt.normalize()
+  576: 
+  577:     source_columns = [
+  578:         "Ticker",
+  579:         "Date",
+  580:         "outer_final_test_eligible_1d",
+  581:         "outer_final_test_eligible_3d",
+  582:         "outer_final_test_eligible_5d",
+  583:         "outer_final_test_common_multitask",
+  584:     ]
+  585:     missing = sorted(set(source_columns) - set(membership.columns))
+  586:     if missing:
+  587:         raise RuntimeError(
+  588:             f"Step-10 membership ledger missing recovery columns: {missing}"
+  589:         )
+  590: 
+  591:     flags = membership[source_columns].copy()
+  592:     if flags[["Ticker", "Date"]].duplicated().any():
+  593:         raise RuntimeError("Duplicate ticker-date keys in Step-10 membership ledger.")
+  594: 
+  595:     flags = flags.rename(columns={
+  596:         "outer_final_test_eligible_1d": "eligible_1d",
+  597:         "outer_final_test_eligible_3d": "eligible_3d",
+  598:         "outer_final_test_eligible_5d": "eligible_5d",
+  599:         "outer_final_test_common_multitask": "eligible_common_multitask",
+  600:     })
+  601: 
+  602:     out = frame.merge(
+  603:         flags,
+  604:         on=["Ticker", "Date"],
+  605:         how="left",
+  606:         validate="one_to_one",
+  607:     )
+  608: 
+  609:     eligibility_columns = [
+  610:         "eligible_1d",
+  611:         "eligible_3d",
+  612:         "eligible_5d",
+  613:         "eligible_common_multitask",
+  614:     ]
+  615:     if out[eligibility_columns].isna().any().any():
+  616:         raise RuntimeError(
+  617:             "Some sealed-test ticker-date rows have no Step-10 frozen membership record."
+  618:         )
+  619:     for c in eligibility_columns:
+  620:         out[c] = out[c].astype(bool)
+  621: 
+  622:     expected_counts = {
+  623:         "eligible_1d": 6640,
+  624:         "eligible_3d": 6560,
+  625:         "eligible_5d": 6480,
+
+--------------------------------------------------------------------------------------------------------------
+SCHEMA VALIDATION AND ENDPOINT CONSTRUCTION — LINES 687-752
+--------------------------------------------------------------------------------------------------------------
+  687: def validate_opened_test(frame: pd.DataFrame, features: list[str]) -> None:
+  688:     required = {
+  689:         "Ticker", "Date", "market_session_id", "continuity_segment_id",
+  690:         "eligible_1d", "eligible_3d", "eligible_5d",
+  691:         "eligible_common_multitask",
+  692:         "direction_1d", "direction_3d", "direction_5d",
+  693:         "target_date_1d", "target_date_3d", "target_date_5d", *features,
+  694:     }
+  695:     missing = sorted(required - set(frame.columns))
+  696:     if missing:
+  697:         raise RuntimeError(f"Final-test panel missing required columns:\n{missing}")
+  698: 
+  699:     require_equal(len(frame), EXPECTED_OUTER_TEST_ROWS, "Final-test rows")
+  700:     require_equal(frame["Date"].nunique(), EXPECTED_OUTER_TEST_DATES, "Final-test dates")
+  701:     require_equal(frame["Ticker"].nunique(), EXPECTED_STOCKS, "Final-test stocks")
+  702:     if frame[["Ticker", "Date"]].duplicated().any():
+  703:         raise RuntimeError("Duplicate final-test ticker-date keys.")
+  704:     if not (frame.groupby("Date")["Ticker"].nunique() == EXPECTED_STOCKS).all():
+  705:         raise RuntimeError("Final-test cross-section is incomplete.")
+  706:     if not np.isfinite(frame[features].to_numpy(np.float64)).all():
+  707:         raise RuntimeError("Final-test predictors contain non-finite values.")
+  708: 
+  709:     for h in HORIZONS:
+  710:         flag = frame[f"eligible_{h}d"].astype(bool)
+  711:         labels = pd.to_numeric(frame.loc[flag, f"direction_{h}d"], errors="raise")
+  712:         if labels.isna().any() or not labels.isin([0, 1]).all():
+  713:             raise RuntimeError(
+  714:                 f"Eligible final-test rows contain invalid {h}d direction labels."
+  715:             )
+  716:         target_dates = pd.to_datetime(
+  717:             frame.loc[flag, f"target_date_{h}d"], errors="coerce"
+  718:         )
+  719:         if target_dates.isna().any():
+  720:             raise RuntimeError(
+  721:                 f"Eligible final-test rows contain missing {h}d target dates."
+  722:             )
+  723:         reference_dates = pd.to_datetime(frame.loc[flag, "Date"], errors="raise")
+  724:         if not (target_dates.to_numpy() > reference_dates.to_numpy()).all():
+  725:             raise RuntimeError(
+  726:                 f"Eligible final-test rows contain non-future {h}d target dates."
+  727:             )
+  728: 
+  729:     common = frame["eligible_common_multitask"].astype(bool)
+  730:     if int(common.sum()) != EXPECTED_COMMON_ROWS:
+  731:         raise RuntimeError("Frozen common-multitask row count drift.")
+  732: 
+  733: 
+  734: def build_common_endpoints(scaled_test: pd.DataFrame, stock_id_map: dict[str, int]) -> pd.DataFrame:
+  735:     flag = scaled_test["eligible_common_multitask"]
+  736:     if flag.dtype != bool:
+  737:         flag = flag.astype(bool)
+  738:     ep = scaled_test.loc[flag].copy().sort_values(["Date", "Ticker"]).reset_index(drop=True)
+  739:     require_equal(len(ep), EXPECTED_COMMON_ROWS, "Common final-test endpoint rows")
+  740:     require_equal(ep["Date"].nunique(), EXPECTED_COMMON_DATES, "Common final-test endpoint dates")
+  741:     if not (ep.groupby("Date")["Ticker"].nunique() == EXPECTED_STOCKS).all():
+  742:         raise RuntimeError("Common final-test endpoints are not balanced by date.")
+  743:     unknown = sorted(set(ep["Ticker"]) - set(stock_id_map))
+  744:     if unknown:
+  745:         raise RuntimeError(f"Unknown test tickers in stock_id_map: {unknown}")
+  746:     ep["stock_id"] = ep["Ticker"].map(stock_id_map).astype(np.int64)
+  747:     for h in HORIZONS:
+  748:         td = pd.to_datetime(ep[f"target_date_{h}d"], errors="raise")
+  749:         rd = pd.to_datetime(ep["Date"], errors="raise")
+  750:         if (td <= rd).any():
+  751:             raise RuntimeError(f"{h}d contains a non-future target date.")
+  752:     return ep
+
+--------------------------------------------------------------------------------------------------------------
+MATERIALIZATION VERIFICATION AND ACCESS GUARD — LINES 841-950
+--------------------------------------------------------------------------------------------------------------
+  841: def verify_materialized_arrays() -> dict:
+  842:     m = load_json(ARRAY_MANIFEST)
+  843:     require_equal(
+  844:         m.get("status"),
+  845:         "STEP36_FINAL_TEST_MATERIALIZATION_COMPLETE",
+  846:         "Step-36 materialization status",
+  847:     )
+  848:     require_equal(
+  849:         int(m["raw_test"]["filesystem_content_open_count"]),
+  850:         2,
+  851:         "Raw final-test filesystem content-open count",
+  852:     )
+  853:     require_equal(
+  854:         bool(m["raw_test"].get("technical_recovery_reopen")),
+  855:         True,
+  856:         "Step-36 technical-recovery reopen flag",
+  857:     )
+  858:     require_equal(
+  859:         int(m["evaluation_panel"]["rows"]),
+  860:         EXPECTED_COMMON_ROWS,
+  861:         "Materialized evaluation rows",
+  862:     )
+  863:     for rec in m.get("artifacts", {}).values():
+  864:         p = Path(rec["path"])
+  865:         if not p.exists() or sha256_file(p) != rec["sha256"]:
+  866:             raise RuntimeError(f"Step-36 materialized artifact drift:\n{p}")
+  867:     return m
+  868: 
+  869: 
+  870: def materialize_final_test(upstream: dict) -> dict:
+  871:     if ARRAY_MANIFEST.exists():
+  872:         return verify_materialized_arrays()
+  873: 
+  874:     seal = upstream["test_seal"]
+  875:     raw_path = Path(seal["file_path"])
+  876:     expected_raw_sha = str(seal["sha256"])
+  877: 
+  878:     if not RECOVERY_AMENDMENT.exists():
+  879:         raise RuntimeError("Step-36A recovery amendment is missing.")
+  880:     amendment = load_json(RECOVERY_AMENDMENT)
+  881:     require_equal(
+  882:         amendment.get("status"),
+  883:         "STEP36A_SCHEMA_RECOVERY_COMPATIBILITY_FROZEN",
+  884:         "Step-36A recovery amendment status",
+  885:     )
+  886: 
+  887:     if not ACCESS_MARKER.exists():
+  888:         raise RuntimeError(
+  889:             "Step-36A recovery requires the preserved first-access marker."
+  890:         )
+  891:     marker = load_json(ACCESS_MARKER)
+  892:     require_equal(
+  893:         marker.get("state"),
+  894:         "RAW_TEST_OPENED_ONCE_IN_MEMORY",
+  895:         "Step-36 recovery access state",
+  896:     )
+  897:     require_equal(
+  898:         int(marker.get("raw_test_filesystem_open_count_completed", -1)),
+  899:         1,
+  900:         "Step-36 first raw-test open count",
+  901:     )
+  902:     require_equal(
+  903:         bool(marker.get("final_test_scored")),
+  904:         False,
+  905:         "Step-36 pre-recovery scored flag",
+  906:     )
+  907:     require_equal(
+  908:         marker.get("expected_raw_test_sha256"),
+  909:         expected_raw_sha,
+  910:         "Step-36 expected raw-test SHA",
+  911:     )
+  912:     require_equal(
+  913:         marker.get("observed_raw_test_sha256"),
+  914:         expected_raw_sha,
+  915:         "Step-36 first-open raw-test SHA",
+  916:     )
+  917: 
+  918:     write_access_marker(
+  919:         "TECHNICAL_RECOVERY_REOPEN_STARTED",
+  920:         raw_test_filesystem_open_count_planned=2,
+  921:         raw_test_filesystem_open_count_completed=1,
+  922:         technical_recovery_reason=(
+  923:             "sealed parquet omitted convenience eligible_common_multitask column; "
+  924:             "use frozen Step-10 membership ledger"
+  925:         ),
+  926:         recovery_amendment_path=str(RECOVERY_AMENDMENT),
+  927:         recovery_amendment_sha256=sha256_file(RECOVERY_AMENDMENT),
+  928:         final_test_scored=False,
+  929:     )
+  930: 
+  931:     print(
+  932:         "Reopening sealed final-test parquet ONCE for logged technical "
+  933:         "schema recovery (second filesystem content open; no prior scoring)..."
+  934:     )
+  935:     raw_test, observed_raw_sha = load_and_parse_raw_test_exactly_once(
+  936:         raw_path, expected_raw_sha
+  937:     )
+  938:     write_access_marker(
+  939:         "RAW_TEST_REOPENED_FOR_TECHNICAL_RECOVERY",
+  940:         observed_raw_test_sha256=observed_raw_sha,
+  941:         raw_test_filesystem_open_count_completed=2,
+  942:         technical_recovery_reopen_count=1,
+  943:         final_test_scored=False,
+  944:     )
+  945: 
+  946:     raw_test = normalize_dates(raw_test)
+  947:     raw_test = attach_frozen_final_test_membership(raw_test)
+  948:     validate_opened_test(raw_test, upstream["features"])
+  949: 
+  950:     test_regimes = apply_frozen_regimes(raw_test)
+
+--------------------------------------------------------------------------------------------------------------
+ARRAY SHAPE AND PERSISTENCE ASSERTIONS — LINES 965-1008
+--------------------------------------------------------------------------------------------------------------
+  965:     regime_id = metadata["regime_id"].to_numpy(dtype=np.int64)
+  966:     X_stock = X_full[:, :, :47].copy()
+  967:     X_market = X_full[:, :, 47:].copy()
+  968: 
+  969:     require_equal(X_full.shape, (EXPECTED_COMMON_ROWS, 60, 63), "X_full shape")
+  970:     require_equal(X_stock.shape, (EXPECTED_COMMON_ROWS, 60, 47), "X_stock shape")
+  971:     require_equal(X_market.shape, (EXPECTED_COMMON_ROWS, 60, 16), "X_market shape")
+  972:     require_equal(y_direction.shape, (EXPECTED_COMMON_ROWS, 3), "y_direction shape")
+  973:     if not np.array_equal(X_stock, X_full[:, :, :47]) or not np.array_equal(
+  974:         X_market, X_full[:, :, 47:]
+  975:     ):
+  976:         raise RuntimeError("Final-test modality slice mismatch.")
+  977:     if not np.isin(y_direction, [0, 1]).all():
+  978:         raise RuntimeError("Final-test y_direction is not binary.")
+  979:     if not np.isin(regime_id, [0, 1, 2]).all():
+  980:         raise RuntimeError("Final-test regime IDs are invalid.")
+  981: 
+  982:     staging = cfg.FEATURE_DATA_DIR / (
+  983:         f"_step36_final_test_staging_{os.getpid()}_{int(time.time())}"
+  984:     )
+  985:     staging.mkdir(parents=True, exist_ok=False)
+  986:     try:
+  987:         save_array(staging / "36_final_test_X_full.npy", X_full)
+  988:         save_array(staging / "36_final_test_X_stock.npy", X_stock)
+  989:         save_array(staging / "36_final_test_X_market.npy", X_market)
+  990:         save_array(staging / "36_final_test_y_direction.npy", y_direction)
+  991:         save_array(staging / "36_final_test_stock_id.npy", stock_id)
+  992:         save_array(staging / "36_final_test_regime_id.npy", regime_id)
+  993:         metadata.to_parquet(
+  994:             staging / "36_final_test_metadata.parquet",
+  995:             index=False,
+  996:             engine="pyarrow",
+  997:             compression="snappy",
+  998:         )
+  999:         if len(
+ 1000:             pd.read_parquet(
+ 1001:                 staging / "36_final_test_metadata.parquet", engine="pyarrow"
+ 1002:             )
+ 1003:         ) != EXPECTED_COMMON_ROWS:
+ 1004:             raise RuntimeError("Final-test metadata roundtrip row drift.")
+ 1005:         if ARRAY_DIR.exists():
+ 1006:             raise RuntimeError(
+ 1007:                 f"Unexpected existing Step-36 array directory:\n{ARRAY_DIR}"
+ 1008:             )
+
+--------------------------------------------------------------------------------------------------------------
+MATERIALIZATION MANIFEST AND ACCESS CLOSURE — LINES 1030-1095
+--------------------------------------------------------------------------------------------------------------
+ 1030:                 "schema-only recovery using frozen Step-10 membership ledger; "
+ 1031:                 "no metrics existed before amendment"
+ 1032:             ),
+ 1033:         },
+ 1034:         "raw_test": {
+ 1035:             "path": str(raw_path),
+ 1036:             "expected_sha256": expected_raw_sha,
+ 1037:             "observed_sha256": observed_raw_sha,
+ 1038:             "filesystem_content_open_count": 2,
+ 1039:             "initial_authorized_open_count": 1,
+ 1040:             "technical_recovery_reopen_count": 1,
+ 1041:             "technical_recovery_reopen": True,
+ 1042:             "parsed_from_same_in_memory_bytes_used_for_hash_on_each_open": True,
+ 1043:             "rows": int(len(raw_test)),
+ 1044:             "dates": int(raw_test["Date"].nunique()),
+ 1045:             "stocks": int(raw_test["Ticker"].nunique()),
+ 1046:         },
+ 1047:         "structural_membership": {
+ 1048:             "path": str(STEP10_MEMBERSHIP),
+ 1049:             "sha256": sha256_file(STEP10_MEMBERSHIP),
+ 1050:             "source_column": "outer_final_test_common_multitask",
+ 1051:             "attached_column": "eligible_common_multitask",
+ 1052:             "common_rows": int(raw_test["eligible_common_multitask"].sum()),
+ 1053:             "membership_refit_or_recomputed_from_test_labels": False,
+ 1054:         },
+ 1055:         "transformation": {
+ 1056:             "predictor_scaler_path": str(upstream["scaler_path"]),
+ 1057:             "predictor_scaler_sha256": sha256_file(upstream["scaler_path"]),
+ 1058:             "predictor_scaler_refit_on_test": False,
+ 1059:             "predictor_clipping": False,
+ 1060:             "regime_threshold_path": str(FINAL_DEV_REGIME_THRESHOLDS),
+ 1061:             "regime_threshold_sha256": sha256_file(FINAL_DEV_REGIME_THRESHOLDS),
+ 1062:             "regime_threshold_refit_on_test": False,
+ 1063:             "development_history_path": str(FINAL_DEV_HISTORY),
+ 1064:             "development_history_sha256": sha256_file(FINAL_DEV_HISTORY),
+ 1065:             "lookback": 60,
+ 1066:             "causal_development_history_allowed": True,
+ 1067:             "future_predictor_rows_allowed": False,
+ 1068:         },
+ 1069:         "evaluation_panel": {
+ 1070:             "rows": EXPECTED_COMMON_ROWS,
+ 1071:             "dates": EXPECTED_COMMON_DATES,
+ 1072:             "stocks": EXPECTED_STOCKS,
+ 1073:             "x_full_shape": [EXPECTED_COMMON_ROWS, 60, 63],
+ 1074:             "y_direction_shape": [EXPECTED_COMMON_ROWS, 3],
+ 1075:         },
+ 1076:         "artifacts": artifacts,
+ 1077:     }
+ 1078:     manifest["materialization_fingerprint"] = canonical_hash(manifest)
+ 1079:     atomic_json(ARRAY_MANIFEST, manifest)
+ 1080: 
+ 1081:     write_access_marker(
+ 1082:         "RAW_TEST_MATERIALIZED_AND_CLOSED_AFTER_TECHNICAL_RECOVERY",
+ 1083:         observed_raw_test_sha256=observed_raw_sha,
+ 1084:         raw_test_filesystem_open_count_completed=2,
+ 1085:         technical_recovery_reopen_count=1,
+ 1086:         raw_test_reopen_prohibited=True,
+ 1087:         materialization_manifest_path=str(ARRAY_MANIFEST),
+ 1088:         materialization_manifest_sha256=sha256_file(ARRAY_MANIFEST),
+ 1089:         final_test_scored=False,
+ 1090:     )
+ 1091:     return verify_materialized_arrays()
+ 1092: 
+ 1093: 
+ 1094: def get_fit_row(model_id: str, seed: int) -> pd.Series:
+ 1095:     reg = pd.read_csv(STEP34_REGISTER)
+
+--------------------------------------------------------------------------------------------------------------
+FROZEN CHECKPOINT GPU SETUP — LINES 1135-1168
+--------------------------------------------------------------------------------------------------------------
+ 1135:     fit_manifest_path = Path(fit_row["fit_manifest_path"])
+ 1136:     require_file_sha(fit_manifest_path, str(fit_row["fit_manifest_sha256"]), f"{model_id}/seed{seed} fit manifest")
+ 1137:     fm = load_json(fit_manifest_path)
+ 1138:     cp_rec = fm["artifacts"]["final_checkpoint.pt"]
+ 1139:     checkpoint_path = Path(cp_rec.get("path", fit_manifest_path.parent / "final_checkpoint.pt"))
+ 1140:     if cp_rec.get("sha256"):
+ 1141:         require_file_sha(checkpoint_path, cp_rec["sha256"], f"{model_id}/seed{seed} checkpoint")
+ 1142: 
+ 1143:     import step26_stage1_runner_dryrun_v3 as s26
+ 1144:     s26.set_training_determinism(seed)
+ 1145:     if not torch.cuda.is_available():
+ 1146:         raise RuntimeError("CUDA is required for frozen Step-36 neural inference.")
+ 1147:     device = torch.device("cuda:0")
+ 1148:     torch.cuda.empty_cache()
+ 1149:     torch.cuda.reset_peak_memory_stats(device)
+ 1150: 
+ 1151:     model, build_metadata, repository = s26.build_candidate_model(
+ 1152:         model_id=model_id,
+ 1153:         config_id=config_id,
+ 1154:         physical_microbatch=physical_mb,
+ 1155:         device=device,
+ 1156:     )
+ 1157:     checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
+ 1158:     model.load_state_dict(checkpoint["model_state_dict"], strict=True)
+ 1159:     model.eval()
+ 1160: 
+ 1161:     X = np.load(ARRAY_DIR / "36_final_test_X_full.npy", mmap_mode="r", allow_pickle=False)
+ 1162:     require_equal(X.shape, (EXPECTED_COMMON_ROWS, 60, 63), "Worker final-test X shape")
+ 1163:     logits_parts, prob_parts = [], []
+ 1164:     torch.cuda.synchronize()
+ 1165:     t0 = time.perf_counter()
+ 1166:     with torch.no_grad():
+ 1167:         for start in range(0, EXPECTED_COMMON_ROWS, physical_mb):
+ 1168:             end = min(start + physical_mb, EXPECTED_COMMON_ROWS)
+
+--------------------------------------------------------------------------------------------------------------
+FINAL PROVENANCE AND EVALUATION COUNTS — LINES 1405-1435
+--------------------------------------------------------------------------------------------------------------
+ 1405:         "preaccess_freeze": {
+ 1406:             "path": str(PREACCESS_FREEZE),
+ 1407:             "sha256": sha256_file(PREACCESS_FREEZE),
+ 1408:             "source_sha256": sha256_file(SCRIPT_FILE),
+ 1409:         },
+ 1410:         "upstream": {
+ 1411:             "step14_manifest_sha256": EXPECTED_STEP14_MANIFEST_SHA,
+ 1412:             "step32_manifest_sha256": EXPECTED_STEP32_MANIFEST_SHA,
+ 1413:             "step34_manifest_sha256": EXPECTED_STEP34_MANIFEST_SHA,
+ 1414:             "step34_global_fingerprint": EXPECTED_STEP34_GLOBAL_FP,
+ 1415:             "step35_manifest_sha256": EXPECTED_STEP35_MANIFEST_SHA,
+ 1416:             "step35_contract_fingerprint": EXPECTED_STEP35_CONTRACT_FP,
+ 1417:         },
+ 1418:         "one_time_test_access": {
+ 1419:             "raw_test_path": materialization["raw_test"]["path"],
+ 1420:             "raw_test_sha256": materialization["raw_test"]["observed_sha256"],
+ 1421:             "raw_test_filesystem_content_open_count": 2,
+ 1422:             "initial_authorized_open_count": 1,
+ 1423:             "technical_recovery_reopen_count": 1,
+ 1424:             "technical_recovery_reopen_before_scoring": True,
+ 1425:             "raw_test_reopened_after_materialization": False,
+ 1426:             "class_balance_seen_before_step35_freeze": False,
+ 1427:             "metrics_computed_before_step35_freeze": False,
+ 1428:         },
+ 1429:         "materialization": {
+ 1430:             "rows": EXPECTED_COMMON_ROWS,
+ 1431:             "dates": EXPECTED_COMMON_DATES,
+ 1432:             "stocks": EXPECTED_STOCKS,
+ 1433:             "lookback": 60,
+ 1434:             "features": 63,
+ 1435:             "predictor_scaler_refit_on_test": False,
+
+--------------------------------------------------------------------------------------------------------------
+FINAL ACCESS-MARKER UPDATE — LINES 1455-1480
+--------------------------------------------------------------------------------------------------------------
+ 1455:             "bootstrap_performed_here": False,
+ 1456:             "bh_fdr_performed_here": False,
+ 1457:             "next_step": "DEPENDENCE_AWARE_FINAL_TEST_INFERENCE_AND_FDR",
+ 1458:         },
+ 1459:         "artifacts": {
+ 1460:             row["relative_path"]: {"path": row["path"], "size_bytes": int(row["size_bytes"]), "sha256": row["sha256"]}
+ 1461:             for row in artifact_df.to_dict("records")
+ 1462:         },
+ 1463:     }
+ 1464:     manifest["global_step36_fingerprint"] = canonical_hash(manifest)
+ 1465:     atomic_json(FINAL_MANIFEST, manifest)
+ 1466:     final_sha = sha256_file(FINAL_MANIFEST)
+ 1467:     atomic_text(FINAL_MANIFEST_SHA, f"{final_sha}  {FINAL_MANIFEST.name}\n")
+ 1468:     write_access_marker(
+ 1469:         "FINAL_TEST_OPENED_MATERIALIZED_INFERRED_SCORED",
+ 1470:         raw_test_filesystem_open_count_completed=2,
+ 1471:         technical_recovery_reopen_count=1,
+ 1472:         raw_test_reopen_prohibited=True,
+ 1473:         final_test_scored=True,
+ 1474:         final_manifest_path=str(FINAL_MANIFEST),
+ 1475:         final_manifest_sha256=final_sha,
+ 1476:         global_step36_fingerprint=manifest["global_step36_fingerprint"],
+ 1477:     )
+ 1478:     return load_json(FINAL_MANIFEST)
+ 1479: 
+ 1480: 
+
+--------------------------------------------------------------------------------------------------------------
+EXECUTION ORCHESTRATION — LINES 1492-1535
+--------------------------------------------------------------------------------------------------------------
+ 1492: def execute() -> int:
+ 1493:     print("=" * 140)
+ 1494:     print(STEP_NAME)
+ 1495:     print("=" * 140)
+ 1496:     print("MODE                         : EXECUTE")
+ 1497:     print("Architecture selection       : PROHIBITED")
+ 1498:     print("Best-seed selection          : PROHIBITED")
+ 1499:     print("Threshold reoptimization     : PROHIBITED")
+ 1500:     print("Post-test model promotion    : PROHIBITED")
+ 1501:     print("-" * 140)
+ 1502: 
+ 1503:     if FINAL_MANIFEST.exists():
+ 1504:         m = verify_final_complete()
+ 1505:         print("Step 36 already complete and hash-valid.")
+ 1506:         print(f"Global Step-36 fingerprint: {m['global_step36_fingerprint']}")
+ 1507:         print(f"Final manifest SHA256     : {sha256_file(FINAL_MANIFEST)}")
+ 1508:         return 0
+ 1509: 
+ 1510:     verify_preaccess_freeze()
+ 1511:     upstream = verify_upstream_without_test_access()
+ 1512:     print("[1] PRE-ACCESS FREEZE / UPSTREAM CONTRACT: PASS")
+ 1513:     print("-" * 140)
+ 1514: 
+ 1515:     print("[2] ONE-TIME FINAL-TEST MATERIALIZATION")
+ 1516:     materialization = materialize_final_test(upstream)
+ 1517:     print(f"Materialized common rows : {materialization['evaluation_panel']['rows']:,}")
+ 1518:     print(f"Raw test open count      : {materialization['raw_test']['filesystem_content_open_count']}")
+ 1519:     print("PASS")
+ 1520:     print("-" * 140)
+ 1521: 
+ 1522:     print("[3] 40 FROZEN CHECKPOINT INFERENCES")
+ 1523:     inference_df = execute_all_workers()
+ 1524:     print(f"Verified inference rows  : {len(inference_df)}/40")
+ 1525:     print("PASS")
+ 1526:     print("-" * 140)
+ 1527: 
+ 1528:     print("[4] FIVE-SEED PROBABILITY ENSEMBLES + FROZEN-THRESHOLD SCORING")
+ 1529:     metrics_df, class_df = build_ensembles_and_score()
+ 1530:     print(f"Metric rows              : {len(metrics_df)}/24")
+ 1531:     print("Threshold tuning         : False")
+ 1532:     print("Architecture selection   : False")
+ 1533:     print("PASS")
+ 1534:     print("-" * 140)
+ 1535: 
+
+[4] CHECK WHETHER NEW DRAFT FILES ALREADY EXIST
+step36i_d2_amended_execution_DRAFT.py exists = False
+step36i_d2_amended_execution_preflight.py exists = False
+
+==============================================================================================================
+STEP 36I-D2a SOURCE REVIEW COMPLETE
+Original source modified: FALSE
+Frozen scientific contract modified: FALSE
+Sealed final-test parquet opened: FALSE
+Model inference executed: FALSE
+Additional raw-test read authorized: FALSE
+==============================================================================================================

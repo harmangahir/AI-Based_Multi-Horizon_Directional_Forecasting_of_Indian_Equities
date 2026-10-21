@@ -1,0 +1,119 @@
+============================================================================================================================================
+STEP 34 — FINAL-DEVELOPMENT REFIT EXECUTION
+============================================================================================================================================
+Experiment root       : /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026
+Final-development n   : 42,360
+Architectures         : 8
+Fixed seeds           : 42,43,44,45,46
+Total refits          : 40
+Validation            : NONE
+Early stopping        : NONE
+Checkpoint            : FINAL SCHEDULED EPOCH
+Final test            : LOCKED_NOT_OPENED
+--------------------------------------------------------------------------------------------------------------------------------------------
+[1] UPSTREAM FREEZES
+Step30 robustness freeze : VERIFIED
+Step32 thresholds        : VERIFIED
+Step33 refit schedule    : VERIFIED
+Step26 training engine   : EXECUTABLE == FROZEN
+Final-test state         : LOCKED_NOT_OPENED
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+[2] STEP-34 SOURCE FREEZE
+Source SHA256      : 2030d6719476107dfd0b1a5ec8fe4c4dd3d362bb10aafc4b6f3d9bd1841367e5
+Source fingerprint : b8c1629c0a173b044f5b8fe42a6b1d05072bbb514344c44f13a3d9b32a218e17
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+[3] FROZEN TRAINING PROTOCOL REFERENCE
+Source manifests      : 200 frozen robustness fits
+Architectures verified: 8/8
+Performance metrics   : NOT USED
+Reference SHA256      : 9d2c372aa4f3c54e70e8413895508aa3b840b231d7b4f68a3acbbda7b8a16644
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+[4] FINAL-REFIT EXECUTION PLAN
+Plan rows             : 40/40
+Total scheduled epochs: 65
+Plan SHA256           : 210ac4f01a4150a0f66f7a2370d9a2c268d9a8cda15d258b3789db3aa743ce7c
+Plan fingerprint      : 71e8099a5f0cbc66452ac335700078d72522b2104f4472715923b918536e1758
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+DLINEAR        seed=42 epochs= 1 mb=128
+DLINEAR        seed=43 epochs= 2 mb=128
+DLINEAR        seed=44 epochs= 1 mb=128
+DLINEAR        seed=45 epochs= 1 mb=128
+DLINEAR        seed=46 epochs= 3 mb=128
+NLINEAR        seed=42 epochs= 1 mb=128
+NLINEAR        seed=43 epochs= 1 mb=128
+NLINEAR        seed=44 epochs= 1 mb=128
+NLINEAR        seed=45 epochs= 1 mb=128
+NLINEAR        seed=46 epochs= 1 mb=128
+PATCHTST       seed=42 epochs= 1 mb= 64
+PATCHTST       seed=43 epochs= 1 mb= 64
+PATCHTST       seed=44 epochs= 1 mb= 64
+PATCHTST       seed=45 epochs= 1 mb= 64
+PATCHTST       seed=46 epochs= 1 mb= 64
+TIMESNET       seed=42 epochs= 2 mb= 64
+TIMESNET       seed=43 epochs= 4 mb= 64
+TIMESNET       seed=44 epochs= 2 mb= 64
+TIMESNET       seed=45 epochs= 2 mb= 64
+TIMESNET       seed=46 epochs= 3 mb= 64
+ITRANSFORMER   seed=42 epochs= 1 mb=128
+ITRANSFORMER   seed=43 epochs= 1 mb=128
+ITRANSFORMER   seed=44 epochs= 1 mb=128
+ITRANSFORMER   seed=45 epochs= 1 mb=128
+ITRANSFORMER   seed=46 epochs= 1 mb=128
+FREDFORMER     seed=42 epochs= 1 mb= 16
+FREDFORMER     seed=43 epochs= 1 mb= 16
+FREDFORMER     seed=44 epochs= 1 mb= 16
+FREDFORMER     seed=45 epochs= 1 mb= 16
+FREDFORMER     seed=46 epochs= 1 mb= 16
+FRNET          seed=42 epochs= 1 mb= 64
+FRNET          seed=43 epochs= 1 mb= 64
+FRNET          seed=44 epochs= 1 mb= 64
+FRNET          seed=45 epochs= 1 mb= 64
+FRNET          seed=46 epochs= 2 mb= 64
+MLF            seed=42 epochs= 9 mb= 32
+MLF            seed=43 epochs= 2 mb= 32
+MLF            seed=44 epochs= 2 mb= 32
+MLF            seed=45 epochs= 2 mb= 32
+MLF            seed=46 epochs= 3 mb= 32
+--------------------------------------------------------------------------------------------------------------------------------------------
+RUN  TIMESNET       TIMESNET_B           seed=42 epochs=2
+EPOCH TIMESNET/TIMESNET_B/seed42 001/002 trainBCE=0.695478 updates=166 sec=606.6
+EPOCH TIMESNET/TIMESNET_B/seed42 002/002 trainBCE=0.692090 updates=166 sec=628.0
+__STEP34_RESULT__{"config_id": "TIMESNET_B", "epochs": 2, "final_train_bce": 0.6920897296287746, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/TIMESNET/TIMESNET_B/seed_42/fit_manifest.json", "fit_manifest_sha256": "ee4115850e68f3fdc1c785639e46cdf32453d085c7bf32c2f5431bbe4fc6e4cf", "model_id": "TIMESNET", "peak_cuda_allocated_mib": 1190.4404296875, "seed": 42, "status": "PASS", "wall_seconds": 1236.710602055}
+PASS TIMESNET       seed=42 epochs=2 trainBCE=0.692090 peak=1190.4MiB
+RUN  TIMESNET       TIMESNET_B           seed=43 epochs=4
+EPOCH TIMESNET/TIMESNET_B/seed43 001/004 trainBCE=0.696583 updates=166 sec=620.1
+EPOCH TIMESNET/TIMESNET_B/seed43 002/004 trainBCE=0.691713 updates=166 sec=617.9
+EPOCH TIMESNET/TIMESNET_B/seed43 003/004 trainBCE=0.691033 updates=166 sec=621.5
+EPOCH TIMESNET/TIMESNET_B/seed43 004/004 trainBCE=0.690583 updates=166 sec=624.1
+__STEP34_RESULT__{"config_id": "TIMESNET_B", "epochs": 4, "final_train_bce": 0.690583263972213, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/TIMESNET/TIMESNET_B/seed_43/fit_manifest.json", "fit_manifest_sha256": "38f2b8950776239e24669de82628a66dc5099843c7c7b0d439b8b431a4dd8395", "model_id": "TIMESNET", "peak_cuda_allocated_mib": 1190.4404296875, "seed": 43, "status": "PASS", "wall_seconds": 2485.922384857002}
+PASS TIMESNET       seed=43 epochs=4 trainBCE=0.690583 peak=1190.4MiB
+RUN  TIMESNET       TIMESNET_B           seed=44 epochs=2
+EPOCH TIMESNET/TIMESNET_B/seed44 001/002 trainBCE=0.695470 updates=166 sec=625.7
+EPOCH TIMESNET/TIMESNET_B/seed44 002/002 trainBCE=0.691761 updates=166 sec=626.3
+__STEP34_RESULT__{"config_id": "TIMESNET_B", "epochs": 2, "final_train_bce": 0.691760652058523, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/TIMESNET/TIMESNET_B/seed_44/fit_manifest.json", "fit_manifest_sha256": "47751e0b8f90c0948d67fde6262601c9a0dde7c284e1e1f0d1c229c931fb6354", "model_id": "TIMESNET", "peak_cuda_allocated_mib": 1190.4404296875, "seed": 44, "status": "PASS", "wall_seconds": 1254.2858440349992}
+PASS TIMESNET       seed=44 epochs=2 trainBCE=0.691761 peak=1190.4MiB
+RUN  TIMESNET       TIMESNET_B           seed=45 epochs=2
+EPOCH TIMESNET/TIMESNET_B/seed45 001/002 trainBCE=0.695850 updates=166 sec=625.7
+EPOCH TIMESNET/TIMESNET_B/seed45 002/002 trainBCE=0.692873 updates=166 sec=625.4
+__STEP34_RESULT__{"config_id": "TIMESNET_B", "epochs": 2, "final_train_bce": 0.6928727612054156, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/TIMESNET/TIMESNET_B/seed_45/fit_manifest.json", "fit_manifest_sha256": "909bd07b2f10f01a9df239ffb0c08b5949e82695103119c7ba8521abaaa65c2e", "model_id": "TIMESNET", "peak_cuda_allocated_mib": 1190.4404296875, "seed": 45, "status": "PASS", "wall_seconds": 1253.3020286440005}
+PASS TIMESNET       seed=45 epochs=2 trainBCE=0.692873 peak=1190.4MiB
+RUN  TIMESNET       TIMESNET_B           seed=46 epochs=3
+EPOCH TIMESNET/TIMESNET_B/seed46 001/003 trainBCE=0.695840 updates=166 sec=624.5
+EPOCH TIMESNET/TIMESNET_B/seed46 002/003 trainBCE=0.692501 updates=166 sec=623.8
+EPOCH TIMESNET/TIMESNET_B/seed46 003/003 trainBCE=0.690668 updates=166 sec=624.4
+__STEP34_RESULT__{"config_id": "TIMESNET_B", "epochs": 3, "final_train_bce": 0.6906681151070383, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/TIMESNET/TIMESNET_B/seed_46/fit_manifest.json", "fit_manifest_sha256": "2a5d8627647175f37a31d09748b94c8c9c157b389f1e5def2152cd5522f54e56", "model_id": "TIMESNET", "peak_cuda_allocated_mib": 1190.4404296875, "seed": 46, "status": "PASS", "wall_seconds": 1874.912737761002}
+PASS TIMESNET       seed=46 epochs=3 trainBCE=0.690668 peak=1190.4MiB
+--------------------------------------------------------------------------------------------------------------------------------------------
+New fits this invocation : 5
+Hash-valid skipped fits  : 0
+Total completed refits   : 20/40
+Final-test data opened  : False
+Final-test state        : LOCKED_NOT_OPENED
+--------------------------------------------------------------------------------------------------------------------------------------------
+STEP 34 remains resumable/incomplete.
+Final global freeze will be written only after all 40 refits are hash-valid.
+============================================================================================================================================

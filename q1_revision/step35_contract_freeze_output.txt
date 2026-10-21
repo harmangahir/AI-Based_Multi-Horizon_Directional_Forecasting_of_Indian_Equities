@@ -1,0 +1,45 @@
+============================================================================================================================================
+STEP 35 — FINAL-TEST EVALUATION CONTRACT FREEZE
+============================================================================================================================================
+Final-test parquet access : PROHIBITED
+Final-test hashing        : PROHIBITED
+Final-test class balance  : NOT INSPECTED
+Final-test metrics        : NOT COMPUTED
+
+[1] VERIFYING UPSTREAM FREEZES
+--------------------------------------------------------------------------------------------------------------------------------------------
+Step-14 manifest SHA : b19b034bd31bb5d426e78c58f808d9e4c9cba16281e666984aae2c8bf6a150a0
+Step-32 manifest SHA : 474b77ac670bbb7f61870372cdb98a6d7ac3ecaa4db8864ceb096fe9b26c39f0
+Step-34 manifest SHA : 2224aa145e4bdbce2563586cd1a28742facd29638985f29fb4c6a34fa9bcaf48
+Step-34 global FP    : 1ede9c52aaadf66ea4e82f777c4c03fcccece419bff0867c2a434e3fb13828c0
+PASS
+
+[2] VERIFYING FINAL-TEST SEAL METADATA WITHOUT ACCESSING TEST DATA
+--------------------------------------------------------------------------------------------------------------------------------------------
+Outer test rows         : 6,680
+Outer test dates        : 334
+Common evaluation rows  : 6,480
+Common evaluation dates : 324
+Stocks                  : 20
+Test parquet read       : False
+Test parquet hashed     : False
+PASS
+
+[3] VERIFYING DEVELOPMENT-FROZEN TRANSFORMATION STATE
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+Valid Step-12 final-development threshold candidates:
+  /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step12_volatility_regimes/final_development/12_final_development_regime_thresholds.csv rows=20
+  /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step12_volatility_regimes/fold_1/12_fold_1_regime_thresholds.csv rows=20
+  /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step12_volatility_regimes/fold_2/12_fold_2_regime_thresholds.csv rows=20
+  /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step12_volatility_regimes/fold_3/12_fold_3_regime_thresholds.csv rows=20
+  /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step12_volatility_regimes/fold_4/12_fold_4_regime_thresholds.csv rows=20
+  /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step12_volatility_regimes/fold_5/12_fold_5_regime_thresholds.csv rows=20
+  /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/12_stock_specific_regime_thresholds.csv rows=20
+Traceback (most recent call last):
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step35_freeze_final_test_contract_v1.py", line 1303, in <module>
+    ) = select_final_development_regime_thresholds(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step35_freeze_final_test_contract_v1.py", line 834, in select_final_development_regime_thresholds
+    raise RuntimeError(
+RuntimeError: Could not uniquely identify final-development volatility-regime thresholds.

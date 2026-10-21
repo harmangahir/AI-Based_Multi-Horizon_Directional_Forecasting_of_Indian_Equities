@@ -1,0 +1,86 @@
+{
+  "stage": "STEP 36I-F13E",
+  "record_type": "study_owner_in_chat_scientific_amendment_approval",
+  "record_status": "APPROVED_BY_STUDY_OWNER_FOR_IMPLEMENTATION_AND_INDEPENDENT_REVIEW",
+  "approval_date": "2026-10-14",
+  "approval_evidence": "User responded Yes to the question: Do you formally approve this amended scientific design, including its stated limitations, for implementation and subsequent independent review?",
+  "approval_scope": "Methodological amendment approval by the study owner only; this is not independent methodological sign-off or authorization for an additional raw-test read.",
+  "source_review_document": {
+    "filename": "STEP36I_F13D_AMENDMENT_SCIENTIFIC_REVIEW_v2_DRAFT.md",
+    "sha256": "73fc6c9d5b52dde45ae31fe475b88bb90713459b6b7eb4ed79fbc5a807d58a29"
+  },
+  "immutable_original_scientific_contract_sha256": "6f715055fa30759fd9aa9b31655759bbd4dca25398f1d6d2cd39be5bf3bed1d7",
+  "approved_candidate_keys_sha256": "4c9364df9e761b81d0776cdf927a88f25d785178640cb3ffe380ad93673a9d65",
+  "original_cohort": {
+    "endpoints": 6480,
+    "dates": 324,
+    "stocks": 20
+  },
+  "approved_amended_cohort": {
+    "endpoints": 5300,
+    "dates": 265,
+    "stocks": 20,
+    "segment_dates": [
+      48,
+      217
+    ],
+    "segment_0_date_bounds": [
+      "2025-01-01",
+      "2025-03-07"
+    ],
+    "segment_1_date_bounds": [
+      "2025-08-01",
+      "2026-06-22"
+    ]
+  },
+  "excluded_cohort": {
+    "endpoints": 1180,
+    "dates": 59,
+    "excluded_date_bounds": [
+      "2025-05-12",
+      "2025-07-31"
+    ],
+    "exclusion_fraction_original": 0.18209876543209877,
+    "reason": "frozen 60-session same-ticker same-continuity-segment causal history unavailable"
+  },
+  "preserved": {
+    "frozen_model_seed_checkpoints": 40,
+    "development_frozen_thresholds": 24,
+    "primary_hypotheses": 24,
+    "primary_metric": "balanced_accuracy",
+    "null": "BA <= 0.5",
+    "alternative": "BA > 0.5",
+    "bootstrap_replicates": 2000,
+    "original_contract_unchanged": true
+  },
+  "approved_modified_statistics": {
+    "method": "segment-stratified circular moving-block resampling by market date, preserving 20-stock clusters and 48/217 date allocation",
+    "primary_block_length_sessions": 20,
+    "sensitivity_block_lengths_sessions": [
+      10,
+      40
+    ],
+    "multiplicity_primary": "Benjamini-Hochberg across 24 primary tests",
+    "pairwise_comparisons": "exploratory, not controlled primary claims",
+    "L40_short_segment_limitation": "40 of 48 dates; weak finite-sample sensitivity diagnostic"
+  },
+  "reporting_constraints": [
+    "Label revised evaluation explicitly post-freeze, not unchanged original Step35",
+    "Restrict inferential target to 265 retained market dates; acknowledge no coverage of original 2025Q2 endpoints",
+    "Disclose two historical raw-test file reads that parsed records/labels before failed materialization; no test-performance metrics computed",
+    "Do not claim excluded-period performance, regime representativeness or economic profitability without separate evidence",
+    "Report unfavorable and null findings without changing frozen checkpoints, thresholds or hypotheses",
+    "Do not represent engineering unit tests as validated test-set performance"
+  ],
+  "secondary_BY_sensitivity_decision": "NOT_FINALIZED: if added, explicitly decide and document as post-freeze secondary dependence-robust sensitivity before real scoring; do not replace primary BH",
+  "remaining_review_gates": {
+    "independent_methodological_signoff": false,
+    "live_production_launcher_complete_and_independently_audited": false,
+    "live_access_journal_and_atomic_transaction_connected": false,
+    "additional_raw_test_read_authorized": false,
+    "real_final_test_scored": false
+  },
+  "historical_raw_test_filesystem_reads": 2,
+  "test_performance_scores_completed": 0,
+  "instructions": "Do not change Step35, original access ledger, sealed-test data, existing output files or this source review document. Maintain separate append-only approval provenance."
+}

@@ -1,0 +1,354 @@
+==============================================================================================================
+STEP 36E — FROZEN STEP-04 EXCLUSION AND FEATURE-WARMUP AUDIT
+==============================================================================================================
+PASS — access lock preserved; test opens = 2; scored = False
+
+[1] DISCOVER FROZEN STEP-04 POLICY FILES
+
+Candidate: audits/step01_failed_attempts/01_environment_audit_FAILED_20261004T030712Z.json
+
+Candidate: audits/step05_failed_attempts/05_clean_model_panel_FAILED_20261004T042419Z.json
+
+Candidate: audits/step14_failed_attempts/14_model_arrays_FAILED_20261004T075745Z.json
+
+Candidate: audits/step15_failed_attempts/15_pre_model_integrity_FAILED_20261004T082653Z.json
+
+Candidate: audits/step20_failed_attempts/20_transitive_backbone_audit_FAILED_20261004T112806Z.json
+
+Candidate: audits/step22_failed_attempts/22_source_config_translation_FAILED_20261004T120142Z.json
+
+Candidate: audits/step23_failed_attempts/23_synthetic_smoke_FAILED_20261004T123107Z.json
+
+Candidate: audits/step23_failed_attempts/23_synthetic_smoke_FAILED_20261004T123734Z.json
+
+Candidate: audits/step24_failed_attempts/24_training_runtime_preflight_FAILED_20261004T131309Z.json
+
+Candidate: audits/step24_failed_attempts/24_training_runtime_preflight_FAILED_20261004T131633Z.json
+
+Candidate: audits/step24_failed_attempts/24_training_runtime_preflight_FAILED_20261004T132324Z.json
+
+Candidate: audits/step24_failed_attempts/24_training_runtime_preflight_FAILED_20261004T133245Z.json
+
+Candidate: audits/step25_failed_attempts/25_stage1_training_engine_FAILED_20261004T135430Z.json
+
+Candidate: manifests/04_cleaning_policy.json
+POLICY LOCATION: root
+Policy keys: ['enabled', 'frozen_definition', 'minimum_stock_fraction', 'rule_not_redefined_after_data_inspection', 'threshold_stock_count', 'valid_nifty_session_exclusion_count', 'valid_nifty_sessions_excluded_by_rule']
+Excluded valid NIFTY sessions: 1
+Declared count: 1
+Exclusion dates:
+  2025-03-18
+enabled: True
+frozen_definition: remove a market date across the complete stock panel only when at least 90% of stocks simultaneously exhibit zero volume and identical OHLC
+minimum_stock_fraction: 0.9
+rule_not_redefined_after_data_inspection: True
+threshold_stock_count: 18
+valid_nifty_session_exclusion_count: 1
+
+Candidate: manifests/04_session_policy_manifest.json
+
+Policy occurrences found: 1
+
+[2] SOURCE LOGIC — STEP 06
+
+Step-06 source lines 795-925
+  795: # 8. CONTINUITY-BREAK POLICY
+  796: # =============================================================================
+  797: 
+  798: def load_continuity_break_dates(
+  799:     step04_policy: Dict[str, Any],
+  800: ) -> list[pd.Timestamp]:
+  801:     anomaly_policy = step04_policy.get(
+  802:         "date_wide_anomaly_policy",
+  803:         {},
+  804:     )
+  805: 
+  806:     dates = anomaly_policy.get(
+  807:         "valid_nifty_sessions_excluded_by_rule",
+  808:         [],
+  809:     )
+  810: 
+  811:     declared_count = anomaly_policy.get(
+  812:         "valid_nifty_session_exclusion_count"
+  813:     )
+  814: 
+  815:     if declared_count is not None and int(declared_count) != len(dates):
+  816:         raise RuntimeError(
+  817:             "Step-04 continuity-break count does not match the "
+  818:             "frozen excluded-session list."
+  819:         )
+  820: 
+  821:     break_dates = sorted(
+  822:         {
+  823:             pd.Timestamp(value).normalize()
+  824:             for value in dates
+  825:         }
+  826:     )
+  827: 
+  828:     calendar = pd.read_csv(
+  829:         STEP04_CALENDAR,
+  830:         parse_dates=["Date"],
+  831:     )
+  832: 
+  833:     calendar_dates = set(
+  834:         pd.to_datetime(
+  835:             calendar["Date"],
+  836:             errors="raise",
+  837:         )
+  838:         .dt.normalize()
+  839:         .tolist()
+  840:     )
+  841: 
+  842:     classification = pd.read_csv(
+  843:         STEP04_CLASSIFICATION,
+  844:         parse_dates=["Date"],
+  845:     )
+  846: 
+  847:     classification["Date"] = (
+  848:         pd.to_datetime(
+  849:             classification["Date"],
+  850:             errors="raise",
+  851:         )
+  852:         .dt.normalize()
+  853:     )
+  854: 
+  855:     for break_date in break_dates:
+  856:         if break_date in calendar_dates:
+  857:             raise RuntimeError(
+  858:                 f"Continuity-break date still appears in the final calendar: "
+  859:                 f"{break_date.date()}"
+  860:             )
+  861: 
+  862:         matching = classification.loc[
+  863:             classification["Date"] == break_date
+  864:         ]
+  865: 
+  866:         if len(matching) != 1:
+  867:             raise RuntimeError(
+  868:                 "Could not uniquely reconcile continuity break with "
+  869:                 f"Step-04 classification: {break_date.date()}"
+  870:             )
+  871: 
+  872:         row = matching.iloc[0]
+  873: 
+  874:         if not bool(row["candidate_nifty_session"]):
+  875:             raise RuntimeError(
+  876:                 f"Continuity break {break_date.date()} was not a valid "
+  877:                 "candidate NIFTY session."
+  878:             )
+  879: 
+  880:         if not bool(row["date_wide_anomaly_candidate"]):
+  881:             raise RuntimeError(
+  882:                 f"Continuity break {break_date.date()} did not satisfy "
+  883:                 "the frozen date-wide anomaly rule."
+  884:             )
+  885: 
+  886:     return break_dates
+  887: 
+  888: 
+  889: def assign_continuity_segments(
+  890:     dates: pd.Series,
+  891:     break_dates: list[pd.Timestamp],
+  892: ) -> pd.Series:
+  893:     date_values = (
+  894:         pd.to_datetime(dates, errors="raise")
+  895:         .dt.normalize()
+  896:         .to_numpy(dtype="datetime64[ns]")
+  897:     )
+  898: 
+  899:     if not break_dates:
+  900:         return pd.Series(
+  901:             np.zeros(len(dates), dtype=np.int64),
+  902:             index=dates.index,
+  903:             dtype="int64",
+  904:         )
+  905: 
+  906:     break_values = np.asarray(
+  907:         [
+  908:             np.datetime64(date, "ns")
+  909:             for date in break_dates
+  910:         ],
+  911:         dtype="datetime64[ns]",
+  912:     )
+  913: 
+  914:     segment_ids = np.searchsorted(
+  915:         break_values,
+  916:         date_values,
+  917:         side="left",
+  918:     )
+  919: 
+  920:     return pd.Series(
+  921:         segment_ids,
+  922:         index=dates.index,
+  923:         dtype="int64",
+  924:     )
+  925: 
+
+Step-06 source lines 3490-3525
+ 3490: 
+ 3491:         stage = "load_policy_and_source"
+ 3492: 
+ 3493:         print("[4/11] Loading frozen continuity policy and Step-05 panel...")
+ 3494:         break_dates = load_continuity_break_dates(
+ 3495:             step04["policy"]
+ 3496:         )
+ 3497: 
+ 3498:         source = pd.read_parquet(
+ 3499:             STEP05_PANEL,
+ 3500:             engine="pyarrow",
+ 3501:         )
+ 3502: 
+ 3503:         source["Date"] = (
+ 3504:             pd.to_datetime(
+ 3505:                 source["Date"],
+ 3506:                 errors="raise",
+ 3507:             )
+ 3508:             .dt.normalize()
+ 3509:         )
+ 3510: 
+ 3511:         missing_columns = [
+ 3512:             column
+ 3513:             for column in FEATURE_COLUMNS_REQUIRED_FROM_STEP05
+ 3514:             if column not in source.columns
+ 3515:         ]
+ 3516: 
+ 3517:         if missing_columns:
+ 3518:             raise RuntimeError(
+ 3519:                 "Step-05 panel is missing required modelling columns: "
+ 3520:                 + ", ".join(missing_columns)
+ 3521:             )
+ 3522: 
+ 3523:         if source[["Ticker", "Date"]].duplicated().any():
+ 3524:             raise RuntimeError(
+ 3525:                 "Duplicate ticker-date rows in Step-05 panel."
+
+Step-06 source lines 3565-3605
+ 3565:         calendar_dates = pd.DatetimeIndex(
+ 3566:             final_calendar["Date"]
+ 3567:         )
+ 3568: 
+ 3569:         if not np.array_equal(
+ 3570:             source_dates.to_numpy(),
+ 3571:             calendar_dates.to_numpy(),
+ 3572:         ):
+ 3573:             raise RuntimeError(
+ 3574:                 "Step-05 panel dates differ from the frozen Step-04 calendar."
+ 3575:             )
+ 3576: 
+ 3577:         source["continuity_segment_id"] = (
+ 3578:             assign_continuity_segments(
+ 3579:                 source["Date"],
+ 3580:                 break_dates,
+ 3581:             )
+ 3582:         )
+ 3583: 
+ 3584:         segment_count = int(
+ 3585:             source["continuity_segment_id"].nunique()
+ 3586:         )
+ 3587: 
+ 3588:         expected_segment_count = (
+ 3589:             len(break_dates) + 1
+ 3590:         )
+ 3591: 
+ 3592:         if segment_count != expected_segment_count:
+ 3593:             raise RuntimeError(
+ 3594:                 f"Expected {expected_segment_count} continuity segments; "
+ 3595:                 f"found {segment_count}."
+ 3596:             )
+ 3597: 
+ 3598:         print(
+ 3599:             "       Input rows: "
+ 3600:             f"{len(source):,}"
+ 3601:         )
+ 3602:         print(
+ 3603:             "       Sessions: "
+ 3604:             f"{len(final_calendar):,}"
+ 3605:         )
+
+Step-06 warm-up / completeness references:
+Total matches: 34
+  180: WARMUP_AUDIT_CSV = cfg.AUDIT_DIR / "06_stock_feature_warmup_audit.csv"
+ 1521: min_periods=window,
+ 1534: min_periods=window,
+ 1549: min_periods=20,
+ 1562: min_periods=20,
+ 1580: min_periods=12,
+ 1594: min_periods=26,
+ 1620: min_periods=9,
+ 1654: min_periods=14,
+ 1665: min_periods=14,
+ 1737: min_periods=3,
+ 1752: min_periods=20,
+ 1763: min_periods=20,
+ 2094: min_periods=25,
+ 2110: min_periods=25,
+ 2246: min_periods=20,
+ 2263: min_periods=20,
+ 2278: min_periods=20,
+ 2909: WARMUP_AUDIT_CSV,
+ 3209: WARMUP_AUDIT_CSV,
+ 3628: warmup_audit_rows = []
+ 3678: first_valid = int(valid_positions[0])
+ 3682: first_valid:
+ 3694: warmup_audit_rows.append(
+ 3699: "first_valid_position": first_valid,
+ 3700: "warmup_missing_rows": first_valid,
+ 3751: "warmup_rows_removed_if_complete_case": (
+ 3804: warmup_audit = pd.DataFrame(
+ 3805: warmup_audit_rows
+ 4053: WARMUP_AUDIT_CSV,
+ 4054: warmup_audit,
+ 4075: ("warmup_audit", WARMUP_AUDIT_CSV),
+ 4173: "warmup_rows_per_segment": (
+ 4444: print(f"Warm-up audit        : {WARMUP_AUDIT_CSV}")
+
+[3] SOURCE LOGIC — STEP 08 COMPLETENESS
+Total matches: 40
+ 1259: "continuity_segment_id",
+ 1431: "continuity_segment_id",
+ 1566: finite_stock = (
+ 1567: np.isfinite(stock_left)
+ 1569: np.isfinite(stock_right)
+ 1575: stock_left[finite_stock]
+ 1577: stock_right[finite_stock]
+ 1580: if finite_stock.any()
+ 1678: finite_nifty = (
+ 1679: np.isfinite(nifty_left)
+ 1681: np.isfinite(nifty_right)
+ 1687: nifty_left[finite_nifty]
+ 1689: nifty_right[finite_nifty]
+ 1692: if finite_nifty.any()
+ 1860: "step06_complete_dates": int(
+ 1865: "step08_complete_dates": int(
+ 1915: infinite_count = int(
+ 1921: if infinite_count != 0:
+ 1923: f"Infinite feature values detected: {infinite_count}"
+ 1960: "complete_dates": int(
+ 1983: "infinite_feature_values": (
+ 1984: infinite_count
+ 2059: "infinite_count": int(
+ 2164: finite = (
+ 2165: np.isfinite(
+ 2169: np.isfinite(
+ 2174: if finite.any():
+ 2181: finite
+ 2185: finite
+ 2387: continuity_segments=(
+ 2388: "continuity_segment_id",
+ 2423: "continuity_segment_id"
+ 2453: "continuity_segment_id"
+ 2460: complete_dates=(
+ 2472: on="continuity_segment_id",
+ 3491: stage = "complete_case_audit"
+ 3901: "complete_case_after_47_plus_16_merge": True,
+ 3920: "complete_dates": int(
+ 4192: f"Segment {row.continuity_segment_id}: "
+ 4196: f"complete dates={row.complete_dates:,} | "
+
+==============================================================================================================
+READ-ONLY STEP 36E AUDIT COMPLETE
+Sealed final-test parquet opened: FALSE
+Final-test labels or metrics inspected: FALSE
+Frozen artifacts modified: FALSE
+Additional test access authorized: FALSE
+==============================================================================================================

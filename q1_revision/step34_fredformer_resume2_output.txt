@@ -1,0 +1,108 @@
+============================================================================================================================================
+STEP 34 — FINAL-DEVELOPMENT REFIT EXECUTION
+============================================================================================================================================
+Experiment root       : /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026
+Final-development n   : 42,360
+Architectures         : 8
+Fixed seeds           : 42,43,44,45,46
+Total refits          : 40
+Validation            : NONE
+Early stopping        : NONE
+Checkpoint            : FINAL SCHEDULED EPOCH
+Final test            : LOCKED_NOT_OPENED
+--------------------------------------------------------------------------------------------------------------------------------------------
+[1] UPSTREAM FREEZES
+Step30 robustness freeze : VERIFIED
+Step32 thresholds        : VERIFIED
+Step33 refit schedule    : VERIFIED
+Step26 training engine   : EXECUTABLE == FROZEN
+Final-test state         : LOCKED_NOT_OPENED
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+[2] STEP-34 SOURCE FREEZE
+Source SHA256      : 2030d6719476107dfd0b1a5ec8fe4c4dd3d362bb10aafc4b6f3d9bd1841367e5
+Source fingerprint : b8c1629c0a173b044f5b8fe42a6b1d05072bbb514344c44f13a3d9b32a218e17
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+[3] FROZEN TRAINING PROTOCOL REFERENCE
+Source manifests      : 200 frozen robustness fits
+Architectures verified: 8/8
+Performance metrics   : NOT USED
+Reference SHA256      : 9d2c372aa4f3c54e70e8413895508aa3b840b231d7b4f68a3acbbda7b8a16644
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+[4] FINAL-REFIT EXECUTION PLAN
+Plan rows             : 40/40
+Total scheduled epochs: 65
+Plan SHA256           : 210ac4f01a4150a0f66f7a2370d9a2c268d9a8cda15d258b3789db3aa743ce7c
+Plan fingerprint      : 71e8099a5f0cbc66452ac335700078d72522b2104f4472715923b918536e1758
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+DLINEAR        seed=42 epochs= 1 mb=128
+DLINEAR        seed=43 epochs= 2 mb=128
+DLINEAR        seed=44 epochs= 1 mb=128
+DLINEAR        seed=45 epochs= 1 mb=128
+DLINEAR        seed=46 epochs= 3 mb=128
+NLINEAR        seed=42 epochs= 1 mb=128
+NLINEAR        seed=43 epochs= 1 mb=128
+NLINEAR        seed=44 epochs= 1 mb=128
+NLINEAR        seed=45 epochs= 1 mb=128
+NLINEAR        seed=46 epochs= 1 mb=128
+PATCHTST       seed=42 epochs= 1 mb= 64
+PATCHTST       seed=43 epochs= 1 mb= 64
+PATCHTST       seed=44 epochs= 1 mb= 64
+PATCHTST       seed=45 epochs= 1 mb= 64
+PATCHTST       seed=46 epochs= 1 mb= 64
+TIMESNET       seed=42 epochs= 2 mb= 64
+TIMESNET       seed=43 epochs= 4 mb= 64
+TIMESNET       seed=44 epochs= 2 mb= 64
+TIMESNET       seed=45 epochs= 2 mb= 64
+TIMESNET       seed=46 epochs= 3 mb= 64
+ITRANSFORMER   seed=42 epochs= 1 mb=128
+ITRANSFORMER   seed=43 epochs= 1 mb=128
+ITRANSFORMER   seed=44 epochs= 1 mb=128
+ITRANSFORMER   seed=45 epochs= 1 mb=128
+ITRANSFORMER   seed=46 epochs= 1 mb=128
+FREDFORMER     seed=42 epochs= 1 mb= 16
+FREDFORMER     seed=43 epochs= 1 mb= 16
+FREDFORMER     seed=44 epochs= 1 mb= 16
+FREDFORMER     seed=45 epochs= 1 mb= 16
+FREDFORMER     seed=46 epochs= 1 mb= 16
+FRNET          seed=42 epochs= 1 mb= 64
+FRNET          seed=43 epochs= 1 mb= 64
+FRNET          seed=44 epochs= 1 mb= 64
+FRNET          seed=45 epochs= 1 mb= 64
+FRNET          seed=46 epochs= 2 mb= 64
+MLF            seed=42 epochs= 9 mb= 32
+MLF            seed=43 epochs= 2 mb= 32
+MLF            seed=44 epochs= 2 mb= 32
+MLF            seed=45 epochs= 2 mb= 32
+MLF            seed=46 epochs= 3 mb= 32
+--------------------------------------------------------------------------------------------------------------------------------------------
+SKIP FREDFORMER     FREDFORMER_B         seed=42 COMPLETE+HASHED epochs=1
+RUN  FREDFORMER     FREDFORMER_B         seed=43 epochs=1
+EPOCH FREDFORMER/FREDFORMER_B/seed43 001/001 trainBCE=0.691880 updates=166 sec=130.6
+__STEP34_RESULT__{"config_id": "FREDFORMER_B", "epochs": 1, "final_train_bce": 0.6918802784680195, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/FREDFORMER/FREDFORMER_B/seed_43/fit_manifest.json", "fit_manifest_sha256": "8b2d694081c5b1751b0841da207d101f080220590e9205b2bc12868b8bae44f4", "model_id": "FREDFORMER", "peak_cuda_allocated_mib": 1248.45654296875, "seed": 43, "status": "PASS", "wall_seconds": 134.48480789899986}
+PASS FREDFORMER     seed=43 epochs=1 trainBCE=0.691880 peak=1248.5MiB
+RUN  FREDFORMER     FREDFORMER_B         seed=44 epochs=1
+EPOCH FREDFORMER/FREDFORMER_B/seed44 001/001 trainBCE=0.691776 updates=166 sec=141.8
+__STEP34_RESULT__{"config_id": "FREDFORMER_B", "epochs": 1, "final_train_bce": 0.691775971994409, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/FREDFORMER/FREDFORMER_B/seed_44/fit_manifest.json", "fit_manifest_sha256": "8e6c28fd1bcd023130edbc621f27c19a224d990dda3b7cee9ae9f11b1f6b9c60", "model_id": "FREDFORMER", "peak_cuda_allocated_mib": 1248.45654296875, "seed": 44, "status": "PASS", "wall_seconds": 144.8991259400027}
+PASS FREDFORMER     seed=44 epochs=1 trainBCE=0.691776 peak=1248.5MiB
+RUN  FREDFORMER     FREDFORMER_B         seed=45 epochs=1
+EPOCH FREDFORMER/FREDFORMER_B/seed45 001/001 trainBCE=0.691512 updates=166 sec=145.1
+__STEP34_RESULT__{"config_id": "FREDFORMER_B", "epochs": 1, "final_train_bce": 0.6915120898382747, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/FREDFORMER/FREDFORMER_B/seed_45/fit_manifest.json", "fit_manifest_sha256": "0ac1bfa46a0a260d37a6156f1b3fde60745324fdef5ca26ab98e36e83248903c", "model_id": "FREDFORMER", "peak_cuda_allocated_mib": 1248.45654296875, "seed": 45, "status": "PASS", "wall_seconds": 148.2383580300011}
+PASS FREDFORMER     seed=45 epochs=1 trainBCE=0.691512 peak=1248.5MiB
+RUN  FREDFORMER     FREDFORMER_B         seed=46 epochs=1
+EPOCH FREDFORMER/FREDFORMER_B/seed46 001/001 trainBCE=0.691630 updates=166 sec=146.2
+__STEP34_RESULT__{"config_id": "FREDFORMER_B", "epochs": 1, "final_train_bce": 0.6916304779683115, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/FREDFORMER/FREDFORMER_B/seed_46/fit_manifest.json", "fit_manifest_sha256": "a9a9da276eff099fb5678331a4d05770da1c6624c0afd5afcb391acf3c60a073", "model_id": "FREDFORMER", "peak_cuda_allocated_mib": 1248.45654296875, "seed": 46, "status": "PASS", "wall_seconds": 149.53239929200208}
+PASS FREDFORMER     seed=46 epochs=1 trainBCE=0.691630 peak=1248.5MiB
+--------------------------------------------------------------------------------------------------------------------------------------------
+New fits this invocation : 4
+Hash-valid skipped fits  : 1
+Total completed refits   : 30/40
+Final-test data opened  : False
+Final-test state        : LOCKED_NOT_OPENED
+--------------------------------------------------------------------------------------------------------------------------------------------
+STEP 34 remains resumable/incomplete.
+Final global freeze will be written only after all 40 refits are hash-valid.
+============================================================================================================================================

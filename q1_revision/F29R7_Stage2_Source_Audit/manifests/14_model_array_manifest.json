@@ -1,0 +1,974 @@
+{
+  "array_interface": {
+    "X_dtype": "float32",
+    "auxiliary_dtype": "float32",
+    "categorical_id_dtype": "int64",
+    "common_multitask_only": true,
+    "continuous_feature_count": 63,
+    "direction_dtype": "int64",
+    "lookback_sessions": 60,
+    "market_feature_count": 16,
+    "stock_feature_count": 47
+  },
+  "artifacts": {
+    "14_array_hashes.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/14_array_hashes.csv",
+      "relative_path": "audits/14_array_hashes.csv",
+      "sha256": "6d3c5911bdfb2204e3f38c63cd647a47208f92f36a04bd8f4ce339243156ec7f",
+      "size_bytes": 51674
+    },
+    "14_array_integrity_audit.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/14_array_integrity_audit.csv",
+      "relative_path": "audits/14_array_integrity_audit.csv",
+      "sha256": "7ccfe8e12df43361714437e0f135ae5fe1f362e680fe60e87b97b35632656711",
+      "size_bytes": 1815
+    },
+    "14_array_summary.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/14_array_summary.csv",
+      "relative_path": "audits/14_array_summary.csv",
+      "sha256": "30148f66e6ad7c267c43cc3320c8e02a8587ded372cad3c448fefefdb2ca5813",
+      "size_bytes": 1147
+    },
+    "14_array_summary.json": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/14_array_summary.json",
+      "relative_path": "audits/14_array_summary.json",
+      "sha256": "b1d9211fea2f8da448ae8b0ba34a683563bf682494d40eafeb049df20ed63eb8",
+      "size_bytes": 2253
+    },
+    "14_auxiliary_inverse_transform_audit.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/14_auxiliary_inverse_transform_audit.csv",
+      "relative_path": "audits/14_auxiliary_inverse_transform_audit.csv",
+      "sha256": "0ec79c29b700bdfc7fa10224adcb7dd69c247db351e971e6a65737a3e29d9446",
+      "size_bytes": 1284
+    },
+    "14_auxiliary_scaler_audit.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/14_auxiliary_scaler_audit.csv",
+      "relative_path": "audits/14_auxiliary_scaler_audit.csv",
+      "sha256": "d80ad579591fe0f7a0eb4d322bfeefd68303cf562231644b494983acfc5b3d02",
+      "size_bytes": 10121
+    },
+    "14_auxiliary_validation_range_audit.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/14_auxiliary_validation_range_audit.csv",
+      "relative_path": "audits/14_auxiliary_validation_range_audit.csv",
+      "sha256": "ef1f229f7f8db75b05770de26d09c0be62792ce96b31258bc3e4bf14572853d8",
+      "size_bytes": 4097
+    },
+    "14_endpoint_reconciliation_audit.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/14_endpoint_reconciliation_audit.csv",
+      "relative_path": "audits/14_endpoint_reconciliation_audit.csv",
+      "sha256": "6d0d8fa2b12487a2c022136a62e88d22c98849bbfe4bf7901b5b1faf07fe98e8",
+      "size_bytes": 774
+    },
+    "14_final_development_X_full.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_X_full.npy",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_X_full.npy",
+      "sha256": "c6857902355ffdf4dd4feb5c10f079f27e9b66a8c3ba5c749c959be7caee1778",
+      "size_bytes": 640483328
+    },
+    "14_final_development_X_market.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_X_market.npy",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_X_market.npy",
+      "sha256": "2966515caf9f275672ea7b46f82f3fb17f470dd348d9671757bdd8608aabbd9b",
+      "size_bytes": 162662528
+    },
+    "14_final_development_X_stock.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_X_stock.npy",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_X_stock.npy",
+      "sha256": "79d781b498b8c220869e182248b1e25d36bd1b1ec3794ec4a63a42186baafe94",
+      "size_bytes": 477820928
+    },
+    "14_final_development_auxiliary_target_minmax_scaler.joblib": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_auxiliary_target_minmax_scaler.joblib",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_auxiliary_target_minmax_scaler.joblib",
+      "sha256": "413b977ad2fd29a4b41128c81c4c56a68da994a5ba77965719f6199777f866e4",
+      "size_bytes": 953
+    },
+    "14_final_development_metadata.parquet": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_metadata.parquet",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_metadata.parquet",
+      "sha256": "c4163e0c70ccccf125bb74938da0819e3631f45ab4f509c357be4fc2999bb1b3",
+      "size_bytes": 4654561
+    },
+    "14_final_development_regime_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_regime_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_regime_id.npy",
+      "sha256": "5820a024b7bcb00e6b617fa031bd4d47ffb4a8c72595a90771ec2831c6612ee3",
+      "size_bytes": 339008
+    },
+    "14_final_development_stock_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_stock_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_stock_id.npy",
+      "sha256": "27d962270444f6e9d01c450e40350d19679df7a1c985e0ce3c7487c3a87d74ef",
+      "size_bytes": 339008
+    },
+    "14_final_development_y_aux_raw.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_y_aux_raw.npy",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_y_aux_raw.npy",
+      "sha256": "7d4977b88e152062f21bb27a6ac62d477cd3736830b1fe8f2d72ba14ab500350",
+      "size_bytes": 1694528
+    },
+    "14_final_development_y_aux_scaled.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_y_aux_scaled.npy",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_y_aux_scaled.npy",
+      "sha256": "bef28f8e85c19467ea41458dc5d4e352c2864fc61c9591113ff5366bc1332f4e",
+      "size_bytes": 1694528
+    },
+    "14_final_development_y_direction.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/final_development/14_final_development_y_direction.npy",
+      "relative_path": "feature_data/step14_model_arrays/final_development/14_final_development_y_direction.npy",
+      "sha256": "c01a8d376b9b63ef808882bf2dbd36fc6cf7c6f20d1e68cbf7755396ffb8eea8",
+      "size_bytes": 1016768
+    },
+    "14_fold_1_auxiliary_target_minmax_scaler.joblib": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_auxiliary_target_minmax_scaler.joblib",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_auxiliary_target_minmax_scaler.joblib",
+      "sha256": "493b759db01cff3087fe80f8d75ff56130ad7092f3acae3e5cb2de62ee45428c",
+      "size_bytes": 984
+    },
+    "14_fold_1_train_X_full.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_X_full.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_X_full.npy",
+      "sha256": "3bf720cce8fdd21d87189b7e274a167910cf9e156fbce81692f76633b47e70ae",
+      "size_bytes": 266414528
+    },
+    "14_fold_1_train_X_market.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_X_market.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_X_market.npy",
+      "sha256": "9ba71cb178b6bf88657049163b2cdbf4fb64b6a004920b60d2f84a4bfa4a1f68",
+      "size_bytes": 67660928
+    },
+    "14_fold_1_train_X_stock.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_X_stock.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_X_stock.npy",
+      "sha256": "789660cc3907afe0a92acf60c4cd9b0c437d0dadf6f20da4d65388c5ad30becf",
+      "size_bytes": 198753728
+    },
+    "14_fold_1_train_metadata.parquet": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_metadata.parquet",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_metadata.parquet",
+      "sha256": "b32daa6db0426b57558a9884ddfbdad2d23d3ee2ff00b40ecbca2e7e280b8e9f",
+      "size_bytes": 1933216
+    },
+    "14_fold_1_train_regime_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_regime_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_regime_id.npy",
+      "sha256": "32d133e2545b49054e8654a945fe9c7bc8ebf3ba7eb70f1d60d51d23a2ad6eb8",
+      "size_bytes": 141088
+    },
+    "14_fold_1_train_stock_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_stock_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_stock_id.npy",
+      "sha256": "01a4ef50a1eeb128ff77b9319e4e978da7901f3fec4c61e4fc206fe7a6bcfa21",
+      "size_bytes": 141088
+    },
+    "14_fold_1_train_y_aux_raw.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_y_aux_raw.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_y_aux_raw.npy",
+      "sha256": "989d74d4b5d976e7c96e8d89cfee5ba8591af76810a62b66bec2b99d53414fe5",
+      "size_bytes": 704928
+    },
+    "14_fold_1_train_y_aux_scaled.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_y_aux_scaled.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_y_aux_scaled.npy",
+      "sha256": "bdfc92befde1a2fc1dfa5a6512be95ee47067c40b272bdabe591039be4ea5dc4",
+      "size_bytes": 704928
+    },
+    "14_fold_1_train_y_direction.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_train_y_direction.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_train_y_direction.npy",
+      "sha256": "81f8231ed037eda6d0aa0a37ca3cbca5d98b7df7064163db7757c90d59557007",
+      "size_bytes": 423008
+    },
+    "14_fold_1_validation_X_full.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_validation_X_full.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_validation_X_full.npy",
+      "sha256": "e21cf9cbfe989917232c437157cff355947cac5de2d5c871f2d955bfd8367ffd",
+      "size_bytes": 74088128
+    },
+    "14_fold_1_validation_X_market.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_validation_X_market.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_validation_X_market.npy",
+      "sha256": "582a49cb169f6b8ad4222ca34b0a580325bf20cef8ba3ba98de6f2172b910eac",
+      "size_bytes": 18816128
+    },
+    "14_fold_1_validation_X_stock.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_validation_X_stock.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_validation_X_stock.npy",
+      "sha256": "0974891583d8bff3e6a01c6da53b9f04785080b430ca448ae1bb2da16f18d943",
+      "size_bytes": 55272128
+    },
+    "14_fold_1_validation_metadata.parquet": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_validation_metadata.parquet",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_validation_metadata.parquet",
+      "sha256": "4c45bc2762d61d5a55fd46babef8b556151c2b74a5f388041fd35ea61b877f6a",
+      "size_bytes": 538232
+    },
+    "14_fold_1_validation_regime_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_validation_regime_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_validation_regime_id.npy",
+      "sha256": "df5d96b8829904109e7bdb29be907402783e9fc6f6d8116ff60fb23825a86e30",
+      "size_bytes": 39328
+    },
+    "14_fold_1_validation_stock_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_validation_stock_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_validation_stock_id.npy",
+      "sha256": "bb61aa97495224e9e4bfe76811a2a781174e375012ab5ed7d07dc2a1cd48865b",
+      "size_bytes": 39328
+    },
+    "14_fold_1_validation_y_aux_raw.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_validation_y_aux_raw.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_validation_y_aux_raw.npy",
+      "sha256": "f3e0efb0ea2ef7ac82bcc2499d72bf08a2c757356d7dfc9e6fff5e90e851d323",
+      "size_bytes": 196128
+    },
+    "14_fold_1_validation_y_aux_scaled.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_validation_y_aux_scaled.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_validation_y_aux_scaled.npy",
+      "sha256": "12bc41d1e381857fae30d896502945e986b331fbfaaa7c8d231c761e93e101f9",
+      "size_bytes": 196128
+    },
+    "14_fold_1_validation_y_direction.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_1/14_fold_1_validation_y_direction.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_1/14_fold_1_validation_y_direction.npy",
+      "sha256": "1c3fb8d37a6f04105aec03d5f5119ce7d980d5601919e499079aeb7f4cbc063d",
+      "size_bytes": 117728
+    },
+    "14_fold_2_auxiliary_target_minmax_scaler.joblib": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_auxiliary_target_minmax_scaler.joblib",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_auxiliary_target_minmax_scaler.joblib",
+      "sha256": "031fc1ea0bb0eb0b727171104336d5620597940b680720106dcb8d930a534c9c",
+      "size_bytes": 988
+    },
+    "14_fold_2_train_X_full.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_train_X_full.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_train_X_full.npy",
+      "sha256": "52994c1422bb78aced9b958d9dcea7519ed2ca7b0e54c51ed6b6665ab5c8fc0e",
+      "size_bytes": 342014528
+    },
+    "14_fold_2_train_X_market.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_train_X_market.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_train_X_market.npy",
+      "sha256": "674e7f75c5053fd37d29656bfeb43781b2ddb907946c767399222c51299dd0dc",
+      "size_bytes": 86860928
+    },
+    "14_fold_2_train_X_stock.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_train_X_stock.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_train_X_stock.npy",
+      "sha256": "38afd7515dc5f4774c7e35a8211ab042e79434aa6603a66d34cb1d079905b76b",
+      "size_bytes": 255153728
+    },
+    "14_fold_2_train_metadata.parquet": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_train_metadata.parquet",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_train_metadata.parquet",
+      "sha256": "63acaf403922779b261795139c5ee35ad2932cee37b2fb454928dea3c69e7aad",
+      "size_bytes": 2477898
+    },
+    "14_fold_2_train_regime_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_train_regime_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_train_regime_id.npy",
+      "sha256": "9371b2d353b48c58811cb187f8897b246e8f8e686938975f832cb6b32ae71acd",
+      "size_bytes": 181088
+    },
+    "14_fold_2_train_stock_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_train_stock_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_train_stock_id.npy",
+      "sha256": "a8c163639aabc157d3c172a6a308e7e3123e1d62de2f32921abd4db1355eae0d",
+      "size_bytes": 181088
+    },
+    "14_fold_2_train_y_aux_raw.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_train_y_aux_raw.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_train_y_aux_raw.npy",
+      "sha256": "8dd2db5163328858e8487d140a611df50a03e3dd4279b90412d65e4baba738c8",
+      "size_bytes": 904928
+    },
+    "14_fold_2_train_y_aux_scaled.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_train_y_aux_scaled.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_train_y_aux_scaled.npy",
+      "sha256": "6d4b902718213178a6f7d82190a9f9e254af0a3fd5dce983cf617e32f0bcfecc",
+      "size_bytes": 904928
+    },
+    "14_fold_2_train_y_direction.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_train_y_direction.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_train_y_direction.npy",
+      "sha256": "d986590b792a9020153d46e360e0acf11cecdc3582122280afbe8ef4aa849659",
+      "size_bytes": 543008
+    },
+    "14_fold_2_validation_X_full.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_validation_X_full.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_validation_X_full.npy",
+      "sha256": "3f75455ba9c0fbed74eda2e697922793a8caa7c8b916edeb0ea48fe4aaf9a8c6",
+      "size_bytes": 73483328
+    },
+    "14_fold_2_validation_X_market.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_validation_X_market.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_validation_X_market.npy",
+      "sha256": "15351d4255a6f5c284c7a6b8d5a13e963311163a93f0150e480be0ee653a0f0c",
+      "size_bytes": 18662528
+    },
+    "14_fold_2_validation_X_stock.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_validation_X_stock.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_validation_X_stock.npy",
+      "sha256": "f1a94c88b3cae160e9b11783d98899a49c61dadf66bfe6670a45f5ff194c7bf9",
+      "size_bytes": 54820928
+    },
+    "14_fold_2_validation_metadata.parquet": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_validation_metadata.parquet",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_validation_metadata.parquet",
+      "sha256": "1e93f21f1cafb5f7ee664a609de6d6aef7ef4dbd37b9fb17d074b8a82f7b38f6",
+      "size_bytes": 534532
+    },
+    "14_fold_2_validation_regime_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_validation_regime_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_validation_regime_id.npy",
+      "sha256": "29ec5868f8c3602df818d86c4969baef7b995dfb1e589d5c1c6f6b85a2c3b0c6",
+      "size_bytes": 39008
+    },
+    "14_fold_2_validation_stock_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_validation_stock_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_validation_stock_id.npy",
+      "sha256": "b0bb2c977211fd94af4beec699d1f77629fa6cc55aa00b8fd11308c105b77a51",
+      "size_bytes": 39008
+    },
+    "14_fold_2_validation_y_aux_raw.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_validation_y_aux_raw.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_validation_y_aux_raw.npy",
+      "sha256": "4e9b4f1605a266b8533f1f030969de3e5296128a8ec2de79d0c86c461a3c093c",
+      "size_bytes": 194528
+    },
+    "14_fold_2_validation_y_aux_scaled.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_validation_y_aux_scaled.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_validation_y_aux_scaled.npy",
+      "sha256": "d696e6925e4a32e2eedd801ac49f03273a3b6cd9cf7231be31f5384f7fb19edd",
+      "size_bytes": 194528
+    },
+    "14_fold_2_validation_y_direction.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_2/14_fold_2_validation_y_direction.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_2/14_fold_2_validation_y_direction.npy",
+      "sha256": "b1b4178f741a60719d75c8aaf66e77936d9d8b37a8e7ae2ed3de822c8049bcb0",
+      "size_bytes": 116768
+    },
+    "14_fold_3_auxiliary_target_minmax_scaler.joblib": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_auxiliary_target_minmax_scaler.joblib",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_auxiliary_target_minmax_scaler.joblib",
+      "sha256": "1618bc513afe05cf3d73064aa47eae57dfb772b5754044499300f51c9c2be00b",
+      "size_bytes": 953
+    },
+    "14_fold_3_train_X_full.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_train_X_full.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_train_X_full.npy",
+      "sha256": "2575ac64b36d3e28e4c036f8a485e5eec77648efacc57006066877122e20631f",
+      "size_bytes": 417009728
+    },
+    "14_fold_3_train_X_market.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_train_X_market.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_train_X_market.npy",
+      "sha256": "60afefed47991140822e67b37c9ac749ad0ee45c948449bc673c0b6ad46f9e36",
+      "size_bytes": 105907328
+    },
+    "14_fold_3_train_X_stock.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_train_X_stock.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_train_X_stock.npy",
+      "sha256": "9539900493b2436d71c161dd99ce58fb10a63cce3185f36aa052324fcb195264",
+      "size_bytes": 311102528
+    },
+    "14_fold_3_train_metadata.parquet": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_train_metadata.parquet",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_train_metadata.parquet",
+      "sha256": "abaac42f212bc4980d8e8086cda135d92203fabae9fbc4d2fe708df88182a19f",
+      "size_bytes": 3017772
+    },
+    "14_fold_3_train_regime_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_train_regime_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_train_regime_id.npy",
+      "sha256": "6342984259e8c724d040a0276f084d0554d20686328e6ca7bd0a04200d0357e5",
+      "size_bytes": 220768
+    },
+    "14_fold_3_train_stock_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_train_stock_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_train_stock_id.npy",
+      "sha256": "2d746f5c1386f178f885814b1be1a60ea0de7c62d551668ed7cbc07b116ebd3d",
+      "size_bytes": 220768
+    },
+    "14_fold_3_train_y_aux_raw.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_train_y_aux_raw.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_train_y_aux_raw.npy",
+      "sha256": "9745441d1180912b251f625cffaf2935c8cde18b49a46120bc47ad10a05401aa",
+      "size_bytes": 1103328
+    },
+    "14_fold_3_train_y_aux_scaled.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_train_y_aux_scaled.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_train_y_aux_scaled.npy",
+      "sha256": "7219cbe19997be60f7cf6f5c379b7aa638eaf787b113c2113da6ae29cf8f37e6",
+      "size_bytes": 1103328
+    },
+    "14_fold_3_train_y_direction.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_train_y_direction.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_train_y_direction.npy",
+      "sha256": "0a53f78175e8de494bb1be37af73e7e8dabb5a94e0e82eb138af01e44403d6d9",
+      "size_bytes": 662048
+    },
+    "14_fold_3_validation_X_full.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_validation_X_full.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_validation_X_full.npy",
+      "sha256": "1e6e15af9a1f6b107132bd9df416a18ed5adeac340d213639aec9c76987073bd",
+      "size_bytes": 73483328
+    },
+    "14_fold_3_validation_X_market.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_validation_X_market.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_validation_X_market.npy",
+      "sha256": "6fd94e06009a4e79dc329db119e55c9b1e77d16375c4592f19dc5b72d0ca32a8",
+      "size_bytes": 18662528
+    },
+    "14_fold_3_validation_X_stock.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_validation_X_stock.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_validation_X_stock.npy",
+      "sha256": "1af09989c4de7ec6e5efde0b5b1f96d3292cbb7b3ed6aea8a05a5b021596f667",
+      "size_bytes": 54820928
+    },
+    "14_fold_3_validation_metadata.parquet": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_validation_metadata.parquet",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_validation_metadata.parquet",
+      "sha256": "5615b7f27d915ee586285dc7abebaa5843efe7e651eb45c5a0c7649efdf1c78d",
+      "size_bytes": 534466
+    },
+    "14_fold_3_validation_regime_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_validation_regime_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_validation_regime_id.npy",
+      "sha256": "42f2d18374191b2efe01e41e665958ca7b7897914f554a48ca9e04cbc1463629",
+      "size_bytes": 39008
+    },
+    "14_fold_3_validation_stock_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_validation_stock_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_validation_stock_id.npy",
+      "sha256": "b0bb2c977211fd94af4beec699d1f77629fa6cc55aa00b8fd11308c105b77a51",
+      "size_bytes": 39008
+    },
+    "14_fold_3_validation_y_aux_raw.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_validation_y_aux_raw.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_validation_y_aux_raw.npy",
+      "sha256": "d0707166f9016c988a2a96f0f31772c536fd99999f8bc2576cf9e7219e2495c3",
+      "size_bytes": 194528
+    },
+    "14_fold_3_validation_y_aux_scaled.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_validation_y_aux_scaled.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_validation_y_aux_scaled.npy",
+      "sha256": "3825df00ef4176bacaca533053caf2376f103519d0a5b4a990e9043455cf63bb",
+      "size_bytes": 194528
+    },
+    "14_fold_3_validation_y_direction.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_3/14_fold_3_validation_y_direction.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_3/14_fold_3_validation_y_direction.npy",
+      "sha256": "8121a8269509d99e899da7e610df4ae230488208556c49b19973b7f87074f2cf",
+      "size_bytes": 116768
+    },
+    "14_fold_4_auxiliary_target_minmax_scaler.joblib": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_auxiliary_target_minmax_scaler.joblib",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_auxiliary_target_minmax_scaler.joblib",
+      "sha256": "2f727b61048fc21153f9be18980d77cb8f0f52f9829cd774e7a2e0e58c7de83b",
+      "size_bytes": 953
+    },
+    "14_fold_4_train_X_full.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_train_X_full.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_train_X_full.npy",
+      "sha256": "4382cf1f3e3c9c2c7989d36fa7ef59b1be1aabe716586d3e3acbbad1a418dbf3",
+      "size_bytes": 492004928
+    },
+    "14_fold_4_train_X_market.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_train_X_market.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_train_X_market.npy",
+      "sha256": "10ec6adf3edc853ca41542232b3e0f97bdca3dcd08a8300a8e103f0384e510bb",
+      "size_bytes": 124953728
+    },
+    "14_fold_4_train_X_stock.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_train_X_stock.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_train_X_stock.npy",
+      "sha256": "7dce73b4f724f89233ce5dd6b84489e7a1219082564c05567e500b82481197ac",
+      "size_bytes": 367051328
+    },
+    "14_fold_4_train_metadata.parquet": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_train_metadata.parquet",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_train_metadata.parquet",
+      "sha256": "7e7820a3e83b5ef0cefe06483e476a0161b70ac87a7781b99d00926171068348",
+      "size_bytes": 3555563
+    },
+    "14_fold_4_train_regime_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_train_regime_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_train_regime_id.npy",
+      "sha256": "beb124bfef08f09e3a510a60cc349868f2bc6cde3743cee01f07774cc407f35c",
+      "size_bytes": 260448
+    },
+    "14_fold_4_train_stock_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_train_stock_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_train_stock_id.npy",
+      "sha256": "346a5f38ac2ad469be853c523ac3046625770cfa67fb2beb996280b502a372dc",
+      "size_bytes": 260448
+    },
+    "14_fold_4_train_y_aux_raw.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_train_y_aux_raw.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_train_y_aux_raw.npy",
+      "sha256": "0e79d44676095c020255ae7b7bf52a4c06a5df0a7137a4132a69bccaf07afd5d",
+      "size_bytes": 1301728
+    },
+    "14_fold_4_train_y_aux_scaled.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_train_y_aux_scaled.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_train_y_aux_scaled.npy",
+      "sha256": "d5d4559f7d0ed11a79c20e3c5819afbd3d637ef5b4a0c8991005aff4f071ab06",
+      "size_bytes": 1301728
+    },
+    "14_fold_4_train_y_direction.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_train_y_direction.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_train_y_direction.npy",
+      "sha256": "63f4f3c018ae094c79dd59a1a99ed9e1e555f9a3caa6f5d21edee1b627acd046",
+      "size_bytes": 781088
+    },
+    "14_fold_4_validation_X_full.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_validation_X_full.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_validation_X_full.npy",
+      "sha256": "39850e433f97771cefabf57abca593ff18c4a1c5b27d2742a903074c5cb10f7e",
+      "size_bytes": 72576128
+    },
+    "14_fold_4_validation_X_market.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_validation_X_market.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_validation_X_market.npy",
+      "sha256": "4a40b6120cb9003ebb5201f7f40b6ef0fd544b331afaada50dd48be39a5e9f01",
+      "size_bytes": 18432128
+    },
+    "14_fold_4_validation_X_stock.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_validation_X_stock.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_validation_X_stock.npy",
+      "sha256": "4c2ad1fed3caa135bc04be64e39bf7ac25b68810cd1e80be79d1943c1785bb71",
+      "size_bytes": 54144128
+    },
+    "14_fold_4_validation_metadata.parquet": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_validation_metadata.parquet",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_validation_metadata.parquet",
+      "sha256": "7a0f7cdcc92cbe9c1eb16f55e3630c8fa34f91295470d1982d0d017d1f0e3b70",
+      "size_bytes": 527898
+    },
+    "14_fold_4_validation_regime_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_validation_regime_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_validation_regime_id.npy",
+      "sha256": "646ac6d5f614fd316bcd5640f3a29199cf4fcfaa83b555ae2753d97b998eceb9",
+      "size_bytes": 38528
+    },
+    "14_fold_4_validation_stock_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_validation_stock_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_validation_stock_id.npy",
+      "sha256": "d38f63077212687ee4b8e333bcf8e1e7d5255f5841513395efdb1ffae9562e4b",
+      "size_bytes": 38528
+    },
+    "14_fold_4_validation_y_aux_raw.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_validation_y_aux_raw.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_validation_y_aux_raw.npy",
+      "sha256": "d8f33e0d469c19f3fb13e66f7a1ba2fd8286dd4716176cf8fef259cf320b3e85",
+      "size_bytes": 192128
+    },
+    "14_fold_4_validation_y_aux_scaled.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_validation_y_aux_scaled.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_validation_y_aux_scaled.npy",
+      "sha256": "a8724b8b85540de89534eadfc9dde666f58441438c6a884403984a13b81555ef",
+      "size_bytes": 192128
+    },
+    "14_fold_4_validation_y_direction.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_4/14_fold_4_validation_y_direction.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_4/14_fold_4_validation_y_direction.npy",
+      "sha256": "4568c48711e4bef8494c04dc03ac2271091d1e8058deecfcb9d974525f8a333f",
+      "size_bytes": 115328
+    },
+    "14_fold_5_auxiliary_target_minmax_scaler.joblib": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_auxiliary_target_minmax_scaler.joblib",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_auxiliary_target_minmax_scaler.joblib",
+      "sha256": "40f4c8c2a0f50a074c334ae737d6f2bc8ed711e7353c8904335f62ca580b5ec3",
+      "size_bytes": 954
+    },
+    "14_fold_5_train_X_full.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_train_X_full.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_train_X_full.npy",
+      "sha256": "be0a63479df4fbc1d7399344ba3cc12401eb6efc68f5df6d754c457a1b5c0a90",
+      "size_bytes": 566092928
+    },
+    "14_fold_5_train_X_market.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_train_X_market.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_train_X_market.npy",
+      "sha256": "b8f2def09f845c6f40ff715f92ee44bf23742d772faaf97689216976b268617b",
+      "size_bytes": 143769728
+    },
+    "14_fold_5_train_X_stock.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_train_X_stock.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_train_X_stock.npy",
+      "sha256": "96a6ad0c14f5fa898c8dcad6e34e320d2f2894ee2585aa8ce8d9324edc769b0d",
+      "size_bytes": 422323328
+    },
+    "14_fold_5_train_metadata.parquet": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_train_metadata.parquet",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_train_metadata.parquet",
+      "sha256": "47bb814f6c7a39c730029100e041eeb46542d8ebc20120e674784e3429b4b8c3",
+      "size_bytes": 4111388
+    },
+    "14_fold_5_train_regime_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_train_regime_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_train_regime_id.npy",
+      "sha256": "d43ca856bbd14ccd3532a6217f112553cd500d3aacc947763eb5ea505b56295b",
+      "size_bytes": 299648
+    },
+    "14_fold_5_train_stock_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_train_stock_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_train_stock_id.npy",
+      "sha256": "dd551ba037a3a0f2ff9e1470a21ead70a124442aa84b56f362541210a83ff19a",
+      "size_bytes": 299648
+    },
+    "14_fold_5_train_y_aux_raw.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_train_y_aux_raw.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_train_y_aux_raw.npy",
+      "sha256": "e1cae409d8c5ba68c0a3bbc4231798fa1434c1cf152231902526fbb566a2a540",
+      "size_bytes": 1497728
+    },
+    "14_fold_5_train_y_aux_scaled.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_train_y_aux_scaled.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_train_y_aux_scaled.npy",
+      "sha256": "4f59fb659b172c2d1bf582471e6d9495f8815990d059502b331b9d160bbdea2f",
+      "size_bytes": 1497728
+    },
+    "14_fold_5_train_y_direction.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_train_y_direction.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_train_y_direction.npy",
+      "sha256": "d1ba0ba9bbd84ca958871023a5c1ef7b0d040c2d8ae7ca9ec0ecda974097c7fc",
+      "size_bytes": 898688
+    },
+    "14_fold_5_validation_X_full.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_validation_X_full.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_validation_X_full.npy",
+      "sha256": "f58da7852b8e05f0719b94b7661879365a30a5144f21ddd712f3381e84f316e6",
+      "size_bytes": 72878528
+    },
+    "14_fold_5_validation_X_market.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_validation_X_market.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_validation_X_market.npy",
+      "sha256": "9be632986ffd632529bcb25f5f11e0913feef67f4d062cff74c9d5f4a7605ff0",
+      "size_bytes": 18508928
+    },
+    "14_fold_5_validation_X_stock.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_validation_X_stock.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_validation_X_stock.npy",
+      "sha256": "f578db922c8c17ce1b63c01383da0ae327ba1638d33e05b4e656ecc91ab51d4e",
+      "size_bytes": 54369728
+    },
+    "14_fold_5_validation_metadata.parquet": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_validation_metadata.parquet",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_validation_metadata.parquet",
+      "sha256": "f46bc6942cc1d4eecc9c85c263fadcab5a6baa65700715df6ec32908507a8456",
+      "size_bytes": 530623
+    },
+    "14_fold_5_validation_regime_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_validation_regime_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_validation_regime_id.npy",
+      "sha256": "b42dc941458a0e1ee7205a6dfe73d54a7b88916696ec75a10f349742266b9c4d",
+      "size_bytes": 38688
+    },
+    "14_fold_5_validation_stock_id.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_validation_stock_id.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_validation_stock_id.npy",
+      "sha256": "04765fc532a22a05c91a99d4cc56b67ed9be1bb992bd3aab7dd79158491de764",
+      "size_bytes": 38688
+    },
+    "14_fold_5_validation_y_aux_raw.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_validation_y_aux_raw.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_validation_y_aux_raw.npy",
+      "sha256": "6c3075882c46c08dd23522b1340785fc8647c869a3e22a88e8f2c3405258d4c0",
+      "size_bytes": 192928
+    },
+    "14_fold_5_validation_y_aux_scaled.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_validation_y_aux_scaled.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_validation_y_aux_scaled.npy",
+      "sha256": "84b1fc8c459ea97569ebf85081c5cea3a8cdaf0e77148d5ee7e158b4fbb7d85f",
+      "size_bytes": 192928
+    },
+    "14_fold_5_validation_y_direction.npy": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step14_model_arrays/fold_5/14_fold_5_validation_y_direction.npy",
+      "relative_path": "feature_data/step14_model_arrays/fold_5/14_fold_5_validation_y_direction.npy",
+      "sha256": "362b785a51ebc2ded984ff560ca5623278024eaf264258ae91e522a2ca7cd274",
+      "size_bytes": 115808
+    },
+    "14_model_array_summary.txt": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/reports/14_model_array_summary.txt",
+      "relative_path": "reports/14_model_array_summary.txt",
+      "sha256": "403de85208aa3bd9cbe1f89a1fb3b1993d2e1888948fe0dd498ed4031dda0da0",
+      "size_bytes": 598
+    },
+    "14_source_file_hashes.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/14_source_file_hashes.csv",
+      "relative_path": "audits/14_source_file_hashes.csv",
+      "sha256": "7c824ccc24a7ea459a0dda8e021a953f133ba68e9fb89f510dbd80d15d35843a",
+      "size_bytes": 18050
+    },
+    "step14_materialize_model_arrays_frozen.py": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/step14_materialize_model_arrays_frozen.py",
+      "relative_path": "manifests/step14_materialize_model_arrays_frozen.py",
+      "sha256": "f5f96b3cd3e9b9f5c84bf60a6908fce018954c5bd29fbe72a5d5b6236758c251",
+      "size_bytes": 59574
+    }
+  },
+  "auxiliary_scaling_policy": {
+    "clip": false,
+    "directional_targets_scaled": false,
+    "feature_range": [
+      0.0,
+      1.0
+    ],
+    "final_development_fit_scope": "final-development common sequence endpoints only",
+    "final_test_used_in_fit": false,
+    "fold_fit_scope": "fold-training common sequence endpoints only",
+    "scaler": "MinMaxScaler",
+    "validation_used_in_fit": false
+  },
+  "auxiliary_target_order": [
+    "future_close_1d",
+    "future_close_3d",
+    "future_close_5d",
+    "future_return_1d",
+    "future_return_3d",
+    "future_return_5d",
+    "future_log_return_1d",
+    "future_log_return_3d",
+    "future_log_return_5d",
+    "realized_volatility_5d"
+  ],
+  "configuration_fingerprint_sha256": "9675cb42e5544d9a3cda235208b33cc4c27f7583531535505b42056aa86b04dd",
+  "direction_target_order": [
+    "direction_1d",
+    "direction_3d",
+    "direction_5d"
+  ],
+  "experiment_tag": "q1_revision_v3_clean_2016_2026",
+  "feature_interface_sha256": "4b6497c17ec1f43a4f9c78eaf381badabb7309272414a7b2853ae7d0885fd1b7",
+  "frozen_at_utc": "2026-10-04T08:11:52+00:00",
+  "market_features": [
+    "nifty_open",
+    "nifty_high",
+    "nifty_low",
+    "nifty_close",
+    "nifty_high_low_range",
+    "nifty_return_1d",
+    "nifty_log_return_1d",
+    "nifty_rolling_mean_5",
+    "nifty_rolling_mean_10",
+    "nifty_rolling_mean_20",
+    "nifty_rolling_std_5",
+    "nifty_rolling_std_10",
+    "nifty_rolling_std_20",
+    "nifty_momentum_5",
+    "nifty_momentum_10",
+    "nifty_momentum_20"
+  ],
+  "ordered_63_features": [
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume",
+    "return_1d",
+    "log_return_1d",
+    "high_low_range",
+    "open_close_change",
+    "volume_change",
+    "return_lag_1",
+    "return_lag_2",
+    "return_lag_3",
+    "return_lag_5",
+    "rolling_mean_5",
+    "rolling_mean_10",
+    "rolling_mean_20",
+    "rolling_std_5",
+    "rolling_std_10",
+    "rolling_std_20",
+    "rolling_min_20",
+    "rolling_max_20",
+    "ema_12",
+    "ema_26",
+    "macd",
+    "macd_signal",
+    "macd_hist",
+    "rsi_14",
+    "stoch_k_14",
+    "stoch_d_3",
+    "bollinger_upper_20",
+    "bollinger_lower_20",
+    "bollinger_width_20",
+    "atr_14",
+    "adx_14",
+    "plus_di_14",
+    "minus_di_14",
+    "aroon_up_25",
+    "aroon_down_25",
+    "aroon_osc_25",
+    "obv",
+    "ad_line",
+    "vwap_20",
+    "volume_sma_20",
+    "close_to_rolling_mean_20",
+    "close_to_rolling_max_20",
+    "close_to_rolling_min_20",
+    "nifty_open",
+    "nifty_high",
+    "nifty_low",
+    "nifty_close",
+    "nifty_high_low_range",
+    "nifty_return_1d",
+    "nifty_log_return_1d",
+    "nifty_rolling_mean_5",
+    "nifty_rolling_mean_10",
+    "nifty_rolling_mean_20",
+    "nifty_rolling_std_5",
+    "nifty_rolling_std_10",
+    "nifty_rolling_std_20",
+    "nifty_momentum_5",
+    "nifty_momentum_10",
+    "nifty_momentum_20"
+  ],
+  "pipeline_state": {
+    "feature_selection_applied": false,
+    "final_development_auxiliary_scaler_fitted": true,
+    "final_development_refit_arrays_created": true,
+    "models_fitted": false,
+    "probability_threshold_selection_performed": false,
+    "rolling_fold_auxiliary_scalers_fitted": true,
+    "rolling_fold_sequence_arrays_materialized": true
+  },
+  "schema_version": "1.0",
+  "sequence_policy": {
+    "indices_reused_from_step13": true,
+    "same_continuity_segment_required": true,
+    "same_ticker_required": true,
+    "sequence_membership_recomputed": false,
+    "validation_causal_training_history_preserved": true
+  },
+  "source_integrity": {
+    "step10_development_panel_sha256": "ae2581237116051ad17bb4d221e1d044011344defbaed4e84843fbcc79051a25",
+    "step12_final_development_sha256": "c166253e781031095c9c90fc864973e2b12e5fe2b8950d81e7fda0f9c2eba9bd",
+    "step12_fold_panel_hashes": {
+      "fold_1_train": "333d6698dfd6ad94ebc9237c080f229ab4cace4ce46f17f4d33717d90ac5458a",
+      "fold_1_validation": "a3719c70b3908f0e2816c3e88e4c73362fe3c8745b74bac985495a5227d44ffe",
+      "fold_2_train": "c73ed5fec702f21535171f690fb8aca6a91077ef9ffb5f3f9b9f04b0efdeae46",
+      "fold_2_validation": "407eebbeac502a441fadefc78b091fdc0acf898f3f18c3f29655660ac33078ae",
+      "fold_3_train": "1b20eafb3a8b05c0d22905563b687ae39d4a09d010c61a16ad7b71328e79e13d",
+      "fold_3_validation": "e394994a43600f09bcaaa6b7a3bc63e75cca31ddfb1d000181b21e9356228812",
+      "fold_4_train": "0e9278aae259e1398be7174bf754d258264291ee8112660e875a6719d6261f91",
+      "fold_4_validation": "88b37a363beed77275f4396cff2f6f1a12d28a390443cc00bd438e5b2478cf47",
+      "fold_5_train": "a85e0e7d979ba2a570252b724fd7f4530cba020344daee611a8d1a3aa85fd2f4",
+      "fold_5_validation": "31b77c20320f7e1d88b5da894996e7c58a953df4ede0e14400df2c2ccba39973"
+    },
+    "step13_final_development_index_sha256": "8a0c01070b08d371edd6b70827d8221d5d967bde91f67c719e51c875df9e9182",
+    "step13_fold_index_hashes": {
+      "fold_1_train": "51082596f83bf7b0fda6b8f79a2d9e8254518cd42482e3eaab01b0d349d10375",
+      "fold_1_validation": "bf96d8b56708efecb419c18c4f4c2ab8205ec2f2ee0ad40039f16fba94e59601",
+      "fold_2_train": "5874e7263c35b7b403c1a4cdfa6c3402e34b99ed81b95908e9528fb36b499db6",
+      "fold_2_validation": "59e139b16ef95da0d1f61ac513cb3104d8f4031ab214d8f288e039d078b5fc85",
+      "fold_3_train": "fd2e0f2e84b4675fa9fb452092d35896ec10eee11345c78f4654366894d701bc",
+      "fold_3_validation": "f8843f5f76e77fb452e9d78cbb74b894a705121d717cd8ebe28b1896bb466301",
+      "fold_4_train": "b6db163fb8de10ee0c09bb3a5303d71493557da747c0bf59868dc21ac6179ca1",
+      "fold_4_validation": "e81b962878cd6d9ef40d116ec47096c6a65b1fdc56c419378586f1c9669a387d",
+      "fold_5_train": "aa9f30124e602b54de176ea6fe24767aa612bac9017cbb7278155163b8d26ddb",
+      "fold_5_validation": "1c66707344d7ea3aad0878f95343df7f038792c43c25be7528ebe2131b3c97af"
+    }
+  },
+  "split_design_sha256": "675ee08dda555e2a9fdabf9a3519d383f175c2073c26d3d113862b5c7a15a246",
+  "step": {
+    "status": "PASS",
+    "step_id": "14",
+    "step_name": "STEP 14 — MODEL-READY 60-SESSION ARRAY MATERIALIZATION",
+    "step_number": 14
+  },
+  "step00_manifest_sha256": "d3f77c468eab3352c23bb613cccfb94cdf04a2cbad6a99f229e1a78b9c83eb48",
+  "step01_manifest_sha256": "6ca1930c37055d762105b30748af979154974558586cdf1ab33400d2b595acaa",
+  "step02_manifest_sha256": "0f42962ff091b798d70cee9ec06a7e5e813cee9101087bb42101e5bd97f04643",
+  "step03_manifest_sha256": "ad3a99d29a8c20e69be6a284f822bfb81e9a9a55b84c9c05dc417989fa6b1df4",
+  "step04_manifest_sha256": "ea4769ce0b6f928f8dc6733422d8426561a85edc515a7c859733f9cc67181602",
+  "step05_manifest_sha256": "de41e6592bd1547d51c0e2a08dd203f5e8a5200cfcc549a05d964960652b3ae6",
+  "step06_manifest_sha256": "3c2dac46867000953e75f1bf7be861e99b87824628dfd6af8e509923c4d691c1",
+  "step07_manifest_sha256": "b320daee22cb7fc563f3eb9e859316f1243809551a3e6615ec99b81f9c80ff9b",
+  "step08_manifest_sha256": "dd4e850de15f752425c6bf3df895010f089f5ad32459cb97046744871b5680a8",
+  "step09_manifest_sha256": "553d93abe5868ab6ecd21e41fa27da5231e203e2689091e85fe4baba057f206f",
+  "step10_manifest_sha256": "2ee16629125e2cfda724ca62a748a71fae92fc5ade1cd5c07609ea035912dc5d",
+  "step11_manifest_sha256": "22b27204802de3b5c9b3f6b17fd93fd7736f9d362b0948cad64f881d33c31637",
+  "step12_manifest_sha256": "dc6851f51ae5da803bc351745e09c96ba2f6d2f85ff6a7f3d9ed03103fc255aa",
+  "step13_manifest_sha256": "18f02c7b1fbaeb18b55172128183dc9c17988691cdbc567c43d67376c48fe55e",
+  "stock_features": [
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume",
+    "return_1d",
+    "log_return_1d",
+    "high_low_range",
+    "open_close_change",
+    "volume_change",
+    "return_lag_1",
+    "return_lag_2",
+    "return_lag_3",
+    "return_lag_5",
+    "rolling_mean_5",
+    "rolling_mean_10",
+    "rolling_mean_20",
+    "rolling_std_5",
+    "rolling_std_10",
+    "rolling_std_20",
+    "rolling_min_20",
+    "rolling_max_20",
+    "ema_12",
+    "ema_26",
+    "macd",
+    "macd_signal",
+    "macd_hist",
+    "rsi_14",
+    "stoch_k_14",
+    "stoch_d_3",
+    "bollinger_upper_20",
+    "bollinger_lower_20",
+    "bollinger_width_20",
+    "atr_14",
+    "adx_14",
+    "plus_di_14",
+    "minus_di_14",
+    "aroon_up_25",
+    "aroon_down_25",
+    "aroon_osc_25",
+    "obv",
+    "ad_line",
+    "vwap_20",
+    "volume_sma_20",
+    "close_to_rolling_mean_20",
+    "close_to_rolling_max_20",
+    "close_to_rolling_min_20"
+  ],
+  "stock_id_map": {
+    "ASIANPAINT.NS": 8,
+    "AXISBANK.NS": 1,
+    "BAJFINANCE.NS": 13,
+    "BHARTIARTL.NS": 19,
+    "HDFCBANK.NS": 2,
+    "HINDUNILVR.NS": 11,
+    "ICICIBANK.NS": 3,
+    "INFY.NS": 14,
+    "ITC.NS": 12,
+    "KOTAKBANK.NS": 4,
+    "LT.NS": 7,
+    "MARUTI.NS": 0,
+    "NTPC.NS": 17,
+    "POWERGRID.NS": 18,
+    "RELIANCE.NS": 10,
+    "SBIN.NS": 5,
+    "SUNPHARMA.NS": 16,
+    "TCS.NS": 15,
+    "TITAN.NS": 9,
+    "ULTRACEMCO.NS": 6
+  },
+  "test_protection": {
+    "final_test_arrays_created": false,
+    "global_final_test_state": "LOCKED_NOT_OPENED",
+    "sealed_test_parquet_opened_or_hashed_by_step14": false,
+    "step10_seal_status": "SEALED_NOT_OPENED",
+    "test_performance_computed": false,
+    "test_targets_scaled": false
+  }
+}

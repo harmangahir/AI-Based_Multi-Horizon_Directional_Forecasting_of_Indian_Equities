@@ -1,0 +1,19 @@
+==========================================================================================================
+STEP 36I-F5 — INDEPENDENT SEGMENT-STRATIFIED STATISTICAL AUDIT, SYNTHETIC ONLY
+==========================================================================================================
+[1] SOURCE IDENTITY, FROZEN CONTRACT, HISTORICAL TEST ACCESS
+PASS — F1–F4, E2 and Step35 immutable; two historical reads, zero scored
+[2] INDEPENDENT CIRCULAR DATE-BLOCK REPLICATION ORACLE
+PASS — 2,000 replicate session indices reproduced independently at L=10/20/40; no segment crossing
+[3] INDEPENDENT 24-HYPOTHESIS / 72-ROW METRIC AND 84-PAIRWISE ORACLE
+PASS — all 72 BA/percentile-CI/centered-p oracles; 24 BH q-values; 84 pairwise CI/difference oracles
+[4] NONTRIVIAL EDGE CASES, GATING, AND ACCESS-MARKER IMMUTABILITY
+PASS — independent exact null (BA=.50,p=1) and perfect-classifier (BA=1,p=1/2001) oracles
+PASS — F4 statistical interface remains in-memory; prohibited --read-test CLI rejected
+PASS — historical access marker unchanged
+==========================================================================================================
+STEP 36I-F5: PASS — INDEPENDENT SYNTHETIC STATISTICAL REVIEW ONLY
+Test opened: FALSE | GPU: FALSE | Real scoring: FALSE | Amended cohort approved: FALSE
+Third raw-test read authorized: FALSE | Production execution: DENIED
+NEXT — review production access/transaction integration and formal protocol deviation
+==========================================================================================================

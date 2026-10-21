@@ -1,0 +1,23 @@
+{
+  "common_multitask_structural_rows": 6480,
+  "configuration_fingerprint_sha256": "9675cb42e5544d9a3cda235208b33cc4c27f7583531535505b42056aa86b04dd",
+  "file_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data/step10_chronological_splits/final_test_locked/10_final_test_locked_panel.parquet",
+  "first_reference_date": "2025-01-01",
+  "generated_at_utc": "2026-10-04T05:34:17+00:00",
+  "global_final_test_lock_sha256": "e6b67feaa5ca06ce9e659edbdeb56083051c9cea09995b208c7a6c962b5b0e84",
+  "global_final_test_lock_state": "LOCKED_NOT_OPENED",
+  "last_reference_date": "2026-06-30",
+  "note": "This Step-10 seal does not replace or mutate the global Step-00 final-test lock.",
+  "permitted_use_before_final_model_freeze": "none",
+  "reference_rows": 6680,
+  "relative_path": "feature_data/step10_chronological_splits/final_test_locked/10_final_test_locked_panel.parquet",
+  "schema_version": "1.0",
+  "sha256": "ab325ede85fbb6d7819e85472274b82d151d350f39a872a17747c6978b1dddae",
+  "status": "SEALED_NOT_OPENED",
+  "step09_manifest_sha256": "553d93abe5868ab6ecd21e41fa27da5231e203e2689091e85fe4baba057f206f",
+  "step09_target_panel_sha256": "8fcc17cadadbed3a77f60c56c64abd5c7efbde188d466260bc5337e4ddd70ddf",
+  "stock_count": 20,
+  "test_class_distribution_reported": false,
+  "test_model_performance_computed": false,
+  "unique_reference_dates": 334
+}

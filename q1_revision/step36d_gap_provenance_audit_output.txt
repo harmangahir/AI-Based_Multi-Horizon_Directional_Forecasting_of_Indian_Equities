@@ -1,0 +1,632 @@
+==============================================================================================================
+STEP 36D — READ-ONLY GAP PROVENANCE AUDIT
+==============================================================================================================
+
+[1] VERIFY PRESERVED ACCESS STATE
+State: RAW_TEST_REOPENED_FOR_TECHNICAL_RECOVERY
+Raw filesystem opens: 2
+Final-test scored: False
+PASS
+
+[2] TRACE CONTINUITY AND SOURCE DATA LOGIC
+
+--------------------------------------------------------------------------------------------------------------
+SOURCE: step05_materialize_clean_model_panel_v3_clean.py
+Total matches: 2
+ 1374:             f"{ticker}: canonical adjusted OHLC geometry violation."
+ 1375:         )
+ 1376: 
+ 1377:     returns = panel["Model_Return_1session"].dropna()
+ 1378:     log_returns = panel["Model_Log_Return_1session"].dropna()
+ 1379: 
+ 1380:     dividend_events = int(
+ 1381:         (pd.to_numeric(panel["Dividend"], errors="raise") != 0).sum()
+  --------------------------------------------------
+ 1382:     )
+  --------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------
+SOURCE: step06_stock_features_v3.py
+Total matches: 34
+  795: # 8. CONTINUITY-BREAK POLICY
+  796: # =============================================================================
+  797: 
+  798: def load_continuity_break_dates(
+  799:     step04_policy: Dict[str, Any],
+  800: ) -> list[pd.Timestamp]:
+  801:     anomaly_policy = step04_policy.get(
+  802:         "date_wide_anomaly_policy",
+  --------------------------------------------------
+  818:             "frozen excluded-session list."
+  819:         )
+  820: 
+  821:     break_dates = sorted(
+  822:         {
+  823:             pd.Timestamp(value).normalize()
+  824:             for value in dates
+  825:         }
+  --------------------------------------------------
+  852:         .dt.normalize()
+  853:     )
+  854: 
+  855:     for break_date in break_dates:
+  856:         if break_date in calendar_dates:
+  857:             raise RuntimeError(
+  858:                 f"Continuity-break date still appears in the final calendar: "
+  859:                 f"{break_date.date()}"
+  --------------------------------------------------
+  883:                 "the frozen date-wide anomaly rule."
+  884:             )
+  885: 
+  886:     return break_dates
+  887: 
+  888: 
+  889: def assign_continuity_segments(
+  890:     dates: pd.Series,
+  --------------------------------------------------
+  891:     break_dates: list[pd.Timestamp],
+  892: ) -> pd.Series:
+  893:     date_values = (
+  894:         pd.to_datetime(dates, errors="raise")
+  895:         .dt.normalize()
+  --------------------------------------------------
+  896:         .to_numpy(dtype="datetime64[ns]")
+  897:     )
+  898: 
+  899:     if not break_dates:
+  900:         return pd.Series(
+  901:             np.zeros(len(dates), dtype=np.int64),
+  902:             index=dates.index,
+  903:             dtype="int64",
+  --------------------------------------------------
+  906:     break_values = np.asarray(
+  907:         [
+  908:             np.datetime64(date, "ns")
+  909:             for date in break_dates
+  910:         ],
+  911:         dtype="datetime64[ns]",
+  912:     )
+  913: 
+  --------------------------------------------------
+ 1302:         )
+ 1303: 
+ 1304:     if table[
+ 1305:         "continuity_segment_id"
+ 1306:     ].nunique() != 1:
+ 1307: 
+ 1308:         raise AssertionError(
+ 1309:             "Segment contains more than one continuity ID."
+  --------------------------------------------------
+ 2345:         "session_number",
+ 2346:         "Date",
+ 2347:         "Ticker",
+ 2348:         "continuity_segment_id",
+ 2349:     ] + FEATURE_COLUMNS
+ 2350: 
+ 2351:     return table[
+ 2352:         output_columns
+  --------------------------------------------------
+ 2540:         source.groupby(
+ 2541:             [
+ 2542:                 "Ticker",
+ 2543:                 "continuity_segment_id",
+ 2544:             ],
+ 2545:             sort=True,
+ 2546:         )
+ 2547:     ):
+  --------------------------------------------------
+ 2567:                 &
+ 2568:                 (
+ 2569:                     full_features[
+ 2570:                         "continuity_segment_id"
+ 2571:                     ]
+ 2572:                     == segment_id
+ 2573:                 )
+ 2574:             ]
+  --------------------------------------------------
+ 2718:             records.append(
+ 2719:                 {
+ 2720:                     "ticker": ticker,
+ 2721:                     "continuity_segment_id": int(
+ 2722:                         segment_id
+ 2723:                     ),
+ 2724:                     "cutoff_fraction": (
+ 2725:                         fraction
+  --------------------------------------------------
+ 2772:         [
+ 2773:             "Ticker",
+ 2774:             "Date",
+ 2775:             "continuity_segment_id",
+ 2776:             "return_1d",
+ 2777:             "log_return_1d",
+ 2778:         ]
+ 2779:     ].copy()
+  --------------------------------------------------
+ 2797:     merged["is_segment_start"] = (
+ 2798:         merged
+ 2799:         .groupby(
+ 2800:             ["Ticker", "continuity_segment_id"],
+ 2801:             sort=False,
+ 2802:         )
+ 2803:         .cumcount()
+ 2804:         .eq(0)
+  --------------------------------------------------
+ 3491:         stage = "load_policy_and_source"
+ 3492: 
+ 3493:         print("[4/11] Loading frozen continuity policy and Step-05 panel...")
+ 3494:         break_dates = load_continuity_break_dates(
+ 3495:             step04["policy"]
+ 3496:         )
+ 3497: 
+ 3498:         source = pd.read_parquet(
+  --------------------------------------------------
+ 3574:                 "Step-05 panel dates differ from the frozen Step-04 calendar."
+ 3575:             )
+ 3576: 
+ 3577:         source["continuity_segment_id"] = (
+ 3578:             assign_continuity_segments(
+ 3579:                 source["Date"],
+ 3580:                 break_dates,
+ 3581:             )
+  --------------------------------------------------
+ 3582:         )
+ 3583: 
+ 3584:         segment_count = int(
+  --------------------------------------------------
+ 3585:             source["continuity_segment_id"].nunique()
+ 3586:         )
+ 3587: 
+ 3588:         expected_segment_count = (
+ 3589:             len(break_dates) + 1
+  --------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------
+SOURCE: step08_merge_63_feature_panel_v3.py
+Total matches: 7
+ 1256:         "session_number",
+ 1257:         "Date",
+ 1258:         "Ticker",
+ 1259:         "continuity_segment_id",
+ 1260:         *stock_features,
+ 1261:     }
+ 1262: 
+ 1263:     missing_stock = (
+  --------------------------------------------------
+ 1428:         "session_number",
+ 1429:         "Date",
+ 1430:         "Ticker",
+ 1431:         "continuity_segment_id",
+ 1432:     ] + stock_features
+ 1433: 
+ 1434:     nifty_columns = [
+ 1435:         "Date",
+  --------------------------------------------------
+ 2385:                 "max",
+ 2386:             ),
+ 2387:             continuity_segments=(
+ 2388:                 "continuity_segment_id",
+ 2389:                 "nunique",
+ 2390:             ),
+ 2391:         )
+ 2392:         .reset_index()
+  --------------------------------------------------
+ 2420:     full = (
+ 2421:         merged
+ 2422:         .groupby(
+ 2423:             "continuity_segment_id"
+ 2424:         )
+ 2425:         .agg(
+ 2426:             full_rows=(
+ 2427:                 "Date",
+  --------------------------------------------------
+ 2450:     complete_summary = (
+ 2451:         complete
+ 2452:         .groupby(
+ 2453:             "continuity_segment_id"
+ 2454:         )
+ 2455:         .agg(
+ 2456:             complete_rows=(
+ 2457:                 "Date",
+  --------------------------------------------------
+ 2469:         full
+ 2470:         .merge(
+ 2471:             complete_summary,
+ 2472:             on="continuity_segment_id",
+ 2473:             how="left",
+ 2474:             validate="one_to_one",
+ 2475:         )
+ 2476:     )
+  --------------------------------------------------
+ 4189:             index=False
+ 4190:         ):
+ 4191:             print(
+ 4192:                 f"Segment {row.continuity_segment_id}: "
+ 4193:                 f"{pd.Timestamp(row.first_date).date()} -> "
+ 4194:                 f"{pd.Timestamp(row.last_date).date()} | "
+ 4195:                 f"full dates={row.full_dates:,} | "
+ 4196:                 f"complete dates={row.complete_dates:,} | "
+  --------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------
+SOURCE: step09_construct_targets_v3.py
+Total matches: 44
+  510: # CALENDAR / CONTINUITY / SOURCES
+  511: # =============================================================================
+  512: 
+  513: def load_break_dates(policy: Dict[str, Any]) -> list[pd.Timestamp]:
+  514:     p = policy.get("date_wide_anomaly_policy", {})
+  515:     values = p.get("valid_nifty_sessions_excluded_by_rule", [])
+  516:     declared = p.get("valid_nifty_session_exclusion_count")
+  517:     if declared is not None and int(declared) != len(values):
+  --------------------------------------------------
+  519:     return sorted({pd.Timestamp(v).normalize() for v in values})
+  520: 
+  521: 
+  522: def segment_ids(dates: pd.Series, breaks: list[pd.Timestamp]) -> pd.Series:
+  523:     values = (
+  524:         pd.to_datetime(dates, errors="raise")
+  525:         .dt.normalize()
+  526:         .to_numpy(dtype="datetime64[ns]")
+  --------------------------------------------------
+  568:                 f"Frozen continuity-break date absent from master calendar: {d.date()}"
+  569:             )
+  570: 
+  571:     return cal.rename(columns={"session_number": "market_session_id"})
+  572: 
+  573: 
+  574: def load_references(
+  575:     feature_columns: list[str],
+  --------------------------------------------------
+  581:     required = {
+  582:         "Date",
+  583:         "Ticker",
+  584:         "continuity_segment_id",
+  585:         "close",
+  586:         *feature_columns,
+  587:     }
+  588:     missing = required - set(ref.columns)
+  --------------------------------------------------
+  599:         raise RuntimeError("Step-08 complete panel contains predictor infinities.")
+  600: 
+  601:     ref = ref.merge(master, on="Date", how="left", validate="many_to_one")
+  602:     if ref["market_session_id"].isna().any():
+  603:         raise RuntimeError("Reference date missing from master calendar.")
+  604:     ref["market_session_id"] = ref["market_session_id"].astype("int64")
+  605:     ref = ref.sort_values(["Date", "Ticker"]).reset_index(drop=True)
+  606: 
+  --------------------------------------------------
+  607:     counts = ref.groupby("Ticker").size()
+  608:     if counts.nunique() != 1:
+  --------------------------------------------------
+  636:         raise RuntimeError("Non-positive Step-05 Model_Close.")
+  637: 
+  638:     src = src.merge(master, on="Date", how="left", validate="many_to_one")
+  639:     if src["market_session_id"].isna().any():
+  640:         raise RuntimeError("Step-05 date missing from master calendar.")
+  641:     src["market_session_id"] = src["market_session_id"].astype("int64")
+  642:     src["target_continuity_segment_id"] = segment_ids(src["Date"], breaks)
+  643: 
+  --------------------------------------------------
+  644:     cross = src.groupby("Date")["Ticker"].nunique()
+  645:     if not (cross == EXPECTED_STOCK_COUNT).all():
+  --------------------------------------------------
+  646:         raise RuntimeError("Step-05 price source is not a complete stock panel.")
+  --------------------------------------------------
+  648:     lookup = src[
+  649:         [
+  650:             "Ticker",
+  651:             "market_session_id",
+  652:             "Date",
+  653:             "target_continuity_segment_id",
+  654:             "Model_Close",
+  655:         ]
+  --------------------------------------------------
+  656:     ].copy()
+  657: 
+  --------------------------------------------------
+  658:     if lookup[["Ticker", "market_session_id"]].duplicated().any():
+  659:         raise RuntimeError("Duplicate Step-05 ticker/master-session keys.")
+  660: 
+  661:     return lookup
+  662: 
+  --------------------------------------------------
+  669:     right = lookup.rename(
+  670:         columns={
+  671:             "Model_Close": "step05_model_close",
+  672:             "target_continuity_segment_id": "step05_segment_id",
+  673:         }
+  674:     )
+  675:     cmp = ref[
+  676:         ["Ticker", "market_session_id", "continuity_segment_id", "close"]
+  --------------------------------------------------
+  677:     ].merge(
+  678:         right[
+  679:             ["Ticker", "market_session_id", "step05_model_close", "step05_segment_id"]
+  680:         ],
+  --------------------------------------------------
+  681:         on=["Ticker", "market_session_id"],
+  682:         how="left",
+  683:         validate="one_to_one",
+  --------------------------------------------------
+  684:     )
+  685:     if cmp["step05_model_close"].isna().any():
+  --------------------------------------------------
+  690:     price_exact = np.array_equal(a, b, equal_nan=True)
+  691: 
+  692:     segment_exact = np.array_equal(
+  693:         cmp["continuity_segment_id"].to_numpy(dtype=np.int64),
+  694:         cmp["step05_segment_id"].to_numpy(dtype=np.int64),
+  695:     )
+  696: 
+  697:     if not price_exact:
+  --------------------------------------------------
+  723:     horizon: int,
+  724: ) -> pd.DataFrame:
+  725:     base = ref[
+  726:         ["Ticker", "market_session_id", "continuity_segment_id"]
+  727:     ].copy()
+  728:     base["requested_id"] = base["market_session_id"] + int(horizon)
+  729: 
+  730:     endpoint = lookup.rename(
+  --------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------
+SOURCE: step10_chronological_splits_v3.py
+Total matches: 20
+  627:     required = {
+  628:         "Ticker",
+  629:         "Date",
+  630:         "market_session_id",
+  631:         "continuity_segment_id",
+  632:         *feature_columns,
+  633:         *AUXILIARY_TARGET_COLUMNS,
+  634:     }
+  --------------------------------------------------
+  635:     for h in HORIZONS:
+  --------------------------------------------------
+  636:         required |= {
+  637:             f"target_market_session_id_{h}d",
+  638:             f"target_continuity_segment_id_{h}d",
+  639:             f"target_date_{h}d",
+  640:             f"direction_{h}d",
+  641:         }
+  --------------------------------------------------
+  642: 
+  --------------------------------------------------
+  653:     if np.isinf(panel[feature_columns].to_numpy(dtype=float)).any():
+  654:         raise RuntimeError("Infinite predictor detected in Step-09 panel.")
+  655: 
+  656:     panel["market_session_id"] = pd.to_numeric(
+  657:         panel["market_session_id"],
+  658:         errors="raise",
+  659:     ).astype("int64")
+  660: 
+  --------------------------------------------------
+  661:     if not (
+  --------------------------------------------------
+  666:     if panel.groupby("Ticker").size().nunique() != 1:
+  667:         raise RuntimeError("Reference panel is unbalanced across stocks.")
+  668:     if not (
+  669:         panel.groupby("Date")["market_session_id"].nunique()
+  670:         == 1
+  671:     ).all():
+  672:         raise RuntimeError("A date maps to multiple market-session IDs.")
+  673: 
+  --------------------------------------------------
+  674:     for h in HORIZONS:
+  675:         ids = panel[f"target_market_session_id_{h}d"].notna()
+  676:         dates = panel[f"target_date_{h}d"].notna()
+  677:         labels = panel[f"direction_{h}d"].notna()
+  678: 
+  679:         if not np.array_equal(ids.to_numpy(), dates.to_numpy()):
+  --------------------------------------------------
+  683: 
+  684:         if ids.any():
+  685:             diff = (
+  686:                 panel.loc[ids, f"target_market_session_id_{h}d"].astype("int64")
+  687:                 - panel.loc[ids, "market_session_id"].astype("int64")
+  688:             )
+  689:             if not (diff == h).all():
+  690:                 raise RuntimeError(f"{h}d target-session distance mismatch.")
+  --------------------------------------------------
+  691: 
+  --------------------------------------------------
+  692:             target_seg = panel.loc[
+  693:                 ids,
+  694:                 f"target_continuity_segment_id_{h}d",
+  695:             ].astype("int64")
+  696:             ref_seg = panel.loc[ids, "continuity_segment_id"].astype("int64")
+  697:             if not np.array_equal(target_seg.to_numpy(), ref_seg.to_numpy()):
+  698:                 raise RuntimeError(f"{h}d target crosses continuity segment.")
+  --------------------------------------------------
+  699: 
+  700:     dev = panel["Date"].between(
+  --------------------------------------------------
+  752:     label: str,
+  753: ) -> tuple[pd.Series, Dict[str, Any]]:
+  754:     target_date_col = f"target_date_{horizon}d"
+  755:     target_id_col = f"target_market_session_id_{horizon}d"
+  756: 
+  757:     available = panel[target_date_col].notna() & panel[target_id_col].notna()
+  758:     inside = panel[target_date_col].between(start, end, inclusive="both")
+  759: 
+  --------------------------------------------------
+  790:             raise RuntimeError(f"{label} {horizon}d endpoint escaped partition.")
+  791:         diff = (
+  792:             panel.loc[eligible, target_id_col].astype("int64")
+  793:             - panel.loc[eligible, "market_session_id"].astype("int64")
+  794:         )
+  795:         if not (diff == horizon).all():
+  796:             raise RuntimeError(f"{label} {horizon}d endpoint distance drift.")
+  797: 
+  --------------------------------------------------
+ 1051:             [
+ 1052:                 "Ticker",
+ 1053:                 "Date",
+ 1054:                 "market_session_id",
+ 1055:                 f"target_market_session_id_{h}d",
+ 1056:                 f"target_date_{h}d",
+ 1057:             ],
+ 1058:         ].sort_values(["Date", "Ticker"]).head(limit)
+  --------------------------------------------------
+ 1059: 
+  --------------------------------------------------
+ 1066:                     "forecast_horizon_sessions": h,
+ 1067:                     "ticker": rec.Ticker,
+ 1068:                     "reference_date": rec.Date,
+ 1069:                     "reference_market_session_id": int(rec.market_session_id),
+ 1070:                     "target_market_session_id": int(
+ 1071:                         getattr(rec, f"target_market_session_id_{h}d")
+ 1072:                     ),
+ 1073:                     "target_date": getattr(rec, f"target_date_{h}d"),
+  --------------------------------------------------
+ 1074:                     "reason": "exact_target_endpoint_crosses_partition_end",
+  --------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------
+SOURCE: step13_sequence_indices_v3.py
+Total matches: 20
+ 1022:     required = {
+ 1023:         "Ticker",
+ 1024:         "Date",
+ 1025:         "market_session_id",
+ 1026:         "continuity_segment_id",
+ 1027:         "regime_id",
+ 1028:         "regime_name",
+ 1029:         "regime_threshold_fit_scope",
+  --------------------------------------------------
+ 1030:         "eligible_1d",
+  --------------------------------------------------
+ 1331:     ), group in history_frame.groupby(
+ 1332:         [
+ 1333:             "Ticker",
+ 1334:             "continuity_segment_id",
+ 1335:         ],
+ 1336:         sort=True,
+ 1337:     ):
+ 1338:         table = (
+  --------------------------------------------------
+ 1400:     ):
+ 1401:         ticker = row.Ticker
+ 1402:         segment_id = int(
+ 1403:             row.continuity_segment_id
+ 1404:         )
+ 1405:         reference_date = pd.Timestamp(
+ 1406:             row.Date
+ 1407:         )
+  --------------------------------------------------
+ 1408:         reference_session_id = int(
+ 1409:             row.market_session_id
+ 1410:         )
+ 1411: 
+ 1412:         key = (
+ 1413:             ticker,
+  --------------------------------------------------
+ 1447: 
+ 1448:         sequence_start_date = pd.NaT
+ 1449:         sequence_end_date = reference_date
+ 1450:         sequence_start_market_session_id = pd.NA
+ 1451:         sequence_end_market_session_id = reference_session_id
+ 1452:         sequence_length = 0
+ 1453:         start_position = pd.NA
+ 1454:         historical_rows_before_partition = 0
+  --------------------------------------------------
+ 1455:         lookback_crosses_partition_start = False
+  --------------------------------------------------
+ 1493:                 REQUIRE_SAME_CONTINUITY_SEGMENT
+ 1494:                 and
+ 1495:                 window[
+ 1496:                     "continuity_segment_id"
+ 1497:                 ].nunique()
+ 1498:                 !=
+ 1499:                 1
+ 1500:             ):
+  --------------------------------------------------
+ 1505:             if (
+ 1506:                 int(
+ 1507:                     window[
+ 1508:                         "continuity_segment_id"
+ 1509:                     ].iloc[
+ 1510:                         0
+ 1511:                     ]
+ 1512:                 )
+  --------------------------------------------------
+ 1552:                 ]
+ 1553:             )
+ 1554: 
+ 1555:             sequence_start_market_session_id = int(
+ 1556:                 window[
+ 1557:                     "market_session_id"
+ 1558:                 ].iloc[
+ 1559:                     0
+  --------------------------------------------------
+ 1560:                 ]
+ 1561:             )
+  --------------------------------------------------
+ 1571:             session_difference = (
+ 1572:                 reference_session_id
+ 1573:                 -
+ 1574:                 sequence_start_market_session_id
+ 1575:             )
+ 1576: 
+ 1577:             if session_difference != LOOKBACK - 1:
+ 1578:                 raise RuntimeError(
+  --------------------------------------------------
+ 1640:                     ticker
+ 1641:                 ]
+ 1642:             ),
+ 1643:             "continuity_segment_id": (
+ 1644:                 segment_id
+ 1645:             ),
+ 1646:             "reference_date": (
+ 1647:                 reference_date
+  --------------------------------------------------
+ 1648:             ),
+ 1649:             "reference_market_session_id": (
+ 1650:                 reference_session_id
+ 1651:             ),
+ 1652:             "sequence_start_date": (
+ 1653:                 sequence_start_date
+  --------------------------------------------------
+ 1655:             "sequence_end_date": (
+ 1656:                 sequence_end_date
+ 1657:             ),
+ 1658:             "sequence_start_market_session_id": (
+ 1659:                 sequence_start_market_session_id
+ 1660:             ),
+ 1661:             "sequence_end_market_session_id": (
+ 1662:                 sequence_end_market_session_id
+  --------------------------------------------------
+ 1663:             ),
+  --------------------------------------------------
+ 1664:             "history_start_position_in_segment": (
+ 1665:                 start_position
+  --------------------------------------------------
+ 1666:             ),
+  --------------------------------------------------
+
+[3] INVENTORY FROZEN GAP / CONTINUITY AUDIT ARTIFACTS
+
+Directory: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits
+Matching files: 3
+  audits/03_missing_dates_vs_nifty.csv
+  audits/09_continuity_boundary_target_audit.csv
+  audits/09_target_continuity_audit.csv
+
+Directory: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests
+Matching files: 0
+
+Directory: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/feature_data
+Matching files: 2
+  feature_data/step07_nifty_context/07_nifty_context_16_full_calendar.csv
+  feature_data/step07_nifty_context/07_nifty_context_16_full_calendar.parquet
+
+[4] SEARCH SOURCE FOR MARCH–MAY 2025 GAP REFERENCES
+
+==============================================================================================================
+STEP 36D READ-ONLY PROVENANCE AUDIT COMPLETE
+Raw sealed test opened: FALSE
+Financial test values examined: FALSE
+Frozen artifacts modified: FALSE
+Third test-data read authorized: FALSE
+==============================================================================================================

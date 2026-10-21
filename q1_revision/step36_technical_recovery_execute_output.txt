@@ -1,0 +1,32 @@
+
+============================================================================================================================================
+STEP 36 FAILURE
+============================================================================================================================================
+Traceback (most recent call last):
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.py", line 1584, in main
+    return execute()
+           ^^^^^^^^^
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.py", line 1516, in execute
+    materialization = materialize_final_test(upstream)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.py", line 960, in materialize_final_test
+    X_full, metadata = materialize_sequences(
+                       ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.py", line 794, in materialize_sequences
+    raise RuntimeError(f"Insufficient causal history: {key} {reference_date.date()}")
+RuntimeError: Insufficient causal history: ('ASIANPAINT.NS', 1) 2025-05-12
+============================================================================================================================================
+Do not delete the access marker, materialized arrays, or partial prediction artifacts.
+============================================================================================================================================
+STEP 36 — ONE-TIME FINAL-TEST MATERIALIZATION, INFERENCE AND SCORING
+============================================================================================================================================
+MODE                         : EXECUTE
+Architecture selection       : PROHIBITED
+Best-seed selection          : PROHIBITED
+Threshold reoptimization     : PROHIBITED
+Post-test model promotion    : PROHIBITED
+--------------------------------------------------------------------------------------------------------------------------------------------
+[1] PRE-ACCESS FREEZE / UPSTREAM CONTRACT: PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+[2] ONE-TIME FINAL-TEST MATERIALIZATION
+Reopening sealed final-test parquet ONCE for logged technical schema recovery (second filesystem content open; no prior scoring)...

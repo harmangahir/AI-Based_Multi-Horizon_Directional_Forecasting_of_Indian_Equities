@@ -1,0 +1,137 @@
+{
+  "configuration_fingerprint_sha256": "9675cb42e5544d9a3cda235208b33cc4c27f7583531535505b42056aa86b04dd",
+  "corporate_action_policy": {
+    "automatic_event_date_deletion": false,
+    "canonical_adjusted_price_policy_for_step05": "factor = Adj Close / Close; adjusted Open/High/Low/Close = raw field * factor; Adj Close is canonical adjusted close",
+    "capital_gain_date_rows": 0,
+    "corporate_action_date_rows": 329,
+    "dividend_date_rows": 317,
+    "frozen_step00_policy": "download auto_adjust=False and actions=True; audit raw OHLC, adjusted close, dividends, splits, and date-specific adjustment factors before constructing canonical adjusted OHLC",
+    "reason_for_no_manual_volume_adjustment": "Step 00 froze an audit requirement, not a manual volume transformation. Step 04 records split behavior explicitly and avoids an unsupported second adjustment.",
+    "split_date_rows": 15,
+    "volume_policy_for_step05": "retain provider Volume as supplied; do not impute; do not apply a manual split adjustment"
+  },
+  "date_wide_anomaly_policy": {
+    "enabled": true,
+    "frozen_definition": "remove a market date across the complete stock panel only when at least 90% of stocks simultaneously exhibit zero volume and identical OHLC",
+    "minimum_stock_fraction": 0.9,
+    "rule_not_redefined_after_data_inspection": true,
+    "threshold_stock_count": 18,
+    "valid_nifty_session_exclusion_count": 1,
+    "valid_nifty_sessions_excluded_by_rule": [
+      "2025-03-18"
+    ]
+  },
+  "experiment_tag": "q1_revision_v3_clean_2016_2026",
+  "extreme_return_policy": {
+    "automatic_deletion": false,
+    "flag_count": 3,
+    "rule": "Retain extreme adjusted returns unless independent evidence establishes a provider or data error."
+  },
+  "final_analysis_calendar": {
+    "all_20_stocks_present": true,
+    "candidate_minus_valid_anomalies_equals_final": true,
+    "first_session": "2016-01-04",
+    "last_session": "2026-06-30",
+    "session_count": 2582
+  },
+  "final_test_lock_integrity": {
+    "lock_sha256_after": "e6b67feaa5ca06ce9e659edbdeb56083051c9cea09995b208c7a6c962b5b0e84",
+    "lock_sha256_before": "e6b67feaa5ca06ce9e659edbdeb56083051c9cea09995b208c7a6c962b5b0e84",
+    "lock_unchanged": true,
+    "state": "LOCKED_NOT_OPENED"
+  },
+  "generated_at_utc": "2026-10-04T03:44:49+00:00",
+  "nonreference_date_policy": {
+    "policy": "Exclude from the common modelling panel because the frozen study requires a valid contemporaneous NIFTY context.",
+    "provider_ghost_or_nontrading_dates": [
+      "2026-01-15",
+      "2026-05-01",
+      "2026-05-28",
+      "2026-06-26"
+    ],
+    "stock_sessions_without_valid_nifty_context": [
+      "2016-01-01",
+      "2016-08-12",
+      "2018-01-01",
+      "2019-01-01",
+      "2019-10-27",
+      "2020-11-14"
+    ]
+  },
+  "reference_calendar_policy": {
+    "base_calendar": "Step-03 price-valid Yahoo ^NSEI candidate calendar",
+    "candidate_session_count": 2583,
+    "frozen_step00_policy": "nifty50_reference_trading_calendar",
+    "nifty_volume_required_for_session_validity": false,
+    "stock_only_dates_without_valid_nifty_context_used": false
+  },
+  "schema_version": "1.0",
+  "scientific_boundary": {
+    "cleaned_panel_materialized": false,
+    "cleaning_materialization_stage": "Step 05",
+    "feature_imputation": false,
+    "final_test_model_scoring_performed": false,
+    "model_performance_used_to_make_cleaning_decisions": false,
+    "price_imputation": false,
+    "raw_data_overwritten": false,
+    "target_imputation": false,
+    "volume_imputation": false
+  },
+  "source_code_hashes": [
+    {
+      "absolute_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step00_config.py",
+      "file_name": "step00_config.py",
+      "role": "current_step00",
+      "sha256": "d43e27690a7dcbdf7e88c247ac286bef646c81bfce11701c0f5bf350a464fc3b",
+      "size_bytes": 66014
+    },
+    {
+      "absolute_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/step00_config_frozen.py",
+      "file_name": "step00_config_frozen.py",
+      "role": "frozen_step00",
+      "sha256": "d43e27690a7dcbdf7e88c247ac286bef646c81bfce11701c0f5bf350a464fc3b",
+      "size_bytes": 66014
+    },
+    {
+      "absolute_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step04_session_and_corporate_action_policy_v3_clean.py",
+      "file_name": "step04_session_and_corporate_action_policy_v3_clean.py",
+      "role": "current_step04",
+      "sha256": "3e12948bdfa15e8a84edbbf344b515d88eb36f3982d7396423fc9c2f30119b31",
+      "size_bytes": 109805
+    },
+    {
+      "absolute_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/step01_environment_audit_frozen.py",
+      "file_name": "step01_environment_audit_frozen.py",
+      "role": "frozen_step01",
+      "sha256": "fd361d1a01908007474cc8cbff1573355e168795c97bf0fa4b04f828517c3917",
+      "size_bytes": 48721
+    },
+    {
+      "absolute_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/step02_download_market_data_frozen.py",
+      "file_name": "step02_download_market_data_frozen.py",
+      "role": "frozen_step02",
+      "sha256": "c411d698ec2fd551002a323731161c5e8f53fa8c46d5ab6321f3def098092740",
+      "size_bytes": 76163
+    },
+    {
+      "absolute_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/step03_market_integrity_audit_frozen.py",
+      "file_name": "step03_market_integrity_audit_frozen.py",
+      "role": "frozen_step03",
+      "sha256": "aa043eadfcc8117fd94b118e72043f413a15892654ae5172428966db340faee7",
+      "size_bytes": 122496
+    }
+  ],
+  "step": {
+    "status": "PASS",
+    "step_id": "04",
+    "step_name": "STEP 04 — SESSION CLASSIFICATION, CORPORATE-ACTION AUDIT, AND FROZEN CLEANING POLICY",
+    "step_number": 4
+  },
+  "upstream_integrity": {
+    "step00_manifest_sha256": "d3f77c468eab3352c23bb613cccfb94cdf04a2cbad6a99f229e1a78b9c83eb48",
+    "step01_manifest_sha256": "6ca1930c37055d762105b30748af979154974558586cdf1ab33400d2b595acaa",
+    "step02_manifest_sha256": "0f42962ff091b798d70cee9ec06a7e5e813cee9101087bb42101e5bd97f04643",
+    "step03_manifest_sha256": "ad3a99d29a8c20e69be6a284f822bfb81e9a9a55b84c9c05dc417989fa6b1df4"
+  }
+}

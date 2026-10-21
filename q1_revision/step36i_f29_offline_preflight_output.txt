@@ -1,0 +1,17 @@
+======================================================================================================
+STEP 36I-F29 — INTEGRATED TWO-PHASE RELEASE CANDIDATE (OFFLINE; NO TEST ACCESS)
+======================================================================================================
+PASS — signed sources, Step35, F13E, 63-feature/20-stock upstream and output map
+PASS — legacy historical access marker 2 reads, 0 scored
+PASS — seven amended real output destinations vacant
+PASS — F22 journal and F24 lock tested together on isolated fixture
+PASS — owner-signed self-review and DISTINCT later permit: positive/negative synthetic oracles
+PASS — live Phase A/40-seed Phase B/finalization APIs wired in F29 source
+BLOCKED — owner public-key trust anchor not pinned; this is a release candidate
+BLOCKED — separate owner-signed self-review/read permit not supplied
+BLOCKED — independent review unavailable; owner self-review must be disclosed
+BLOCKED — third read not authorized; no release CLI executed
+======================================================================================================
+F29 OFFLINE SOURCE PREFLIGHT PASS — FINAL RESULTS NOT YET GENERATED
+Sealed final test read: FALSE | GPU: FALSE | Real scoring: FALSE
+======================================================================================================

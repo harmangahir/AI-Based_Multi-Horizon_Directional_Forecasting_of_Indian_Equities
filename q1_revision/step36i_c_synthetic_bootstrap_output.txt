@@ -1,0 +1,45 @@
+==============================================================================================================
+STEP 36I-C — SYNTHETIC SEGMENT-AWARE BOOTSTRAP AND BH-FDR PREFLIGHT
+==============================================================================================================
+
+[1] VERIFY FROZEN INPUTS AND ACCESS LOCK
+PASS: 36i_candidate_sequence_eligible_keys_DRAFT.csv
+PASS: 36i_b2_v2_synthetic_gpu_results_DRAFT.json
+PASS: 35_final_test_evaluation_contract_freeze_manifest.json
+PASS — final-test access preserved
+PASS — eight-architecture synthetic GPU preflight verified
+
+[2] VERIFY THE TWO STRUCTURAL EVALUATION PERIODS
+PASS — 48 consecutive dates in segment 0
+PASS — 217 consecutive dates in segment 1
+PASS — 20 stocks per date
+
+[3] CHECK CIRCULAR BLOCKS NEVER CROSS THE GAP
+PASS — segment 0 wraps only within its 48 dates
+PASS — segment 1 wraps only within its 217 dates
+
+[4] GENERATE SYNTHETIC LABELS AND PREDICTIONS
+PASS — 24 synthetic architecture-by-horizon tests
+PASS — no real labels or model predictions accessed
+
+[5] SEGMENT-STRATIFIED CIRCULAR MOVING-BLOCK BOOTSTRAP
+PASS — L=10, replicates=2000, segment allocations=48+217, cross-boundary blocks=0
+PASS — L=20, replicates=2000, segment allocations=48+217, cross-boundary blocks=0
+PASS — L=40, replicates=2000, segment allocations=48+217, cross-boundary blocks=0
+
+[6] CHECK BENJAMINI-HOCHBERG FDR
+PASS — independent BH numerical oracle
+PASS — 24 synthetic tests, primary block length L=20
+PASS — no architecture or seed selection
+
+[7] WRITE SYNTHETIC-ONLY AUDIT REPORT
+Report: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/step36i_c_synthetic_bootstrap_draft/36i_c_synthetic_bootstrap_DRAFT.json
+Report SHA256: d939f1adb3ff882c88fb529b591c66f24d6fdb95e28bc13a2bad375903a21775
+
+==============================================================================================================
+STEP 36I-C SYNTHETIC STATISTICAL PREFLIGHT PASSED
+Real final-test observations accessed: FALSE
+Frozen statistical contract changed: FALSE
+Production bootstrap authorized: FALSE
+Further raw-test access authorized: FALSE
+==============================================================================================================

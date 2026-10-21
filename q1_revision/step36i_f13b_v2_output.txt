@@ -1,0 +1,33 @@
+======================================================================================================
+STEP 36I-F13B v2 — SCHEMA-CORRECTED CAUSAL-HISTORY ELIGIBILITY PROOF
+======================================================================================================
+[1] FROZEN INPUT AUTHENTICATION AND RAW-TEST BOUNDARY
+PASS — Step10, Step12, candidate and Step35 hashes; Step08 signed manifest
+PASS — excluded 2025-03-18; access ledger 2 reads/0 scored; no sealed-test parquet
+Step08 manifest SHA256: dd4e850de15f752425c6bf3df895010f089f5ad32459cb97046744871b5680a8
+[2] STEP08 FULL-VS-COMPLETE WARM-UP AND CONTINUITY RECONCILIATION
+PASS — segment 0: raw=2268 dates, complete=2235 dates, first raw=2016-01-04, first complete=2016-02-19, 33 warm-up dates
+PASS — segment 1: raw=314 dates, complete=281 dates, first raw=2025-03-19, first complete=2025-05-12, 33 warm-up dates
+PASS — exactly 66 incomplete dates, all at segment starts; no later internal missingness
+[3] DEVELOPMENT HISTORY + NON-LABEL TEST STRUCTURE + ORIGINAL ELIGIBILITY
+PASS — Step08 session_number / Step10 market_session_id date-key crosswalk: {0: 0, 1: 1}
+PASS — 43,640 signed development rows + 6,680 non-label test keys = 50,320 complete keys
+PASS — exact ticker/date/segment equality: Step08 complete = Step10 membership
+PASS — Step10 full structural membership = development/test union
+[4] INDEPENDENT PER-ENDPOINT 60-SESSION CAUSAL WINDOW CHECK
+PASS — all 6,480 original endpoints assessed by same-ticker/same-segment history
+PASS — precisely 1,180 fail because complete history has only 1..59 sessions
+PASS — all 20 stocks lose the same 59 dates (2025-05-12 through 2025-07-31)
+PASS — 5,300/265 independently eligible endpoints equal signed candidate keys exactly
+PASS — first segment-1 valid 60-session window ends 2025-08-01
+[5] ORIGINAL ARTIFACT/ACCESS IMMUTABILITY AND SCIENTIFIC BOUNDARIES
+PASS — original Step35 and historical access marker remain unchanged
+OPEN — exclusion-window regime/covariate selection-bias assessment
+OPEN — segment-stratified inferential validity / scientific amendment decision
+OPEN — independent sign-off and explicit third raw-test read authorization
+======================================================================================================
+STEP 36I-F13B v2 PASS — SCHEMA-CORRECTED CAUSAL-HISTORY EXCLUSION PROOF
+Sealed final-test parquet opened: FALSE | Test predictors/labels read: FALSE
+GPU: FALSE | Test scored: FALSE | Original artifacts modified: FALSE
+Amendment approved: FALSE | Third access authorized: FALSE | Production: DENIED
+======================================================================================================

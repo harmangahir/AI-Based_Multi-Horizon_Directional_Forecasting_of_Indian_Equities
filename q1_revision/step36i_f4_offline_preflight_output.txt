@@ -1,0 +1,21 @@
+============================================================================================================
+STEP 36I-F4 — POST-FREEZE SEGMENT-STRATIFIED BOOTSTRAP / FDR: OFFLINE REVIEW
+============================================================================================================
+[1] FROZEN F1/F2/F3/E2 SOURCES AND ORIGINAL STEP35 STATISTICAL CONTRACT
+PASS — frozen source fingerprints and prespecified BA > 0.5, B=2000, L=20, BH-family=24
+PASS — WSL frozen artifacts, two historical reads, zero scored, no new approval
+[2] IN-MEMORY STATISTICAL INTERFACE / SYNTHETIC F1 ENSEMBLES
+[3] STRATIFIED RESAMPLING, BH FAMILY, SENSITIVITY AND EXPLORATORY COMPARISONS
+PASS — fixed 48/217-session allocation, same-date 20-stock clusters, no cross-segment blocks
+PASS — 2,000 deterministic replicates at L=10,20,40; primary L=20
+PASS — 72 synthetic inference rows; 24 primary BH-adjusted q-values; 84 exploratory pairwise CIs
+PASS — 24 exact BA comparisons to audited F1 synthetic scoring; BH numerical oracle
+[4] FAIL-CLOSED NEGATIVE CONTROLS
+PASS — bad cohort, misalignment, segment drift, thresholds, ensemble, single class and FDR controls rejected
+PASS — WSL historical access marker unchanged
+============================================================================================================
+STEP 36I-F4: PASS — SYNTHETIC STATISTICAL INTEGRATION ONLY
+Real test opened: FALSE | GPU: FALSE | Real scored: FALSE
+Original Step35 changed: FALSE | Amendment approved: FALSE | Third read authorized: FALSE
+Production CLI: DENIED | Next: independent statistical review and remaining access/transaction integration
+============================================================================================================

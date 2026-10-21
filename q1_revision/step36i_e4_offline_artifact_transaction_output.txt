@@ -1,0 +1,37 @@
+=========================================================================================================
+STEP 36I-E4 — OFFLINE SYNTHETIC ARTIFACT TRANSACTION PREFLIGHT
+=========================================================================================================
+
+[1] IMMUTABILITY, ACCESS HISTORY AND OUTPUT NAMESPACE
+PASS: 36i_d2f_full_synthetic_rehearsal_DRAFT.json
+PASS: 36i_d2g_synthetic_scoring_DRAFT.json
+PASS: 36i_e3_isolated_runner_review_DRAFT.json
+PASS: 36i_candidate_sequence_eligible_keys_DRAFT.csv
+PASS: 35_final_test_evaluation_contract_freeze_manifest.json
+PASS: step36_one_time_final_test_materialization_inference_scoring_v1.py
+PASS — 2 historical raw reads; 0 scored; production namespace untouched
+
+[2] STRUCTURAL ORDER AND FROZEN THRESHOLDS
+PASS — 265 ordered dates, 20-stock clusters, 24 frozen thresholds
+
+[3] REPLAY SAVED SYNTHETIC PREDICTIONS; NO GPU OR REAL LABELS
+PASS — DLINEAR: five-seed replay + 3 synthetic scores
+PASS — NLINEAR: five-seed replay + 3 synthetic scores
+PASS — PATCHTST: five-seed replay + 3 synthetic scores
+PASS — TIMESNET: five-seed replay + 3 synthetic scores
+PASS — ITRANSFORMER: five-seed replay + 3 synthetic scores
+PASS — FREDFORMER: five-seed replay + 3 synthetic scores
+PASS — FRNET: five-seed replay + 3 synthetic scores
+PASS — MLF: five-seed replay + 3 synthetic scores
+PASS — 8 synthetic ensemble NPZ, 24 metric rows, 42,400 long-form prediction rows
+
+[4] COMMIT HASHED SYNTHETIC TRANSACTION WITHOUT OVERWRITE
+PASS — all committed artifacts independently rehashed
+COMMITTED: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/step36i_e4_synthetic_artifact_transaction_draft
+REPORT: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/step36i_e4_synthetic_artifact_transaction_draft/36i_e4_synthetic_transaction_DRAFT.json
+REPORT SHA256: 30fbd08cecba4e65eb427358c6a24c9d28b984bdf889afc83668a6c9952ab925
+=========================================================================================================
+STEP 36I-E4 SYNTHETIC TRANSACTION PASS — PRODUCTION STILL DISABLED
+40 frozen seed outputs reused; GPU executed: FALSE
+Sealed test opened: FALSE | Test scored: FALSE | Additional read authorized: FALSE
+=========================================================================================================

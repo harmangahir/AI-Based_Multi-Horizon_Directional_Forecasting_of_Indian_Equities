@@ -1,0 +1,17 @@
+===================================================================================================
+STEP 36I-F22 — AUTHORITY/INPUT/JOURNAL BINDING AT PHASE A (REVIEW ONLY)
+===================================================================================================
+[1] FROZEN F20/F21/STEP35/OWNER APPROVAL AND HISTORICAL ACCESS
+PASS — source hashes and frozen records verified; original marker remains 2 reads / 0 scored
+[2] CONCRETE BOUND SINGLE-OPEN READER -> JOURNAL -> PHASE A CONSUMER
+PASS — one synthetic source, completed journal digest and bytes supplied to same consumer
+PASS — replay, post-reservation crash, source mismatch and journal tamper rejected
+[3] EXPLICIT REMAINING RELEASE BOUNDARIES
+OPEN — real source path / signed access decision and independent signoff not provided
+OPEN — actual F20 materializer and live output mapping not connected in F22 fixture
+OPEN — independently reviewed live journal/concurrency architecture and release CLI
+===================================================================================================
+F22 PASS — REVIEW-ONLY AUTHORITY/JOURNAL BOUNDARY; PRODUCTION ACCESS DENIED
+Real held-out data opened: FALSE | GPU: FALSE | Final-test scored: FALSE
+Third raw-test read authorized: FALSE | Production CLI: DENIED
+===================================================================================================

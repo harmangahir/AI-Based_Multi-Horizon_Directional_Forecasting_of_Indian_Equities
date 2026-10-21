@@ -1,0 +1,8 @@
+PASS — signed owner authorization, Phase A and 40 original seeds
+PASS — 23/23 immutable committed results, primary/ML row counts and preserved failure evidence
+F29R7 RECEIPT-ONLY POSTCOMMIT RECOVERY PASS
+Committed evaluation: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_test_evaluation/step36i_amended_predictions/completed_evaluation
+Published metrics: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/36i_amended_final_test_metrics.csv
+Published receipt: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/36i_amended_final_test_evaluation_manifest.json
+Receipt SHA256: 637598ea722cf6083a3797d6de467ad91c6d3287fb2819edb92e90ff850af628
+Raw test reopened: FALSE | GPU inference: FALSE | Bootstrap rerun: FALSE

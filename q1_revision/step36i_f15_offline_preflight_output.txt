@@ -1,0 +1,17 @@
+===========================================================================================================
+STEP 36I-F15 — DURABLE PRE-INFERENCE MATERIALIZATION HANDOFF (SYNTHETIC ONLY)
+===========================================================================================================
+[1] TEST/PRODUCTION DENIAL AND SEPARATE MATERIALIZATION CONTRACT
+PASS — F13E/F14/F3/Step35/candidate frozen hashes; 2 reads/0 scored; real output vacant
+[2] FULL-SIZED SYNTHETIC ARRAY PERSISTENCE AND INDEPENDENT READ-BACK
+PASS — 5300x60x63 float32 sequences + 5300x3 synthetic labels + exact keys, 80,306,173 artifact bytes
+[3] ATOMIC COMMIT, REHASH, DUPLICATE-REPLAY AND PROVENANCE NEGATIVE CONTROLS
+PASS — durable temporary fixture commit, byte verification, no-replace, provenance and traversal denial
+[4] LIVE ACCESS AND LEGACY IMMUTABILITY
+PASS — historical marker and seven-path real output namespace unchanged
+===========================================================================================================
+STEP 36I-F15 PASS — SYNTHETIC DURABLE ARRAY HANDOFF ONLY
+Raw final test opened: FALSE | Real GPU inference: FALSE | Real test scored: FALSE
+Independent methodological review: PENDING | Third access authorized: FALSE | Production: DENIED
+NEXT — independently review the two-phase production materialization/inference release
+===========================================================================================================

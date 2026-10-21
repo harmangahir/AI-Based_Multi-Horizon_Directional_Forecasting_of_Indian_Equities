@@ -1,0 +1,14 @@
+{
+  "stage": "36I-E3",
+  "status": "PASS_BUNDLE_ONLY_OFFLINE_REVIEW",
+  "bundle_sha256": "9a425d223d2c4c301aa8fb6df69c58b2f2047e2d719c8eee5bbf3b713b690851",
+  "source_sha256": "b52d7cb2c67a9f0c0e6631bed4a70c7a99edec1f4af63fb0dba61751e5e1d6d8",
+  "original_scientific_contract_modified": false,
+  "project_live_ledger_checked_in_sandbox": false,
+  "full_live_wsl_offline_check_pending": true,
+  "production_runner_complete": false,
+  "production_execution_enabled": false,
+  "sealed_test_accessed": false,
+  "real_test_scored": false,
+  "third_test_access_authorized": false
+}

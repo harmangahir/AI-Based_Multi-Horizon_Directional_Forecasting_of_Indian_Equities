@@ -1,0 +1,20 @@
+==============================================================================================================
+STEP 36I-F6 — INTEGRATED EVALUATION AND ATOMIC ARTIFACT TRANSACTION (SYNTHETIC ONLY)
+==============================================================================================================
+[1] F1–F5 SOURCE FINGERPRINTS, E2 CONTRACT AND UNAPPROVED ACCESS STATUS
+PASS — reviewed sources/Step35 identity intact; protocol unapproved; real access disabled
+PASS — historical marker says 2 reads, 0 scoring; 7 amended real output paths vacant
+[2] ACTUAL F1 FIVE-SEED SCORER + F4 BOOTSTRAP/FDR ON SYNTHETIC 5300-ROW PANEL
+PASS — 40 seed arrays -> 8 ensembles -> 42,400 prediction rows + 24 metrics
+PASS — 72 bootstrap/FDR rows, 24 BH primary q-values, 84 exploratory pairs
+[3] F3 JOURNAL AND ATOMIC-NO-REPLACE COMMIT OF REAL-SHAPED SYNTHETIC OUTPUTS
+PASS — 4,363,233 synthetic result bytes committed then independently rehashed in tempdir
+PASS — committed CSV rows read back; duplicate reservation, precommit crash, replay, tamper rejected
+[4] ORIGINAL ARTIFACT IMMUTABILITY / PRODUCTION ENTRYPOINT DENIAL
+PASS — access marker and frozen files unchanged; amended namespace untouched
+==============================================================================================================
+STEP 36I-F6: PASS — FULL-SIZED SYNTHETIC IN-MEMORY SCORING -> STATS -> ATOMIC COMMIT
+Real test read: FALSE | Real scoring: FALSE | GPU: FALSE | Production runner: DISABLED
+Protocol amendment approved: FALSE | Third raw-test access authorized: FALSE
+REMAINING: reviewed real loader + production durable journal/transaction; formal approval and explicit authorization
+==============================================================================================================

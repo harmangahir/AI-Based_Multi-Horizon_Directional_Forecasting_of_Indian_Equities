@@ -1,0 +1,51 @@
+
+[1] IMMUTABLE SOURCE AND CONTRACT VERIFICATION
+PASS: step36_one_time_final_test_materialization_inference_scoring_v1.py
+PASS: 10_split_membership.parquet
+PASS: 36i_candidate_sequence_eligible_keys_DRAFT.csv
+PASS: 36i_d2b_locked_contract_DRAFT.json
+PASS: 35_final_test_evaluation_contract_freeze_manifest.json
+PASS: 14_model_array_manifest.json
+PASS — two historical reads preserved
+PASS — production access remains denied
+
+[2] AMENDED OUTPUT PATH ISOLATION
+RESERVED: array_directory step36i_amended_final_test_arrays
+RESERVED: materialization_manifest 36i_amended_final_test_materialization_manifest.json
+RESERVED: prediction_directory step36i_amended_predictions
+RESERVED: evaluation_manifest 36i_amended_final_test_evaluation_manifest.json
+RESERVED: metrics_csv 36i_amended_final_test_metrics.csv
+RESERVED: access_journal 36i_amended_final_test_access_journal.json
+RESERVED: failure_log 36i_amended_final_test_execution_failure.json
+PASS — no amended output paths occupied
+
+[3] STRUCTURAL PANEL AND FROZEN MODEL INTERFACE
+PASS — structural panel: 50320
+PASS — ordered features: 63
+PASS — ticker IDs: 20
+
+[4] VERIFY NEW AMENDED COHORT SELECTOR
+PASS — original 6480/324 preserved
+PASS — proposed 5300/265 selected
+
+[5] TEST FAIL-CLOSED COHORT SELECTION
+PASS — missing candidate key rejected
+PASS — duplicate candidate key rejected
+
+[6] SYNTHETIC PREDICTOR MATERIALIZATION
+PASS — amended selector + actual 60-session builder
+PASS — synthetic tensor: (5300, 60, 63)
+PASS — 20-stock cross-sections remain balanced
+
+[7] WRITE OFFLINE-ONLY DRAFT REPORT
+Report: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/step36i_d2d_amended_scaffold_draft/36i_d2d_amended_scaffold_DRAFT.json
+Report SHA256: 4a95da59c7f9b04b9568a54ff301e2ceaddbe5ddaa1f58fcf9b66696d015226c
+
+==============================================================================================================
+STEP 36I-D2d OFFLINE SCAFFOLD PREFLIGHT PASSED
+Original Step-36 source modified: FALSE
+Original Step-35 contract modified: FALSE
+Sealed final-test parquet opened: FALSE
+Held-out predictions generated: FALSE
+Additional raw-test access authorized: FALSE
+==============================================================================================================

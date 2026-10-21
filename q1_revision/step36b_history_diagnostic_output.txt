@@ -1,0 +1,127 @@
+==============================================================================================================
+STEP 36B — READ-ONLY CAUSAL HISTORY DIAGNOSTIC
+==============================================================================================================
+
+[1] PRESERVED TEST-ACCESS STATE
+state: RAW_TEST_REOPENED_FOR_TECHNICAL_RECOVERY
+raw_test_filesystem_open_count_completed: 2
+raw_test_filesystem_open_count_planned: 2
+technical_recovery_reopen_count: 1
+final_test_scored: False
+raw_test_reopen_prohibited: NOT RECORDED
+
+Materialization manifest exists: False
+
+[2] LATEST FAILURE RECORD
+{
+  "access_marker_state": "RAW_TEST_REOPENED_FOR_TECHNICAL_RECOVERY",
+  "array_manifest_exists": false,
+  "exception": "Insufficient causal history: ('ASIANPAINT.NS', 1) 2025-05-12",
+  "exception_type": "RuntimeError",
+  "failed_at_utc": "2026-10-13T06:20:23+00:00",
+  "final_manifest_exists": false,
+  "schema_version": "1.0",
+  "script": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.py",
+  "script_sha256": "6de04ba7e167449101e2e16bab47ca4ce088f11284c4cbc93b61a6cfbb979f12",
+  "status": "FAIL",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.py\", line 1584, in main\n    return execute()\n           ^^^^^^^^^\n  File \"/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.py\", line 1516, in execute\n    materialization = materialize_final_test(upstream)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.py\", line 960, in materialize_final_test\n    X_full, metadata = materialize_sequences(\n                       ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.py\", line 794, in materialize_sequences\n    raise RuntimeError(f\"Insufficient causal history: {key} {reference_date.date()}\")\nRuntimeError: Insufficient causal history: ('ASIANPAINT.NS', 1) 2025-05-12\n"
+}
+
+[3] VERIFY FROZEN MEMBERSHIP LEDGER
+Observed ledger SHA: 82772196c92e88f1926a75a70c42f5f19119d7245d93b8364455fd28642ee121
+PASS — frozen Step-10 ledger verified
+Ledger rows: 50320
+Diagnostic columns: ['Ticker', 'Date', 'outer_final_test_common_multitask', 'continuity_segment_id', 'market_session_id']
+Common eligible rows: 6480
+
+[4] INVESTIGATE FAILED ENDPOINT
+Failed endpoint:
+       Ticker       Date  outer_final_test_common_multitask  continuity_segment_id  market_session_id
+ASIANPAINT.NS 2025-05-12                               True                      1               2303
+
+Segment ID: 1
+First recorded date in same segment: 2025-05-12 00:00:00
+Same-segment rows through failed endpoint: 1
+Required causal history rows: 60
+At least 60 rows in ledger: False
+
+Recent same-segment dates:
+      Date  continuity_segment_id  market_session_id
+2025-05-12                      1               2303
+
+[5] GLOBAL FROZEN-ENDPOINT HISTORY FEASIBILITY
+Frozen eligible endpoints: 6480
+Endpoints with ledger-based 60-session history: 5300
+Endpoints lacking ledger-based 60-session history: 1180
+
+First 15 structural discrepancies:
+       Ticker       Date  continuity_segment_id  market_session_id  history_position
+ASIANPAINT.NS 2025-05-12                      1               2303                 0
+ASIANPAINT.NS 2025-05-13                      1               2304                 1
+ASIANPAINT.NS 2025-05-14                      1               2305                 2
+ASIANPAINT.NS 2025-05-15                      1               2306                 3
+ASIANPAINT.NS 2025-05-16                      1               2307                 4
+ASIANPAINT.NS 2025-05-19                      1               2308                 5
+ASIANPAINT.NS 2025-05-20                      1               2309                 6
+ASIANPAINT.NS 2025-05-21                      1               2310                 7
+ASIANPAINT.NS 2025-05-22                      1               2311                 8
+ASIANPAINT.NS 2025-05-23                      1               2312                 9
+ASIANPAINT.NS 2025-05-26                      1               2313                10
+ASIANPAINT.NS 2025-05-27                      1               2314                11
+ASIANPAINT.NS 2025-05-28                      1               2315                12
+ASIANPAINT.NS 2025-05-29                      1               2316                13
+ASIANPAINT.NS 2025-05-30                      1               2317                14
+
+Discrepancies by ticker:
+Ticker
+ASIANPAINT.NS    59
+AXISBANK.NS      59
+BAJFINANCE.NS    59
+BHARTIARTL.NS    59
+HDFCBANK.NS      59
+HINDUNILVR.NS    59
+ICICIBANK.NS     59
+INFY.NS          59
+ITC.NS           59
+KOTAKBANK.NS     59
+LT.NS            59
+MARUTI.NS        59
+NTPC.NS          59
+POWERGRID.NS     59
+RELIANCE.NS      59
+SBIN.NS          59
+SUNPHARMA.NS     59
+TCS.NS           59
+TITAN.NS         59
+ULTRACEMCO.NS    59
+
+[6] IDENTIFY FROZEN STEP-13 SOURCE RULES
+
+Source: step13_sequence_indices_v3.py
+Relevant matches: 68
+   29: Validation lookback policy
+  103: LOOKBACK = 60
+  110: ALLOW_VALIDATION_LOOKBACK_INTO_TRAIN = True
+  199: CROSS_BOUNDARY_AUDIT_CSV = cfg.AUDIT_DIR / "13_cross_boundary_lookback_audit.csv"
+  322:     configured_lookback = getattr(cfg, "LOOKBACK", LOOKBACK)
+  323:     if int(configured_lookback) != LOOKBACK:
+  325:             f"Configured lookback is {configured_lookback}, expected {LOOKBACK}."
+  329:     if hasattr(cfg, "USE_CAUSAL_CROSS_BOUNDARY_LOOKBACK"):
+  330:         if not bool(cfg.USE_CAUSAL_CROSS_BOUNDARY_LOOKBACK):
+  332:                 "Frozen configuration disables causal cross-boundary lookback."
+  335:     if hasattr(cfg, "REQUIRE_LOOKBACK_WITHIN_SAME_SPLIT"):
+  336:         if bool(cfg.REQUIRE_LOOKBACK_WITHIN_SAME_SPLIT):
+  338:                 "Frozen configuration still requires lookback inside one split."
+ 1025:         "market_session_id",
+ 1026:         "continuity_segment_id",
+ 1334:             "continuity_segment_id",
+ 1403:             row.continuity_segment_id
+ 1409:             row.market_session_id
+
+==============================================================================================================
+READ-ONLY DIAGNOSTIC FINISHED
+Sealed final-test parquet accessed: FALSE
+Frozen source or artifacts modified: FALSE
+Final-test metrics computed: FALSE
+No additional raw-test reread authorized
+==============================================================================================================

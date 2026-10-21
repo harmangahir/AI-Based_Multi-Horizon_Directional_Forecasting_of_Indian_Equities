@@ -1,0 +1,152 @@
+==============================================================================================================
+STEP 36I-D2f — FULL 40-CHECKPOINT SYNTHETIC GPU REHEARSAL
+==============================================================================================================
+Synthetic evaluation observations: 5300
+Architectures: 8
+Seeds: (42, 43, 44, 45, 46)
+Physical row order: Date, Ticker
+Raw sealed test access: PROHIBITED
+
+RUN DLINEAR        seed=42 batch=128 tail=52
+PASS — DLINEAR        seed=42 runtime=0.643s peak=56.0 MiB
+
+RUN DLINEAR        seed=43 batch=128 tail=52
+PASS — DLINEAR        seed=43 runtime=0.568s peak=56.0 MiB
+
+RUN DLINEAR        seed=44 batch=128 tail=52
+PASS — DLINEAR        seed=44 runtime=0.608s peak=56.0 MiB
+
+RUN DLINEAR        seed=45 batch=128 tail=52
+PASS — DLINEAR        seed=45 runtime=0.566s peak=56.0 MiB
+
+RUN DLINEAR        seed=46 batch=128 tail=52
+PASS — DLINEAR        seed=46 runtime=0.593s peak=56.0 MiB
+
+RUN NLINEAR        seed=42 batch=128 tail=52
+PASS — NLINEAR        seed=42 runtime=0.333s peak=54.0 MiB
+
+RUN NLINEAR        seed=43 batch=128 tail=52
+PASS — NLINEAR        seed=43 runtime=0.346s peak=54.0 MiB
+
+RUN NLINEAR        seed=44 batch=128 tail=52
+PASS — NLINEAR        seed=44 runtime=0.384s peak=54.0 MiB
+
+RUN NLINEAR        seed=45 batch=128 tail=52
+PASS — NLINEAR        seed=45 runtime=0.345s peak=54.0 MiB
+
+RUN NLINEAR        seed=46 batch=128 tail=52
+PASS — NLINEAR        seed=46 runtime=0.36s peak=54.0 MiB
+
+RUN PATCHTST       seed=42 batch=64 tail=52
+PASS — PATCHTST       seed=42 runtime=1.864s peak=332.0 MiB
+
+RUN PATCHTST       seed=43 batch=64 tail=52
+PASS — PATCHTST       seed=43 runtime=1.699s peak=332.0 MiB
+
+RUN PATCHTST       seed=44 batch=64 tail=52
+PASS — PATCHTST       seed=44 runtime=1.659s peak=332.0 MiB
+
+RUN PATCHTST       seed=45 batch=64 tail=52
+PASS — PATCHTST       seed=45 runtime=1.555s peak=332.0 MiB
+
+RUN PATCHTST       seed=46 batch=64 tail=52
+PASS — PATCHTST       seed=46 runtime=1.688s peak=332.0 MiB
+
+RUN TIMESNET       seed=42 batch=64 tail=52
+PASS — TIMESNET       seed=42 runtime=20.746s peak=374.0 MiB
+
+RUN TIMESNET       seed=43 batch=64 tail=52
+PASS — TIMESNET       seed=43 runtime=20.394s peak=374.0 MiB
+
+RUN TIMESNET       seed=44 batch=64 tail=52
+PASS — TIMESNET       seed=44 runtime=20.692s peak=374.0 MiB
+
+RUN TIMESNET       seed=45 batch=64 tail=52
+PASS — TIMESNET       seed=45 runtime=20.877s peak=374.0 MiB
+
+RUN TIMESNET       seed=46 batch=64 tail=52
+PASS — TIMESNET       seed=46 runtime=21.64s peak=374.0 MiB
+
+RUN ITRANSFORMER   seed=42 batch=128 tail=52
+PASS — ITRANSFORMER   seed=42 runtime=0.62s peak=98.0 MiB
+
+RUN ITRANSFORMER   seed=43 batch=128 tail=52
+PASS — ITRANSFORMER   seed=43 runtime=0.645s peak=98.0 MiB
+
+RUN ITRANSFORMER   seed=44 batch=128 tail=52
+PASS — ITRANSFORMER   seed=44 runtime=0.611s peak=98.0 MiB
+
+RUN ITRANSFORMER   seed=45 batch=128 tail=52
+PASS — ITRANSFORMER   seed=45 runtime=0.581s peak=98.0 MiB
+
+RUN ITRANSFORMER   seed=46 batch=128 tail=52
+PASS — ITRANSFORMER   seed=46 runtime=0.531s peak=98.0 MiB
+
+RUN FREDFORMER     seed=42 batch=16 tail=4
+PASS — FREDFORMER     seed=42 runtime=5.59s peak=352.0 MiB
+
+RUN FREDFORMER     seed=43 batch=16 tail=4
+PASS — FREDFORMER     seed=43 runtime=5.685s peak=352.0 MiB
+
+RUN FREDFORMER     seed=44 batch=16 tail=4
+PASS — FREDFORMER     seed=44 runtime=5.689s peak=352.0 MiB
+
+RUN FREDFORMER     seed=45 batch=16 tail=4
+PASS — FREDFORMER     seed=45 runtime=5.465s peak=352.0 MiB
+
+RUN FREDFORMER     seed=46 batch=16 tail=4
+PASS — FREDFORMER     seed=46 runtime=5.717s peak=352.0 MiB
+
+RUN FRNET          seed=42 batch=64 tail=52
+PASS — FRNET          seed=42 runtime=3.532s peak=820.0 MiB
+
+RUN FRNET          seed=43 batch=64 tail=52
+PASS — FRNET          seed=43 runtime=3.581s peak=820.0 MiB
+
+RUN FRNET          seed=44 batch=64 tail=52
+PASS — FRNET          seed=44 runtime=3.44s peak=820.0 MiB
+
+RUN FRNET          seed=45 batch=64 tail=52
+PASS — FRNET          seed=45 runtime=3.499s peak=820.0 MiB
+
+RUN FRNET          seed=46 batch=64 tail=52
+PASS — FRNET          seed=46 runtime=3.512s peak=820.0 MiB
+
+RUN MLF            seed=42 batch=32 tail=20
+PASS — MLF            seed=42 runtime=4.711s peak=928.0 MiB
+
+RUN MLF            seed=43 batch=32 tail=20
+PASS — MLF            seed=43 runtime=4.747s peak=928.0 MiB
+
+RUN MLF            seed=44 batch=32 tail=20
+PASS — MLF            seed=44 runtime=4.579s peak=928.0 MiB
+
+RUN MLF            seed=45 batch=32 tail=20
+PASS — MLF            seed=45 runtime=4.589s peak=928.0 MiB
+
+RUN MLF            seed=46 batch=32 tail=20
+PASS — MLF            seed=46 runtime=4.551s peak=928.0 MiB
+
+[2] FIVE-SEED SYNTHETIC PROBABILITY ENSEMBLES
+PASS — DLINEAR        five-seed mean and three frozen thresholds
+PASS — NLINEAR        five-seed mean and three frozen thresholds
+PASS — PATCHTST       five-seed mean and three frozen thresholds
+PASS — TIMESNET       five-seed mean and three frozen thresholds
+PASS — ITRANSFORMER   five-seed mean and three frozen thresholds
+PASS — FREDFORMER     five-seed mean and three frozen thresholds
+PASS — FRNET          five-seed mean and three frozen thresholds
+PASS — MLF            five-seed mean and three frozen thresholds
+
+[3] PRESERVE SYNTHETIC-ONLY AUDIT
+
+==============================================================================================================
+STEP 36I-D2f — SYNTHETIC GPU REHEARSAL PASS
+Checkpoint inferences: 40/40
+Five-seed ensembles: 8/8
+Frozen thresholds exercised: 24/24
+Report: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/step36i_d2f_full_synthetic_inference_draft/36i_d2f_full_synthetic_rehearsal_DRAFT.json
+Report SHA256: 197ad07632bfdcd5134ca959c132a896a75711986500d72d7713d681e56370ab
+Raw final-test opened: FALSE
+Production final-test predictions: FALSE
+Further test access authorized: FALSE
+==============================================================================================================

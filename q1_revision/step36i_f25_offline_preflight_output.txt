@@ -1,0 +1,21 @@
+==========================================================================================================
+STEP 36I-F25 — JOURNAL-LOCKED PHASE A INTEGRATION (REVIEW ONLY)
+==========================================================================================================
+[1] REVIEWED F1/F18/F20/F22/F23/F24 SOURCES AND UPSTREAM BOUNDARIES
+PASS — source SHA-256, source interfaces, frozen Step35 and owner amendment
+PASS — F23/F1 original seven-path output map: bbd66ccc6de6232575329c8da5f7e0238814c1049290098e21b44aab36d586bb
+[2] F22 SOURCE -> F24 JSONL CODEC/EXCLUSIVE LOCK -> F18 ATOMIC COMMIT
+PASS — same verified fixture bytes and journal consumed by atomic Phase A adapter
+PASS — lock held across reservation/read/codec/commit; independent rehash
+PASS — duplicate/replay, interruption, journal/asset corruption and concurrent lock rejected
+[3] LIVE WSL ACCESS STATE AND OUTPUT IMMUTABILITY
+PASS — historical marker 2 reads/0 scored; 7 live paths vacant/untouched
+[4] OPEN RELEASE ISSUES / NO FALSE APPROVAL
+OPEN — wire separately authorized raw-test loader and F20 genuine data materializer under this lock
+OPEN — independent source and methodological sign-off; real output path/format decision
+OPEN — independently verified distinct third-read permit and safe final Phase B controller
+==========================================================================================================
+STEP 36I-F25 PASS — SOURCE-BOUND TEMPORARY SYNTHETIC INTEGRATION ONLY
+Real raw test opened: FALSE | GPU: FALSE | Test scored: FALSE
+Third read authorized: FALSE | Production CLI: DENIED
+==========================================================================================================

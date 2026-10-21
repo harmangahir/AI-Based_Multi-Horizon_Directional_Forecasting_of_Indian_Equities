@@ -1,0 +1,22 @@
+==========================================================================================================
+STEP 36I-F2 — INDEPENDENT F1 SOURCE REVIEW (OFFLINE; NO TEST FILE ACCESS)
+==========================================================================================================
+[1] SOURCE IDENTITY, SIGNED E2 BUNDLE, HISTORICAL CONTRACT
+PASS — F1 source digest, E2 archive and 4 core frozen artifacts; amendment remains unapproved
+[2] INDEPENDENT AST REVIEW OF FROZEN SPEC AND CLI GATES
+PASS — original 6480/324 interface; CUDA-order fix; guarded CLI; three denied production entrypoints
+[3] INDEPENDENT IN-MEMORY SPEC AND SELECTOR NEGATIVE CONTROLS
+PASS — frozen 40 model-seeds, 24 thresholds, 5300 ordered keys; selector and negative controls
+[4] SCORING FUNCTION WITH NONTRIVIAL INDEPENDENT SYNTHETIC ORACLE
+PASS — 8 five-seed ensemble averages; all 24 BA/AUC/MCC/PR-AUC/Brier oracles; negative controls
+[5] REVIEW FINDINGS AND EXECUTION STATUS
+REMAINING — independent authorized raw-file loader and durable access journal: NOT IMPLEMENTED
+REMAINING — isolated atomic real-artifact commit, failure/resume policy: NOT IMPLEMENTED
+REMAINING — real-data integration of segment-stratified bootstrap and BH-FDR: NOT IMPLEMENTED
+REMAINING — end-to-end real checkpoint/sequence audit: NOT EXECUTED
+REMAINING — formal post-freeze protocol review and third-read authorization: NOT GRANTED
+==========================================================================================================
+STEP 36I-F2 PASS — OFFLINE SOURCE, SELECTOR AND SYNTHETIC SCORING AUDIT ONLY
+Real test opened: FALSE | Real GPU inference: FALSE | Test scored: FALSE
+Production CLI: DENIED | Third test read authorized: FALSE
+==========================================================================================================

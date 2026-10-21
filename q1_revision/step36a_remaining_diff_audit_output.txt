@@ -1,0 +1,167 @@
+==============================================================================================================
+STEP 36A — REMAINING RECOVERY SOURCE DIFFERENCES
+==============================================================================================================
+Total diff lines       : 551
+Previously displayed   : 400
+Remaining lines        : 151
+
+[1] REMAINING SOURCE DIFFERENCES
+--------------------------------------------------------------------------------------------------------------
+     regime_id = metadata["regime_id"].to_numpy(dtype=np.int64)
+     X_stock = X_full[:, :, :47].copy()
+     X_market = X_full[:, :, 47:].copy()
+ 
+     require_equal(X_full.shape, (EXPECTED_COMMON_ROWS, 60, 63), "X_full shape")
+     require_equal(X_stock.shape, (EXPECTED_COMMON_ROWS, 60, 47), "X_stock shape")
+     require_equal(X_market.shape, (EXPECTED_COMMON_ROWS, 60, 16), "X_market shape")
+     require_equal(y_direction.shape, (EXPECTED_COMMON_ROWS, 3), "y_direction shape")
+-    if not np.array_equal(X_stock, X_full[:, :, :47]) or not np.array_equal(X_market, X_full[:, :, 47:]):
++    if not np.array_equal(X_stock, X_full[:, :, :47]) or not np.array_equal(
++        X_market, X_full[:, :, 47:]
++    ):
+         raise RuntimeError("Final-test modality slice mismatch.")
+     if not np.isin(y_direction, [0, 1]).all():
+         raise RuntimeError("Final-test y_direction is not binary.")
+     if not np.isin(regime_id, [0, 1, 2]).all():
+         raise RuntimeError("Final-test regime IDs are invalid.")
+ 
+-    staging = cfg.FEATURE_DATA_DIR / f"_step36_final_test_staging_{os.getpid()}_{int(time.time())}"
++    staging = cfg.FEATURE_DATA_DIR / (
++        f"_step36_final_test_staging_{os.getpid()}_{int(time.time())}"
++    )
+     staging.mkdir(parents=True, exist_ok=False)
+     try:
+         save_array(staging / "36_final_test_X_full.npy", X_full)
+         save_array(staging / "36_final_test_X_stock.npy", X_stock)
+         save_array(staging / "36_final_test_X_market.npy", X_market)
+         save_array(staging / "36_final_test_y_direction.npy", y_direction)
+         save_array(staging / "36_final_test_stock_id.npy", stock_id)
+         save_array(staging / "36_final_test_regime_id.npy", regime_id)
+-        metadata.to_parquet(staging / "36_final_test_metadata.parquet", index=False, engine="pyarrow", compression="snappy")
+-        if len(pd.read_parquet(staging / "36_final_test_metadata.parquet", engine="pyarrow")) != EXPECTED_COMMON_ROWS:
++        metadata.to_parquet(
++            staging / "36_final_test_metadata.parquet",
++            index=False,
++            engine="pyarrow",
++            compression="snappy",
++        )
++        if len(
++            pd.read_parquet(
++                staging / "36_final_test_metadata.parquet", engine="pyarrow"
++            )
++        ) != EXPECTED_COMMON_ROWS:
+             raise RuntimeError("Final-test metadata roundtrip row drift.")
+         if ARRAY_DIR.exists():
+-            raise RuntimeError(f"Unexpected existing Step-36 array directory:\n{ARRAY_DIR}")
++            raise RuntimeError(
++                f"Unexpected existing Step-36 array directory:\n{ARRAY_DIR}"
++            )
+         os.replace(staging, ARRAY_DIR)
+     except Exception:
+         if staging.exists():
+             shutil.rmtree(staging, ignore_errors=True)
+         raise
+ 
+-    artifacts = {p.name: artifact_record(p) for p in sorted(ARRAY_DIR.iterdir()) if p.is_file()}
++    artifacts = {
++        p.name: artifact_record(p)
++        for p in sorted(ARRAY_DIR.iterdir())
++        if p.is_file()
++    }
+     manifest = {
+         "schema_version": SCHEMA_VERSION,
+         "status": "STEP36_FINAL_TEST_MATERIALIZATION_COMPLETE",
+         "created_at_utc": utc_now(),
+         "step35_manifest_sha256": EXPECTED_STEP35_MANIFEST_SHA,
+         "step35_contract_fingerprint": EXPECTED_STEP35_CONTRACT_FP,
++        "step36a_recovery_amendment": {
++            "path": str(RECOVERY_AMENDMENT),
++            "sha256": sha256_file(RECOVERY_AMENDMENT),
++            "reason": (
++                "schema-only recovery using frozen Step-10 membership ledger; "
++                "no metrics existed before amendment"
++            ),
++        },
+         "raw_test": {
+             "path": str(raw_path),
+             "expected_sha256": expected_raw_sha,
+             "observed_sha256": observed_raw_sha,
+-            "filesystem_content_open_count": 1,
+-            "parsed_from_same_in_memory_bytes_used_for_hash": True,
++            "filesystem_content_open_count": 2,
++            "initial_authorized_open_count": 1,
++            "technical_recovery_reopen_count": 1,
++            "technical_recovery_reopen": True,
++            "parsed_from_same_in_memory_bytes_used_for_hash_on_each_open": True,
+             "rows": int(len(raw_test)),
+             "dates": int(raw_test["Date"].nunique()),
+             "stocks": int(raw_test["Ticker"].nunique()),
++        },
++        "structural_membership": {
++            "path": str(STEP10_MEMBERSHIP),
++            "sha256": sha256_file(STEP10_MEMBERSHIP),
++            "source_column": "outer_final_test_common_multitask",
++            "attached_column": "eligible_common_multitask",
++            "common_rows": int(raw_test["eligible_common_multitask"].sum()),
++            "membership_refit_or_recomputed_from_test_labels": False,
+         },
+         "transformation": {
+             "predictor_scaler_path": str(upstream["scaler_path"]),
+             "predictor_scaler_sha256": sha256_file(upstream["scaler_path"]),
+             "predictor_scaler_refit_on_test": False,
+@@ -795,14 +1075,16 @@
+         },
+         "artifacts": artifacts,
+     }
+     manifest["materialization_fingerprint"] = canonical_hash(manifest)
+     atomic_json(ARRAY_MANIFEST, manifest)
++
+     write_access_marker(
+-        "RAW_TEST_MATERIALIZED_AND_CLOSED",
++        "RAW_TEST_MATERIALIZED_AND_CLOSED_AFTER_TECHNICAL_RECOVERY",
+         observed_raw_test_sha256=observed_raw_sha,
+-        raw_test_filesystem_open_count_completed=1,
++        raw_test_filesystem_open_count_completed=2,
++        technical_recovery_reopen_count=1,
+         raw_test_reopen_prohibited=True,
+         materialization_manifest_path=str(ARRAY_MANIFEST),
+         materialization_manifest_sha256=sha256_file(ARRAY_MANIFEST),
+         final_test_scored=False,
+     )
+@@ -1134,11 +1416,14 @@
+             "step35_contract_fingerprint": EXPECTED_STEP35_CONTRACT_FP,
+         },
+         "one_time_test_access": {
+             "raw_test_path": materialization["raw_test"]["path"],
+             "raw_test_sha256": materialization["raw_test"]["observed_sha256"],
+-            "raw_test_filesystem_content_open_count": 1,
++            "raw_test_filesystem_content_open_count": 2,
++            "initial_authorized_open_count": 1,
++            "technical_recovery_reopen_count": 1,
++            "technical_recovery_reopen_before_scoring": True,
+             "raw_test_reopened_after_materialization": False,
+             "class_balance_seen_before_step35_freeze": False,
+             "metrics_computed_before_step35_freeze": False,
+         },
+         "materialization": {
+@@ -1180,11 +1465,12 @@
+     atomic_json(FINAL_MANIFEST, manifest)
+     final_sha = sha256_file(FINAL_MANIFEST)
+     atomic_text(FINAL_MANIFEST_SHA, f"{final_sha}  {FINAL_MANIFEST.name}\n")
+     write_access_marker(
+         "FINAL_TEST_OPENED_MATERIALIZED_INFERRED_SCORED",
+-        raw_test_filesystem_open_count_completed=1,
++        raw_test_filesystem_open_count_completed=2,
++        technical_recovery_reopen_count=1,
+         raw_test_reopen_prohibited=True,
+         final_test_scored=True,
+         final_manifest_path=str(FINAL_MANIFEST),
+         final_manifest_sha256=final_sha,
+         global_step36_fingerprint=manifest["global_step36_fingerprint"],
+
+==============================================================================================================
+READ-ONLY AUDIT COMPLETE
+Final-test parquet accessed: FALSE
+Source files modified: FALSE
+Final-test metrics computed: FALSE
+==============================================================================================================

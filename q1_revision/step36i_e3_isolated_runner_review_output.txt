@@ -1,0 +1,29 @@
+========================================================================================================
+STEP 36I-E3 — OFFLINE ISOLATED AMENDED RUNNER REVIEW
+========================================================================================================
+[1] VERIFY E2 BUNDLE AND ORIGINAL SCIENTIFIC CONTRACT
+PASS: recovered_step36_source.py
+PASS: step35_contract.json
+PASS: candidate_keys_DRAFT.csv
+PASS: synthetic_inference_report.json
+PASS: synthetic_scoring_report.json
+PASS: amendment_review_DRAFT.json
+PASS: frozen_thresholds.csv
+PASS: frozen_inference_plan.csv
+[2] ACCESS HISTORY: 2 completed reads, 0 real scorings; third read DENIED
+[3] CORRECTED COHORT: 6480 original, 5300 proposed, 1180 excluded
+PERIOD: {'segment': 0, 'sessions': 48, 'rows': 960, 'start': '2025-01-01', 'end': '2025-03-07'}
+PERIOD: {'segment': 1, 'sessions': 217, 'rows': 4340, 'start': '2025-08-01', 'end': '2026-06-22'}
+[4] FROZEN MODEL/THRESHOLD/BOOTSTRAP PLAN: PASS
+[5] FAIL-CLOSED ORIGINAL-COHORT PRECONDITION: PASS
+[6] RAW TEST PRODUCTION GATE: PASS (DENIED)
+[7] LOCAL SOURCE/STEP35/INFERENCE PLAN/THRESHOLD HASHES: PASS
+[8] LIVE LEDGER + EXACT SELECTOR + NEGATIVE CONTROLS: PASS
+[9] LIVE ACCESS MARKER MATCHES E2 SNAPSHOT: PASS
+[10] SEPARATE OUTPUT NAMESPACE: VACANT
+DRAFT REPORT: ../stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/step36i_e3_isolated_runner_review_draft/36i_e3_isolated_runner_review_DRAFT.json
+DRAFT SHA256: 4027e53e49ef918a3f3a3bc933908d327e233b741d387088279359b392fe1094
+========================================================================================================
+STEP 36I-E3 OFFLINE REVIEW COMPLETE — PRODUCTION DISABLED
+Raw-test access: NONE | Final-test scoring: NONE | Formal approval: NONE
+========================================================================================================

@@ -1,0 +1,32 @@
+
+============================================================================================================================================
+STEP 36 FAILURE
+============================================================================================================================================
+Traceback (most recent call last):
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.py", line 1298, in main
+    return execute()
+           ^^^^^^^^^
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.py", line 1230, in execute
+    materialization = materialize_final_test(upstream)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.py", line 713, in materialize_final_test
+    validate_opened_test(raw_test, upstream["features"])
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.py", line 546, in validate_opened_test
+    raise RuntimeError(f"Final-test panel missing required columns:\n{missing}")
+RuntimeError: Final-test panel missing required columns:
+['eligible_common_multitask']
+============================================================================================================================================
+Do not delete the access marker, materialized arrays, or partial prediction artifacts.
+============================================================================================================================================
+STEP 36 — ONE-TIME FINAL-TEST MATERIALIZATION, INFERENCE AND SCORING
+============================================================================================================================================
+MODE                         : EXECUTE
+Architecture selection       : PROHIBITED
+Best-seed selection          : PROHIBITED
+Threshold reoptimization     : PROHIBITED
+Post-test model promotion    : PROHIBITED
+--------------------------------------------------------------------------------------------------------------------------------------------
+[1] PRE-ACCESS FREEZE / UPSTREAM CONTRACT: PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+[2] ONE-TIME FINAL-TEST MATERIALIZATION
+Opening sealed final-test parquet ONCE...

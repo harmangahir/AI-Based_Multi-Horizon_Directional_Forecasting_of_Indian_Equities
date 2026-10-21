@@ -1,0 +1,181 @@
+============================================================================================================================================
+STEP 34 — FINAL-DEVELOPMENT REFIT EXECUTION
+============================================================================================================================================
+Experiment root       : /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026
+Final-development n   : 42,360
+Architectures         : 8
+Fixed seeds           : 42,43,44,45,46
+Total refits          : 40
+Validation            : NONE
+Early stopping        : NONE
+Checkpoint            : FINAL SCHEDULED EPOCH
+Final test            : LOCKED_NOT_OPENED
+--------------------------------------------------------------------------------------------------------------------------------------------
+[1] UPSTREAM FREEZES
+Step30 robustness freeze : VERIFIED
+Step32 thresholds        : VERIFIED
+Step33 refit schedule    : VERIFIED
+Step26 training engine   : EXECUTABLE == FROZEN
+Final-test state         : LOCKED_NOT_OPENED
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+[2] STEP-34 SOURCE FREEZE
+Source SHA256      : 2030d6719476107dfd0b1a5ec8fe4c4dd3d362bb10aafc4b6f3d9bd1841367e5
+Source fingerprint : b8c1629c0a173b044f5b8fe42a6b1d05072bbb514344c44f13a3d9b32a218e17
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+[3] FROZEN TRAINING PROTOCOL REFERENCE
+Source manifests      : 200 frozen robustness fits
+Architectures verified: 8/8
+Performance metrics   : NOT USED
+Reference SHA256      : 9d2c372aa4f3c54e70e8413895508aa3b840b231d7b4f68a3acbbda7b8a16644
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+[4] FINAL-REFIT EXECUTION PLAN
+Plan rows             : 40/40
+Total scheduled epochs: 65
+Plan SHA256           : 210ac4f01a4150a0f66f7a2370d9a2c268d9a8cda15d258b3789db3aa743ce7c
+Plan fingerprint      : 71e8099a5f0cbc66452ac335700078d72522b2104f4472715923b918536e1758
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+DLINEAR        seed=42 epochs= 1 mb=128
+DLINEAR        seed=43 epochs= 2 mb=128
+DLINEAR        seed=44 epochs= 1 mb=128
+DLINEAR        seed=45 epochs= 1 mb=128
+DLINEAR        seed=46 epochs= 3 mb=128
+NLINEAR        seed=42 epochs= 1 mb=128
+NLINEAR        seed=43 epochs= 1 mb=128
+NLINEAR        seed=44 epochs= 1 mb=128
+NLINEAR        seed=45 epochs= 1 mb=128
+NLINEAR        seed=46 epochs= 1 mb=128
+PATCHTST       seed=42 epochs= 1 mb= 64
+PATCHTST       seed=43 epochs= 1 mb= 64
+PATCHTST       seed=44 epochs= 1 mb= 64
+PATCHTST       seed=45 epochs= 1 mb= 64
+PATCHTST       seed=46 epochs= 1 mb= 64
+TIMESNET       seed=42 epochs= 2 mb= 64
+TIMESNET       seed=43 epochs= 4 mb= 64
+TIMESNET       seed=44 epochs= 2 mb= 64
+TIMESNET       seed=45 epochs= 2 mb= 64
+TIMESNET       seed=46 epochs= 3 mb= 64
+ITRANSFORMER   seed=42 epochs= 1 mb=128
+ITRANSFORMER   seed=43 epochs= 1 mb=128
+ITRANSFORMER   seed=44 epochs= 1 mb=128
+ITRANSFORMER   seed=45 epochs= 1 mb=128
+ITRANSFORMER   seed=46 epochs= 1 mb=128
+FREDFORMER     seed=42 epochs= 1 mb= 16
+FREDFORMER     seed=43 epochs= 1 mb= 16
+FREDFORMER     seed=44 epochs= 1 mb= 16
+FREDFORMER     seed=45 epochs= 1 mb= 16
+FREDFORMER     seed=46 epochs= 1 mb= 16
+FRNET          seed=42 epochs= 1 mb= 64
+FRNET          seed=43 epochs= 1 mb= 64
+FRNET          seed=44 epochs= 1 mb= 64
+FRNET          seed=45 epochs= 1 mb= 64
+FRNET          seed=46 epochs= 2 mb= 64
+MLF            seed=42 epochs= 9 mb= 32
+MLF            seed=43 epochs= 2 mb= 32
+MLF            seed=44 epochs= 2 mb= 32
+MLF            seed=45 epochs= 2 mb= 32
+MLF            seed=46 epochs= 3 mb= 32
+--------------------------------------------------------------------------------------------------------------------------------------------
+SKIP FREDFORMER     FREDFORMER_B         seed=42 COMPLETE+HASHED epochs=1
+RUN  FREDFORMER     FREDFORMER_B         seed=43 epochs=1
+Traceback (most recent call last):
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step34_final_development_refit_execution_v1.py", line 2947, in worker_main
+    result = worker_fit(
+             ^^^^^^^^^^^
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step34_final_development_refit_execution_v1.py", line 2123, in worker_fit
+    s26.build_candidate_model(
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step26_stage1_runner_dryrun_v3.py", line 560, in build_candidate_model
+    s24.assert_single_repository_clean(repository)
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step24_development_training_preflight_v3.py", line 424, in assert_single_repository_clean
+    raise RuntimeError(
+RuntimeError: Frozen repository became dirty during Step 24.
+Repository: FREDFORMER
+Status:
+D data_provider/__pycache__/data_factory.cpython-310.pyc
+ D data_provider/__pycache__/data_factory.cpython-39.pyc
+ D data_provider/__pycache__/data_loader.cpython-310.pyc
+ D data_provider/__pycache__/data_loader.cpython-39.pyc
+ D exp/__pycache__/ConstractLoss.cpython-39.pyc
+ D exp/__pycache__/ContrastiveLoss.cpython-310.pyc
+ D exp/__pycache__/ContrastiveLoss.cpython-39.pyc
+ D exp/__pycache__/Regularization.cpython-310.pyc
+ D exp/__pycache__/Regularization.cpython-39.pyc
+ D exp/__pycache__/exp_basic.cpython-310.pyc
+ D exp/__pycache__/exp_basic.cpython-39.pyc
+ D exp/__pycache__/exp_main.cpython-310.pyc
+ D exp/__pycache__/exp_main.cpython-39.pyc
+ D exp/__pycache__/exp_main_op.cpython-310.pyc
+ D layers/__pycache__/AutoCorrelation.cpython-310.pyc
+ D layers/__pycache__/AutoCorrelation.cpython-39.pyc
+ D layers/__pycache__/Autoformer_EncDec.cpython-310.pyc
+ D layers/__pycache__/Autoformer_EncDec.cpython-39.pyc
+ D layers/__pycache__/Embed.cpython-310.pyc
+ D layers/__pycache__/Embed.cpython-39.pyc
+ D layers/__pycache__/FTformer_backbone.cpython-310.pyc
+ D layers/__pycache__/FTformer_backbone_test.cpython-310.pyc
+ D layers/__pycache__/Fredformer_backbone.cpython-310.pyc
+ D layers/__pycache__/PatchTST_backbone.cpython-39.pyc
+ D layers/__pycache__/PatchTST_backbone_new.cpython-310.pyc
+ D layers/__pycache__/PatchTST_backbone_new.cpython-39.pyc
+ D layers/__pycache__/PatchTST_backbone_o.cpython-39.pyc
+ D layers/__pycache__/PatchTST_layers.cpython-310.pyc
+ D layers/__pycache__/PatchTST_layers.cpython-39.pyc
+ D layers/__pycache__/RevIN.cpython-310.pyc
+ D layers/__pycache__/RevIN.cpython-39.pyc
+ D layers/__pycache__/SelfAttention_Family.cpython-310.pyc
+ D layers/__pycache__/SelfAttention_Family.cpython-39.pyc
+ D layers/__pycache__/TokenLearner.cpython-310.pyc
+ D layers/__pycache__/TokenLearner.cpython-39.pyc
+ D layers/__pycache__/Transformer_EncDec.cpython-310.pyc
+ D layers/__pycache__/Transformer_EncDec.cpython-39.pyc
+ D layers/__pycache__/cross_Transformer.cpython-310.pyc
+ D layers/__pycache__/cross_Transformer.cpython-39.pyc
+ D layers/__pycache__/cross_Transformer_favor.cpython-310.pyc
+ D layers/__pycache__/cross_Transformer_favor.cpython-39.pyc
+ D layers/__pycache__/cross_Transformer_favor1.cpython-310.pyc
+ D layers/__pycache__/cross_Transformer_new.cpython-310.pyc
+ D layers/__pycache__/cross_Transformer_new.cpython-39.pyc
+ D layers/__pycache__/cross_Transformer_new2.cpython-310.pyc
+ D layers/__pycache__/cross_Transformer_new2.cpython-39.pyc
+ D layers/__pycache__/cross_Transformer_new3.cpython-310.pyc
+ D layers/__pycache__/cross_Transformer_nys.cpython-310.pyc
+ D layers/__pycache__/tcn.cpython-39.pyc
+ D models/__pycache__/Autoformer.cpython-310.pyc
+ D models/__pycache__/Autoformer.cpython-39.pyc
+ D models/__pycache__/DLinear.cpython-310.pyc
+ D models/__pycache__/DLinear.cpython-39.pyc
+ D models/__pycache__/FTformer.cpython-310.pyc
+ D models/__pycache__/Fredformer.cpython-310.pyc
+ D models/__pycache__/Informer.cpython-310.pyc
+ D models/__pycache__/Informer.cpython-39.pyc
+ D models/__pycache__/Linear.cpython-310.pyc
+ D models/__pycache__/Linear.cpython-39.pyc
+ D models/__pycache__/NLinear.cpython-310.pyc
+ D models/__pycache__/NLinear.cpython-39.pyc
+ D models/__pycache__/PatchTST.cpython-310.pyc
+ D models/__pycache__/PatchTST.cpython-39.pyc
+ D models/__pycache__/Transformer.cpython-310.pyc
+ D models/__pycache__/Transformer.cpython-39.pyc
+ D utils/__pycache__/masking.cpython-310.pyc
+ D utils/__pycache__/masking.cpython-39.pyc
+ D utils/__pycache__/metrics.cpython-310.pyc
+ D utils/__pycache__/metrics.cpython-39.pyc
+ D utils/__pycache__/timefeatures.cpython-310.pyc
+ D utils/__pycache__/timefeatures.cpython-39.pyc
+ D utils/__pycache__/tools.cpython-310.pyc
+ D utils/__pycache__/tools.cpython-39.pyc
+__STEP34_RESULT__{"config_id": "FREDFORMER_B", "error": "RuntimeError('Frozen repository became dirty during Step 24.\\nRepository: FREDFORMER\\nStatus:\\nD data_provider/__pycache__/data_factory.cpython-310.pyc\\n D data_provider/__pycache__/data_factory.cpython-39.pyc\\n D data_provider/__pycache__/data_loader.cpython-310.pyc\\n D data_provider/__pycache__/data_loader.cpython-39.pyc\\n D exp/__pycache__/ConstractLoss.cpython-39.pyc\\n D exp/__pycache__/ContrastiveLoss.cpython-310.pyc\\n D exp/__pycache__/ContrastiveLoss.cpython-39.pyc\\n D exp/__pycache__/Regularization.cpython-310.pyc\\n D exp/__pycache__/Regularization.cpython-39.pyc\\n D exp/__pycache__/exp_basic.cpython-310.pyc\\n D exp/__pycache__/exp_basic.cpython-39.pyc\\n D exp/__pycache__/exp_main.cpython-310.pyc\\n D exp/__pycache__/exp_main.cpython-39.pyc\\n D exp/__pycache__/exp_main_op.cpython-310.pyc\\n D layers/__pycache__/AutoCorrelation.cpython-310.pyc\\n D layers/__pycache__/AutoCorrelation.cpython-39.pyc\\n D layers/__pycache__/Autoformer_EncDec.cpython-310.pyc\\n D layers/__pycache__/Autoformer_EncDec.cpython-39.pyc\\n D layers/__pycache__/Embed.cpython-310.pyc\\n D layers/__pycache__/Embed.cpython-39.pyc\\n D layers/__pycache__/FTformer_backbone.cpython-310.pyc\\n D layers/__pycache__/FTformer_backbone_test.cpython-310.pyc\\n D layers/__pycache__/Fredformer_backbone.cpython-310.pyc\\n D layers/__pycache__/PatchTST_backbone.cpython-39.pyc\\n D layers/__pycache__/PatchTST_backbone_new.cpython-310.pyc\\n D layers/__pycache__/PatchTST_backbone_new.cpython-39.pyc\\n D layers/__pycache__/PatchTST_backbone_o.cpython-39.pyc\\n D layers/__pycache__/PatchTST_layers.cpython-310.pyc\\n D layers/__pycache__/PatchTST_layers.cpython-39.pyc\\n D layers/__pycache__/RevIN.cpython-310.pyc\\n D layers/__pycache__/RevIN.cpython-39.pyc\\n D layers/__pycache__/SelfAttention_Family.cpython-310.pyc\\n D layers/__pycache__/SelfAttention_Family.cpython-39.pyc\\n D layers/__pycache__/TokenLearner.cpython-310.pyc\\n D layers/__pycache__/TokenLearner.cpython-39.pyc\\n D layers/__pycache__/Transformer_EncDec.cpython-310.pyc\\n D layers/__pycache__/Transformer_EncDec.cpython-39.pyc\\n D layers/__pycache__/cross_Transformer.cpython-310.pyc\\n D layers/__pycache__/cross_Transformer.cpython-39.pyc\\n D layers/__pycache__/cross_Transformer_favor.cpython-310.pyc\\n D layers/__pycache__/cross_Transformer_favor.cpython-39.pyc\\n D layers/__pycache__/cross_Transformer_favor1.cpython-310.pyc\\n D layers/__pycache__/cross_Transformer_new.cpython-310.pyc\\n D layers/__pycache__/cross_Transformer_new.cpython-39.pyc\\n D layers/__pycache__/cross_Transformer_new2.cpython-310.pyc\\n D layers/__pycache__/cross_Transformer_new2.cpython-39.pyc\\n D layers/__pycache__/cross_Transformer_new3.cpython-310.pyc\\n D layers/__pycache__/cross_Transformer_nys.cpython-310.pyc\\n D layers/__pycache__/tcn.cpython-39.pyc\\n D models/__pycache__/Autoformer.cpython-310.pyc\\n D models/__pycache__/Autoformer.cpython-39.pyc\\n D models/__pycache__/DLinear.cpython-310.pyc\\n D models/__pycache__/DLinear.cpython-39.pyc\\n D models/__pycache__/FTformer.cpython-310.pyc\\n D models/__pycache__/Fredformer.cpython-310.pyc\\n D models/__pycache__/Informer.cpython-310.pyc\\n D models/__pycache__/Informer.cpython-39.pyc\\n D models/__pycache__/Linear.cpython-310.pyc\\n D models/__pycache__/Linear.cpython-39.pyc\\n D models/__pycache__/NLinear.cpython-310.pyc\\n D models/__pycache__/NLinear.cpython-39.pyc\\n D models/__pycache__/PatchTST.cpython-310.pyc\\n D models/__pycache__/PatchTST.cpython-39.pyc\\n D models/__pycache__/Transformer.cpython-310.pyc\\n D models/__pycache__/Transformer.cpython-39.pyc\\n D utils/__pycache__/masking.cpython-310.pyc\\n D utils/__pycache__/masking.cpython-39.pyc\\n D utils/__pycache__/metrics.cpython-310.pyc\\n D utils/__pycache__/metrics.cpython-39.pyc\\n D utils/__pycache__/timefeatures.cpython-310.pyc\\n D utils/__pycache__/timefeatures.cpython-39.pyc\\n D utils/__pycache__/tools.cpython-310.pyc\\n D utils/__pycache__/tools.cpython-39.pyc')", "model_id": "FREDFORMER", "seed": 43, "status": "FAIL"}
+Traceback (most recent call last):
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step34_final_development_refit_execution_v1.py", line 4157, in <module>
+    main()
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step34_final_development_refit_execution_v1.py", line 4150, in main
+    return master_main(
+           ^^^^^^^^^^^^
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step34_final_development_refit_execution_v1.py", line 3934, in master_main
+    fail(
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step34_final_development_refit_execution_v1.py", line 333, in fail
+    raise RuntimeError(message)
+RuntimeError: Worker failed: FREDFORMER/FREDFORMER_B/seed43

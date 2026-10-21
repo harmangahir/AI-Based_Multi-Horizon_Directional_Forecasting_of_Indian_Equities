@@ -1,0 +1,21 @@
+=============================================================================================================
+STEP 36I-F10 — INDEPENDENT F9 ASSEMBLY REVIEW (SYNTHETIC / NO REAL-TEST ACCESS)
+=============================================================================================================
+[1] F9 SOURCE IDENTITY, F1–F8 CONTRACT, AND LIVE ACCESS STATE
+PASS — F9 and F1–F8 SHA-256; Step35 boundary; production entrypoints blocked
+PASS — historical ledger 2 reads/0 scoring, namespace vacant
+[2] FULL-SIZED SYNTHETIC F9 ASSEMBLY: REAL F1 SCORING AND F4 STATISTICS
+PASS — actual F9 assembly; 40 ordered synthetic checkpoint invocations; real F1 scorer + F4 bootstrap
+PASS — 24 metrics, 72 bootstrap rows, 84 pairs, 40 register rows and hashed payload manifest
+PASS — actual pyarrow Parquet serialization exercised in synthetic assembly
+[3] INDEPENDENT NEGATIVE CONTROLS / ASSEMBLY BOUNDARIES
+PASS — path traversal, nonbytes payload, production-entrypoint bypass rejected
+[4] REVIEW FINDINGS / UNIMPLEMENTED PRODUCTION PERMISSIONS
+OPEN — F9 does not independently authenticate the supplied 63-feature order, scaler, stock map or development-history bytes
+OPEN — real-data single-read journal and atomic output commit not connected to F9's assembly
+OPEN — the post-freeze 5300-row/segmented-bootstrap amendment and third-read authority are NOT approved
+=============================================================================================================
+STEP 36I-F10 PASS — SYNTHETIC ASSEMBLY REVIEW ONLY; PRODUCTION SIGNOFF BLOCKED
+Sealed test opened: FALSE | GPU: FALSE | Real scoring: FALSE | Live ledger unchanged
+Approved amendment: FALSE | Third read authorized: FALSE | Production launch: DENIED
+=============================================================================================================

@@ -1,0 +1,23 @@
+============================================================================================================================================
+STEP 36A — FREEZE SCHEMA-ONLY TECHNICAL RECOVERY AMENDMENT
+============================================================================================================================================
+Raw final-test parquet opened by this script : False
+Raw final-test parquet hashed by this script : False
+Final-test metrics computed                  : False
+Scientific model/seed/threshold changes      : False
+--------------------------------------------------------------------------------------------------------------------------------------------
+Original Step-36 source SHA : b5321fe514c7f9f34d6d675debbbca1fd292c58b2874b724987b3a819671b131
+Recovery Step-36 source SHA : 6de04ba7e167449101e2e16bab47ca4ce088f11284c4cbc93b61a6cfbb979f12
+Membership SHA              : 82772196c92e88f1926a75a70c42f5f19119d7245d93b8364455fd28642ee121
+Recovery amendment          : /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/36a_schema_recovery_compatibility_amendment.json
+Recovery amendment SHA      : 1e563468c21dd0f806aa33dc54552a4ce476fc7f231e8aea0be611c72288428c
+Recovery amendment FP       : cd02bbab8499328ed199f515aa37b9265f17789f781604b94454fd21c1929363
+Backup source               : /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36_one_time_final_test_materialization_inference_scoring_v1.pre_step36a_recovery.py
+Recovery frozen source      : /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/step36_one_time_final_test_materialization_inference_scoring_v1_recovery_frozen.py
+Syntax check                : PASS
+Raw final-test reopened     : False
+Final-test metrics computed : False
+============================================================================================================================================
+STEP 36A PASS — SCHEMA-ONLY RECOVERY AMENDMENT FROZEN
+DO NOT RUN STEP 36 --execute UNTIL THIS OUTPUT HAS BEEN AUDITED.
+============================================================================================================================================

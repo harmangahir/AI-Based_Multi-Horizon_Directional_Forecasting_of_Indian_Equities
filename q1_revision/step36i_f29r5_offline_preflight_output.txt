@@ -1,0 +1,28 @@
+======================================================================================================
+STEP 36I-F29R5 — FROZEN CONVENTIONAL ML-EXTENDED RELEASE CANDIDATE (OFFLINE; NO TEST ACCESS)
+======================================================================================================
+PASS — signed sources, Step35, F13E, 63-feature/20-stock upstream and output map
+PASS — legacy historical access marker 2 reads, 0 scored
+PASS — seven amended real output destinations vacant
+PASS — F22 journal and F24 lock tested together on isolated fixture
+PASS — owner-signed self-review and DISTINCT later permit: positive/negative synthetic oracles
+PASS — local owner public-key file matches pinned fingerprint: 2de1349896cf0012c5a88ff7fad09de27bd1ac2131d99bace396ce659819f4b7
+PASS — owner-only release directories and all seven output parents verified
+PASS — F20R3 Phase A/40-seed Phase B/finalization APIs wired in F29R5 source
+BLOCKED — real methodological self-review record not yet signed; no permit exists
+BLOCKED — separate owner-signed self-review/read permit not supplied
+BLOCKED — independent review unavailable; owner self-review must be disclosed
+BLOCKED — no real method attestation/read permit; real Phase A/B/finalize not authorized
+PASS — F20R3 Phase A metadata explicitly records self-review, not independent sign-off
+PASS — F29R3 supplementary baselines, paired CI, stock/regime/quarter/calibration wired to finalizer
+PASS — all 9 genuine frozen models deserialize and predict on verified Step14 DEV sample
+PASS — F29R4 immutable nine models and 42,360 training endpoints verified
+PASS — frozen 63-feature schema and Step35 contract unchanged
+PASS — historical marker 2 reads, 0 scored; raw test never opened
+NOTICE — no held-out evaluation, no trained baseline cross-validation claim
+PASS — nine actual F29R4 models/hash manifest bound into F20R3 atomic finalizer
+NOTICE — conventional ML and naive baselines are post-freeze exploratory; no transaction-cost claim
+======================================================================================================
+F29R5 OFFLINE PREFLIGHT PASS — FINAL RESULTS NOT YET GENERATED
+Sealed final test read: FALSE | GPU: FALSE | Real scoring: FALSE
+======================================================================================================

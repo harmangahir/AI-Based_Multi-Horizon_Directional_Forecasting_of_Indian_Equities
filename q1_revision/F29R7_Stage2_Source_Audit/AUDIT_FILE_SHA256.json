@@ -1,0 +1,132 @@
+[
+  {
+    "bytes": 122496,
+    "file": "sources/step03_market_integrity_audit_v3_clean.py",
+    "sha256": "aa043eadfcc8117fd94b118e72043f413a15892654ae5172428966db340faee7"
+  },
+  {
+    "bytes": 109805,
+    "file": "sources/step04_session_and_corporate_action_policy_v3_clean.py",
+    "sha256": "3e12948bdfa15e8a84edbbf344b515d88eb36f3982d7396423fc9c2f30119b31"
+  },
+  {
+    "bytes": 96779,
+    "file": "sources/step05_materialize_clean_model_panel_v3_clean.py",
+    "sha256": "df37269c96f7d33a95232880ef0cf19ee7985b6d0990c4d04f6ae0a351210875"
+  },
+  {
+    "bytes": 112285,
+    "file": "sources/step06_stock_features_v3.py",
+    "sha256": "c65d2b58bb817d6b1d9ed386ad21f2700682e9a7e2bba6db10e07a5283e7f3e7"
+  },
+  {
+    "bytes": 114211,
+    "file": "sources/step07_nifty_context_features_v3.py",
+    "sha256": "cdf9eaf1236481dc9cd4be78141bba68767d655e5dfd2244f06d362154c786f6"
+  },
+  {
+    "bytes": 108630,
+    "file": "sources/step08_merge_63_feature_panel_v3.py",
+    "sha256": "af9843c95da0f82ccfa1c60fe01bb6064fcd972aae781ab0889be8318797c4e6"
+  },
+  {
+    "bytes": 62527,
+    "file": "sources/step09_construct_targets_v3.py",
+    "sha256": "bbb3e7678710fbe2de3aa6286942182dda88fc8dc9da1c311f0584a299b14401"
+  },
+  {
+    "bytes": 68024,
+    "file": "sources/step10_chronological_splits_v3.py",
+    "sha256": "ab829a6ab3bd16bdaa8c19a88df1cdbfa2393ff6dfaaaf70b54547e2e3a750cb"
+  },
+  {
+    "bytes": 63569,
+    "file": "sources/step11_unified_preprocessing_v3.py",
+    "sha256": "da2ae227c078974692ef4d86233309de5634d9aa81d6ee3c141019bfb185cdbd"
+  },
+  {
+    "bytes": 104677,
+    "file": "sources/step12_volatility_regimes_v3.py",
+    "sha256": "bf2c31f37e4339d9ff3abc1a14c69c5ce2c0ea0c5a7e4c54bde9bc26778c6f65"
+  },
+  {
+    "bytes": 104986,
+    "file": "sources/step13_sequence_indices_v3.py",
+    "sha256": "b946c024e721714da3088bd222f820989c1782932113f7aaf3956331ed7b2754"
+  },
+  {
+    "bytes": 59574,
+    "file": "sources/step14_materialize_model_arrays_v3.py",
+    "sha256": "f5f96b3cd3e9b9f5c84bf60a6908fce018954c5bd29fbe72a5d5b6236758c251"
+  },
+  {
+    "bytes": 8185,
+    "file": "manifests/03_market_integrity_audit_manifest.json",
+    "sha256": "ad3a99d29a8c20e69be6a284f822bfb81e9a9a55b84c9c05dc417989fa6b1df4"
+  },
+  {
+    "bytes": 6686,
+    "file": "manifests/04_cleaning_policy.json",
+    "sha256": "e8477bfca928ba1e54a8547d521f17b7e9eed6f160626f590da3ee673a1e92ce"
+  },
+  {
+    "bytes": 5334,
+    "file": "manifests/04_session_policy_manifest.json",
+    "sha256": "ea4769ce0b6f928f8dc6733422d8426561a85edc515a7c859733f9cc67181602"
+  },
+  {
+    "bytes": 28918,
+    "file": "manifests/05_clean_model_panel_manifest.json",
+    "sha256": "de41e6592bd1547d51c0e2a08dd203f5e8a5200cfcc549a05d964960652b3ae6"
+  },
+  {
+    "bytes": 7931,
+    "file": "manifests/06_stock_feature_manifest.json",
+    "sha256": "3c2dac46867000953e75f1bf7be861e99b87824628dfd6af8e509923c4d691c1"
+  },
+  {
+    "bytes": 9105,
+    "file": "manifests/07_nifty_context_feature_manifest.json",
+    "sha256": "b320daee22cb7fc563f3eb9e859316f1243809551a3e6615ec99b81f9c80ff9b"
+  },
+  {
+    "bytes": 10391,
+    "file": "manifests/08_63_feature_panel_manifest.json",
+    "sha256": "dd4e850de15f752425c6bf3df895010f089f5ad32459cb97046744871b5680a8"
+  },
+  {
+    "bytes": 9625,
+    "file": "manifests/09_target_manifest.json",
+    "sha256": "553d93abe5868ab6ecd21e41fa27da5231e203e2689091e85fe4baba057f206f"
+  },
+  {
+    "bytes": 13077,
+    "file": "manifests/10_chronological_split_manifest.json",
+    "sha256": "2ee16629125e2cfda724ca62a748a71fae92fc5ade1cd5c07609ea035912dc5d"
+  },
+  {
+    "bytes": 1478,
+    "file": "manifests/10_final_test_seal.json",
+    "sha256": "b7bb17b51b5d1d175b90ca33efe2c17d4675717bbeaf613ec7c6af876d6440e6"
+  },
+  {
+    "bytes": 22016,
+    "file": "manifests/11_preprocessing_manifest.json",
+    "sha256": "22b27204802de3b5c9b3f6b17fd93fd7736f9d362b0948cad64f881d33c31637"
+  },
+  {
+    "bytes": 18542,
+    "file": "manifests/12_volatility_regime_manifest.json",
+    "sha256": "dc6851f51ae5da803bc351745e09c96ba2f6d2f85ff6a7f3d9ed03103fc255aa"
+  },
+  {
+    "bytes": 21569,
+    "file": "manifests/13_sequence_index_manifest.json",
+    "sha256": "18f02c7b1fbaeb18b55172128183dc9c17988691cdbc567c43d67376c48fe55e"
+  },
+  {
+    "bytes": 67823,
+    "file": "manifests/14_model_array_manifest.json",
+    "sha256": "b19b034bd31bb5d426e78c58f808d9e4c9cba16281e666984aae2c8bf6a150a0"
+  }
+]

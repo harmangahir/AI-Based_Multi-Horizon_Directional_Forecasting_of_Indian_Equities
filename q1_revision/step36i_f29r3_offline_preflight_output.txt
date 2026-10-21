@@ -1,0 +1,22 @@
+======================================================================================================
+STEP 36I-F29R3 — SCIENTIFICALLY EXTENDED RELEASE CANDIDATE (OFFLINE; NO TEST ACCESS)
+======================================================================================================
+PASS — signed sources, Step35, F13E, 63-feature/20-stock upstream and output map
+PASS — legacy historical access marker 2 reads, 0 scored
+PASS — seven amended real output destinations vacant
+PASS — F22 journal and F24 lock tested together on isolated fixture
+PASS — owner-signed self-review and DISTINCT later permit: positive/negative synthetic oracles
+PASS — local owner public-key file matches pinned fingerprint: 2de1349896cf0012c5a88ff7fad09de27bd1ac2131d99bace396ce659819f4b7
+PASS — owner-only release directories and all seven output parents verified
+PASS — F20R2 Phase A/40-seed Phase B/finalization APIs wired in F29R3 source
+BLOCKED — real methodological self-review record not yet signed; no permit exists
+BLOCKED — separate owner-signed self-review/read permit not supplied
+BLOCKED — independent review unavailable; owner self-review must be disclosed
+BLOCKED — no real method attestation/read permit; real Phase A/B/finalize not authorized
+PASS — F20R2 Phase A metadata explicitly records self-review, not independent sign-off
+PASS — F29R3 supplementary baselines, paired CI, stock/regime/quarter/calibration wired to finalizer
+NOTICE — naive baselines are post-freeze exploratory; no conventional ML or transaction-cost claims
+======================================================================================================
+F29R3 OFFLINE PREFLIGHT PASS — FINAL RESULTS NOT YET GENERATED
+Sealed final test read: FALSE | GPU: FALSE | Real scoring: FALSE
+======================================================================================================

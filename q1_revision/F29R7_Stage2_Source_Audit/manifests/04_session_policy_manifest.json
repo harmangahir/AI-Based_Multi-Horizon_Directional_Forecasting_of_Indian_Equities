@@ -1,0 +1,79 @@
+{
+  "artifacts": {
+    "04_cleaning_policy.json": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/04_cleaning_policy.json",
+      "relative_path": "manifests/04_cleaning_policy.json",
+      "sha256": "e8477bfca928ba1e54a8547d521f17b7e9eed6f160626f590da3ee673a1e92ce",
+      "size_bytes": 6686
+    },
+    "04_corporate_action_register.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/04_corporate_action_register.csv",
+      "relative_path": "audits/04_corporate_action_register.csv",
+      "sha256": "1e01904c1f2a951a5373fbe5df3f1543ebb0cec638576bb15647e5aec770693b",
+      "size_bytes": 51778
+    },
+    "04_excluded_date_register.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/04_excluded_date_register.csv",
+      "relative_path": "audits/04_excluded_date_register.csv",
+      "sha256": "01e2de27df4fd6e36f294dc05d173cc9dd18174fbcd8efe72ec8eae331893137",
+      "size_bytes": 3875
+    },
+    "04_final_analysis_calendar.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/reference_data/04_final_analysis_calendar.csv",
+      "relative_path": "reference_data/04_final_analysis_calendar.csv",
+      "sha256": "77fde7bde98786841d19ebe63db82c0b411168e7c580ebaa0b89e5450a7d266a",
+      "size_bytes": 80148
+    },
+    "04_large_return_corporate_action_audit.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/04_large_return_corporate_action_audit.csv",
+      "relative_path": "audits/04_large_return_corporate_action_audit.csv",
+      "sha256": "b49641110be63fb78a093b22950da67422b5f0a5caaf1fed2c393bd22f6aa0af",
+      "size_bytes": 1182
+    },
+    "04_session_and_cleaning_policy_summary.txt": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/reports/04_session_and_cleaning_policy_summary.txt",
+      "relative_path": "reports/04_session_and_cleaning_policy_summary.txt",
+      "sha256": "c91c51c4dd699cc7bca9f795ff53e3124156ecdcbb060264f6701e3186c66b51",
+      "size_bytes": 666
+    },
+    "04_session_classification.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/04_session_classification.csv",
+      "relative_path": "audits/04_session_classification.csv",
+      "sha256": "47f6459f01b21eaf141c8d6299ad867b18fef4d107532945c129b58c412ab7ce",
+      "size_bytes": 495285
+    },
+    "04_source_file_hashes.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/04_source_file_hashes.csv",
+      "relative_path": "audits/04_source_file_hashes.csv",
+      "sha256": "c795271cde7ea75e400493e4568ba1ff3bc280f539bd35090d95d42d7e379167",
+      "size_bytes": 1847
+    },
+    "04_stock_split_volume_audit.csv": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/04_stock_split_volume_audit.csv",
+      "relative_path": "audits/04_stock_split_volume_audit.csv",
+      "sha256": "ae989bfc839c13e4d38b1da9f1a0227962ddfdd8d8970163d2ddf15a74ecf92e",
+      "size_bytes": 4972
+    },
+    "step04_session_and_corporate_action_policy_frozen.py": {
+      "path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/manifests/step04_session_and_corporate_action_policy_frozen.py",
+      "relative_path": "manifests/step04_session_and_corporate_action_policy_frozen.py",
+      "sha256": "3e12948bdfa15e8a84edbbf344b515d88eb36f3982d7396423fc9c2f30119b31",
+      "size_bytes": 109805
+    }
+  },
+  "configuration_fingerprint_sha256": "9675cb42e5544d9a3cda235208b33cc4c27f7583531535505b42056aa86b04dd",
+  "experiment_tag": "q1_revision_v3_clean_2016_2026",
+  "final_test_state": "LOCKED_NOT_OPENED",
+  "frozen_at_utc": "2026-10-04T03:44:49+00:00",
+  "schema_version": "1.0",
+  "step": {
+    "status": "PASS",
+    "step_id": "04",
+    "step_name": "STEP 04 — SESSION CLASSIFICATION, CORPORATE-ACTION AUDIT, AND FROZEN CLEANING POLICY",
+    "step_number": 4
+  },
+  "step00_manifest_sha256": "d3f77c468eab3352c23bb613cccfb94cdf04a2cbad6a99f229e1a78b9c83eb48",
+  "step01_manifest_sha256": "6ca1930c37055d762105b30748af979154974558586cdf1ab33400d2b595acaa",
+  "step02_manifest_sha256": "0f42962ff091b798d70cee9ec06a7e5e813cee9101087bb42101e5bd97f04643",
+  "step03_manifest_sha256": "ad3a99d29a8c20e69be6a284f822bfb81e9a9a55b84c9c05dc417989fa6b1df4"
+}

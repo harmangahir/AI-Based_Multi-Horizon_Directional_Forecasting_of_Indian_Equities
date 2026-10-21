@@ -1,0 +1,21 @@
+============================================================================================================================================
+STEP 36 — ONE-TIME FINAL-TEST MATERIALIZATION, INFERENCE AND SCORING
+============================================================================================================================================
+MODE                     : PREPARE-ONLY
+Final-test parquet read  : PROHIBITED
+Final-test parquet hash  : PROHIBITED
+Final-test class balance : NOT INSPECTED
+Final-test metrics       : NOT COMPUTED
+--------------------------------------------------------------------------------------------------------------------------------------------
+Upstream freezes           : VERIFIED
+Step-35 contract FP        : 44949863de7e82c3c303ca55beff8c59ae3206ea7eb542a9aab115ff88632bfc
+Step-36 source SHA         : b5321fe514c7f9f34d6d675debbbca1fd292c58b2874b724987b3a819671b131
+Step-36 preaccess FP       : 11b40b2e755e7886e25502235ca5fad0d418603f61cb5a43f30aa07bba7d2e6f
+Preaccess manifest SHA     : 1b3c55d2e933ddd88376679b726d6eb6a09e82ba2eea382502545b30275b679d
+Final-test parquet opened  : False
+Final-test parquet hashed  : False
+Final-test metrics computed: False
+============================================================================================================================================
+PREPARE-ONLY PASS — STEP-36 SOURCE/EXECUTION CONTRACT FROZEN
+============================================================================================================================================
+DO NOT RUN --execute UNTIL THIS PREPARE-ONLY OUTPUT HAS BEEN AUDITED.

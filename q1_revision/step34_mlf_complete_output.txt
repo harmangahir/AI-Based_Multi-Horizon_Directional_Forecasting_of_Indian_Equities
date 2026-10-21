@@ -1,0 +1,145 @@
+============================================================================================================================================
+STEP 34 — FINAL-DEVELOPMENT REFIT EXECUTION
+============================================================================================================================================
+Experiment root       : /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026
+Final-development n   : 42,360
+Architectures         : 8
+Fixed seeds           : 42,43,44,45,46
+Total refits          : 40
+Validation            : NONE
+Early stopping        : NONE
+Checkpoint            : FINAL SCHEDULED EPOCH
+Final test            : LOCKED_NOT_OPENED
+--------------------------------------------------------------------------------------------------------------------------------------------
+[1] UPSTREAM FREEZES
+Step30 robustness freeze : VERIFIED
+Step32 thresholds        : VERIFIED
+Step33 refit schedule    : VERIFIED
+Step26 training engine   : EXECUTABLE == FROZEN
+Final-test state         : LOCKED_NOT_OPENED
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+[2] STEP-34 SOURCE FREEZE
+Source SHA256      : 2030d6719476107dfd0b1a5ec8fe4c4dd3d362bb10aafc4b6f3d9bd1841367e5
+Source fingerprint : b8c1629c0a173b044f5b8fe42a6b1d05072bbb514344c44f13a3d9b32a218e17
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+[3] FROZEN TRAINING PROTOCOL REFERENCE
+Source manifests      : 200 frozen robustness fits
+Architectures verified: 8/8
+Performance metrics   : NOT USED
+Reference SHA256      : 9d2c372aa4f3c54e70e8413895508aa3b840b231d7b4f68a3acbbda7b8a16644
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+[4] FINAL-REFIT EXECUTION PLAN
+Plan rows             : 40/40
+Total scheduled epochs: 65
+Plan SHA256           : 210ac4f01a4150a0f66f7a2370d9a2c268d9a8cda15d258b3789db3aa743ce7c
+Plan fingerprint      : 71e8099a5f0cbc66452ac335700078d72522b2104f4472715923b918536e1758
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+DLINEAR        seed=42 epochs= 1 mb=128
+DLINEAR        seed=43 epochs= 2 mb=128
+DLINEAR        seed=44 epochs= 1 mb=128
+DLINEAR        seed=45 epochs= 1 mb=128
+DLINEAR        seed=46 epochs= 3 mb=128
+NLINEAR        seed=42 epochs= 1 mb=128
+NLINEAR        seed=43 epochs= 1 mb=128
+NLINEAR        seed=44 epochs= 1 mb=128
+NLINEAR        seed=45 epochs= 1 mb=128
+NLINEAR        seed=46 epochs= 1 mb=128
+PATCHTST       seed=42 epochs= 1 mb= 64
+PATCHTST       seed=43 epochs= 1 mb= 64
+PATCHTST       seed=44 epochs= 1 mb= 64
+PATCHTST       seed=45 epochs= 1 mb= 64
+PATCHTST       seed=46 epochs= 1 mb= 64
+TIMESNET       seed=42 epochs= 2 mb= 64
+TIMESNET       seed=43 epochs= 4 mb= 64
+TIMESNET       seed=44 epochs= 2 mb= 64
+TIMESNET       seed=45 epochs= 2 mb= 64
+TIMESNET       seed=46 epochs= 3 mb= 64
+ITRANSFORMER   seed=42 epochs= 1 mb=128
+ITRANSFORMER   seed=43 epochs= 1 mb=128
+ITRANSFORMER   seed=44 epochs= 1 mb=128
+ITRANSFORMER   seed=45 epochs= 1 mb=128
+ITRANSFORMER   seed=46 epochs= 1 mb=128
+FREDFORMER     seed=42 epochs= 1 mb= 16
+FREDFORMER     seed=43 epochs= 1 mb= 16
+FREDFORMER     seed=44 epochs= 1 mb= 16
+FREDFORMER     seed=45 epochs= 1 mb= 16
+FREDFORMER     seed=46 epochs= 1 mb= 16
+FRNET          seed=42 epochs= 1 mb= 64
+FRNET          seed=43 epochs= 1 mb= 64
+FRNET          seed=44 epochs= 1 mb= 64
+FRNET          seed=45 epochs= 1 mb= 64
+FRNET          seed=46 epochs= 2 mb= 64
+MLF            seed=42 epochs= 9 mb= 32
+MLF            seed=43 epochs= 2 mb= 32
+MLF            seed=44 epochs= 2 mb= 32
+MLF            seed=45 epochs= 2 mb= 32
+MLF            seed=46 epochs= 3 mb= 32
+--------------------------------------------------------------------------------------------------------------------------------------------
+RUN  MLF            MLF_A                seed=42 epochs=9
+n_heads 4
+n_heads 4
+EPOCH MLF/MLF_A/seed42 001/009 trainBCE=0.693423 updates=166 sec=111.8
+EPOCH MLF/MLF_A/seed42 002/009 trainBCE=0.691622 updates=166 sec=113.4
+EPOCH MLF/MLF_A/seed42 003/009 trainBCE=0.690914 updates=166 sec=114.1
+EPOCH MLF/MLF_A/seed42 004/009 trainBCE=0.690453 updates=166 sec=114.3
+EPOCH MLF/MLF_A/seed42 005/009 trainBCE=0.690319 updates=166 sec=115.0
+EPOCH MLF/MLF_A/seed42 006/009 trainBCE=0.690065 updates=166 sec=115.0
+EPOCH MLF/MLF_A/seed42 007/009 trainBCE=0.689806 updates=166 sec=114.6
+EPOCH MLF/MLF_A/seed42 008/009 trainBCE=0.689496 updates=166 sec=114.0
+EPOCH MLF/MLF_A/seed42 009/009 trainBCE=0.689319 updates=166 sec=115.3
+__STEP34_RESULT__{"config_id": "MLF_A", "epochs": 9, "final_train_bce": 0.6893186898362085, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/MLF/MLF_A/seed_42/fit_manifest.json", "fit_manifest_sha256": "072f12cb506ad180b3e75b7b78aea582e99e6bea9b636ddc7c2f7627bfc325af", "model_id": "MLF", "peak_cuda_allocated_mib": 1980.17626953125, "seed": 42, "status": "PASS", "wall_seconds": 1029.1295104460005}
+PASS MLF            seed=42 epochs=9 trainBCE=0.689319 peak=1980.2MiB
+RUN  MLF            MLF_A                seed=43 epochs=2
+n_heads 4
+n_heads 4
+EPOCH MLF/MLF_A/seed43 001/002 trainBCE=0.692068 updates=166 sec=114.7
+EPOCH MLF/MLF_A/seed43 002/002 trainBCE=0.691183 updates=166 sec=114.9
+__STEP34_RESULT__{"config_id": "MLF_A", "epochs": 2, "final_train_bce": 0.6911831893033864, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/MLF/MLF_A/seed_43/fit_manifest.json", "fit_manifest_sha256": "53852808e1e8161b06799db248d1a5e3ddb74db9b884af97cc1a2b3349d4b140", "model_id": "MLF", "peak_cuda_allocated_mib": 1980.17626953125, "seed": 43, "status": "PASS", "wall_seconds": 231.61678426800063}
+PASS MLF            seed=43 epochs=2 trainBCE=0.691183 peak=1980.2MiB
+RUN  MLF            MLF_A                seed=44 epochs=2
+n_heads 4
+n_heads 4
+EPOCH MLF/MLF_A/seed44 001/002 trainBCE=0.692605 updates=166 sec=115.4
+EPOCH MLF/MLF_A/seed44 002/002 trainBCE=0.691428 updates=166 sec=115.3
+__STEP34_RESULT__{"config_id": "MLF_A", "epochs": 2, "final_train_bce": 0.6914278929924718, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/MLF/MLF_A/seed_44/fit_manifest.json", "fit_manifest_sha256": "753823fa610a48200948f5ba4527b8c38a963cda4cc20c3446cc6c891410e6ad", "model_id": "MLF", "peak_cuda_allocated_mib": 1980.17626953125, "seed": 44, "status": "PASS", "wall_seconds": 232.69613801099695}
+PASS MLF            seed=44 epochs=2 trainBCE=0.691428 peak=1980.2MiB
+RUN  MLF            MLF_A                seed=45 epochs=2
+n_heads 4
+n_heads 4
+EPOCH MLF/MLF_A/seed45 001/002 trainBCE=0.692660 updates=166 sec=114.2
+EPOCH MLF/MLF_A/seed45 002/002 trainBCE=0.691609 updates=166 sec=115.2
+__STEP34_RESULT__{"config_id": "MLF_A", "epochs": 2, "final_train_bce": 0.6916090282097079, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/MLF/MLF_A/seed_45/fit_manifest.json", "fit_manifest_sha256": "936a48a208a6d82ab63837b046080c10692e43b434ebc91ebf80e3246a80d6e7", "model_id": "MLF", "peak_cuda_allocated_mib": 1980.17626953125, "seed": 45, "status": "PASS", "wall_seconds": 231.35507726599826}
+PASS MLF            seed=45 epochs=2 trainBCE=0.691609 peak=1980.2MiB
+RUN  MLF            MLF_A                seed=46 epochs=3
+n_heads 4
+n_heads 4
+EPOCH MLF/MLF_A/seed46 001/003 trainBCE=0.691846 updates=166 sec=114.3
+EPOCH MLF/MLF_A/seed46 002/003 trainBCE=0.691353 updates=166 sec=114.3
+EPOCH MLF/MLF_A/seed46 003/003 trainBCE=0.690531 updates=166 sec=114.9
+__STEP34_RESULT__{"config_id": "MLF_A", "epochs": 3, "final_train_bce": 0.6905311082532881, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/MLF/MLF_A/seed_46/fit_manifest.json", "fit_manifest_sha256": "bd2d3f4a33f2a5bf71da5b4f84d1699701863df6d8ee012fdf77c9805ace0f05", "model_id": "MLF", "peak_cuda_allocated_mib": 1980.17626953125, "seed": 46, "status": "PASS", "wall_seconds": 345.372595462999}
+PASS MLF            seed=46 epochs=3 trainBCE=0.690531 peak=1980.2MiB
+--------------------------------------------------------------------------------------------------------------------------------------------
+New fits this invocation : 5
+Hash-valid skipped fits  : 0
+Total completed refits   : 40/40
+Final-test data opened  : False
+Final-test state        : LOCKED_NOT_OPENED
+--------------------------------------------------------------------------------------------------------------------------------------------
+============================================================================================================================================
+STEP 34 COMPLETE — FINAL-DEVELOPMENT REFITS FROZEN
+============================================================================================================================================
+Completed final refits       : 40/40
+Total scheduled epochs       : 65
+Final-development sequences  : 42,360
+Validation during refit      : NONE
+Early stopping during refit  : NONE
+Best-seed selection          : NOT PERFORMED
+Final-test data opened       : False
+Final-test state             : LOCKED_NOT_OPENED
+Global Step-34 fingerprint   : 1ede9c52aaadf66ea4e82f777c4c03fcccece419bff0867c2a434e3fb13828c0
+Freeze manifest SHA256       : 2224aa145e4bdbce2563586cd1a28742facd29638985f29fb4c6a34fa9bcaf48
+============================================================================================================================================

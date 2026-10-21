@@ -1,0 +1,132 @@
+============================================================================================================================================
+STEP 34 — FINAL-DEVELOPMENT REFIT EXECUTION
+============================================================================================================================================
+Experiment root       : /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026
+Final-development n   : 42,360
+Architectures         : 8
+Fixed seeds           : 42,43,44,45,46
+Total refits          : 40
+Validation            : NONE
+Early stopping        : NONE
+Checkpoint            : FINAL SCHEDULED EPOCH
+Final test            : LOCKED_NOT_OPENED
+--------------------------------------------------------------------------------------------------------------------------------------------
+[1] UPSTREAM FREEZES
+Step30 robustness freeze : VERIFIED
+Step32 thresholds        : VERIFIED
+Step33 refit schedule    : VERIFIED
+Step26 training engine   : EXECUTABLE == FROZEN
+Final-test state         : LOCKED_NOT_OPENED
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+[2] STEP-34 SOURCE FREEZE
+Source SHA256      : 2030d6719476107dfd0b1a5ec8fe4c4dd3d362bb10aafc4b6f3d9bd1841367e5
+Source fingerprint : b8c1629c0a173b044f5b8fe42a6b1d05072bbb514344c44f13a3d9b32a218e17
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+[3] FROZEN TRAINING PROTOCOL REFERENCE
+Source manifests      : 200 frozen robustness fits
+Architectures verified: 8/8
+Performance metrics   : NOT USED
+Reference SHA256      : 9d2c372aa4f3c54e70e8413895508aa3b840b231d7b4f68a3acbbda7b8a16644
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+[4] FINAL-REFIT EXECUTION PLAN
+Plan rows             : 40/40
+Total scheduled epochs: 65
+Plan SHA256           : 210ac4f01a4150a0f66f7a2370d9a2c268d9a8cda15d258b3789db3aa743ce7c
+Plan fingerprint      : 71e8099a5f0cbc66452ac335700078d72522b2104f4472715923b918536e1758
+PASS
+--------------------------------------------------------------------------------------------------------------------------------------------
+DLINEAR        seed=42 epochs= 1 mb=128
+DLINEAR        seed=43 epochs= 2 mb=128
+DLINEAR        seed=44 epochs= 1 mb=128
+DLINEAR        seed=45 epochs= 1 mb=128
+DLINEAR        seed=46 epochs= 3 mb=128
+NLINEAR        seed=42 epochs= 1 mb=128
+NLINEAR        seed=43 epochs= 1 mb=128
+NLINEAR        seed=44 epochs= 1 mb=128
+NLINEAR        seed=45 epochs= 1 mb=128
+NLINEAR        seed=46 epochs= 1 mb=128
+PATCHTST       seed=42 epochs= 1 mb= 64
+PATCHTST       seed=43 epochs= 1 mb= 64
+PATCHTST       seed=44 epochs= 1 mb= 64
+PATCHTST       seed=45 epochs= 1 mb= 64
+PATCHTST       seed=46 epochs= 1 mb= 64
+TIMESNET       seed=42 epochs= 2 mb= 64
+TIMESNET       seed=43 epochs= 4 mb= 64
+TIMESNET       seed=44 epochs= 2 mb= 64
+TIMESNET       seed=45 epochs= 2 mb= 64
+TIMESNET       seed=46 epochs= 3 mb= 64
+ITRANSFORMER   seed=42 epochs= 1 mb=128
+ITRANSFORMER   seed=43 epochs= 1 mb=128
+ITRANSFORMER   seed=44 epochs= 1 mb=128
+ITRANSFORMER   seed=45 epochs= 1 mb=128
+ITRANSFORMER   seed=46 epochs= 1 mb=128
+FREDFORMER     seed=42 epochs= 1 mb= 16
+FREDFORMER     seed=43 epochs= 1 mb= 16
+FREDFORMER     seed=44 epochs= 1 mb= 16
+FREDFORMER     seed=45 epochs= 1 mb= 16
+FREDFORMER     seed=46 epochs= 1 mb= 16
+FRNET          seed=42 epochs= 1 mb= 64
+FRNET          seed=43 epochs= 1 mb= 64
+FRNET          seed=44 epochs= 1 mb= 64
+FRNET          seed=45 epochs= 1 mb= 64
+FRNET          seed=46 epochs= 2 mb= 64
+MLF            seed=42 epochs= 9 mb= 32
+MLF            seed=43 epochs= 2 mb= 32
+MLF            seed=44 epochs= 2 mb= 32
+MLF            seed=45 epochs= 2 mb= 32
+MLF            seed=46 epochs= 3 mb= 32
+--------------------------------------------------------------------------------------------------------------------------------------------
+RUN  FRNET          FRNET_A              seed=42 epochs=1
+/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/third_party_sources/step17_official_model_sources/FRNet/models/FRNet.py:358: UserWarning: Complex modules are a new feature under active development whose design may change, and some modules might not work as expected when using complex tensors as parameters or buffers. Please file an issue at https://github.com/pytorch/pytorch/issues/new?template=bug-report.yml if a complex module does not work as expected.
+  self.linear_1 =  nn.Linear(in_features, out_features).to(torch.cfloat)
+/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/third_party_sources/step17_official_model_sources/FRNet/models/FRNet.py:359: UserWarning: Complex modules are a new feature under active development whose design may change, and some modules might not work as expected when using complex tensors as parameters or buffers. Please file an issue at https://github.com/pytorch/pytorch/issues/new?template=bug-report.yml if a complex module does not work as expected.
+  self.frequency_mix = nn.Linear(frequency_num, frequency_num).to(torch.cfloat)
+EPOCH FRNET/FRNET_A/seed42 001/001 trainBCE=0.692045 updates=166 sec=72.1
+__STEP34_RESULT__{"config_id": "FRNET_A", "epochs": 1, "final_train_bce": 0.6920447948859253, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/FRNET/FRNET_A/seed_42/fit_manifest.json", "fit_manifest_sha256": "a43913c9bab20cab8a53a1d3d461b9fcc0f1fc366f4eb48741669e18276a0d47", "model_id": "FRNET", "peak_cuda_allocated_mib": 1661.26904296875, "seed": 42, "status": "PASS", "wall_seconds": 73.98101156799748}
+PASS FRNET          seed=42 epochs=1 trainBCE=0.692045 peak=1661.3MiB
+RUN  FRNET          FRNET_A              seed=43 epochs=1
+/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/third_party_sources/step17_official_model_sources/FRNet/models/FRNet.py:358: UserWarning: Complex modules are a new feature under active development whose design may change, and some modules might not work as expected when using complex tensors as parameters or buffers. Please file an issue at https://github.com/pytorch/pytorch/issues/new?template=bug-report.yml if a complex module does not work as expected.
+  self.linear_1 =  nn.Linear(in_features, out_features).to(torch.cfloat)
+/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/third_party_sources/step17_official_model_sources/FRNet/models/FRNet.py:359: UserWarning: Complex modules are a new feature under active development whose design may change, and some modules might not work as expected when using complex tensors as parameters or buffers. Please file an issue at https://github.com/pytorch/pytorch/issues/new?template=bug-report.yml if a complex module does not work as expected.
+  self.frequency_mix = nn.Linear(frequency_num, frequency_num).to(torch.cfloat)
+EPOCH FRNET/FRNET_A/seed43 001/001 trainBCE=0.692122 updates=166 sec=72.5
+__STEP34_RESULT__{"config_id": "FRNET_A", "epochs": 1, "final_train_bce": 0.6921224805631089, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/FRNET/FRNET_A/seed_43/fit_manifest.json", "fit_manifest_sha256": "dc83a4ca0093460daecd8d3b51b08040ffc9cdc51ce50bd083d03e94fdb4e579", "model_id": "FRNET", "peak_cuda_allocated_mib": 1661.26904296875, "seed": 43, "status": "PASS", "wall_seconds": 74.13941777999935}
+PASS FRNET          seed=43 epochs=1 trainBCE=0.692122 peak=1661.3MiB
+RUN  FRNET          FRNET_A              seed=44 epochs=1
+/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/third_party_sources/step17_official_model_sources/FRNet/models/FRNet.py:358: UserWarning: Complex modules are a new feature under active development whose design may change, and some modules might not work as expected when using complex tensors as parameters or buffers. Please file an issue at https://github.com/pytorch/pytorch/issues/new?template=bug-report.yml if a complex module does not work as expected.
+  self.linear_1 =  nn.Linear(in_features, out_features).to(torch.cfloat)
+/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/third_party_sources/step17_official_model_sources/FRNet/models/FRNet.py:359: UserWarning: Complex modules are a new feature under active development whose design may change, and some modules might not work as expected when using complex tensors as parameters or buffers. Please file an issue at https://github.com/pytorch/pytorch/issues/new?template=bug-report.yml if a complex module does not work as expected.
+  self.frequency_mix = nn.Linear(frequency_num, frequency_num).to(torch.cfloat)
+EPOCH FRNET/FRNET_A/seed44 001/001 trainBCE=0.692151 updates=166 sec=73.7
+__STEP34_RESULT__{"config_id": "FRNET_A", "epochs": 1, "final_train_bce": 0.6921514591031529, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/FRNET/FRNET_A/seed_44/fit_manifest.json", "fit_manifest_sha256": "ced2d03eecd323cb826785e82b32e43fe759d0b87e84f0de481683c65a60ada5", "model_id": "FRNET", "peak_cuda_allocated_mib": 1661.26904296875, "seed": 44, "status": "PASS", "wall_seconds": 75.5923804189988}
+PASS FRNET          seed=44 epochs=1 trainBCE=0.692151 peak=1661.3MiB
+RUN  FRNET          FRNET_A              seed=45 epochs=1
+/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/third_party_sources/step17_official_model_sources/FRNet/models/FRNet.py:358: UserWarning: Complex modules are a new feature under active development whose design may change, and some modules might not work as expected when using complex tensors as parameters or buffers. Please file an issue at https://github.com/pytorch/pytorch/issues/new?template=bug-report.yml if a complex module does not work as expected.
+  self.linear_1 =  nn.Linear(in_features, out_features).to(torch.cfloat)
+/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/third_party_sources/step17_official_model_sources/FRNet/models/FRNet.py:359: UserWarning: Complex modules are a new feature under active development whose design may change, and some modules might not work as expected when using complex tensors as parameters or buffers. Please file an issue at https://github.com/pytorch/pytorch/issues/new?template=bug-report.yml if a complex module does not work as expected.
+  self.frequency_mix = nn.Linear(frequency_num, frequency_num).to(torch.cfloat)
+EPOCH FRNET/FRNET_A/seed45 001/001 trainBCE=0.691901 updates=166 sec=74.5
+__STEP34_RESULT__{"config_id": "FRNET_A", "epochs": 1, "final_train_bce": 0.6919013969171036, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/FRNET/FRNET_A/seed_45/fit_manifest.json", "fit_manifest_sha256": "ada8829bee33dec48d819cfb7c7abb17729459bb64ff60cdab08fc8dcd8b74cb", "model_id": "FRNET", "peak_cuda_allocated_mib": 1661.26904296875, "seed": 45, "status": "PASS", "wall_seconds": 76.47062053300033}
+PASS FRNET          seed=45 epochs=1 trainBCE=0.691901 peak=1661.3MiB
+RUN  FRNET          FRNET_A              seed=46 epochs=2
+/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/third_party_sources/step17_official_model_sources/FRNet/models/FRNet.py:358: UserWarning: Complex modules are a new feature under active development whose design may change, and some modules might not work as expected when using complex tensors as parameters or buffers. Please file an issue at https://github.com/pytorch/pytorch/issues/new?template=bug-report.yml if a complex module does not work as expected.
+  self.linear_1 =  nn.Linear(in_features, out_features).to(torch.cfloat)
+/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/third_party_sources/step17_official_model_sources/FRNet/models/FRNet.py:359: UserWarning: Complex modules are a new feature under active development whose design may change, and some modules might not work as expected when using complex tensors as parameters or buffers. Please file an issue at https://github.com/pytorch/pytorch/issues/new?template=bug-report.yml if a complex module does not work as expected.
+  self.frequency_mix = nn.Linear(frequency_num, frequency_num).to(torch.cfloat)
+EPOCH FRNET/FRNET_A/seed46 001/002 trainBCE=0.691748 updates=166 sec=74.0
+EPOCH FRNET/FRNET_A/seed46 002/002 trainBCE=0.690284 updates=166 sec=73.7
+__STEP34_RESULT__{"config_id": "FRNET_A", "epochs": 2, "final_train_bce": 0.6902838269756919, "fit_manifest_path": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_development_refits/FRNET/FRNET_A/seed_46/fit_manifest.json", "fit_manifest_sha256": "2b79094ffddd33e881991546867b8688fb38183686695852bf8ac5a8290d1b61", "model_id": "FRNET", "peak_cuda_allocated_mib": 1661.26904296875, "seed": 46, "status": "PASS", "wall_seconds": 149.6047314589996}
+PASS FRNET          seed=46 epochs=2 trainBCE=0.690284 peak=1661.3MiB
+--------------------------------------------------------------------------------------------------------------------------------------------
+New fits this invocation : 5
+Hash-valid skipped fits  : 0
+Total completed refits   : 35/40
+Final-test data opened  : False
+Final-test state        : LOCKED_NOT_OPENED
+--------------------------------------------------------------------------------------------------------------------------------------------
+STEP 34 remains resumable/incomplete.
+Final global freeze will be written only after all 40 refits are hash-valid.
+============================================================================================================================================

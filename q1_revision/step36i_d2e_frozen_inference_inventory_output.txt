@@ -1,0 +1,45 @@
+==============================================================================================================
+STEP 36I-D2e — ALL-40 CHECKPOINT AND FROZEN-THRESHOLD INVENTORY
+==============================================================================================================
+
+[1] VERIFY SCIENTIFIC FREEZES AND PREVIOUS PREFLIGHT
+PASS: 34_final_development_refit_final_freeze_manifest.json
+PASS: 35_final_test_evaluation_contract_freeze_manifest.json
+PASS: 36i_d2d_amended_scaffold_DRAFT.json
+PASS — sealed-test access lock preserved
+
+[2] VERIFY COMPLETE FROZEN REFIT REGISTER
+PASS — 8 architectures x 5 frozen seeds = 40 fits
+
+[3] VERIFY ALL 40 FIT MANIFESTS AND CHECKPOINT HASHES
+PASS — DLINEAR        5/5 checkpoint hashes verified | physical batch=128
+PASS — NLINEAR        5/5 checkpoint hashes verified | physical batch=128
+PASS — PATCHTST       5/5 checkpoint hashes verified | physical batch=64
+PASS — TIMESNET       5/5 checkpoint hashes verified | physical batch=64
+PASS — ITRANSFORMER   5/5 checkpoint hashes verified | physical batch=128
+PASS — FREDFORMER     5/5 checkpoint hashes verified | physical batch=16
+PASS — FRNET          5/5 checkpoint hashes verified | physical batch=64
+PASS — MLF            5/5 checkpoint hashes verified | physical batch=32
+
+[4] VERIFY FROZEN THRESHOLD FAMILY
+PASS — exactly 24 frozen architecture-horizon thresholds
+PASS — all threshold values finite and within [0, 1]
+PASS — no new threshold optimization
+
+[5] VERIFY INFERENCE-PLAN FILE
+Inference-plan rows: 40
+Inference-plan columns: ['model_id', 'config_id', 'seed', 'scheduled_epochs', 'physical_inference_microbatch', 'inference_row_order', 'inference_shuffle', 'gradient_tracking', 'probability_transform', 'seed_probability_retained', 'ensemble_rule', 'checkpoint_path', 'checkpoint_sha256', 'fit_manifest_path', 'fit_manifest_sha256']
+PASS — inference plan contains exactly the 40 frozen pairs
+
+[6] WRITE SEPARATE DRAFT INVENTORY
+Report: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/step36i_d2e_inference_inventory_draft/36i_d2e_frozen_inference_inventory_DRAFT.json
+Report SHA256: 5880f8c4329c91b772e121d097462ddf8af8124eb4bf2910c27bed35d165861e
+
+==============================================================================================================
+STEP 36I-D2e — CHECKPOINT AND THRESHOLD INVENTORY COMPLETE
+Checkpoint hashes verified: 40/40
+Frozen thresholds verified: 24/24
+GPU inference executed: FALSE
+Sealed final-test opened: FALSE
+Additional test access authorized: FALSE
+==============================================================================================================

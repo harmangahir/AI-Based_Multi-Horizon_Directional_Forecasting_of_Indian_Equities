@@ -1,0 +1,33 @@
+{
+  "files": [
+    {
+      "bytes": 19756,
+      "name": "step36i_f29r6_regime_diagnostics_CORRECTED.py",
+      "sha256": "8ff304f9d8bbba3b10dfac81e40146404ec6805c298c672d2a4039c6027dc680"
+    },
+    {
+      "bytes": 19540,
+      "name": "step36i_f29r6_ml_scorer_CORRECTED.py",
+      "sha256": "9108556bfb345d6089adaa9da5cac7c8b300d55c69e6536847d1978a67ac7a11"
+    },
+    {
+      "bytes": 24534,
+      "name": "step36i_f29r6_finalizer_CORRECTED.py",
+      "sha256": "a1df40c21a24c586034a88971ffd5aef655a32b056df5e8d550a8d78aaeee65b"
+    },
+    {
+      "bytes": 12552,
+      "name": "step36i_f29r6_finalization_only_RECOVERY.py",
+      "sha256": "7b69b58af0968c0bc5084c4fc2b3b61f495f949057d41996c786dcb69b5c0e06"
+    },
+    {
+      "bytes": 3283,
+      "name": "F29R6_NOTES.md",
+      "sha256": "271a546fc52c3e3a3614ea4a84e6e8c7db665fc0785cb2c56c17847397422353"
+    }
+  ],
+  "mutates_original_frozen_sources": false,
+  "opens_raw_test": false,
+  "original_f29r5_controller_sha256": "bc073d6bf565ddbc06fa87007e897eaea16f1cce75cc8940d2b7a0f9a33be220",
+  "schema": "F29R6_REGIME_LABEL_RECOVERY_DISTRIBUTION_V1"
+}

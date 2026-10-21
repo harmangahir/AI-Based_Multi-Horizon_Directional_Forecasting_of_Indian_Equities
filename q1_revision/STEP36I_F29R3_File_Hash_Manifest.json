@@ -1,0 +1,28 @@
+{
+  "schema": "STEP36I_F29R3_SOURCE_PACKAGE_MANIFEST_V1",
+  "code_status": "OFFLINE_PRETEST_ONLY",
+  "third_read_authorized": false,
+  "frozen_step35_sha256": "6f715055fa30759fd9aa9b31655759bbd4dca25398f1d6d2cd39be5bf3bed1d7",
+  "sources": [
+    {
+      "file": "step36i_f29r3_supplementary_baselines_diagnostics_REVIEW_ONLY.py",
+      "sha256": "136e6607292e0e2849f84cecc5b48cb7f7ce00ab5f3daff2af2fbe1d29256311",
+      "bytes": 19756
+    },
+    {
+      "file": "step36i_f20r2_supplementary_finalization_CANDIDATE.py",
+      "sha256": "bff7f7d83c4af502808a4c7593d00a8685e056a207718e53617a314927dd7b1e",
+      "bytes": 22409
+    },
+    {
+      "file": "step36i_f29r3_scientifically_extended_signature_gated_CANDIDATE.py",
+      "sha256": "8b473f21a87df84b122ccd8fd217067318d9dcbb04e7df31cfba0a38491a16fa",
+      "bytes": 45298
+    },
+    {
+      "file": "STEP36I_F29R3_SCIENTIFIC_ENHANCEMENT_AND_DISCLOSURE.md",
+      "sha256": "ba0fedc4cd790a5fc14b4a78f02e054f9d92a612740603e0eb4426ec6dce3a3a",
+      "bytes": 6936
+    }
+  ]
+}

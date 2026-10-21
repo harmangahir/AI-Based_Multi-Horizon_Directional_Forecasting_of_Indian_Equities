@@ -1,0 +1,48 @@
+=========================================================================================================
+STEP 36I-D2g — OFFLINE SYNTHETIC SCORING / BOOTSTRAP INTEGRATION
+=========================================================================================================
+
+[1] VERIFY SCIENTIFIC FREEZES AND ACCESS STATE
+PASS: 36i_d2f_full_synthetic_rehearsal_DRAFT.json
+PASS: 36i_d2e_frozen_inference_inventory_DRAFT.json
+PASS: 36i_candidate_sequence_eligible_keys_DRAFT.csv
+PASS: step36_one_time_final_test_materialization_inference_scoring_v1.py
+PASS: 35_final_test_evaluation_contract_freeze_manifest.json
+PASS — complete D2f synthetic inventory verified
+PASS — no additional raw-test access
+
+[2] VERIFY PHYSICAL EVALUATION ROW ORDER
+PASS — 265 dates, 20 stocks each, two continuity segments
+
+[3] LOAD ACTUAL STEP-36 SCORING IMPLEMENTATION
+PASS — original scoring function imported without execution
+
+[4] INDEPENDENTLY RECONSTRUCT EIGHT SYNTHETIC ENSEMBLES
+PASS — DLINEAR        5-seed ensemble verified; 3 scoring interfaces
+PASS — NLINEAR        5-seed ensemble verified; 3 scoring interfaces
+PASS — PATCHTST       5-seed ensemble verified; 3 scoring interfaces
+PASS — TIMESNET       5-seed ensemble verified; 3 scoring interfaces
+PASS — ITRANSFORMER   5-seed ensemble verified; 3 scoring interfaces
+PASS — FREDFORMER     5-seed ensemble verified; 3 scoring interfaces
+PASS — FRNET          5-seed ensemble verified; 3 scoring interfaces
+PASS — MLF            5-seed ensemble verified; 3 scoring interfaces
+
+[5] SEGMENT-STRATIFIED BOOTSTRAP ON SYNTHETIC SCORING COUNTS
+PASS — L=10, 2000 replicates, 24 tests, zero segment crossings
+PASS — L=20, 2000 replicates, 24 tests, zero segment crossings
+PASS — L=40, 2000 replicates, 24 tests, zero segment crossings
+PASS — 24-test BH-FDR adjustment and numerical oracle
+
+[6] WRITE INTEGRATION REPORT — SYNTHETIC ONLY
+Report: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/step36i_d2g_synthetic_scoring_draft/36i_d2g_synthetic_scoring_DRAFT.json
+Report SHA256: f520919ef7cd0640a5807fcc61d9eee638fdf19a651b89523f1ef55607a52a6d
+
+=========================================================================================================
+STEP 36I-D2g — SYNTHETIC SCORING INTEGRATION PASS
+Seed predictions verified: 40/40
+Five-seed ensembles verified: 8/8
+Architecture-horizon scoring checks: 24/24
+Bootstrap specifications verified: 10, 20, 40
+Real test data accessed: FALSE
+Production execution authorized: FALSE
+=========================================================================================================

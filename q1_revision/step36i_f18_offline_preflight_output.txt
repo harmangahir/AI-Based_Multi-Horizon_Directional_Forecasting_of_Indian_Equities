@@ -1,0 +1,18 @@
+========================================================================================================
+STEP 36I-F18 — IMMUTABLE PHASE A + PER-SEED RESUME STORE (REVIEW ONLY)
+========================================================================================================
+[1] LIVE NON-TEST PROVENANCE AND ACCESS DENIAL
+PASS — F17/F11/F15/F16, Step35, F13E source hashes; ledger 2 reads/0 scored
+[2] REAL REUSABLE IMMUTABLE STORAGE METHODS ON SMALL SYNTHETIC FIXTURES
+PASS — Phase A atomic manifest, rehash and duplicate rejection
+PASS — independent seed rehash, numerical oracle, 1 completed/39 pending, duplicate rejection
+PASS — modified committed output blocks resume
+PASS — failed precommit staging blocks silent replay
+[3] REMAINING RELEASE GATES
+NOT IMPLEMENTED — authorized single-open real loader/journal/writer integration
+NOT IMPLEMENTED — live checkpoint worker commits and approved Phase B orchestration
+PENDING — independent source and methodological sign-off; separate third-read authorization
+========================================================================================================
+STEP 36I-F18 PASS — REVIEWABLE PHASE A AND PER-SEED IMMUTABLE STORAGE ONLY
+Real raw test opened: FALSE | GPU: FALSE | Test scored: FALSE | Production CLI: DENIED
+========================================================================================================

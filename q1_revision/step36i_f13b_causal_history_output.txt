@@ -1,0 +1,19 @@
+======================================================================================================
+STEP 36I-F13B — INDEPENDENT 60-SESSION CAUSAL-HISTORY ELIGIBILITY PROOF
+======================================================================================================
+[1] FROZEN INPUT AUTHENTICATION AND RAW-TEST BOUNDARY
+PASS — Step10, Step12, candidate and Step35 hashes; Step08 signed manifest
+PASS — excluded 2025-03-18; access ledger 2 reads/0 scored; no sealed-test parquet
+Step08 manifest SHA256: dd4e850de15f752425c6bf3df895010f089f5ad32459cb97046744871b5680a8
+[2] STEP08 FULL-VS-COMPLETE WARM-UP AND CONTINUITY RECONCILIATION
+Traceback (most recent call last):
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36i_f13b_causal_history_eligibility_READ_ONLY.py", line 386, in <module>
+    main()
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36i_f13b_causal_history_eligibility_READ_ONLY.py", line 288, in main
+    full = read_structural_parquet(STEP08_FULL, "Step08 full")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36i_f13b_causal_history_eligibility_READ_ONLY.py", line 102, in read_structural_parquet
+    require(set(KEYS).issubset(schema.names), f"{name} missing keys in Parquet schema")
+  File "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/q1_revision/step36i_f13b_causal_history_eligibility_READ_ONLY.py", line 65, in require
+    raise RuntimeError(message)
+RuntimeError: Step08 full missing keys in Parquet schema

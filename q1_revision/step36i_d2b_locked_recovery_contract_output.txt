@@ -1,0 +1,57 @@
+==============================================================================================================
+STEP 36I-D2b — LOCKED AMENDED-COHORT CONTRACT
+==============================================================================================================
+
+[1] VERIFY IMMUTABLE SOURCE AND OFFLINE EVIDENCE
+PASS: step36_one_time_final_test_materialization_inference_scoring_v1.py
+PASS: 10_split_membership.parquet
+PASS: 36i_candidate_sequence_eligible_keys_DRAFT.csv
+PASS: 36i_protocol_deviation_DRAFT.json
+PASS: 35_final_test_evaluation_contract_freeze_manifest.json
+PASS: 36i_b1_synthetic_sequences_DRAFT.json
+PASS: 36i_b2_v2_synthetic_gpu_results_DRAFT.json
+PASS: 36i_c_synthetic_bootstrap_DRAFT.json
+
+[2] VERIFY FINAL-TEST ACCESS STATE
+PASS — two previous reads retained
+PASS — no final-test scoring
+PASS — additional raw-test access remains unauthorized
+
+[3] VERIFY ORIGINAL SOURCE CONTRACT
+PASS — original frozen counts preserved
+
+[4] RECONSTRUCT CORRECTED COHORT INDEPENDENTLY
+PASS — original endpoints: 6480 across 324 sessions
+PASS — corrected endpoints: 5300 across 265 sessions
+PASS — 1180 endpoints excluded for insufficient history
+PASS — candidate keys exactly match hashed DRAFT CSV
+Verified period: {'segment': 0, 'sessions': 48, 'rows': 960, 'start': '2025-01-01', 'end': '2025-03-07'}
+Verified period: {'segment': 1, 'sessions': 217, 'rows': 4340, 'start': '2025-08-01', 'end': '2026-06-22'}
+
+[5] FREEZE REVIEW REQUIREMENTS — WITHOUT APPROVAL
+ 1. Original 6480/324 structural population remains provenance.
+ 2. Amended 5300/265 population uses frozen candidate keys.
+ 3. Every input sequence uses 60 same-segment causal sessions.
+ 4. Final-development scaler and regime thresholds remain frozen.
+ 5. All 40 fitted checkpoints and 24 thresholds are retained.
+ 6. Seed-wise physical batches and ordered inference are preserved.
+ 7. TimesNet batch-composition dependence is disclosed.
+ 8. Two historical raw-test reads remain in provenance.
+ 9. Any third raw-test read requires separate explicit authorization.
+10. Original Step-35 freeze is not retroactively rewritten.
+11. Amended outputs require separate names and manifests.
+12. Segment-aware bootstrap requires formal methodological review.
+13. Post-freeze changes are disclosed in the manuscript.
+
+[6] WRITE DRAFT CONTRACT REPORT
+Contract draft: /home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/audits/step36i_d2b_locked_recovery_contract_draft/36i_d2b_locked_contract_DRAFT.json
+Contract SHA256: 6bee0ef0048ef41b1122bffa65c7b46a7a4ffd0ffafe5ec29c6ca74bc5348923
+
+==============================================================================================================
+STEP 36I-D2b OFFLINE CONTRACT VERIFIED
+Amended production runner implemented: FALSE
+Amended statistical protocol approved: FALSE
+Sealed final-test file opened: FALSE
+Held-out inference performed: FALSE
+Additional raw-test access authorized: FALSE
+==============================================================================================================

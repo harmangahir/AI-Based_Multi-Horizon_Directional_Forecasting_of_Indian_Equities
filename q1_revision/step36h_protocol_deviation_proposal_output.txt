@@ -1,0 +1,102 @@
+==============================================================================================================
+STEP 36H — POST-FREEZE PROTOCOL DEVIATION PROPOSAL
+==============================================================================================================
+
+[1] VERIFY ORIGINAL FROZEN EVIDENCE
+PASS — immutable evidence and access history verified
+
+[2] RECONSTRUCT STRUCTURAL ELIGIBILITY
+PASS — corrected structural population independently reproduced
+
+[3] PROPOSED DEVIATION RECORD — NOT APPROVED
+{
+  "status": "DRAFT_ONLY_NOT_AUTHORIZED",
+  "proposal_id": "STEP36H_POSTFREEZE_EVALUATION_POPULATION_CORRECTION",
+  "original_contract": {
+    "step35_sha256": "6f715055fa30759fd9aa9b31655759bbd4dca25398f1d6d2cd39be5bf3bed1d7",
+    "expected_test_observations": 6480,
+    "expected_test_sessions": 324,
+    "stocks": 20,
+    "lookback": 60,
+    "forecast_horizons": [
+      1,
+      3,
+      5
+    ]
+  },
+  "observed_implementation_failure": {
+    "reason": "Target eligibility was not intersected with 60-session sequence-history eligibility.",
+    "step04_excluded_date": "2025-03-18",
+    "feature_warmup_sessions_per_stock": 33,
+    "sequence_lookback": 60,
+    "initial_test_read_count": 1,
+    "technical_recovery_read_count": 1,
+    "total_raw_test_reads": 2,
+    "materialization_completed": false,
+    "heldout_model_inference_completed": false,
+    "heldout_metrics_computed": false
+  },
+  "proposed_structural_evaluation": {
+    "eligible_observations": 5300,
+    "eligible_sessions": 265,
+    "incompatible_observations": 1180,
+    "incompatible_sessions": 59,
+    "periods": [
+      {
+        "continuity_segment_id": 0,
+        "sessions": 48,
+        "observations": 960,
+        "first_date": "2025-01-01",
+        "last_date": "2025-03-07"
+      },
+      {
+        "continuity_segment_id": 1,
+        "sessions": 217,
+        "observations": 4340,
+        "first_date": "2025-08-01",
+        "last_date": "2026-06-22"
+      }
+    ],
+    "basis": "Frozen Step-10 structural membership intersected with frozen Step-13 causal 60-session history constraints.",
+    "performance_dependent_selection": false
+  },
+  "preserve_without_change": [
+    "40 trained model checkpoints",
+    "8 architecture/config selections",
+    "5 fixed seeds",
+    "63 ordered predictors",
+    "training-fitted scaler",
+    "training-fitted regime thresholds",
+    "24 development-OOF thresholds",
+    "balanced accuracy primary metric",
+    "no model or threshold retuning"
+  ],
+  "statistical_review_required": {
+    "problem": "Two disjoint eligible time intervals must not be treated as temporally adjacent.",
+    "candidate_amendment": "Stratify circular moving-block resampling within contiguous eligibility segments.",
+    "primary_block_length": 20,
+    "sensitivity_block_lengths": [
+      10,
+      40
+    ],
+    "bootstrap_replicates": 2000,
+    "primary_fdr_family": "24 architecture-by-horizon BA tests",
+    "approved": false
+  },
+  "recovery_constraints": {
+    "original_two_read_access_limit_exhausted": true,
+    "third_test_read_authorized": false,
+    "original_frozen_contract_superseded": false,
+    "further_execution_authorized": false,
+    "external_confirmatory_holdout_should_be_considered": true
+  }
+}
+
+==============================================================================================================
+STEP 36H DRAFT GENERATED — AWAITING SCIENTIFIC REVIEW
+Proposal frozen or approved: FALSE
+Original Step-35 contract changed: FALSE
+Final-test parquet opened: FALSE
+Model inference executed: FALSE
+Additional raw-test read authorized: FALSE
+==============================================================================================================
