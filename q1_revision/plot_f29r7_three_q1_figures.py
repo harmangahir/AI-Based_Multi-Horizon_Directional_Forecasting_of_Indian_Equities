@@ -341,44 +341,123 @@ def fig_calibration(data,width,font,leaders,ml_model):
     return fig
 
 
-def fig_bootstrap(data,width,font):
-    boot=data['bootstrap']
-    fig,axes=plt.subplots(1,3,figsize=(width,6.6),sharex=True,sharey=True)
-    colors={10:'#98a5ad',20:'#176ba0',40:'#d58a3c'}
-    styles={10:'o',20:'D',40:'s'}
-    shift={10:-.22,20:0.,40:.22}
-    for ax,h in zip(axes,HORIZONS):
-        frame=boot.loc[boot.horizon_days==h].set_index(['model_id','block_length'])
-        for i,model in enumerate(NEURAL):
-            for L in (10,20,40):
-                row=frame.loc[(model,L)]
-                point=float(row.observed_BA)*100
-                lo=float(row.ci_lower_percentile_95)*100
-                hi=float(row.ci_upper_percentile_95)*100
-                require(lo<=hi, f'Invalid bootstrap CI for {model}/{h}/{L}')
-                y=i+shift[L]
-                ax.plot([lo,hi],[y,y],lw=1.6,color=colors[L],solid_capstyle='round')
-                ax.plot([lo,lo],[y-.055,y+.055],lw=1,color=colors[L])
-                ax.plot([hi,hi],[y-.055,y+.055],lw=1,color=colors[L])
-                ax.scatter([point],[y],marker=styles[L],s=24,
-                           color=colors[L],edgecolor='white',linewidth=.35,zorder=4)
-        ax.axvline(50,color='#303030',ls='--',lw=1)
-        ax.set_title(f'{h}-session horizon',pad=12)
-        ax.set_xlabel('Balanced accuracy (%)')
-        ax.set_yticks(range(len(NEURAL)),[DISPLAY[m] for m in NEURAL])
-        ax.set_ylim(len(NEURAL)-.5,-.5)
-        ax.grid(axis='x',color='#d6d6d6',alpha=.5,lw=.6)
+def fig_bootstrap(data, width, font):
+    df = data['bootstrap'].copy()
+
+    horizons = [1, 3, 5]
+    fig, axes = plt.subplots(
+        1, 3,
+        figsize=(width, 6.3),
+        sharey=True
+    )
+
+    colors = {10: '#8e9aa7', 20: '#1f77b4', 40: '#c77c2e'}
+    markers = {10: 'o', 20: 'D', 40: 's'}
+    labels = {
+        10: 'L = 10 (sensitivity)',
+        20: 'L = 20 (primary)',
+        40: 'L = 40 (sensitivity)'
+    }
+
+    offsets = {10: -0.18, 20: 0.00, 40: 0.18}
+
+    neural_order = NEURAL[:]   # existing order from your script
+
+    for ax, h, panel in zip(axes, horizons, ['A', 'B', 'C']):
+        sub = df[df['horizon_days'] == h].copy()
+        sub['model_id'] = pd.Categorical(sub['model_id'], categories=neural_order, ordered=True)
+        sub = sub.sort_values(['model_id', 'block_length'])
+
+        ybase = np.arange(len(neural_order))
+
+        for L in [10, 20, 40]:
+            tmp = sub[sub['block_length'] == L].set_index('model_id').reindex(neural_order).reset_index()
+            y = ybase + offsets[L]
+
+            x = tmp['balanced_accuracy'] * 100.0
+            lo = tmp['ci_low'] * 100.0
+            hi = tmp['ci_high'] * 100.0
+
+            xerr = np.vstack([x - lo, hi - x])
+
+            ax.errorbar(
+                x, y, xerr=xerr,
+                fmt=markers[L],
+                color=colors[L],
+                ecolor=colors[L],
+                elinewidth=1.6 if L == 20 else 1.3,
+                capsize=2.6,
+                markersize=5.6 if L == 20 else 4.6,
+                markeredgecolor='white',
+                markeredgewidth=0.5,
+                linewidth=0,
+                zorder=3 if L == 20 else 2,
+                label=labels[L] if h == 1 else None
+            )
+
+        ax.axvline(50, color='#303030', linestyle='--', linewidth=1.1, dashes=(4, 3), zorder=1)
+        ax.set_title(f'{panel}  |  {h}-session horizon', loc='left', pad=10, fontsize=font + 0.2)
+        ax.set_xlim(44, 56)
+        ax.grid(axis='x', color='#d6d6d6', alpha=.55, lw=.65)
+        ax.set_axisbelow(True)
+        ax.set_xlabel('Balanced accuracy (%)', fontsize=font)
+
+        ax.set_yticks(np.arange(len(neural_order)))
+        ax.set_yticklabels([DISPLAY[m] for m in neural_order], fontsize=font - 0.1)
+        ax.set_ylim(len(neural_order) - 0.5, -0.5)
+
+        for spine in ['top', 'right']:
+            ax.spines[spine].set_visible(False)
+
+    axes[0].tick_params(axis='y', labelsize=font)
+    axes[1].tick_params(axis='y', left=False, labelleft=False)
+    axes[2].tick_params(axis='y', left=False, labelleft=False)
+
     from matplotlib.lines import Line2D
-    legend=[Line2D([0],[0],color=colors[L],marker=styles[L],lw=1.5,
-                   markersize=5,label=f'L={L}'+(' (primary)' if L==20 else ' (sensitivity)'))
-            for L in (10,20,40)]
-    fig.legend(handles=legend,ncol=3,loc='upper center',bbox_to_anchor=(.5,.955),
-               frameon=False)
-    fig.suptitle('Dependence-aware bootstrap: frozen block-length sensitivity',y=.995)
-    fig.subplots_adjust(left=.115,right=.985,top=.84,bottom=.17,wspace=.12)
-    fig.text(.5,.055,'Stored 95% percentile intervals, B=2,000 per L. '
-             'Only L=20 belongs to the 24 original primary BH-FDR tests; no interval selection.',
-             fontsize=font-1.35,ha='center')
+    legend_handles = [
+        Line2D([0], [0], color=colors[L], marker=markers[L], lw=1.4,
+               markersize=5.2, label=labels[L])
+        for L in [10, 20, 40]
+    ]
+    legend_handles.append(
+        Line2D([0], [0], color='#303030', lw=1.1, linestyle='--', label='BA = 50%')
+    )
+
+    fig.legend(
+        handles=legend_handles,
+        ncol=4,
+        loc='upper center',
+        bbox_to_anchor=(0.5, 0.98),
+        frameon=False,
+        fontsize=font - 0.1,
+        columnspacing=1.2,
+        handletextpad=0.4
+    )
+
+    fig.suptitle(
+        'Dependence-aware bootstrap: confidence-interval sensitivity',
+        y=1.04,
+        fontsize=font + 1.6,
+        fontweight='semibold'
+    )
+
+    fig.subplots_adjust(
+        left=0.14,
+        right=0.99,
+        top=0.82,
+        bottom=0.18,
+        wspace=0.18
+    )
+
+    fig.text(
+        0.5, 0.08,
+        'Stored 95% percentile intervals; B = 2,000 bootstrap replicates per block length.\n'
+        'Only L = 20 belongs to the 24 original primary tests; L = 10 and 40 are sensitivity checks.',
+        ha='center',
+        fontsize=font - 1.0,
+        color='#4b5563'
+    )
+
     return fig
 
 

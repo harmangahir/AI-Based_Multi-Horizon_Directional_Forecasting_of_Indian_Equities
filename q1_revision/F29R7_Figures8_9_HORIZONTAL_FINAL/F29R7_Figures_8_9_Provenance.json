@@ -1,0 +1,44 @@
+{
+  "authenticated_input": {
+    "aggregate_ml_metrics_sha256": "f77e952c848d603a0dc7284dd91f4779e2fc9681c0856604756351ef96518dc8",
+    "aggregate_neural_metrics_sha256": "d5e76ef2b4a224d7708a63519fabd61fe3904dc739c61638e9f7145cf4587bef",
+    "all_23_evaluation_artifacts_sha256_verified": true,
+    "completed_evaluation_manifest_sha256": "47e7820dafe9ec8f951f8daa45ce77aae37599d872bc631a4657f77c96903512",
+    "evaluation_stock_session_endpoints_per_horizon": 5300,
+    "original_contract_sha256": "6f715055fa30759fd9aa9b31655759bbd4dca25398f1d6d2cd39be5bf3bed1d7",
+    "receipt_sha256": "637598ea722cf6083a3797d6de467ad91c6d3287fb2819edb92e90ff850af628"
+  },
+  "bootstrap_recomputed": false,
+  "comparators_are_exploratory": true,
+  "created_utc": "2026-10-21T16:00:30.717230+00:00",
+  "figure_sha256": {
+    "fig18_all_models_BA_HORIZONTAL.pdf": "931111c2dc9e3a5ea69d9b894aae05eede7cbe76061ecd26c8c59f4a02af6d7a",
+    "fig18_all_models_BA_HORIZONTAL.png": "a303310eafd90f72c435ab8a8d7de480d40db6ffef66db0d27588cbe21edcd5d",
+    "fig19_all_models_ROCAUC_HORIZONTAL.pdf": "b21d34c6a19abfca74c45b42b456fa058064c6a2bbf6801b4cf8381836e98965",
+    "fig19_all_models_ROCAUC_HORIZONTAL.png": "204fe33ef0c379fb246da3fd484983537ef0a69c8f5f4622ccf40798983779d3"
+  },
+  "figures": [
+    "ba",
+    "auc"
+  ],
+  "formats": [
+    "pdf",
+    "png"
+  ],
+  "generator_sha256": "01ac221498c4db21331bea93e40595da6a427d95881126f6d2b028c2c98601a5",
+  "inference_performed": false,
+  "panel_layout": "1_row_by_3_columns",
+  "previously_committed_held_out_aggregate_metrics_read": true,
+  "raster_dpi": 600,
+  "schema": "F29R7_Q1_11_MODELS_3_HORIZONS_BA_AUC_READONLY_V1",
+  "sealed_raw_test_opened": false,
+  "thresholds_changed": false,
+  "training_performed": false,
+  "vector_pdf": true,
+  "versions": {
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "python": "3.12.15"
+  }
+}

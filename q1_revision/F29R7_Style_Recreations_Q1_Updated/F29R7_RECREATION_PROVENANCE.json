@@ -1,0 +1,121 @@
+{
+  "access": "postcommit CSVs only; zero raw test, training, inference, bootstrap recomputation",
+  "authenticated_input_artifacts": {
+    "committed_evaluation_manifest_sha256": "47e7820dafe9ec8f951f8daa45ce77aae37599d872bc631a4657f77c96903512",
+    "evaluation_dir": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_test_evaluation/step36i_amended_predictions/completed_evaluation",
+    "experiment_root": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026",
+    "public_receipt_sha256": "637598ea722cf6083a3797d6de467ad91c6d3287fb2819edb92e90ff850af628",
+    "verified_artifact_sha256": {
+      "bootstrap_fdr.csv": "a9d9c8e00b9c1665b5526d80570c8d4f3fea8684edcb9d27966abb9e0cae77ae",
+      "classification_metrics.csv": "d5e76ef2b4a224d7708a63519fabd61fe3904dc739c61638e9f7145cf4587bef",
+      "ensemble_predictions.parquet": "49bb2869a11fc43f51161a4fee4e93036b5d8abbedd2e366e260786f3c34fb01",
+      "frozen_seed_plan.csv": "a2f8489933e8d2bbd11d6bab72361f7ad066dd37bc62e1db45bb0d20d87ce086",
+      "ml_devonly_calendar_quarter.csv": "de1cf2df5a54a4497d4802752e0c3c3a23ddd13505bd4c13105ae40823bf271a",
+      "ml_devonly_calibration_10_bins.csv": "8fbcfb28fedb8bfa99154b1a7991d25ea194c2335e6241b7b4f58d505e039837",
+      "ml_devonly_classification_metrics.csv": "f77e952c848d603a0dc7284dd91f4779e2fc9681c0856604756351ef96518dc8",
+      "ml_devonly_methods_manifest.json": "eba182b451a9f5a7e242e470803377424b53e77b22f87dea956e79bdb886d7c8",
+      "ml_devonly_neural_vs_ml_paired_block_ci.csv": "72e9ea327e9f09c768e1eec359eb19e8b156147d46eaa4292e758e7d4e3eca52",
+      "ml_devonly_predictions.parquet": "af368fb806b31030524e46c036bf64fcb6c762ee6f1f06a3b8ba68e49e7aec47",
+      "ml_devonly_regime_level.csv": "c88687d91eed76df34de8b239a70307c8a60a2e74db6a605e2e78cc8a925e14a",
+      "ml_devonly_segment_level.csv": "5bffcd7e610fd86fcf878966a387e470e348e398b2625a63cec8b9acb78f84eb",
+      "ml_devonly_stock_level.csv": "3f9d5a9531d31e7eedb0f7e00e88dccdbff0e066bd9d139203b7ca73bbd7ebbf",
+      "ml_devonly_vs_persistence_paired_block_ci.csv": "24c14d09022fbf4cb189bd09fe3d01acd51d6a5517d9e0bfcc284ddf0a48a299",
+      "pairwise_exploratory.csv": "dd22fb8ee553db96cfe3903dde22d9fae68f11749940ba7e9ad9d3d5c30bee33",
+      "supplementary_baselines.csv": "8a9afee5948f055220bea545110257b32de8febb3743ed42b83a8017c1607dc0",
+      "supplementary_calendar_quarter.csv": "158d54827e9f5b325007719d0e284602a832c8045226b8eb5f6384e310b8bf48",
+      "supplementary_calibration_10_fixed_bins.csv": "1b33c3eca497c6b0bb48ae1ce4eeee0b81303f482386d47911f1f4ea7ede6c37",
+      "supplementary_methods_manifest.json": "ff2ab994b0a086ae32641c8e946d9a0129795e0c4a7b58aa0653914aebd4ed51",
+      "supplementary_model_vs_persistence_paired_block_ci.csv": "cce004adae071b9ce5055161df28c6c403094e08bbf4aee282278e2d67e2cf29",
+      "supplementary_regime_level.csv": "394dd106f20ee7c464716594253eb16db6f0e9c8bcea9b7ec8be4c2ca606865c",
+      "supplementary_segment_level.csv": "c658bcfbdf73b4cd30305e6c57c37b3944e356684fb7cd566616adb19fda5df0",
+      "supplementary_stock_level.csv": "049601522a41a03b17d623a2aeaa11ae8bc27bcbaf51ce5d184e22282198d6be"
+    }
+  },
+  "dpi_png": 600,
+  "evaluation_manifest_sha256": "47e7820dafe9ec8f951f8daa45ce77aae37599d872bc631a4657f77c96903512",
+  "explicitly_excluded": "historical 2280-row old study, outdated arms, economic backtests, train/val compositions",
+  "figures": [
+    "sup01_all_neural_ml_BA_bars",
+    "sup02_all_neural_ml_ROCAUC_bars",
+    "sup03_regimes_by_horizon",
+    "sup04_disjoint_segment_stability",
+    "sup05_stock_level_BA_boxplots",
+    "sup06_heldout_up_class_balance",
+    "sup07_heldout_regime_composition"
+  ],
+  "matplotlib_version": "3.11.2",
+  "numpy_version": "2.5.3",
+  "output_sha256": {
+    "sup01_all_neural_ml_BA_bars.pdf": "a7679695e985976013bc2a3a0d12a4aeeb678e54186db1c265a689b7fa1deaa8",
+    "sup01_all_neural_ml_BA_bars.png": "8a8168ce55ec0d0c56750ff82da3674dd02867ba71c44d4dd6cd1427ede9826a",
+    "sup02_all_neural_ml_ROCAUC_bars.pdf": "0059c1bd2e45185df3066f1caea8526fb6f59b1fdbf9a1041d1d65b620c1317d",
+    "sup02_all_neural_ml_ROCAUC_bars.png": "88f4f372700f0c7ae623b19231782bb7401567fc05359418a279134b2b3fc1fe",
+    "sup03_regimes_by_horizon.pdf": "3df303293ad910442fe13ab4bafabc8454bde2f87ba418aeec5a4cb1a4d7df1b",
+    "sup03_regimes_by_horizon.png": "2c2b90fb6e7ffab96d8efaf28b2b4d19670790ab2303260b3e7a3a72ccbab398",
+    "sup04_disjoint_segment_stability.pdf": "5e387e36d9275fbd953a159e19e87f99bdc0350985a3b93bf9108927471f20d5",
+    "sup04_disjoint_segment_stability.png": "4f3a331e8a184e1407157d079f9546aa51c90b56808b9911b39c88d134b79bed",
+    "sup05_stock_level_BA_boxplots.pdf": "0791b77fed9fd1e3cb31e85f9611834af39d473f1cea381d3d81c5f54ac6f7ab",
+    "sup05_stock_level_BA_boxplots.png": "f542aa6c7e0ecaab4e1a3717d4fd6f34ab69de1c70260f2f8a0c692d14b0bc70",
+    "sup06_heldout_up_class_balance.pdf": "4ee1a8d7280eeb0496021e659209a3b38952a260e51beb4cd4ca74155a2e3234",
+    "sup06_heldout_up_class_balance.png": "505adbdefd6adf4e7ac6196e083c8b5158dbdb50e13563c54968164beb0fcd62",
+    "sup07_heldout_regime_composition.pdf": "1fb91c15db792b2d82732401b0ba4fe3e94b41a89c8fb9aed7c9280f9672b619",
+    "sup07_heldout_regime_composition.png": "5da58f627b50598d74d5b3d320e44ae932e6fd827a3b55897f9e117a29ecd680"
+  },
+  "pandas_version": "3.0.6",
+  "plot_annotations": {
+    "sup01_all_neural_ml_BA_bars": {
+      "CIs_shown": false,
+      "field": "balanced_accuracy",
+      "num_exploratory_ML": 3,
+      "num_neural": 8,
+      "values_loaded_from_authenticated_CSVs": true
+    },
+    "sup02_all_neural_ml_ROCAUC_bars": {
+      "CIs_shown": false,
+      "field": "roc_auc",
+      "num_exploratory_ML": 3,
+      "num_neural": 8,
+      "values_loaded_from_authenticated_CSVs": true
+    },
+    "sup03_regimes_by_horizon": {
+      "interpretation": "exploratory, no preregistered interaction",
+      "model_selection": "fixed displayed subset, not selected within regimes",
+      "regime_order": [
+        "Low",
+        "Normal",
+        "High"
+      ]
+    },
+    "sup04_disjoint_segment_stability": {
+      "connected_across_gap": false,
+      "exploratory": true,
+      "segment_sessions": [
+        48,
+        217
+      ]
+    },
+    "sup05_stock_level_BA_boxplots": {
+      "interpretation": "descriptive cross-section; no asset selection",
+      "outlier_definition": "Tukey 1.5 IQR",
+      "stocks_per_model": 20
+    },
+    "sup06_heldout_up_class_balance": {
+      "ONLY_TEST_COHORT": true,
+      "training_validation_composition": "not available in authenticated F29R7 result CSVs"
+    },
+    "sup07_heldout_regime_composition": {
+      "NOT_training_validation_distribution": true,
+      "cohort": "5,300 amended held-out endpoints only",
+      "regime_counts": [
+        2524,
+        1577,
+        1199
+      ]
+    }
+  },
+  "receipt_sha256": "637598ea722cf6083a3797d6de467ad91c6d3287fb2819edb92e90ff850af628",
+  "schema": "F29R7_POSTCOMMIT_AUTHENTICATED_STYLE_RECREATION_V1",
+  "this_script_sha256": "d3b51fc84d309c8c1530ddc69455bb09b6c1c019e0552cf4304a6d59a555af8f",
+  "utc": "2026-10-21T16:07:36.620229+00:00",
+  "validation_reader_sha256": "fe23d30bb1f64fce4342839d25e8b38fb30e213cf6a6c70f46dfb0efcbb49ee2"
+}

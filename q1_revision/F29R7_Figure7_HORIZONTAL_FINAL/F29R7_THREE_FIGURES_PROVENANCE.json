@@ -1,0 +1,81 @@
+{
+  "bootstrap_recomputed": false,
+  "calibration_exploratory_ml_model": "RANDOM_FOREST",
+  "calibration_neural_models_by_horizon": {
+    "1": "DLINEAR",
+    "3": "PATCHTST",
+    "5": "ITRANSFORMER"
+  },
+  "created_utc": "2026-10-21T15:57:51.835708+00:00",
+  "generated_figure_sha256": {
+    "fig17_bootstrap_block_sensitivity_HORIZONTAL.pdf": "d47058b3d6cc2fff2bbd474b08f145364ae7cace4afe0ef378dd53bb7dc5d6ee",
+    "fig17_bootstrap_block_sensitivity_HORIZONTAL.png": "dcf34e50e53bdeedd240731f649d55b942b3fcef92549403d5a800b5f73819ad"
+  },
+  "note": "Selected neural leaders identified descriptively; these plots are exploratory diagnostics.",
+  "original_hypothesis_registry_unchanged": true,
+  "output_formats": [
+    "pdf",
+    "png"
+  ],
+  "panel_layout": "1_row_by_3_columns",
+  "pdf_is_vector": true,
+  "png_dpi": 600,
+  "probabilities_recalibrated": false,
+  "python_script_sha256": "f6a95d88b3f8a94dc58014498eb2f749416f1cab86f5bcb7021f2b7d5653d3bd",
+  "raw_sealed_test_opened": false,
+  "schema": "F29R7_Q1_FIGURES_CALIB_BOOTSTRAP_COHORT_V1",
+  "selected_figures": [
+    "bootstrap"
+  ],
+  "sources": {
+    "calibration_definition": "10 fixed equal-width probability bins; no retuning",
+    "committed_artifact_sha256": {
+      "bootstrap_fdr.csv": "a9d9c8e00b9c1665b5526d80570c8d4f3fea8684edcb9d27966abb9e0cae77ae",
+      "classification_metrics.csv": "d5e76ef2b4a224d7708a63519fabd61fe3904dc739c61638e9f7145cf4587bef",
+      "ensemble_predictions.parquet": "49bb2869a11fc43f51161a4fee4e93036b5d8abbedd2e366e260786f3c34fb01",
+      "frozen_seed_plan.csv": "a2f8489933e8d2bbd11d6bab72361f7ad066dd37bc62e1db45bb0d20d87ce086",
+      "ml_devonly_calendar_quarter.csv": "de1cf2df5a54a4497d4802752e0c3c3a23ddd13505bd4c13105ae40823bf271a",
+      "ml_devonly_calibration_10_bins.csv": "8fbcfb28fedb8bfa99154b1a7991d25ea194c2335e6241b7b4f58d505e039837",
+      "ml_devonly_classification_metrics.csv": "f77e952c848d603a0dc7284dd91f4779e2fc9681c0856604756351ef96518dc8",
+      "ml_devonly_methods_manifest.json": "eba182b451a9f5a7e242e470803377424b53e77b22f87dea956e79bdb886d7c8",
+      "ml_devonly_neural_vs_ml_paired_block_ci.csv": "72e9ea327e9f09c768e1eec359eb19e8b156147d46eaa4292e758e7d4e3eca52",
+      "ml_devonly_predictions.parquet": "af368fb806b31030524e46c036bf64fcb6c762ee6f1f06a3b8ba68e49e7aec47",
+      "ml_devonly_regime_level.csv": "c88687d91eed76df34de8b239a70307c8a60a2e74db6a605e2e78cc8a925e14a",
+      "ml_devonly_segment_level.csv": "5bffcd7e610fd86fcf878966a387e470e348e398b2625a63cec8b9acb78f84eb",
+      "ml_devonly_stock_level.csv": "3f9d5a9531d31e7eedb0f7e00e88dccdbff0e066bd9d139203b7ca73bbd7ebbf",
+      "ml_devonly_vs_persistence_paired_block_ci.csv": "24c14d09022fbf4cb189bd09fe3d01acd51d6a5517d9e0bfcc284ddf0a48a299",
+      "pairwise_exploratory.csv": "dd22fb8ee553db96cfe3903dde22d9fae68f11749940ba7e9ad9d3d5c30bee33",
+      "supplementary_baselines.csv": "8a9afee5948f055220bea545110257b32de8febb3743ed42b83a8017c1607dc0",
+      "supplementary_calendar_quarter.csv": "158d54827e9f5b325007719d0e284602a832c8045226b8eb5f6384e310b8bf48",
+      "supplementary_calibration_10_fixed_bins.csv": "1b33c3eca497c6b0bb48ae1ce4eeee0b81303f482386d47911f1f4ea7ede6c37",
+      "supplementary_methods_manifest.json": "ff2ab994b0a086ae32641c8e946d9a0129795e0c4a7b58aa0653914aebd4ed51",
+      "supplementary_model_vs_persistence_paired_block_ci.csv": "cce004adae071b9ce5055161df28c6c403094e08bbf4aee282278e2d67e2cf29",
+      "supplementary_regime_level.csv": "394dd106f20ee7c464716594253eb16db6f0e9c8bcea9b7ec8be4c2ca606865c",
+      "supplementary_segment_level.csv": "c658bcfbdf73b4cd30305e6c57c37b3944e356684fb7cd566616adb19fda5df0",
+      "supplementary_stock_level.csv": "049601522a41a03b17d623a2aeaa11ae8bc27bcbaf51ce5d184e22282198d6be"
+    },
+    "evaluation_manifest_sha256": "47e7820dafe9ec8f951f8daa45ce77aae37599d872bc631a4657f77c96903512",
+    "frozen_step35_contract_sha256": "6f715055fa30759fd9aa9b31655759bbd4dca25398f1d6d2cd39be5bf3bed1d7",
+    "held_out_authenticated_counts": {
+      "calendar_day_date_separation": 147,
+      "endpoints": 5300,
+      "segment_0_sessions": 48,
+      "segment_1_sessions": 217,
+      "sessions": 265
+    },
+    "original_registered_counts_from_frozen_protocol": {
+      "endpoints": 6480,
+      "sessions": 324
+    },
+    "phase_a_metadata_sha256": "07f49d363811c669adf2a1d2fadcc8272df32eaa038e8262a0e48964a41e5987",
+    "public_receipt_sha256": "637598ea722cf6083a3797d6de467ad91c6d3287fb2819edb92e90ff850af628",
+    "sensitivity_definition": "Stored L=10,20,40 percentile CIs; primary inference remains L=20"
+  },
+  "training_or_inference_repeated": false,
+  "versions": {
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "python": "3.12.15"
+  }
+}

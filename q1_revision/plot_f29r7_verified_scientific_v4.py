@@ -7,11 +7,17 @@ sealed raw final test, access seed predictions, fit models, or run bootstraps.
 
 Dependency requirements: Python >= 3.9, pandas, numpy, matplotlib.
 
-Example (from q1_revision):
-    python plot_f29r7_verified_scientific.py --plots all --formats png pdf
+Examples (from q1_revision):
+    python plot_f29r7_verified_scientific_v4_FIG12_CORRECTED.py --verify-only
+    python plot_f29r7_verified_scientific_v4_FIG12_CORRECTED.py --plots figure12 --dpi 600 --width 11.7 --font-size 13 --output-dir F29R7_Figure12_HORIZONTAL_Q1
+    python plot_f29r7_verified_scientific_v4_FIG12_CORRECTED.py --plots all --formats png pdf
 
-Figure filenames 01--04 match those in Revision.tex. Figures 05--07 are
-additional exploratory visualizations and should be disclosed as such.
+The `figure12` alias exports only the directional-prediction-imbalance
+figure, with a distinct publication-ready filename. The original seven-figure
+interfaces are retained; --plots main still exports figures 01--04.
+
+All final-test-derived content is read exclusively from the authenticated
+committed aggregate results; the sealed test inputs are never opened.
 """
 from __future__ import annotations
 
@@ -89,6 +95,9 @@ FIGURES = (
     "fig06_prediction_rate_diagnostics",
     "fig07_stock_level_heatmap",
 )
+FIGURE12_ALIAS = "figure12"
+FIGURE12_INTERNAL = "fig06_prediction_rate_diagnostics"
+FIGURE12_EXPORT_BASENAME = "Figure12_Directional_Prediction_Imbalance_HORIZONTAL"
 
 
 def require(condition: bool, reason: str) -> None:
@@ -189,9 +198,19 @@ def read_verified_results(exp: Path) -> tuple[dict[str, pd.DataFrame], dict[str,
     require(((neural[["tp", "tn", "fp", "fn"]] >= 0).all().all()) and
             (neural[["tp", "tn", "fp", "fn"]].sum(axis=1) == neural.n).all(),
             "Neural confusion-matrix counts are inconsistent")
-    # Exact observed/predicted up-rate from VERIFIED full-cohort confusion counts.
+    # These two fields are DERIVED, NOT expected in the committed source CSV.
+    # Every ratio is computed from authenticated 5,300-endpoint confusion counts.
     neural["observed_positive_rate"] = (neural["tp"] + neural["fn"]) / neural["n"]
     neural["predicted_positive_rate"] = (neural["tp"] + neural["fp"]) / neural["n"]
+    require(neural["observed_positive_rate"].between(0, 1).all() and
+            neural["predicted_positive_rate"].between(0, 1).all(),
+            "Derived directional rates outside [0,1]")
+    for horizon in HORIZONS:
+        outcome_rates = neural.loc[neural.horizon_days == horizon,
+                                  "observed_positive_rate"].to_numpy(dtype=float)
+        require(len(outcome_rates) == len(MODEL_ORDER) and
+                np.allclose(outcome_rates, outcome_rates[0], rtol=0, atol=1e-12),
+                f"Observed upward rate inconsistent across eight models at {horizon} sessions")
     require(set(boot.block_length) == {10, 20, 40},
             "Expected the frozen bootstrap lengths 10, 20 and 40")
     primary = boot.loc[boot.block_length == 20].copy()
@@ -466,69 +485,120 @@ def fig05(data: dict, width: float, font: float):
 
 
 def fig06(data: dict, width: float, font: float):
-    """Model-by-model rate profile: no scatter/text-label collisions possible.
-
-    Every reported number is derived from authenticated confusion matrix counts
-    by read_verified_results(); no thresholds, predictions, or values are changed.
     """
+    Directional prediction imbalance across the eight frozen neural ensembles.
+
+    All reported values are read directly from authenticated classification
+    metrics. No thresholds, predictions, or model outputs are altered.
+    """
+
     frame = data["classification_metrics.csv"]
+
     fig, axes = plt.subplots(
-        1, 3, figsize=(width * 1.80, width * 0.72),
-        sharex=True, sharey=True,
+        1, 3,
+        # CLI --width is the actual full three-panel PDF width, not a per-panel base.
+        figsize=(width, max(5.55, width * 0.50)),
+        sharex=True,
+        sharey=True,
     )
-    palette = plt.get_cmap("tab10")
+
     yy = np.arange(len(MODEL_ORDER))[::-1]
     provenance = {}
-    for ax, horizon in zip(axes, HORIZONS):
+
+    point_color = "#1f77b4"
+    stem_color = "#cfd5db"
+    text_color = "#1f2937"
+    ref_color = "#3f3f46"
+
+    for j, (ax, horizon, panel) in enumerate(zip(axes, HORIZONS, ["A", "B", "C"])):
         sub = frame.loc[frame.horizon_days == horizon].set_index("model_id")
         sub = sub.loc[list(MODEL_ORDER)]
-        predicted = sub.predicted_positive_rate.to_numpy(dtype=float) * 100
-        observed = sub.observed_positive_rate.to_numpy(dtype=float) * 100
+
+        # Reconcile the in-memory derived fields independently to frozen counts.
+        expected_predicted = ((sub["tp"] + sub["fp"]) / sub["n"]).to_numpy(dtype=float)
+        expected_observed = ((sub["tp"] + sub["fn"]) / sub["n"]).to_numpy(dtype=float)
+        require(np.allclose(sub["predicted_positive_rate"].to_numpy(dtype=float),
+                            expected_predicted, rtol=0, atol=1e-12) and
+                np.allclose(sub["observed_positive_rate"].to_numpy(dtype=float),
+                            expected_observed, rtol=0, atol=1e-12),
+                f"Directional-rate/count reconciliation failed at horizon {horizon}")
+        predicted = expected_predicted * 100
+        observed = expected_observed * 100
+
         require(np.isfinite(predicted).all() and np.isfinite(observed).all(),
                 f"Invalid directional rates for {horizon} sessions")
         require(np.allclose(observed, observed[0], atol=1e-10, rtol=0),
                 f"Observed positive-class rate varies by model at {horizon} sessions")
-        require(np.all((predicted >= 0) & (predicted <= 100)) and
-                0 <= observed[0] <= 100,
+        require(np.all((predicted >= 0) & (predicted <= 100)) and 0 <= observed[0] <= 100,
                 f"Directional rates outside [0,100] at horizon {horizon}")
+
         rate = float(observed[0])
-        # A separate row for every model preserves exact dot coordinates
-        # but prevents names from overlapping when rate estimates coincide.
-        for i, (y, value) in enumerate(zip(yy, predicted)):
-            ax.plot([0, float(value)], [y, y], color="0.83",
-                    lw=1.6, solid_capstyle="round", zorder=1)
-            ax.scatter(float(value), y, marker="o", s=58,
-                       color=palette(i), edgecolor="white", lw=0.65, zorder=3)
-            # Fixed values column at right: no collision with data markers.
-            ax.text(105, y, f"{value:.1f}%", fontsize=font - 1.6,
-                    ha="left", va="center", color="0.16")
-        ax.axvline(rate, color="0.27", ls="--", lw=1.25, zorder=2)
-        ax.set_xlim(-2, 121)
+
+        # Lollipop representation: exact values, cleaner than overplotted labels.
+        for y, value in zip(yy, predicted):
+            ax.plot([0, float(value)], [y, y],
+                    color=stem_color, lw=1.7, solid_capstyle="round", zorder=1)
+            ax.scatter(float(value), y,
+                       marker="o", s=54,
+                       color=point_color, edgecolor="white", lw=0.7, zorder=3)
+            # Fixed value column at far right
+            ax.text(106.0, y, f"{value:.1f}%",
+                    fontsize=font - 1.45,
+                    ha="left", va="center", color=text_color)
+
+        # Observed upward-rate reference line
+        ax.axvline(rate, color=ref_color, ls="--", lw=1.25, zorder=2)
+
+        # Panel formatting
+        ax.set_xlim(-2, 118)
         ax.set_xticks([0, 25, 50, 75, 100])
         ax.set_ylim(-0.7, 7.7)
         ax.set_yticks(yy)
-        ax.set_yticklabels([MODEL_NAMES[m] for m in MODEL_ORDER])
-        ax.tick_params(axis="y", length=0, labelleft=True, pad=6)
+
+        if j == 0:
+            ax.set_yticklabels([MODEL_NAMES[m] for m in MODEL_ORDER])
+            ax.tick_params(axis="y", length=0, labelleft=True, pad=6)
+        else:
+            ax.tick_params(axis="y", length=0, labelleft=False)
+
         ax.set_xlabel("Predicted upward outcomes (%)", labelpad=9)
-        ax.set_title(f"{horizon}-session\nObserved upward: {rate:.1f}%",
-                     pad=12, fontsize=font+0.7)
-        ax.grid(axis="x", alpha=0.16)
+        ax.set_title(
+            f"{panel}  |  {horizon}-session\nObserved upward: {rate:.1f}%",
+            pad=11, fontsize=font + 0.55
+        )
+
+        ax.grid(axis="x", alpha=0.17)
         ax.grid(axis="y", visible=False)
+
+        for spine in ("top", "right"):
+            ax.spines[spine].set_visible(False)
+
         provenance[str(horizon)] = {
             "observed_positive_rate": rate / 100,
             "predicted_positive_rates": {
                 m: float(p) / 100 for m, p in zip(MODEL_ORDER, predicted)
             },
         }
-    fig.suptitle("Directional prediction imbalance across neural models",
-                 fontsize=font + 3, y=0.975)
-    footnote(fig,
-             "Circles = frozen model-predicted upward rate; dashed vertical line = observed upward rate. "
-             "Each row is one model (5,300 endpoints per horizon).",
-             font, y=0.018, width=155)
-    finalize_layout(fig, bottom=0.15, top=0.87, left=0.04, right=0.985)
-    return fig, {"display": "model_rate_profile_without_overplotted_labels",
-                 "rate_provenance": provenance}
+
+    fig.suptitle(
+        "Directional prediction imbalance across neural ensembles",
+        fontsize=font + 2.8, y=0.975
+    )
+
+    fig.text(
+        0.50, 0.048,
+        "Dots: predicted upward-class rate; dashed lines: observed upward-class rate. "
+        "5,300 common endpoints per horizon.",
+        ha="center", va="center", fontsize=font - 2.2, color="0.30",
+    )
+    # Reserve explicit room for the first-panel model names, 3 horizon headings,
+    # numeric rate columns, axis titles and bottom note; no post-hoc crop edits.
+    fig.subplots_adjust(left=0.135, right=0.985, bottom=0.185,
+                        top=0.735, wspace=0.22)
+    return fig, {
+        "display": "directional_prediction_imbalance_horizontal_panels",
+        "rate_provenance": provenance,
+    }
 
 
 def fig07(data: dict, width: float, font: float):
@@ -613,9 +683,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", type=Path,
                         default=base / "Revision_F29R7_Assets_V4",
                         help="Figures and provenance go here; must be OUTSIDE the experiment root")
-    parser.add_argument("--plots", nargs="+", choices=("main", "all") + FIGURES,
+    parser.add_argument("--plots", nargs="+", choices=("main", "all", FIGURE12_ALIAS) + FIGURES,
                         default=["main"],
-                        help="main=four Revision.tex figures; all=main and three additional diagnostics")
+                        help="main=figures 01-04; all=original seven; figure12=only horizontal predicted-upward-rate figure")
     parser.add_argument("--formats", nargs="+", choices=("png", "pdf"),
                         default=["png", "pdf"])
     parser.add_argument("--dpi", type=int, default=600, help="PNG resolution; PDF remains vector")
@@ -637,8 +707,18 @@ def main() -> None:
     exp = args.experiment_root.expanduser().resolve()
     out = args.output_dir.expanduser().resolve()
     output_safe(out, exp)
-    choose = list(FIGURES[:4]) if "main" in args.plots else (
-             list(FIGURES) if "all" in args.plots else list(dict.fromkeys(args.plots)))
+    if FIGURE12_ALIAS in args.plots:
+        require(args.plots == [FIGURE12_ALIAS],
+                "Choose --plots figure12 alone to avoid ambiguous output filenames")
+        choose = [FIGURE12_INTERNAL]
+        figure12_mode = True
+    else:
+        choose = list(FIGURES[:4]) if "main" in args.plots else (
+                 list(FIGURES) if "all" in args.plots else list(dict.fromkeys(args.plots)))
+        figure12_mode = False
+    def export_basename(name: str) -> str:
+        return FIGURE12_EXPORT_BASENAME if figure12_mode and name == FIGURE12_INTERNAL else name
+
     print("=" * 88)
     print("F29R7 VERIFIED SCIENTIFIC FIGURE PRODUCTION — READ-ONLY INPUTS")
     print("Experiment:", exp)
@@ -654,7 +734,7 @@ def main() -> None:
     if args.verify_only:
         print("VERIFY-ONLY PASS — no plots or files written")
         return
-    planned = [out / f"{name}.{fmt}" for name in choose for fmt in args.formats]
+    planned = [out / f"{export_basename(name)}.{fmt}" for name in choose for fmt in args.formats]
     planned += [out / "F29R7_FIGURE_PROVENANCE.json"]
     if not args.overwrite:
         require(not any(p.exists() or p.is_symlink() for p in planned),
@@ -666,7 +746,7 @@ def main() -> None:
         fig, notes = FUNCTIONS[name](data, args.width, args.font_size)
         figure_context[name] = notes
         for ext in args.formats:
-            target = out / f"{name}.{ext}"
+            target = out / f"{export_basename(name)}.{ext}"
             save_kwargs = {"format": ext, "facecolor": "white", "bbox_inches": "tight", "pad_inches": 0.10}
             if ext == "png":
                 save_kwargs["dpi"] = args.dpi
@@ -687,6 +767,8 @@ def main() -> None:
         "numpy_version": np.__version__,
         "matplotlib_version": matplotlib.__version__,
         "plot_names": choose,
+        "plot_export_names": [export_basename(n) for n in choose],
+        "figure12_alias": figure12_mode,
         "formats": args.formats,
         "png_dpi": args.dpi,
         "width_in": args.width,
@@ -694,7 +776,7 @@ def main() -> None:
         "figure_annotations": figure_context,
         "output_sha256": output_hashes,
         "data_policy": "All empirical values derived from 23 authenticated F29R7 artifacts; no test reopen/retraining/bootstrapping",
-        "layout_version": "V4: 8-row positive-rate profile and 120 verified heatmap annotations",
+        "layout_version": "V4+Figure12: actual-width horizontal rate profile; original heatmap unchanged",
     }
     with (out / "F29R7_FIGURE_PROVENANCE.json").open("w", encoding="utf-8") as stream:
         json.dump(report, stream, indent=2, sort_keys=True)

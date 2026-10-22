@@ -121,7 +121,7 @@ def panel_bars(data: dict, field: str, name: str, font: float):
         ax.grid(axis="x")
         for j, v in enumerate(vals):
             ax.text(v + 0.09, j, f"{v:.2f}", ha="left", va="center", fontsize=font-2.1)
-    fig.suptitle(f"Revised held-out {name.lower()}: all 11 model families", fontsize=font+3, y=0.96)
+    fig.suptitle(f"Held-out {name.lower()}: all 11 model families", fontsize=font+3, y=0.96)
     fig.legend([
         Line2D([],[],marker="s",markersize=9,linestyle="none",color=PALETTE["OTHER_NEURAL"]),
         Line2D([],[],marker="s",markersize=9,linestyle="none",color=PALETTE["OTHER_ML"]),
