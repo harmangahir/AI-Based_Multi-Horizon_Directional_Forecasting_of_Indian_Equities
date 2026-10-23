@@ -1,0 +1,253 @@
+{
+  "created_utc": "2026-10-22T08:52:07.459230+00:00",
+  "data_policy": "All empirical values derived from 23 authenticated F29R7 artifacts; no test reopen/retraining/bootstrapping",
+  "figure_annotations": {
+    "Figure15_Stock_Level_BA_Heatmap_ANNOTATED": {
+      "annotated_cells": 120,
+      "color_scale_center_BA_percent": 50.0,
+      "column_model_order": [
+        {
+          "horizon": 1,
+          "model": "DLINEAR"
+        },
+        {
+          "horizon": 1,
+          "model": "RANDOM_FOREST"
+        },
+        {
+          "horizon": 3,
+          "model": "PATCHTST"
+        },
+        {
+          "horizon": 3,
+          "model": "RANDOM_FOREST"
+        },
+        {
+          "horizon": 5,
+          "model": "ITRANSFORMER"
+        },
+        {
+          "horizon": 5,
+          "model": "RANDOM_FOREST"
+        }
+      ],
+      "descriptive_neural_leaders": {
+        "1": "DLINEAR",
+        "3": "PATCHTST",
+        "5": "ITRANSFORMER"
+      },
+      "exploratory_only": true,
+      "figure15_shape": [
+        20,
+        6
+      ],
+      "stock_ids": [
+        "ASIANPAINT.NS",
+        "AXISBANK.NS",
+        "BAJFINANCE.NS",
+        "BHARTIARTL.NS",
+        "HDFCBANK.NS",
+        "HINDUNILVR.NS",
+        "ICICIBANK.NS",
+        "INFY.NS",
+        "ITC.NS",
+        "KOTAKBANK.NS",
+        "LT.NS",
+        "MARUTI.NS",
+        "NTPC.NS",
+        "POWERGRID.NS",
+        "RELIANCE.NS",
+        "SBIN.NS",
+        "SUNPHARMA.NS",
+        "TCS.NS",
+        "TITAN.NS",
+        "ULTRACEMCO.NS"
+      ],
+      "stock_level_ba_from_authenticated_csv": {
+        "1-session_DLINEAR": {
+          "ASIANPAINT.NS": 0.499544315333789,
+          "AXISBANK.NS": 0.5286431587355929,
+          "BAJFINANCE.NS": 0.4992278654770075,
+          "BHARTIARTL.NS": 0.5091640972935937,
+          "HDFCBANK.NS": 0.5062485535755612,
+          "HINDUNILVR.NS": 0.5080459770114942,
+          "ICICIBANK.NS": 0.4986816462226298,
+          "INFY.NS": 0.5043743524807183,
+          "ITC.NS": 0.48958213422355246,
+          "KOTAKBANK.NS": 0.491682807337359,
+          "LT.NS": 0.5132163609433747,
+          "MARUTI.NS": 0.5111548556430446,
+          "NTPC.NS": 0.527913865785576,
+          "POWERGRID.NS": 0.5205128205128206,
+          "RELIANCE.NS": 0.49017094017094026,
+          "SBIN.NS": 0.4711428571428571,
+          "SUNPHARMA.NS": 0.49200000000000005,
+          "TCS.NS": 0.5085760331529872,
+          "TITAN.NS": 0.46906687934373925,
+          "ULTRACEMCO.NS": 0.48785909712722303
+        },
+        "1-session_RANDOM_FOREST": {
+          "ASIANPAINT.NS": 0.5235816814764183,
+          "AXISBANK.NS": 0.5238217505420518,
+          "BAJFINANCE.NS": 0.49673987645847634,
+          "BHARTIARTL.NS": 0.5049960031974421,
+          "HDFCBANK.NS": 0.5256884980328628,
+          "HINDUNILVR.NS": 0.5418103448275862,
+          "ICICIBANK.NS": 0.5234724292101341,
+          "INFY.NS": 0.5116265684355934,
+          "ITC.NS": 0.5609531483826407,
+          "KOTAKBANK.NS": 0.5176597926398542,
+          "LT.NS": 0.5296228779765296,
+          "MARUTI.NS": 0.4972041538285975,
+          "NTPC.NS": 0.5495043864646234,
+          "POWERGRID.NS": 0.5027065527065527,
+          "RELIANCE.NS": 0.5091168091168091,
+          "SBIN.NS": 0.4539999999999999,
+          "SUNPHARMA.NS": 0.4885714285714285,
+          "TCS.NS": 0.4948198457465178,
+          "TITAN.NS": 0.5053264213284722,
+          "ULTRACEMCO.NS": 0.4963520291837665
+        },
+        "3-session_PATCHTST": {
+          "ASIANPAINT.NS": 0.4743479752916952,
+          "AXISBANK.NS": 0.5040754673962609,
+          "BAJFINANCE.NS": 0.5257183908045977,
+          "BHARTIARTL.NS": 0.48206546532846706,
+          "HDFCBANK.NS": 0.5093681540412776,
+          "HINDUNILVR.NS": 0.498925293365865,
+          "ICICIBANK.NS": 0.5246478873239436,
+          "INFY.NS": 0.5193751443751444,
+          "ITC.NS": 0.5030674846625767,
+          "KOTAKBANK.NS": 0.5140173575425374,
+          "LT.NS": 0.5153508771929824,
+          "MARUTI.NS": 0.4784172661870504,
+          "NTPC.NS": 0.4963830029619503,
+          "POWERGRID.NS": 0.5102617318113686,
+          "RELIANCE.NS": 0.5344285714285715,
+          "SBIN.NS": 0.48460410557184747,
+          "SUNPHARMA.NS": 0.5118182866366886,
+          "TCS.NS": 0.5034795942439255,
+          "TITAN.NS": 0.5027657390510949,
+          "ULTRACEMCO.NS": 0.47999541442164395
+        },
+        "3-session_RANDOM_FOREST": {
+          "ASIANPAINT.NS": 0.5105525051475635,
+          "AXISBANK.NS": 0.5183538531691747,
+          "BAJFINANCE.NS": 0.5020114942528735,
+          "BHARTIARTL.NS": 0.5639256386861313,
+          "HDFCBANK.NS": 0.5596967600599562,
+          "HINDUNILVR.NS": 0.4870454281398861,
+          "ICICIBANK.NS": 0.5071281346616283,
+          "INFY.NS": 0.4651478401478401,
+          "ITC.NS": 0.5714543486106098,
+          "KOTAKBANK.NS": 0.5493319630010278,
+          "LT.NS": 0.5404420141262246,
+          "MARUTI.NS": 0.4622016672376384,
+          "NTPC.NS": 0.5289929368876738,
+          "POWERGRID.NS": 0.5079557246627464,
+          "RELIANCE.NS": 0.5247142857142857,
+          "SBIN.NS": 0.5215542521994134,
+          "SUNPHARMA.NS": 0.4870287097890003,
+          "TCS.NS": 0.5326138240150979,
+          "TITAN.NS": 0.4777030109489051,
+          "ULTRACEMCO.NS": 0.4935801903015018
+        },
+        "5-session_ITRANSFORMER": {
+          "ASIANPAINT.NS": 0.4397142857142856,
+          "AXISBANK.NS": 0.5552244850728998,
+          "BAJFINANCE.NS": 0.5,
+          "BHARTIARTL.NS": 0.53,
+          "HDFCBANK.NS": 0.66648440197997,
+          "HINDUNILVR.NS": 0.5172955974842767,
+          "ICICIBANK.NS": 0.5935245620061834,
+          "INFY.NS": 0.5124035915736158,
+          "ITC.NS": 0.5087792642140468,
+          "KOTAKBANK.NS": 0.5028198701150735,
+          "LT.NS": 0.4675857354449128,
+          "MARUTI.NS": 0.5013470136420957,
+          "NTPC.NS": 0.529297765617875,
+          "POWERGRID.NS": 0.5125762633820652,
+          "RELIANCE.NS": 0.5196453010948905,
+          "SBIN.NS": 0.4823769998797065,
+          "SUNPHARMA.NS": 0.5263768115942029,
+          "TCS.NS": 0.460691823899371,
+          "TITAN.NS": 0.5,
+          "ULTRACEMCO.NS": 0.4707022343821249
+        },
+        "5-session_RANDOM_FOREST": {
+          "ASIANPAINT.NS": 0.5372857142857143,
+          "AXISBANK.NS": 0.5385038185605184,
+          "BAJFINANCE.NS": 0.49609375,
+          "BHARTIARTL.NS": 0.5361428571428571,
+          "HDFCBANK.NS": 0.5421031426269138,
+          "HINDUNILVR.NS": 0.49685534591194963,
+          "ICICIBANK.NS": 0.5236745677315928,
+          "INFY.NS": 0.4558823529411764,
+          "ITC.NS": 0.5713688485427616,
+          "KOTAKBANK.NS": 0.5902643272188675,
+          "LT.NS": 0.5218468725076906,
+          "MARUTI.NS": 0.4824315029233063,
+          "NTPC.NS": 0.4743217054263566,
+          "POWERGRID.NS": 0.5049211465408081,
+          "RELIANCE.NS": 0.5061872718978102,
+          "SBIN.NS": 0.4230121496451341,
+          "SUNPHARMA.NS": 0.4742028985507246,
+          "TCS.NS": 0.47641509433962254,
+          "TITAN.NS": 0.48666210670314636,
+          "ULTRACEMCO.NS": 0.4646602827177383
+        }
+      },
+      "stock_level_significance_tests_performed": false
+    }
+  },
+  "font_size_pt": 13.0,
+  "formats": [
+    "pdf",
+    "png"
+  ],
+  "matplotlib_version": "3.11.2",
+  "numpy_version": "2.5.3",
+  "output_sha256": {
+    "Figure15_Stock_Level_BA_Heatmap_ANNOTATED.pdf": "430bb099ea7959f23f9fd1c59bf982062a1167e585b8f67ebecee311b3f955b4",
+    "Figure15_Stock_Level_BA_Heatmap_ANNOTATED.png": "f171aac012b0efaed6df73d9d5b9bf555c814ebe8c9dd2eb4e93d1f948b5e8a5"
+  },
+  "pandas_version": "3.0.6",
+  "plot_names": [
+    "Figure15_Stock_Level_BA_Heatmap_ANNOTATED"
+  ],
+  "png_dpi": 600,
+  "schema": "F29R7_VERIFIED_FIGURE_PROVENANCE_FIG14_FIG15_ADDENDUM",
+  "script_sha256": "e80ec625c74ae6422fdcf9b2f9bb5669e82fdb17ed9430b8ed9c3a19034c691b",
+  "sources": {
+    "committed_evaluation_manifest_sha256": "47e7820dafe9ec8f951f8daa45ce77aae37599d872bc631a4657f77c96903512",
+    "evaluation_dir": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_test_evaluation/step36i_amended_predictions/completed_evaluation",
+    "experiment_root": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026",
+    "public_receipt_sha256": "637598ea722cf6083a3797d6de467ad91c6d3287fb2819edb92e90ff850af628",
+    "verified_artifact_sha256": {
+      "bootstrap_fdr.csv": "a9d9c8e00b9c1665b5526d80570c8d4f3fea8684edcb9d27966abb9e0cae77ae",
+      "classification_metrics.csv": "d5e76ef2b4a224d7708a63519fabd61fe3904dc739c61638e9f7145cf4587bef",
+      "ensemble_predictions.parquet": "49bb2869a11fc43f51161a4fee4e93036b5d8abbedd2e366e260786f3c34fb01",
+      "frozen_seed_plan.csv": "a2f8489933e8d2bbd11d6bab72361f7ad066dd37bc62e1db45bb0d20d87ce086",
+      "ml_devonly_calendar_quarter.csv": "de1cf2df5a54a4497d4802752e0c3c3a23ddd13505bd4c13105ae40823bf271a",
+      "ml_devonly_calibration_10_bins.csv": "8fbcfb28fedb8bfa99154b1a7991d25ea194c2335e6241b7b4f58d505e039837",
+      "ml_devonly_classification_metrics.csv": "f77e952c848d603a0dc7284dd91f4779e2fc9681c0856604756351ef96518dc8",
+      "ml_devonly_methods_manifest.json": "eba182b451a9f5a7e242e470803377424b53e77b22f87dea956e79bdb886d7c8",
+      "ml_devonly_neural_vs_ml_paired_block_ci.csv": "72e9ea327e9f09c768e1eec359eb19e8b156147d46eaa4292e758e7d4e3eca52",
+      "ml_devonly_predictions.parquet": "af368fb806b31030524e46c036bf64fcb6c762ee6f1f06a3b8ba68e49e7aec47",
+      "ml_devonly_regime_level.csv": "c88687d91eed76df34de8b239a70307c8a60a2e74db6a605e2e78cc8a925e14a",
+      "ml_devonly_segment_level.csv": "5bffcd7e610fd86fcf878966a387e470e348e398b2625a63cec8b9acb78f84eb",
+      "ml_devonly_stock_level.csv": "3f9d5a9531d31e7eedb0f7e00e88dccdbff0e066bd9d139203b7ca73bbd7ebbf",
+      "ml_devonly_vs_persistence_paired_block_ci.csv": "24c14d09022fbf4cb189bd09fe3d01acd51d6a5517d9e0bfcc284ddf0a48a299",
+      "pairwise_exploratory.csv": "dd22fb8ee553db96cfe3903dde22d9fae68f11749940ba7e9ad9d3d5c30bee33",
+      "supplementary_baselines.csv": "8a9afee5948f055220bea545110257b32de8febb3743ed42b83a8017c1607dc0",
+      "supplementary_calendar_quarter.csv": "158d54827e9f5b325007719d0e284602a832c8045226b8eb5f6384e310b8bf48",
+      "supplementary_calibration_10_fixed_bins.csv": "1b33c3eca497c6b0bb48ae1ce4eeee0b81303f482386d47911f1f4ea7ede6c37",
+      "supplementary_methods_manifest.json": "ff2ab994b0a086ae32641c8e946d9a0129795e0c4a7b58aa0653914aebd4ed51",
+      "supplementary_model_vs_persistence_paired_block_ci.csv": "cce004adae071b9ce5055161df28c6c403094e08bbf4aee282278e2d67e2cf29",
+      "supplementary_regime_level.csv": "394dd106f20ee7c464716594253eb16db6f0e9c8bcea9b7ec8be4c2ca606865c",
+      "supplementary_segment_level.csv": "c658bcfbdf73b4cd30305e6c57c37b3944e356684fb7cd566616adb19fda5df0",
+      "supplementary_stock_level.csv": "049601522a41a03b17d623a2aeaa11ae8bc27bcbaf51ce5d184e22282198d6be"
+    }
+  },
+  "width_in": 11.5
+}

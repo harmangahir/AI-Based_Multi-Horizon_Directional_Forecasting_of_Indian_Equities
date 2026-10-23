@@ -5,13 +5,17 @@ This extends (does not replace) plot_f29r7_verified_scientific_v4.py. It
 imports that program's SHA-256-verifying reader. It never opens sealed raw-test
 files, refits a model, generates predictions, tunes a threshold, or recomputes
 bootstrap intervals. All plotted statistics come from existing authenticated
-F29R7 CSVs. The six scientific layouts reinterpret VISUAL STYLES used in an
+F29R7 CSVs. The seven scientific layouts reinterpret VISUAL STYLES used in an
 older manuscript; the old experiment's numbers and study arms are not reused.
 
 Run from q1_revision after placing this and the original v4 plotting source
 beside each other:
-    python plot_f29r7_legacy_style_from_verified_results.py --plots all \
-        --formats png pdf --dpi 600
+    python plot_f29r7_legacy_style_from_verified_results_FIG14_Q1_CORRECTED.py \
+        --plots figure14 --formats pdf png --dpi 600 \
+        --font-size 12 --output-dir F29R7_Figure14_HORIZONTAL_Q1_FINAL
+
+    ``figure14`` is a publication-oriented alias for the updated legacy
+    ``sup04_disjoint_segment_stability`` plot, and writes a Figure14-named file.
 """
 from __future__ import annotations
 
@@ -175,35 +179,137 @@ def segment_index(value: object) -> int:
 
 
 def plot_segments(data: dict, font: float):
-    fig, axes = plt.subplots(1,3, figsize=(13.8, 4.8), sharey=True)
-    for ax, horizon in zip(axes,HORIZONS):
-        for k,model in enumerate(FOCUS):
-            subset = group_metric(data,"segment_level",model,horizon)
-            subset["seg"] = subset.group.map(segment_index)
-            check(len(subset) == 2 and set(subset.seg) == {0,1},
-                  f"Segment membership mismatch {model} {horizon}d")
-            sub = subset.set_index("seg").loc[[0,1]]
-            values = sub.balanced_accuracy.to_numpy(dtype=float)*100
-            check((sub.n.to_numpy(dtype=int)==np.array([960,4340])).all(),
-                  f"Unexpected segment counts {model} {horizon}d")
-            # The visual gap is deliberate; never draw a continuous line across 147 calendar days.
-            for s in [0,1]:
-                ax.scatter(s + (k-1.5)*.064, values[s], marker=("o" if s==0 else "s"),
-                           s=55, facecolor=PALETTE[model], edgecolor="white", linewidth=.45,
-                           zorder=3, label=LABELS[model] if s==0 else None)
-        ax.axhline(50, color="#4D525B", linestyle="--", lw=1)
-        ax.set_xticks([0,1], ["2025 Jan–Mar\n48 sessions", "2025 Aug–2026 Jun\n217 sessions"])
-        ax.set_xlim(-.35,1.35)
-        ax.set_title(f"{horizon}-session horizon")
-        ax.grid(axis="y")
-        ax.set_ylim(38,59)
-    axes[0].set_ylabel("Balanced accuracy (%)")
-    fig.suptitle("Two disjoint continuity segments (147-day date separation)",y=.97,fontsize=font+3)
-    handles,labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles, labels, ncol=4, loc="upper center", bbox_to_anchor=(.5,.91),frameon=False)
-    fig.subplots_adjust(left=.065,right=.985,bottom=.20,top=.78,wspace=.15)
-    return fig, {"segment_sessions": [48,217],"connected_across_gap": False,
-                 "exploratory": True}
+    """FIGURE 14: disjoint-cohort BA, 1 row x 3 horizon panels.
+
+    Plot only previously authenticated segment CSV summary values. Each of the
+    four displayed fixed models contributes exactly two subgroup points per
+    horizon. Temporal segments remain UNCONNECTED (147-calendar-day separation).
+    No group-wise model selection, re-estimation, confidence intervals, or
+    significance tests are introduced by this descriptive visualization.
+    """
+    segments = {
+        0: {"sessions": 48, "n": 960, "marker": "o", "color": "#246d9a"},
+        1: {"sessions": 217, "n": 4340, "marker": "s", "color": "#c67637"},
+    }
+    rates = {}
+    all_percentages = [50.0]
+    provenance_rows = {}
+
+    # Fail closed before plotting if any required authenticated subgroup is
+    # absent, duplicated, non-finite, outside [0, 1], or has wrong cohort n.
+    for horizon in HORIZONS:
+        rates[horizon] = {}
+        provenance_rows[str(horizon)] = {}
+        for model in FOCUS:
+            sub = group_metric(data, "segment_level", model, horizon)
+            sub["seg"] = sub.group.map(segment_index)
+            check(len(sub) == 2 and set(sub.seg) == {0, 1},
+                  f"Missing/duplicated segment {model}, {horizon} session")
+            sub = sub.set_index("seg").loc[[0, 1]]
+            n = pd.to_numeric(sub.n, errors="raise").to_numpy(dtype=float)
+            scores = pd.to_numeric(sub.balanced_accuracy, errors="raise").to_numpy(dtype=float)
+            check(np.isfinite(n).all() and np.isfinite(scores).all(),
+                  f"Non-finite segment values {model}, {horizon} session")
+            check(np.allclose(n, [960, 4340], rtol=0, atol=0),
+                  f"Wrong frozen segment sizes for {model}, {horizon} session: {n}")
+            check(np.all((scores >= 0) & (scores <= 1)),
+                  f"Invalid balanced accuracy for {model}, {horizon} session")
+            vals = scores * 100.0
+            rates[horizon][model] = vals
+            all_percentages.extend(vals.tolist())
+            provenance_rows[str(horizon)][model] = {
+                "segment_0_ba": float(scores[0]),
+                "segment_1_ba": float(scores[1]),
+                "segment_0_endpoints": 960,
+                "segment_1_endpoints": 4340,
+            }
+
+    # Identical x-axis limits protect comparison between the three horizons.
+    low = max(0.0, 2 * np.floor((min(all_percentages) - 3.0) / 2))
+    high = min(100.0, 2 * np.ceil((max(all_percentages) + 5.0) / 2))
+    step = 2 if high - low <= 24 else (5 if high - low <= 45 else 10)
+    ticks = np.arange(np.ceil(low / step) * step, high + 0.01, step)
+
+    fig, axes = plt.subplots(1, 3, figsize=(12.0, 5.35),
+                             sharex=True, sharey=True)
+    fig.subplots_adjust(left=.137, right=.985, bottom=.235,
+                        top=.755, wspace=.15)
+    row = np.arange(len(FOCUS))
+    dy = {0: -.175, 1: .175}
+
+    for panel_idx, (ax, horizon) in enumerate(zip(axes, HORIZONS)):
+        # RF is an exploratory baseline using a different input interface.
+        ax.axhspan(2.55, 3.45, facecolor="#f0f3f5", zorder=0)
+        ax.set_axisbelow(True)
+        for yy in row:
+            ax.axhline(yy, color="#e3e8ec", lw=.65, zorder=.5)
+
+        for model_idx, model in enumerate(FOCUS):
+            two_vals = rates[horizon][model]
+            for segment_id, val in enumerate(two_vals):
+                meta = segments[segment_id]
+                y = model_idx + dy[segment_id]
+                ax.scatter(val, y, s=53, marker=meta["marker"],
+                           color=meta["color"], edgecolor="white",
+                           linewidth=.65, zorder=4)
+                # Exact descriptive percentages, from the committed CSV only.
+                ax.annotate(f"{val:.2f}", (val, y), xytext=(5, 0),
+                            textcoords="offset points", ha="left", va="center",
+                            fontsize=font-1.9, color=meta["color"], zorder=5)
+
+        ax.axvline(50, color="#3d4248", lw=1.15,
+                   linestyle=(0, (4, 3)), zorder=1)
+        ax.set_xlim(low, high)
+        ax.set_ylim(3.55, -.57)
+        ax.set_xticks(ticks)
+        ax.set_yticks(row)
+        ax.set_yticklabels([LABELS[m] for m in FOCUS])
+        ax.tick_params(axis="y", length=0, pad=6, labelsize=font-.2)
+        ax.tick_params(axis="x", length=0, labelsize=font-.8)
+        if panel_idx:
+            ax.tick_params(axis="y", left=False, labelleft=False)
+        ax.grid(axis="x", color="#c9d0d7", alpha=.55, lw=.65)
+        ax.set_title(f"{chr(65+panel_idx)}  |  {horizon}-session horizon",
+                     loc="left", fontsize=font+.5, pad=11)
+        ax.set_xlabel("Balanced accuracy (%)", labelpad=9,
+                      fontsize=font-.1)
+        ax.spines["left"].set_visible(False)
+        ax.spines["bottom"].set_color("#aeb6be")
+
+    legend = [
+        Line2D([], [], ls="none", marker="o", color=segments[0]["color"],
+               markersize=7, label="Segment 0 (48 sessions; n = 960)"),
+        Line2D([], [], ls="none", marker="s", color=segments[1]["color"],
+               markersize=7, label="Segment 1 (217 sessions; n = 4,340)"),
+        Line2D([], [], color="#3d4248", linestyle=(0, (4, 3)), lw=1.15,
+               label="BA = 50%"),
+    ]
+    fig.suptitle("Held-out balanced accuracy across two discontinuous evaluation periods",
+                 fontsize=font+2.1, weight="semibold", y=.975)
+    fig.legend(handles=legend, ncol=3, frameon=False, loc="upper center",
+               bbox_to_anchor=(.51, .891), fontsize=font-.9,
+               columnspacing=1.25, handletextpad=.4)
+    fig.text(.5, .112,
+             "Segment 0: 1 Jan–7 Mar 2025. Segment 1: 1 Aug 2025–22 Jun 2026.",
+             ha="center", va="center", fontsize=font-.8, color="#4d5660")
+    fig.text(.5, .071,
+             "147-calendar-day separation; no connecting lines. "
+             "Random Forest is exploratory; no subgroup significance tests.",
+             ha="center", va="center", fontsize=font-1.05, color="#4d5660")
+
+    return fig, {
+        "figure": "Figure 14: disjoint-continuity-segment descriptive BA",
+        "segment_sessions": [48, 217],
+        "segment_endpoints": [960, 4340],
+        "calendar_day_date_separation": 147,
+        "connecting_lines": False,
+        "horizon_order": list(HORIZONS),
+        "model_order": list(FOCUS),
+        "score_units": "percent on plot; proportion in provenance rows",
+        "plot_values": provenance_rows,
+        "exploratory": True,
+        "no_new_inference": True,
+    }
 
 
 def plot_stock_boxplots(data: dict, font: float):
@@ -300,6 +406,7 @@ FUNCTIONS={
     FIGURES[0]:plot_ba,FIGURES[1]:plot_auc,FIGURES[2]:plot_regimes,
     FIGURES[3]:plot_segments,FIGURES[4]:plot_stock_boxplots,
     FIGURES[5]:plot_up_balance,FIGURES[6]:plot_regime_composition,
+    "figure14":plot_segments,
 }
 
 
@@ -314,7 +421,8 @@ def main():
         default=root.parent / "stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026")
     parser.add_argument("--output-dir", type=Path,
         default=root/"F29R7_Style_Recreations_Supplementary")
-    parser.add_argument("--plots", nargs="+",default=["all"],choices=("all",)+FIGURES)
+    parser.add_argument("--plots", nargs="+",default=["all"],choices=("all", "figure14")+FIGURES,
+                        help="Specify figure14 for the revised manuscript Figure 14, or a legacy supXX name")
     parser.add_argument("--formats",nargs="+",default=["png","pdf"],choices=("png","pdf"))
     parser.add_argument("--dpi",type=int,default=600)
     parser.add_argument("--font-size",type=float,default=10)
@@ -334,7 +442,7 @@ def main():
     # The v4 reader authenticates all 23 files but imports only the 10 CSVs
     # needed for its original figures. Import the two already-authenticated
     # segment summaries without recalculating anything.
-    if "sup04_disjoint_segment_stability" in chosen:
+    if "sup04_disjoint_segment_stability" in chosen or "figure14" in chosen:
         for filename in ("supplementary_segment_level.csv", "ml_devonly_segment_level.csv"):
             manifest_hash = verified_provenance["verified_artifact_sha256"].get(filename)
             check(bool(manifest_hash),f"Segment summary not in signed artifact inventory: {filename}")
@@ -349,7 +457,8 @@ def main():
     if args.verify_only:
         print("VERIFY ONLY PASS; no figures or files written")
         return
-    planned=[output/f"{n}.{fmt}" for n in chosen for fmt in args.formats]
+    output_names={"figure14": "Figure14_Disjoint_Segment_Stability_HORIZONTAL"}
+    planned=[output/f"{output_names.get(n,n)}.{fmt}" for n in chosen for fmt in args.formats]
     planned.append(output/"F29R7_RECREATION_PROVENANCE.json")
     if not args.overwrite:
         check(all(not p.exists() and not p.is_symlink() for p in planned),
@@ -360,7 +469,7 @@ def main():
         fig,notes=FUNCTIONS[plot](data,args.font_size)
         try:
             for ext in args.formats:
-                target=output/f"{plot}.{ext}"
+                target=output/f"{output_names.get(plot,plot)}.{ext}"
                 fig.savefig(target,format=ext,facecolor="white",bbox_inches="tight",pad_inches=.12,
                             **({"dpi":args.dpi} if ext=="png" else {}))
                 files[target.name]=sha(target)
@@ -379,6 +488,7 @@ def main():
         "matplotlib_version":matplotlib.__version__,
         "pandas_version":pd.__version__,"numpy_version":np.__version__,
         "dpi_png":args.dpi,"figures":chosen,"plot_annotations":annotations,"output_sha256":files,
+        "figure14_layout":"three horizontal horizon panels; two disjoint groups; no connecting lines",
         "explicitly_excluded":"historical 2280-row old study, outdated arms, economic backtests, train/val compositions",
         "access":"postcommit CSVs only; zero raw test, training, inference, bootstrap recomputation"
     }

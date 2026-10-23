@@ -1,0 +1,25 @@
+% Derived exclusively from development-only CSVs; NOT held-out evidence.
+\begin{table*}[t]
+\centering
+\caption{Development-selected training durations and recorded batch settings. Each family contributes 25 development-fold fits and five final-development refits. Final epochs are the same-seed median of the five development-fold best epochs; no validation or early stopping occurred during final refits.}
+\label{tab:repro_refit_metadata}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llcccccc}
+\hline
+Architecture & Configuration & Dev. best at 1 & Median dev. best & Refit epochs (42--46) & Batch $L/P$ & Median refit & Refit at 1 \\ 
+\hline
+DLinear & \texttt{DLINEAR\_B} & 14/25 & 1 & 1, 2, 1, 1, 3 & 256/128 & 1 & 3/5 \\
+NLinear & \texttt{NLINEAR\_B} & 16/25 & 1 & 1, 1, 1, 1, 1 & 256/128 & 1 & 5/5 \\
+PatchTST & \texttt{PATCHTST\_B} & 19/25 & 1 & 1, 1, 1, 1, 1 & 256/64 & 1 & 5/5 \\
+TimesNet & \texttt{TIMESNET\_B} & 6/25 & 2 & 2, 4, 2, 2, 3 & 256/64 & 2 & 0/5 \\
+iTransformer & \texttt{ITRANSFORMER\_A} & 22/25 & 1 & 1, 1, 1, 1, 1 & 256/128 & 1 & 5/5 \\
+Fredformer & \texttt{FREDFORMER\_B} & 22/25 & 1 & 1, 1, 1, 1, 1 & 256/16 & 1 & 5/5 \\
+FRNet & \texttt{FRNET\_A} & 16/25 & 1 & 1, 1, 1, 1, 2 & 256/64 & 1 & 4/5 \\
+MLF & \texttt{MLF\_A} & 6/25 & 2 & 9, 2, 2, 2, 3 & 256/32 & 2 & 0/5 \\
+\hline
+Overall & -- & 121/200 & -- & -- & -- & -- & 27/40 \\
+\hline
+\end{tabular}
+\par\footnotesize{$L/P$ is observed logical batch size / physical microbatch size; semicolon-delimited pairs indicate different settings across seeds.}
+\end{table*}

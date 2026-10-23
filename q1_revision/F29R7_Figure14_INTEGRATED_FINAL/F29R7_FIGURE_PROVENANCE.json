@@ -1,0 +1,127 @@
+{
+  "created_utc": "2026-10-22T08:41:14.264558+00:00",
+  "data_policy": "All empirical values derived from 23 authenticated F29R7 artifacts; no test reopen/retraining/bootstrapping",
+  "figure_annotations": {
+    "Figure14_Disjoint_Segment_Stability_HORIZONTAL": {
+      "figure14_models": [
+        "DLINEAR",
+        "PATCHTST",
+        "ITRANSFORMER",
+        "RANDOM_FOREST"
+      ],
+      "interpolation_across_gap": false,
+      "is_descriptive": true,
+      "observed_BA_from_authenticated_csv": {
+        "1": {
+          "DLINEAR": {
+            "segment_0_BA": 0.5033816952110832,
+            "segment_1_BA": 0.4999358652541732
+          },
+          "ITRANSFORMER": {
+            "segment_0_BA": 0.5054979818915676,
+            "segment_1_BA": 0.49252023217627455
+          },
+          "PATCHTST": {
+            "segment_0_BA": 0.5021162866804844,
+            "segment_1_BA": 0.4931515983992647
+          },
+          "RANDOM_FOREST": {
+            "segment_0_BA": 0.5343623868222973,
+            "segment_1_BA": 0.5086870725589084
+          }
+        },
+        "3": {
+          "DLINEAR": {
+            "segment_0_BA": 0.4937604270937604,
+            "segment_1_BA": 0.4972123548433343
+          },
+          "ITRANSFORMER": {
+            "segment_0_BA": 0.4958291624958291,
+            "segment_1_BA": 0.500026549001492
+          },
+          "PATCHTST": {
+            "segment_0_BA": 0.5045712379045713,
+            "segment_1_BA": 0.5007401861615984
+          },
+          "RANDOM_FOREST": {
+            "segment_0_BA": 0.5061061061061061,
+            "segment_1_BA": 0.5213448662195814
+          }
+        },
+        "5": {
+          "DLINEAR": {
+            "segment_0_BA": 0.5161310325278152,
+            "segment_1_BA": 0.491524307899709
+          },
+          "ITRANSFORMER": {
+            "segment_0_BA": 0.482885692013323,
+            "segment_1_BA": 0.5194855652765588
+          },
+          "PATCHTST": {
+            "segment_0_BA": 0.468189710155198,
+            "segment_1_BA": 0.5052186121403265
+          },
+          "RANDOM_FOREST": {
+            "segment_0_BA": 0.513393806250443,
+            "segment_1_BA": 0.5117509294793451
+          }
+        }
+      },
+      "segment_endpoints": {
+        "0": 960,
+        "1": 4340
+      },
+      "segment_gap_days": 147
+    }
+  },
+  "font_size_pt": 12.0,
+  "formats": [
+    "pdf",
+    "png"
+  ],
+  "matplotlib_version": "3.11.2",
+  "numpy_version": "2.5.3",
+  "output_sha256": {
+    "Figure14_Disjoint_Segment_Stability_HORIZONTAL.pdf": "3d522817456012f5a3e6684227431c5a5d81c9a25f8a5e9ff53d51cff40c96dc",
+    "Figure14_Disjoint_Segment_Stability_HORIZONTAL.png": "7498382293952417e95189cf448ca585d1746066e8da876ab50b9e7db6c2a5b3"
+  },
+  "pandas_version": "3.0.6",
+  "plot_names": [
+    "Figure14_Disjoint_Segment_Stability_HORIZONTAL"
+  ],
+  "png_dpi": 600,
+  "schema": "F29R7_VERIFIED_FIGURE_PROVENANCE_FIG14_ADDENDUM",
+  "script_sha256": "76da596aaa79d099fa4ebc4a98af4b014f6d680086b3a7b6baa8fa8685f5df35",
+  "sources": {
+    "committed_evaluation_manifest_sha256": "47e7820dafe9ec8f951f8daa45ce77aae37599d872bc631a4657f77c96903512",
+    "evaluation_dir": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026/final_test_evaluation/step36i_amended_predictions/completed_evaluation",
+    "experiment_root": "/home/harman/projects/AI-Based_Multi-Horizon_Directional_Forecasting_of_Indian_Equities/stock_q1_revision_project/experiments/q1_revision_v3_clean_2016_2026",
+    "public_receipt_sha256": "637598ea722cf6083a3797d6de467ad91c6d3287fb2819edb92e90ff850af628",
+    "verified_artifact_sha256": {
+      "bootstrap_fdr.csv": "a9d9c8e00b9c1665b5526d80570c8d4f3fea8684edcb9d27966abb9e0cae77ae",
+      "classification_metrics.csv": "d5e76ef2b4a224d7708a63519fabd61fe3904dc739c61638e9f7145cf4587bef",
+      "ensemble_predictions.parquet": "49bb2869a11fc43f51161a4fee4e93036b5d8abbedd2e366e260786f3c34fb01",
+      "frozen_seed_plan.csv": "a2f8489933e8d2bbd11d6bab72361f7ad066dd37bc62e1db45bb0d20d87ce086",
+      "ml_devonly_calendar_quarter.csv": "de1cf2df5a54a4497d4802752e0c3c3a23ddd13505bd4c13105ae40823bf271a",
+      "ml_devonly_calibration_10_bins.csv": "8fbcfb28fedb8bfa99154b1a7991d25ea194c2335e6241b7b4f58d505e039837",
+      "ml_devonly_classification_metrics.csv": "f77e952c848d603a0dc7284dd91f4779e2fc9681c0856604756351ef96518dc8",
+      "ml_devonly_methods_manifest.json": "eba182b451a9f5a7e242e470803377424b53e77b22f87dea956e79bdb886d7c8",
+      "ml_devonly_neural_vs_ml_paired_block_ci.csv": "72e9ea327e9f09c768e1eec359eb19e8b156147d46eaa4292e758e7d4e3eca52",
+      "ml_devonly_predictions.parquet": "af368fb806b31030524e46c036bf64fcb6c762ee6f1f06a3b8ba68e49e7aec47",
+      "ml_devonly_regime_level.csv": "c88687d91eed76df34de8b239a70307c8a60a2e74db6a605e2e78cc8a925e14a",
+      "ml_devonly_segment_level.csv": "5bffcd7e610fd86fcf878966a387e470e348e398b2625a63cec8b9acb78f84eb",
+      "ml_devonly_stock_level.csv": "3f9d5a9531d31e7eedb0f7e00e88dccdbff0e066bd9d139203b7ca73bbd7ebbf",
+      "ml_devonly_vs_persistence_paired_block_ci.csv": "24c14d09022fbf4cb189bd09fe3d01acd51d6a5517d9e0bfcc284ddf0a48a299",
+      "pairwise_exploratory.csv": "dd22fb8ee553db96cfe3903dde22d9fae68f11749940ba7e9ad9d3d5c30bee33",
+      "supplementary_baselines.csv": "8a9afee5948f055220bea545110257b32de8febb3743ed42b83a8017c1607dc0",
+      "supplementary_calendar_quarter.csv": "158d54827e9f5b325007719d0e284602a832c8045226b8eb5f6384e310b8bf48",
+      "supplementary_calibration_10_fixed_bins.csv": "1b33c3eca497c6b0bb48ae1ce4eeee0b81303f482386d47911f1f4ea7ede6c37",
+      "supplementary_methods_manifest.json": "ff2ab994b0a086ae32641c8e946d9a0129795e0c4a7b58aa0653914aebd4ed51",
+      "supplementary_model_vs_persistence_paired_block_ci.csv": "cce004adae071b9ce5055161df28c6c403094e08bbf4aee282278e2d67e2cf29",
+      "supplementary_regime_level.csv": "394dd106f20ee7c464716594253eb16db6f0e9c8bcea9b7ec8be4c2ca606865c",
+      "supplementary_segment_level.csv": "c658bcfbdf73b4cd30305e6c57c37b3944e356684fb7cd566616adb19fda5df0",
+      "supplementary_stock_level.csv": "049601522a41a03b17d623a2aeaa11ae8bc27bcbaf51ce5d184e22282198d6be"
+    }
+  },
+  "width_in": 14.5
+}

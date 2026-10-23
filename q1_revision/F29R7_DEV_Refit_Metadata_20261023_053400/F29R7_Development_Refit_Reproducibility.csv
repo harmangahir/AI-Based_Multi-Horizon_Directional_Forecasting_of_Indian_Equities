@@ -1,0 +1,9 @@
+architecture,model_id,config_id,development_fit_count,development_best_at_epoch_1,median_development_best_epoch,refit_epochs_by_seed,min_final_refit_epoch,median_final_refit_epoch,max_final_refit_epoch,one_epoch_refits,batch_logical_over_physical
+DLinear,DLINEAR,DLINEAR_B,25,14,1,"1,2,1,1,3",1,1,3,3,256/128
+NLinear,NLINEAR,NLINEAR_B,25,16,1,"1,1,1,1,1",1,1,1,5,256/128
+PatchTST,PATCHTST,PATCHTST_B,25,19,1,"1,1,1,1,1",1,1,1,5,256/64
+TimesNet,TIMESNET,TIMESNET_B,25,6,2,"2,4,2,2,3",2,2,4,0,256/64
+iTransformer,ITRANSFORMER,ITRANSFORMER_A,25,22,1,"1,1,1,1,1",1,1,1,5,256/128
+Fredformer,FREDFORMER,FREDFORMER_B,25,22,1,"1,1,1,1,1",1,1,1,5,256/16
+FRNet,FRNET,FRNET_A,25,16,1,"1,1,1,1,2",1,1,2,4,256/64
+MLF,MLF,MLF_A,25,6,2,"9,2,2,2,3",2,2,9,0,256/32

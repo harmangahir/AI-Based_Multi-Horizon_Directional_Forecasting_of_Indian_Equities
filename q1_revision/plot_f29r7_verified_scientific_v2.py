@@ -79,6 +79,13 @@ REQUIRED_CSVS = {
     "ml_devonly_stock_level.csv": {
         "model_id", "horizon_days", "group", "n", "balanced_accuracy",
     },
+    # Completed-evaluation summaries: no raw-test records are opened.
+    "supplementary_segment_level.csv": {
+        "model_id", "horizon_days", "group", "n", "balanced_accuracy",
+    },
+    "ml_devonly_segment_level.csv": {
+        "model_id", "horizon_days", "group", "n", "balanced_accuracy",
+    },
 }
 FIGURES = (
     "fig01_neural_BA_heatmap",
@@ -88,6 +95,7 @@ FIGURES = (
     "fig05_primary_bootstrap_CI",
     "fig06_prediction_rate_diagnostics",
     "fig07_stock_level_heatmap",
+    "Figure14_Disjoint_Segment_Stability_HORIZONTAL",
 )
 
 
@@ -207,6 +215,7 @@ def read_verified_results(exp: Path) -> tuple[dict[str, pd.DataFrame], dict[str,
         "supplementary_regime_level.csv", "ml_devonly_regime_level.csv",
         "supplementary_calendar_quarter.csv", "ml_devonly_calendar_quarter.csv",
         "supplementary_stock_level.csv", "ml_devonly_stock_level.csv",
+        "supplementary_segment_level.csv", "ml_devonly_segment_level.csv",
     ):
         frame = data[filename]
         require(not frame.duplicated(["model_id", "horizon_days", "group"]).any(),
@@ -525,7 +534,140 @@ def fig07(data: dict, width: float, font: float):
     return fig, {"best_neural_per_horizon": winners}
 
 
-FUNCTIONS = dict(zip(FIGURES, (fig01, fig02, fig03, fig04, fig05, fig06, fig07)))
+
+
+def _f29r7_segment_id(value: object) -> int:
+    """Interpret only the two authenticated continuity-segment labels."""
+    key = str(value).strip().lower()
+    mapping = {
+        "0": 0, "0.0": 0, "segment_0": 0, "segment 0": 0,
+        "1": 1, "1.0": 1, "segment_1": 1, "segment 1": 1,
+    }
+    require(key in mapping, f"Unknown immutable continuity segment: {value!r}")
+    return mapping[key]
+
+
+def figure14(data: dict, width: float, font: float):
+    """Manuscript Figure 14: authenticated disjoint-segment BA comparisons.
+
+    Three HORIZONTAL horizon panels, four preselected models and two marker
+    types. No interpolation across the 147-calendar-day break and no new
+    significance test. Inputs are committed subgroup aggregates only.
+    """
+    selected_models = ("DLINEAR", "PATCHTST", "ITRANSFORMER", "RANDOM_FOREST")
+    display = [MODEL_NAMES[m] for m in selected_models]
+    expected_n = {0: 960, 1: 4340}
+    observations = {}
+    all_values = []
+
+    for h in HORIZONS:
+        for m in selected_models:
+            filename = ("supplementary_segment_level.csv" if m in MODEL_ORDER
+                        else "ml_devonly_segment_level.csv")
+            source = data[filename]
+            rows = source.loc[(source.model_id == m) &
+                              (source.horizon_days == h)].copy()
+            equal_pairs(rows, ["group"], 2, f"Figure14 {m}/{h}-session")
+            rows["segment_id"] = rows.group.map(_f29r7_segment_id)
+            require(set(rows.segment_id) == {0, 1},
+                    f"Figure14: missing continuity segment for {m}/{h}")
+            rows = rows.set_index("segment_id").loc[[0, 1]]
+            actual_n = rows.n.astype(int).to_list()
+            require(actual_n == [960, 4340] and
+                    np.all(rows.n.to_numpy(dtype=float) == actual_n),
+                    f"Figure14: unexpected segment endpoint counts for {m}/{h}: {actual_n}")
+            values = rows.balanced_accuracy.to_numpy(dtype=float)
+            require(np.isfinite(values).all() and
+                    np.all((values >= 0.0) & (values <= 1.0)),
+                    f"Figure14: invalid BA for {m}/{h}")
+            observations[(h, m)] = values * 100.0
+            all_values.extend(values * 100.0)
+
+    # Shared axes across panels. Enlarge ONLY if authenticated data exceed
+    # the nominal 42--60% range, so no committed result can be clipped.
+    xmin = min(42.0, np.floor((min(all_values) - 1.0) / 2) * 2)
+    xmax = max(60.0, np.ceil((max(all_values) + 1.0) / 2) * 2)
+    xtick_step = 3 if (xmax - xmin) <= 24 else 4
+
+    # Landscape dimensions: width is the *physical* manuscript figure width.
+    fig, axes = plt.subplots(1, 3, figsize=(width, width * 0.41), sharey=True)
+    fig.subplots_adjust(left=.145, right=.99, bottom=.205, top=.755,
+                        wspace=.15)
+    segment_style = {
+        0: ("#246f9c", "o", -.16),
+        1: ("#c77831", "s", +.16),
+    }
+    for j, (ax, horizon) in enumerate(zip(axes, HORIZONS)):
+        ax.set_facecolor("white")
+        for i, model in enumerate(selected_models):
+            y = float(i)
+            ax.axhline(y, lw=.6, color="#e1e6eb", zorder=0)
+            if model == "RANDOM_FOREST":
+                ax.axhspan(y-.44, y+.44, facecolor="#edf0f2", zorder=-1)
+            values = observations[(horizon, model)]
+            for seg in (0, 1):
+                color, marker, offset = segment_style[seg]
+                value = float(values[seg])
+                ax.scatter(value, y+offset, s=48, marker=marker,
+                           facecolor=color, edgecolor="white", linewidth=.5,
+                           zorder=4)
+                ax.annotate(f"{value:.2f}", xy=(value, y+offset),
+                            xytext=(5, 0), textcoords="offset points",
+                            ha="left", va="center", color=color,
+                            fontsize=font-1.3, zorder=5)
+        ax.axvline(50, lw=1.05, ls=(0, (4,3)), color="#40464e", zorder=1)
+        ax.set_xlim(xmin, xmax)
+        ax.set_xticks(np.arange(xmin, xmax+.1, xtick_step))
+        ax.set_ylim(len(selected_models)-.5, -.5)
+        ax.set_yticks(range(len(selected_models)))
+        ax.set_yticklabels(display)
+        ax.tick_params(axis="y", length=0, labelsize=font-.2, pad=6)
+        ax.tick_params(axis="x", length=0, labelsize=font-.8, pad=5)
+        if j > 0:
+            ax.tick_params(axis="y", left=False, labelleft=False)
+        ax.grid(axis="x", color="#d6dce1", alpha=.65, lw=.65)
+        ax.set_axisbelow(True)
+        ax.set_title(f"{chr(65+j)}  |  {horizon}-session horizon",
+                     loc="left", pad=10, fontsize=font+.25)
+        ax.set_xlabel("Balanced accuracy (%)", fontsize=font-.25, labelpad=7)
+        ax.spines["left"].set_visible(False)
+        ax.spines["bottom"].set_color("#adb4bb")
+        ax.spines["bottom"].set_linewidth(.6)
+
+    handles = [
+        Line2D([], [], color="#246f9c", marker="o", linestyle="none",
+               markersize=7, label="Segment 0: 48 sessions; n = 960"),
+        Line2D([], [], color="#c77831", marker="s", linestyle="none",
+               markersize=7, label="Segment 1: 217 sessions; n = 4,340"),
+        Line2D([], [], color="#40464e", linestyle="--", lw=1.1,
+               label="BA = 50%"),
+    ]
+    fig.suptitle("Held-out balanced accuracy across two discontinuous periods",
+                 y=.983, fontsize=font+1.7, fontweight="semibold")
+    fig.legend(handles=handles, ncol=3, frameon=False, loc="upper center",
+               bbox_to_anchor=(.52, .917), fontsize=font-1.05,
+               columnspacing=1.3, handletextpad=.4)
+    fig.text(.5, .081,
+             "Segment 0: 1 Jan–7 Mar 2025. Segment 1: 1 Aug 2025–22 Jun 2026.",
+             ha="center", color="#475569", fontsize=font-1.2)
+    fig.text(.5, .035,
+             "147-calendar-day separation; no connecting lines. Exploratory subgroup comparison; no significance tests.",
+             ha="center", color="#475569", fontsize=font-1.45)
+    summary = {
+        str(h): {
+            m: {"segment_0_BA": float(observations[(h,m)][0])/100,
+                "segment_1_BA": float(observations[(h,m)][1])/100}
+            for m in selected_models}
+        for h in HORIZONS
+    }
+    return fig, {"figure14_models": list(selected_models),
+                 "segment_endpoints": expected_n,
+                 "observed_BA_from_authenticated_csv": summary,
+                 "is_descriptive": True, "segment_gap_days": 147,
+                 "interpolation_across_gap": False}
+
+
+FUNCTIONS = dict(zip(FIGURES, (fig01, fig02, fig03, fig04, fig05, fig06, fig07, figure14)))
 
 
 def output_safe(out: Path, exp: Path) -> None:
@@ -547,9 +689,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", type=Path,
                         default=base / "Revision_F29R7_Assets_REGENERATED",
                         help="Figures and provenance go here; must be OUTSIDE the experiment root")
-    parser.add_argument("--plots", nargs="+", choices=("main", "all") + FIGURES,
+    parser.add_argument("--plots", nargs="+", choices=("main", "all", "figure14") + FIGURES,
                         default=["main"],
-                        help="main=four Revision.tex figures; all=main and three additional diagnostics")
+                        help="main=original four; all=all eight; figure14=disjoint-segment comparison")
     parser.add_argument("--formats", nargs="+", choices=("png", "pdf"),
                         default=["png", "pdf"])
     parser.add_argument("--dpi", type=int, default=600, help="PNG resolution; PDF remains vector")
@@ -571,8 +713,10 @@ def main() -> None:
     exp = args.experiment_root.expanduser().resolve()
     out = args.output_dir.expanduser().resolve()
     output_safe(out, exp)
-    choose = list(FIGURES[:4]) if "main" in args.plots else (
-             list(FIGURES) if "all" in args.plots else list(dict.fromkeys(args.plots)))
+    selection = ["Figure14_Disjoint_Segment_Stability_HORIZONTAL" if name == "figure14"
+                 else name for name in args.plots]
+    choose = list(FIGURES[:4]) if "main" in selection else (
+             list(FIGURES) if "all" in selection else list(dict.fromkeys(selection)))
     print("=" * 88)
     print("F29R7 VERIFIED SCIENTIFIC FIGURE PRODUCTION — READ-ONLY INPUTS")
     print("Experiment:", exp)
@@ -613,7 +757,7 @@ def main() -> None:
             print(f"SAVED: {target} (SHA-256 {output_hashes[target.name]})")
         plt.close(fig)
     report = {
-        "schema": "F29R7_VERIFIED_FIGURE_PROVENANCE_V1",
+        "schema": "F29R7_VERIFIED_FIGURE_PROVENANCE_FIG14_ADDENDUM",
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "sources": provenance,
         "script_sha256": sha256_file(Path(__file__).resolve()),

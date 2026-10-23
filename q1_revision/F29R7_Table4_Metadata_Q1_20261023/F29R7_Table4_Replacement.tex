@@ -1,0 +1,42 @@
+\begin{table}[htbp]
+\centering
+\caption{Audited development-selected neural configurations and final-refit metadata. Panel A reports recorded trainable PyTorch parameters and optimizer settings; Panel B reports the five frozen seed-specific refit durations and the architectural mechanisms. The logical batch size was 256 in every refit. Entries were extracted from 40 development-only final-refit manifests and reconciled against the frozen epoch-schedule register; no held-out performance was used.}
+\label{tab:architectures}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\vspace{2pt}
+\textit{Panel A. Recorded model size and optimizer settings}\\[3pt]
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l l r r r c@{}}
+\toprule
+\textbf{Family} & \textbf{Config.} & \shortstack{\textbf{Trainable}\\\textbf{parameters}} & \shortstack{\textbf{Learning}\\\textbf{rate}} & \shortstack{\textbf{Weight}\\\textbf{decay}} & \shortstack{\textbf{Batch}\\\textbf{logical/physical}} \\
+\midrule
+DLinear & \texttt{DLINEAR\_B} & 39,378 & $0.0003$ & $0.0001$ & 256/128 \\
+NLinear & \texttt{NLINEAR\_B} & 20,163 & $0.0003$ & $0.0001$ & 256/128 \\
+PatchTST & \texttt{PATCHTST\_B} & 603,321 & $0.0003$ & $0.0001$ & 256/64 \\
+TimesNet & \texttt{TIMESNET\_B} & 37,539,203 & $0.0003$ & $0.0001$ & 256/64 \\
+iTransformer & \texttt{ITRANSFORMER\_A} & 274,617 & $0.0003$ & $0.0001$ & 256/128 \\
+Fredformer & \texttt{FREDFORMER\_B} & 57,360,555 & $0.0003$ & $0.0001$ & 256/16 \\
+FRNet & \texttt{FRNET\_A} & 63,375 & $0.0003$ & $0.0001$ & 256/64 \\
+MLF & \texttt{MLF\_A} & 7,476,624 & $0.0003$ & $0.0001$ & 256/32 \\
+\bottomrule
+\end{tabular*}
+\medskip
+\textit{Panel B. Final-refit epochs and representative mechanisms}\\[3pt]
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule
+\textbf{Family} & \shortstack{\textbf{Refit epochs}\\\textbf{seeds 42--46}} & \textbf{Representative mechanism} \\
+\midrule
+DLinear & 1, 2, 1, 1, 3 & Decomposition/linear temporal mapping \\
+NLinear & 1, 1, 1, 1, 1 & Last-value-normalized linear mapping \\
+PatchTST & 1, 1, 1, 1, 1 & Patch-based temporal tokens \\
+TimesNet & 2, 4, 2, 2, 3 & Period-aware temporal representation \\
+iTransformer & 1, 1, 1, 1, 1 & Variate-as-token attention \\
+Fredformer & 1, 1, 1, 1, 1 & Spectral/frequency debiasing \\
+FRNet & 1, 1, 1, 1, 2 & Frequency-based rotation \\
+MLF & 9, 2, 2, 2, 3 & Multi-period financial representation \\
+\bottomrule
+\end{tabularx}
+\vspace{2pt}
+\par\raggedright\footnotesize\emph{Note.} Trainable parameter counts are the recorded PyTorch-registered parameter counts; they are not a compute-budget equivalence metric. The MLF implementation contained positional embeddings outside the standard PyTorch registration hierarchy, so its count does not include unregistered parameters. LR and weight decay are the recorded final-refit optimizer settings. The number of epochs for each seed is the median of five corresponding development-fold best-validation epochs; final refits used neither new validation nor early stopping.
+\end{table}
